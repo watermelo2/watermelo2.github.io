@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">DDIA | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/blog/2025/06/22/DDIA"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="DDIA | My Site"><meta data-rh="true" name="description" content="设计数据密集型应用"><meta data-rh="true" property="og:description" content="设计数据密集型应用"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-06-22T00:00:00.000Z"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/blog/2025/06/22/DDIA"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/06/22/DDIA" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/06/22/DDIA" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/06/22/DDIA" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/blog/2025/06/22/DDIA","mainEntityOfPage":"https://watermelo2.github.io/blog/2025/06/22/DDIA","url":"https://watermelo2.github.io/blog/2025/06/22/DDIA","headline":"DDIA","name":"DDIA","description":"设计数据密集型应用","datePublished":"2025-06-22T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/assets/css/styles.e55a2139.css">
+<script src="/assets/js/runtime~main.849cc757.js" defer="defer"></script>
+<script src="/assets/js/main.0ae3829a.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/1.svg"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="搜索" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="最近博文导航"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">DDIA</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-06-22T00:00:00.000Z">2025年6月22日</time> · <!-- -->阅读需 57 分钟</div></header><div id="__blog-post-container" class="markdown"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="设计数据密集型应用">设计数据密集型应用<a href="#设计数据密集型应用" class="hash-link" aria-label="设计数据密集型应用的直接链接" title="设计数据密集型应用的直接链接">​</a></h2>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-- 数据集</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">DocId: 10 r1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Links</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Forward: 20</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Forward: 40 Forward: 60</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Name</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Language</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Code: &#x27;en-us&#x27; Country: &#x27;us&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Language</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Code: &#x27;en&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Url: &#x27;http://A&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Name</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Url: &#x27;http://B&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Name</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Language</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Code: &#x27;en-gb&#x27; Country: &#x27;gb&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Name.Language.Code</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># value r d</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># en-us 0 2 -- r=0是因为没有重复</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># en 2 2 -- r=2是因为`Name.Language`重复,所以可以认为级别就是层级</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># NULL 1 1 -- 需要加这层的原因是为了表明下面的en-gn是在第三个Name中而不是第二个</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># en-gn 1 2 -- r=1是因为`Name`重复</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># NULL 0 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># r: 重复级别 d: 定义级别</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>任何小于字段路径中重复字段和可选字段数的definition level都表示 NULL</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="将一条记录分解为若干列的算法实现">将一条记录分解为若干列的算法实现<a href="#将一条记录分解为若干列的算法实现" class="hash-link" aria-label="将一条记录分解为若干列的算法实现的直接链接" title="将一条记录分解为若干列的算法实现的直接链接">​</a></h3>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">procedure DissectRecord(RecordDecoder decoder, FieldWriter writer, int repetitionLevel):</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Add current repetitionLevel and definition level to writer</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">seenFields = {} // empty set of integers</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">while decoder has more field values do</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">FieldWriter chWriter = child of writer for field read by decoder</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">int chRepetitionLevel = repetitionLevel</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">if set seenFields contains field ID of chWriter then</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">chRepetitionLevel = tree depth of chWriter</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">else</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Add field ID of chWriter to seenFields</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">end if</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">if chWriter corresponds to an atomic field then</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Write value of current field read by decoder</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Write value using chWriter at chRepetitionLevel</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">else</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">DissectRecord(</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">new RecordDecoder for nested record read by decoder,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">chWriter,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">chRepetitionLevel</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">end if</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">end while</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">end procedure</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-- 查询SQL</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SELECT DocId AS Id,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">COUNT(Name.Language.Code) WITHIN Name AS Cnt,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Name.Url + &#x27;,&#x27; + Name.Language.Code AS Str</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">FROM t</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">WHERE REGEXP(Name.Url, &#x27;^http&#x27;) AND DocId &lt; 20 ;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-- 查询结果</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Id: 10</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Name</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Cnt: 2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Language</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Str: &#x27;http://A,en-us&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Str: &#x27;http://A,en&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Name</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Cnt: 0</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-- 输出schema</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">message QueryResult{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">require int64 Id;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">repeated group Name{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">optional uint64 Cnt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">repeated group Language{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">optional string Str;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-- 算法实现</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">procedure ConstructFSM(Field[] fields):</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">for each field in fields do</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">maxLevel = maximal repetition level of field</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">barrier = next field after field or final FSM state otherwise</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">barrierLevel = common repetition level of field and barrier</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// Handle backward transitions</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">for each preField before field whose</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">repetition level is larger than barrierLevel do</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">backLevel = common repetition level of preField and field</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Set transition (field, backLevel) -&gt; preField</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">end for</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// Copy missing transitions from lower levels</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">for each level in [barrierLevel+1..maxLevel]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">that lacks transition from field do</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Copy transition&#x27;s destination from that of level-1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">end for</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// Set forward transitions</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">for each level in [0..barrierLevel] do</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Set transition (field, level) -&gt; barrier</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">end for</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">end for</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">end procedure</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>现今很多应用程序都是 数据密集型(data-intensive) 的,而非 计算密集型(compute-intensive)的. 因此CPU很少成为这类应用的瓶颈,更大的问题通常来自数据量、数据复杂性、以及数据的变更速度.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="可靠性可扩展性可维护性">可靠性、可扩展性、可维护性<a href="#可靠性可扩展性可维护性" class="hash-link" aria-label="可靠性、可扩展性、可维护性的直接链接" title="可靠性、可扩展性、可维护性的直接链接">​</a></h3>
+<ul>
+<li>
+<p>可靠性(Reliability): 系统在困境(adversity)(硬件故障、软件故障、人为错误)中仍可正常工作(正确完成功能,并能达到期望的性能水准)</p>
+</li>
+<li>
+<p>可扩展性(Scalability): 有合理的办法应对系统的增长(数据量、流量、复杂性). 讨论可扩展性意味着考虑诸如&quot;如果系统以特定方式增长,有什么选项可以应对增长？&quot;和&quot;如何增加计算资源来处理额外的负载？&quot;等问题.</p>
+</li>
+<li>
+<p>可维护性(Maintainability): 许多不同的人(工程师、运维)在不同的生命周期,都能高效地在系统上工作(使系统保持现有行为,并适应新的应用场景)</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="twitter推送系统">Twitter推送系统<a href="#twitter推送系统" class="hash-link" aria-label="Twitter推送系统的直接链接" title="Twitter推送系统的直接链接">​</a></h3>
+<ol>
+<li>
+<p>第一版: SQL关联查询</p>
+</li>
+<li>
+<p>第二版: 提前计算、存储每个用户需要查看的关注的人的推文收件箱</p>
+</li>
+</ol>
+<blockquote>
+<p>消耗计算: 平均一条推文平均会发送75个关注者,所以每秒4.6K的发推写入,变成每秒345K的写入</p>
+</blockquote>
+<blockquote>
+<p>缺点: 有的用户有超过3000w的粉丝,他们发推文会导致3000w次的写入!!!</p>
+</blockquote>
+<ol start="3">
+<li>第三版: 两种方法的混合.大多数用户发的推文会被扇出写入其粉丝主页时间线缓存中.但是少数拥有海量粉丝的用户(即名流)会被排除在外.当用户读取主页时间线时,分别地获取出该用户所关注的每位名流的推文,再与用户的主页时间线缓存合并,</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="延迟和响应时间的区别">延迟和响应时间的区别<a href="#延迟和响应时间的区别" class="hash-link" aria-label="延迟和响应时间的区别的直接链接" title="延迟和响应时间的区别的直接链接">​</a></h3>
+<p>延迟(latency) 和 响应时间(response time)经常用作同义词,但实际上它们并不一样.响应时间是客户所看到的,除了实际处理请求的时间( 服务时间(service time) )之外,还包括网络延迟和排队延迟.延迟是某个请求等待处理的持续时长,在此期间它处于休眠(latent) 状态,并等待服务</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="表结构的规范化和非规范化">表结构的规范化和非规范化<a href="#表结构的规范化和非规范化" class="hash-link" aria-label="表结构的规范化和非规范化的直接链接" title="表结构的规范化和非规范化的直接链接">​</a></h3>
+<p>关系模型的一个关键洞察是: 只需构建一次查询优化器,随后使用该数据库的所有应用程序都可以从中受益. 如果你没有查询优化器的话,那么为特定查询手动编写访问路径比编写通用优化器更加容易--不过从长期看通用解决方案更好</p>
+<p>声明式查询语言适合并行执行,命令式查询语言并不是特别合适</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="两大类存储引擎----日志结构log-structured的存储引擎和面向页面page-oriented的存储引擎">两大类存储引擎 -- 日志结构(log-structured)的存储引擎和面向页面(page-oriented)的存储引擎<a href="#两大类存储引擎----日志结构log-structured的存储引擎和面向页面page-oriented的存储引擎" class="hash-link" aria-label="两大类存储引擎 -- 日志结构(log-structured)的存储引擎和面向页面(page-oriented)的存储引擎的直接链接" title="两大类存储引擎 -- 日志结构(log-structured)的存储引擎和面向页面(page-oriented)的存储引擎的直接链接">​</a></h3>
+<ul>
+<li>
+<p>面向页面: B树</p>
+</li>
+<li>
+<p>日志结构: LSM树</p>
+<ul>
+<li>
+<p>Bitcask（日志型键值存储）</p>
+</li>
+<li>
+<p>WiscKey（基于LSM的优化设计）</p>
+</li>
+<li>
+<p>LevelDB（Google实现的LSM存储引擎）</p>
+</li>
+<li>
+<p>RocksDB（Facebook优化的LSM存储引擎）</p>
+</li>
+<li>
+<p>Cassandra（分布式数据库，底层使用LSM结构）</p>
+</li>
+<li>
+<p>HBase（基于BigTable模型，使用LSM）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="sstablessorted-string-table和lsm树log-structured-merge-tree-lsmt">SSTables(Sorted String Table)和LSM树（Log-Structured Merge-Tree, LSMT）<a href="#sstablessorted-string-table和lsm树log-structured-merge-tree-lsmt" class="hash-link" aria-label="SSTables(Sorted String Table)和LSM树（Log-Structured Merge-Tree, LSMT）的直接链接" title="SSTables(Sorted String Table)和LSM树（Log-Structured Merge-Tree, LSMT）的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="sstables">SSTables<a href="#sstables" class="hash-link" aria-label="SSTables的直接链接" title="SSTables的直接链接">​</a></h4>
+<ul>
+<li>
+<p>存储: 按键排序、归档、压缩</p>
+</li>
+<li>
+<p>搜索: 存储时按规则分块 + 内存字节扫描. 如果字符长度是定长(通常不是),那么可以用二分查找.因为定长的话可以知道每条记录的分界点 (前一条记结束,后一条记录开始的地方)</p>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="lsm树">LSM树<a href="#lsm树" class="hash-link" aria-label="LSM树的直接链接" title="LSM树的直接链接">​</a></h4>
+<p>LSM树的基本思想: 保存一系列在后台合并的SSTables,简单而有效.即使数据集比可用内存大得多,它仍能继续正常工作.由于数据按排序顺序存储,因此可以高效地执行范围查询(扫描所有高于某些最小值和最高值的所有键),并且因为磁盘写入是连续的,所以LSM树可以支持非常高的写入吞吐量</p>
+<p>WAL(write-ahead-log)在MySQL中叫&quot;重做日志&quot;(redo log)</p>
+<p>B树有个优点是每个键只存在于索引中的一个位置,而日志结构化的存储引擎可能在不同的段中有相同键的多个副本. 这意味着在实现事务语义时方便太多了: 在许多关系型数据库中,事务隔离是通过在键范围上使用锁来实现的. 反直觉的是,内存数据库的性能优势并不是因为它们不需要从磁盘读取的事实.即使是基于磁盘的存储引擎也可能永远不需要从磁盘读取,因为操作系统缓存最近在内存中使用了磁盘块.相反,它们更快的原因在于省去了将内存数据结构编码为磁盘数据结构的开销</p>
+<p>列存储适用于OLAP是因为分析类型的查询语句中通常不会像OLTP一样的拿非常多行,并且OLAP对应的数据仓库中的数据非常之巨大,所以如果用行存储的话性能简直不敢想象的低,一个查询语句下去可能会把内存占满. 还有就是OLAP常用统计函数,这种情况下列存储在硬盘中的数据摆放都是顺序的,顺序读比随机读快一个量级(参考4KB顺序读和4KB随机读测速). 还有,列存储压缩数据会比较简单.</p>
+<p>列族: 在每个列族中,它们将一行中的所有列与行键一起存储,并且不使用压缩.</p>
+<p>列存储索引和行存储索引区别: 行索引中的多个索引(二级索引)的存储将每一行保存在一个地方(聚簇索引或堆文件); 列索引直接存值;</p>
+<p>LSM树的思路同样适用于行存储和列存储</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="编码">编码<a href="#编码" class="hash-link" aria-label="编码的直接链接" title="编码的直接链接">​</a></h3>
+<p>XML和CSV不能区分数字和字符串. JSON虽然能区分,但是不区分整数和浮点数,而且不能指定精度.</p>
+<p>XML和JSON对Unicode字符串有很好的支持,但是它们不支持二进制数据字符编码. 通常会进行Base64后传输,但会增加约33%的数据大小.</p>
+<blockquote>
+<p>PS: 让不同的组织达成一致的难度超过了其它大多数的问题</p>
+</blockquote>
+<p>Thrift的CompactProtocol(三种二进制协议中的一种)还算有趣,虽然都是些别的地方已经有的编码思路</p>
+<p>Protobuf在对数组|列表进行编码时和其它协议不一样,它是通过重复字段的重复标记来实现的. 它有个好处,可以将单值改为多值字段,它是兼容的</p>
+<p>Avro是一种之前没有见过的编码思路. 附一张图:</p>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2022/06/02/FclZpVqRtP8SiX6.png" alt="FclZpVqRtP8SiX6" class="img_ev3q"></p>
+<blockquote>
+<p>我的看法: 越是扣字节的编码兼容起来越麻烦(Avro),但性能非常好</p>
+</blockquote>
+<p>SOAP优点: 给Producer/Consumer双方提供了契约(对于微服务来说很喜欢这个,有专门的契约测试)、安全调用、事务(两阶段)</p>
+<p>本地函数调用和RPC的区别: 可预测性、异常原因、幂等、执行时间、数据编码(大对象)、代码优化(我自己想到的)</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="分布式数据">分布式数据<a href="#分布式数据" class="hash-link" aria-label="分布式数据的直接链接" title="分布式数据的直接链接">​</a></h3>
+<p>复制数据的变更算法: 单领导者、多领导者、无领导者</p>
+<p>同步复制的优点是,从库保证有与主库一致的最新数据副本.如果主库突然失效,我们可以确信这些数据仍然能在从库上上找到; 缺点是,如果同步从库没有响应(比如它已经崩溃,或者出现网络故障,或其它任何原因),主库就无法处理写入操作.主库必须阻止所有写入,并等待同步副本再次可用.因此,将所有从库都设置为同步的是不切实际的:任何一个节点的中断都会导致整个系统停滞不前.实际上,如果在数据库上启用同步复制,通常意味着其中一个跟随者是同步的,而其他的则是异步的.如果同步从库变得不可用或缓慢,则使一个异步从库同步.这保证你至少在两个节点上拥有最新的数据副本:主库和同步从库.</p>
+<p>​通常情况下,基于领导者的复制都配置为完全异步. 在这种情况下,如果主库失效且不可恢复,则任何尚未复制给从库的写入都会丢失. 这意味着即使已经向客户端确认成功,写入也不能保证持久(Durable). 优点是即使所有的从库都落后了,主库也可以继续处理写入.</p>
+<p>Redis和Dynamo的高可用实现: Gossip</p>
+<p>传统的复制型关系数据库系统都将关注点放在保证副本的强一致性. 虽然强一致性可以给应用的写入操作提供方便的编程模型,但导致系统的扩展性和可用性非常受限,无法处理网络分裂的情况</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="单领导者">单领导者<a href="#单领导者" class="hash-link" aria-label="单领导者的直接链接" title="单领导者的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="复制数据的几种方法">复制数据的几种方法<a href="#复制数据的几种方法" class="hash-link" aria-label="复制数据的几种方法的直接链接" title="复制数据的几种方法的直接链接">​</a></h4>
+<p>基于语句的复制: INSERT、UPDATE、DELETE等都会转发给每个从库. 缺点是: 非确定性函数(rand()、now())在每个副本上会生成不同值;</p>
+<p>&quot;自增列&quot;会在每个副本上产生不同的效果;</p>
+<p>传输预写日志(WAL): 缺点是它记录的东西很底层: 哪些磁盘块中的哪些字节发生了更改. 如果数据库将其存储格式从一个版本更改为另一个版本,通常不可能在主库和从库上运行不同版本的数据库软件</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="逻辑日志复制基于行">逻辑日志复制(基于行):<a href="#逻辑日志复制基于行" class="hash-link" aria-label="逻辑日志复制(基于行):的直接链接" title="逻辑日志复制(基于行):的直接链接">​</a></h3>
+<ol>
+<li>
+<p>对于插入的行,日志包含所有列的新值.</p>
+</li>
+<li>
+<p>对于删除的行,日志包含足够的信息来唯一标识已删除的行.通常是主键,但是如果表上没有主键,则需要记录所有列的旧值.</p>
+</li>
+<li>
+<p>对于更新的行,日志包含足够的信息来唯一标识更新的行,以及所有列的新值(或至少所有已更改的列的新值).</p>
+</li>
+</ol>
+<p>修改多行的事务会生成多个这样的日志记录,后面跟着一条记录,指出事务已经提交.MySQL的二进制日志(当配置为使用基于行的复制时)使用这种方法. 如果要将数据库的内容发送到外部系统的话这一点很个用,这种技术被称为&quot;数据变更捕获&quot;(change data capture).</p>
+<p>基于触发器的复制: 允许注册在数据库系统中发生数据更改(写入事务)时自动执行的自定义应用程序代码.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="异步复制下的数据不一致解决方法">异步复制下的数据不一致解决方法<a href="#异步复制下的数据不一致解决方法" class="hash-link" aria-label="异步复制下的数据不一致解决方法的直接链接" title="异步复制下的数据不一致解决方法的直接链接">​</a></h3>
+<ol>
+<li>读用户可能已经修改过的内容时,都从主库读;这就要求有一些方法,不用实际查询就可以知道用户是否修改了某些东西.</li>
+</ol>
+<blockquote>
+<p>举个例子,社交网络上的用户个人资料信息通常只能由用户本人编辑,而不能由其他人编辑.因此一个简单的规则是:从主库读取用户自己的档案,在从库读取其他用户的档案.</p>
+</blockquote>
+<ol start="2">
+<li>
+<p>如果应用中的大部分内容都可能被用户编辑,那这种方法就没用了,因为大部分内容都必须从主库读取(扩容读就没效果了).在这种情况下可以使用其他标准来决定是否从主库读取.例如可以跟踪上次更新的时间,在上次更新后的一分钟内,从主库读.还可以监控从库的复制延迟,防止任向任何滞后超过一分钟到底从库发出查询.</p>
+</li>
+<li>
+<p>客户端可以记住最近一次写入的时间戳,系统需要确保从库为该用户提供任何查询时,该时间戳前的变更都已经传播到了本从库中.如果当前从库不够新,则可以从另一个从库读,或者等待从库追赶上来.时间戳可以是逻辑时间戳(指示写入顺序的东西,例如日志序列号)或实际系统时钟(在这种情况下,时钟同步变得至关重要;).</p>
+</li>
+<li>
+<p>如果您的副本分布在多个数据中心(出于可用性目的与用户尽量在地理上接近),则会增加复杂性.任何需要由领导者提供服务的请求都必须路由到包含主库的数据中心.</p>
+</li>
+</ol>
+<p>另一种复杂的情况是:如果同一个用户从多个设备请求服务,例如桌面浏览器和移动APP.这种情况下可能就需要提供跨设备的写后读一致性:</p>
+<p>如果用户在某个设备上输入了一些信息,然后在另一个设备上查看,则应该看到他们刚输入的信息. 在这种情况下,还有一些需要考虑的问题:</p>
+<ol>
+<li>
+<p>记住用户上次更新时间戳的方法变得更加困难,因为一台设备上运行的程序不知道另一台设备上发生了什么.元数据需要一个中心存储.</p>
+</li>
+<li>
+<p>如果副本分布在不同的数据中心,很难保证来自不同设备的连接会路由到同一数据中心.(例如,用户的台式计算机使用家庭宽带连接</p>
+</li>
+</ol>
+<p>,而移动设备使用蜂窝数据网络,则设备的网络路线可能完全不同.如果你的方法需要读主库,可能首先需要把来自同一用户的请求路由到同一</p>
+<p>个数据中心.</p>
+<p>单调读: 如果先前读取到较新的数据,后续读取不会得到更旧的数据. 实现单调读取的一种方式是确保每个用户总是从同一个副本进行读取(不同的用户可以从不同的副本读取).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="多领导者">多领导者<a href="#多领导者" class="hash-link" aria-label="多领导者的直接链接" title="多领导者的直接链接">​</a></h3>
+<p>应用场景: 在单个数据中心内部使用多个主库很少是有意义的,因为好处很少超过复杂性的代价.</p>
+<p>优点: 容忍网络延迟以及部分数据中心的主节点崩溃; 更快(可以让不同的数据中心更靠近不同地方的用户);</p>
+<p>缺点: 数据冲突;</p>
+<p>由于多主复制在许多数据库中都属于改装的功能,所以常常存在微妙的配置缺陷,且经常与其他数据库功能之间出现意外的反应.</p>
+<p>例如自增主键、触发器、完整性约束等,都可能会有麻烦.因此,多主复制往往被认为是危险的领域,应尽可能避免</p>
+<p>处理数据冲突:</p>
+<ol>
+<li>
+<p>LWW(last write wins)</p>
+</li>
+<li>
+<p>保留冲突,用程序或者跟用户提示这个异常</p>
+</li>
+</ol>
+<p>PS: &quot;冲突解决&quot;这个问题在协同软件中经常碰到,我知道的有<code>operational transformation</code>和<code>Conflict-free replicated datatypes</code>(CRDT)</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="多主复制拓扑">多主复制拓扑<a href="#多主复制拓扑" class="hash-link" aria-label="多主复制拓扑的直接链接" title="多主复制拓扑的直接链接">​</a></h4>
+<p>适用场景:应用程序在断网之后仍然需要继续工作(比如钉钉的在线文档,无网络时本地代表的就是一个数据库).</p>
+<p>多主复制在同时编辑一条数据时处理起来不如单主,&quot;协同编辑&quot;场景就是个例子</p>
+<p>几种拓扑图:</p>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2022/06/03/4QwR3mnSDqjdxMX.png" alt="4QwR3mnSDqjdxMX" class="img_ev3q"></p>
+<p>All-to-all: 每个领导者将其写入每个其他领导</p>
+<p>Circular: 每个节点接收来自一个节点的写入,并将这些写入(加上自己的任何写入)转发给另一个节点. MySQL只支持这种</p>
+<p>Start: 指定的根节点将写入转发给所有其他节点</p>
+<p>为了防止无限复制循环,每个写入都被标记了所有已经通过的节点的标识符.当一个节点收到用自己的标识符标记的数据更改时,</p>
+<p>该数据更改将被忽略,因为节点知道它已经被处理.</p>
+<p>冲突的解决通常适用于单个行或文档层面,而不是整个事务</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="无主复制">无主复制<a href="#无主复制" class="hash-link" aria-label="无主复制的直接链接" title="无主复制的直接链接">​</a></h3>
+<p>Dynamo、Riak、Cassandra、Voldemort都是无主数据库.</p>
+<p>发定人数很有讲究,分&quot;松散的法定人数&quot;(人数可能不包含在集群中&quot;主节点&quot;)、&quot;法定人数&quot;(人数全是集群节点中的&quot;主节点&quot;)</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="分区">分区<a href="#分区" class="hash-link" aria-label="分区的直接链接" title="分区的直接链接">​</a></h2>
+<p>术语: 分区(partition)在MongoDB,Elasticsearch和Solr Cloud中被称为分片(shard),在HBase中称之为区域(Region),</p>
+<p>Bigtable中则是表块(tablet),Cassandra和Riak中是虚节点(vnode), Couchbase中叫做虚桶(vBucket).但是分区(partition)</p>
+<p>是约定俗成的叫法</p>
+<p>散列似乎和范围检索天生就是相对的.</p>
+<p>一种简单处理热Key的方法: 在主键的开始或结尾添加一个随机数,只要一个两位数的十进制随机数就可以将主键分散为100种不同的主键,</p>
+<p>从而存储在不同的分区中. 将主键进行分割之后,任何读取都必须要做额外的工作,因为他们必须从所有100个主键分布中读取数据并将</p>
+<p>其合并.此技术还需要额外的记录:只需要对少量热点附加随机数;对于写入吞吐量低的绝大多数主键来是不必要的开销.因此,您还需要</p>
+<p>一些方法来跟踪哪些键需要被分割</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="两种用二级索引对数据库进行分区的方法-基于文档的分区document-based和基于关键词term-based的分区">两种用二级索引对数据库进行分区的方法: 基于文档的分区(document-based)和基于关键词(term-based)的分区<a href="#两种用二级索引对数据库进行分区的方法-基于文档的分区document-based和基于关键词term-based的分区" class="hash-link" aria-label="两种用二级索引对数据库进行分区的方法: 基于文档的分区(document-based)和基于关键词(term-based)的分区的直接链接" title="两种用二级索引对数据库进行分区的方法: 基于文档的分区(document-based)和基于关键词(term-based)的分区的直接链接">​</a></h3>
+<ul>
+<li>
+<p>基于文档的分区: 每个分区是完全独立的. 每个分区维护自己的二级索引,仅覆盖该分区中的文档.它不关心存储在其他分区的数据.无论何时您需要写入数据库(添加,删除或更新文档),只需处理包含您正在编写的文档ID的分区即可.出于这个原因,文档分区索引也被称为本地索引(local index).它被广泛使用在: MongoDB,Riak,Cassandra,Elasticsearch,SolrCloud和VoltDB</p>
+<blockquote>
+<p>缺点: 如果同时使用多个二级索引做条件时性能不太行.</p>
+</blockquote>
+</li>
+<li>
+<p>基于关键词的分区: 覆盖所有分区数据的全局索引,而不是给每个分区创建自己的次级索引(本地索引). 当然,全局索引也会进行分区的.</p>
+<blockquote>
+<p>缺点: 写入速度较慢且较为复杂,因为写入单个文档现在可能会影响索引的多个分区(文档中的每个关键词可能位于不同的分区或者不同的节点上); 它还需要分布式事务...</p>
+</blockquote>
+</li>
+</ul>
+<p>支持的数据库: Riak、Oracle</p>
+<p>PS: HBase为了减少实现的复杂度而放弃了次级索引</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="再平衡">再平衡<a href="#再平衡" class="hash-link" aria-label="再平衡的直接链接" title="再平衡的直接链接">​</a></h3>
+<ul>
+<li>
+<p>固定数量的分区: 创建比节点更多的分区,并为每个节点分配多个分区; 即: 分区数固定,节点再平衡负责的分区.</p>
+<blockquote>
+<p>例: 运行在10个节点的集群上的数据库可能会从一开始就被拆分为1,000个分区,因此大约有100个分区被分配给每个节点. 此时集群中加一个节点,那么之前的10个节点会匀一些分区给新节点</p>
+</blockquote>
+</li>
+<li>
+<p>动态分区: 当分区增长到超过配置的大小时,会被分成两个分区,每个分区约占一半的数据; 如果大量数据被删除并且分区缩小到某个阈值以下,则可以将其与相邻分区合并;</p>
+<blockquote>
+<p>优点: 动态分配负载</p>
+</blockquote>
+</li>
+<li>
+<p>按节点比例分区: 每个节点具有固定数量的分区.在这种情况下,每个分区的大小与数据集大小成比例地增长,而节点数量保持不变,但是当增加节点数时,分区将再次变小.由于较大的数据量通常需要较大数量的节点进行存储,因此这种方法也使每个分区的大小较为稳定</p>
+</li>
+</ul>
+<p>&quot;全自动重新平衡&quot;可以很方便,因为正常维护的操作工作较少.但是,这可能是不可预测的.再平衡是一个昂贵的操作,因为它需要重新<strong>路由请求</strong>并将大量数据从一个节点移动到另一个节点.如果没有做好,这个过程可能会使网络或节点负载过重,降低其他请求的性能</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="请求路由">请求路由<a href="#请求路由" class="hash-link" aria-label="请求路由的直接链接" title="请求路由的直接链接">​</a></h3>
+<p>分区与节点之间的关系变动后,需要一个机制让客户端以及所有节点都知道这个状态,不然一个Key请求过来到底如何精准路由是个问题. 有&quot;统一配置中心&quot;、&quot;共识&quot;两个思路.</p>
+<ul>
+<li>
+<p>统一配置中心: Zookeeper</p>
+</li>
+<li>
+<p>共识: 流言协议(gossip protocol)、Raft、Zab、Paxos</p>
+</li>
+</ul>
+<p>Cassandra和Riak在节点之间使用流言协议(gossip protocol)来传播群集状态的变化.请求可以发送到任意节点,该节点会转发到包含所请求的分区的适当节点.这个模型在数据库节点中增加了更多的复杂性,但是避免了对像ZooKeeper这样的外部协调服务的依赖.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="事务">事务<a href="#事务" class="hash-link" aria-label="事务的直接链接" title="事务的直接链接">​</a></h3>
+<p>ACID: 原子性(Atomicity)、一致性(Consistency)、隔离性(Isolation)、持久性(Durability)</p>
+<ul>
+<li>
+<p>原子性: 不能让另一个线程看到该操作的一半结果(中间状态). 能够在错误时中止事务,丢弃该事务进行的所有写入变更的能力.</p>
+</li>
+<li>
+<p>一致性: 对数据的一组特定陈述必须始终成立,即&quot;不变量&quot;. 所以这个C是应用程序的属性,不是数据库的属性(银行转账的例子).</p>
+</li>
+<li>
+<p>隔离性: 用于描述并发. 同时执行的事务是相互隔离的: 它们不能相互冒犯.传统的数据库教科书将隔离性形式化为可序列化(Serializability),这意味着每个事务可以假装它是唯一在整个数据库上运行的事务.数据库确保当事务已经提交时,结果与它们按顺序运行(一个接一个)是一样的,尽管实际上它们可能是并发运行的. 在Oracle中有一个名为&quot;可序列化&quot;的隔离级别,但实际上它实现了一种叫做快照隔离(snapshot isolation) 的功能,这是一种比可序列化更弱的保证</p>
+</li>
+<li>
+<p>持久性: 持久性是一个承诺,即一旦事务成功完成,即使发生硬件故障或数据库崩溃,写入的任何数据也不会丢失.</p>
+</li>
+</ul>
+<p>&quot;事务&quot;通常被理解为,将多个对象上的多个操作合并为一个执行单元的机制</p>
+<p>ACID数据库基于这样的哲学: 如果数据库有违反其原子性,隔离性或持久性的危险,则宁愿完全放弃事务,而不是留下半成品. 相反,无主复制的数据存储,主要是在&quot;尽力而为&quot;的基础上进行工作.可以概括为&quot;数据库将做尽可能多的事,运行遇到错误时,它不会撤消它已经完成的事情&quot; ——所以,从错误中恢复是应用程序的责任</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="基础的事务隔离级别-读已提交read-committed">基础的事务隔离级别: 读已提交(Read Committed)<a href="#基础的事务隔离级别-读已提交read-committed" class="hash-link" aria-label="基础的事务隔离级别: 读已提交(Read Committed)的直接链接" title="基础的事务隔离级别: 读已提交(Read Committed)的直接链接">​</a></h3>
+<p>它保证:</p>
+<ol>
+<li>
+<p>从数据库读时,只能看到已提交的数据(没有脏读(dirty reads))</p>
+</li>
+<li>
+<p>写入数据库时,只会覆盖已经写入的数据(没有脏写(dirty writes)) 但它不能防止&quot;<strong>计数器增量</strong>&quot;的安全性.</p>
+</li>
+</ol>
+<ul>
+<li>脏读: 一个事务读取另一个事务的未被执行的写入</li>
+<li>不可重复读: 同一个事务中读两次同一条记录,记录值不一样</li>
+<li>可重复读: 和&quot;快照隔离&quot;相似</li>
+<li>写入偏差: 两个实际同时检查一个约束然后保存数据(页面上的&quot;连击&quot;),最终数据库针对这两条数据都保存成功</li>
+<li>幻读: 一个事务中的写入会改变另一个事务的搜索查询的结果 .快照隔离避免了只读查询中幻读.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="快照隔离snapshot-isolation">快照隔离(snapshot isolation)<a href="#快照隔离snapshot-isolation" class="hash-link" aria-label="快照隔离(snapshot isolation)的直接链接" title="快照隔离(snapshot isolation)的直接链接">​</a></h3>
+<p>是&quot;不可重复读&quot;最常见的解决方案.想法是: 每个事务都从数据库的一致快照(consistent snapshot)中读取——也就是说,事务可以看到事务开始时在数据库中提交的所有数据.即使这些数据随后被另一个事务更改,每个事务也只能看到该特定时间点的旧数据.</p>
+<blockquote>
+<p>PostgreSQL、使用InnoDB引擎的MySQL、Oracle、SQL Server等都支持</p>
+</blockquote>
+<p>数据库必须可能保留一个对象的几个不同的提交版本,因为各种正在进行的事务可能需要看到数据库在不同的时间点的状态.因为它并排维护着多个版本的对象,所以这种技术被称为多版本并发控制(MVCC, multi-version concurrentcy control)</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="防止丢失更新">防止丢失更新<a href="#防止丢失更新" class="hash-link" aria-label="防止丢失更新的直接链接" title="防止丢失更新的直接链接">​</a></h3>
+<p>如果应用从数据库中读取一些值,修改它并写回修改的值(读取-修改-写入序列),则可能会发生丢失更新的问题.如果两个事务同时执行,则其中一个的修改可能会丢失,因为第二个写入的内容并没有包括第一个事务的修改)这种模式发生在各种不同的情况下:</p>
+<ol>
+<li>
+<p>增加计数器或更新账户余额(需要读取当前值,计算新值并写回更新后的值)</p>
+</li>
+<li>
+<p>在复杂值中进行本地修改: 例如,将元素添加到JSON文档中的一个列表(需要解析文档,进行更改并写回修改的文档)</p>
+</li>
+<li>
+<p>两个用户同时编辑wiki页面,每个用户通过将整个页面内容发送到服务器来保存其更改,覆写数据库中当前的任何内容.</p>
+<blockquote>
+<p>解决办法: 原子写、显示锁定、自动检测丢失的更新、比较并设置(CAS)</p>
+</blockquote>
+</li>
+</ol>
+<p>自动检测丢失的更新: &quot;快照隔离&quot;可以直接实现.</p>
+<p>显示锁定和CAS: 它们都假设有一个最新的数据副本,但在多主|无主复制的数据库通常无法保证有一份数据的最新副本,所以不适用.</p>
+<p>不符合ACID标准的系统有时被称为BASE: 基本可用性(Basically Available)、软状态(Soft State)和最终一致性(Eventual consistency)</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="分布式系统的麻烦">分布式系统的麻烦<a href="#分布式系统的麻烦" class="hash-link" aria-label="分布式系统的麻烦的直接链接" title="分布式系统的麻烦的直接链接">​</a></h3>
+<p>超时时间公式: <code>$2d + r$</code></p>
+<blockquote>
+<p>d: 数据包网络时间 r: 处理请求时间</p>
+</blockquote>
+<p>ISDN网络(电路交换网络)属于同步、固定带宽、频率运行(每秒4000帧,每帧16bit),它可以保证&quot;有限延迟&quot;; 而以太网和IP是分组交换协议,它们是可以从队列中获得,它们针对&quot;突发流量&quot;进行了优化网络中的可变延迟不是一种自然规律,而只是成本/收益权衡的结果.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="一致性与共识">一致性与共识<a href="#一致性与共识" class="hash-link" aria-label="一致性与共识的直接链接" title="一致性与共识的直接链接">​</a></h3>
+<p>事务隔离主要是为了,避免由于同时执行事务而导致的竞争状态. 而分布式一致性主要关于,面对延迟和故障时,如何协调副本间的状态.</p>
+<p>话题:</p>
+<ol>
+<li>
+<p>最强一致性模型之一: 线性一致性</p>
+</li>
+<li>
+<p>分布式系统中的事件顺序的问题,特别是因果关系和全局顺序的问题</p>
+</li>
+<li>
+<p>原子地提交分布式事务</p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="线性一致性">线性一致性<a href="#线性一致性" class="hash-link" aria-label="线性一致性的直接链接" title="线性一致性的直接链接">​</a></h3>
+<p>在一个线性一致的系统中,只要一个客户端成功完成写操作,所有客户端从数据库中读取数据必须能够看到刚刚写入的值.维护数据的单个副本的错觉是指,系统能保障读到的值是最近的,最新的,而不是来自陈旧的缓存或副本.换句话说,线性一致性是一个新鲜度保证(recency guarantee)</p>
+<ul>
+<li>
+<p>可序列化(Serializability): 事务的隔离属性,每个事务可以读写多个对象(行,文档,记录).它确保事务的行为,与它们按照某种顺序依次执行的结果相同(每个事务在下一个事务开始之前运行完成).这种执行顺序可以与事务实际执行的顺序不同</p>
+</li>
+<li>
+<p>线性一致性(Linearizability): 读取和写入寄存器(单个对象)的新鲜度保证.它不会将操作组合为事务,因此它也不会阻止写偏差等问题(参阅&quot;<strong>写偏差和幻读</strong>&quot;),除非采取其他措施</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="可序列化级别大部分使用了三种技术">可序列化级别大部分使用了三种技术<a href="#可序列化级别大部分使用了三种技术" class="hash-link" aria-label="可序列化级别大部分使用了三种技术的直接链接" title="可序列化级别大部分使用了三种技术的直接链接">​</a></h3>
+<ol>
+<li>
+<p>字面意义上地串行顺序执行事务 -- Redis</p>
+</li>
+<li>
+<p>两相锁定(2PL, two-phase locking),几十年来唯一可行的选择</p>
+<blockquote>
+<p>读时阻塞写,写时阻塞读和写; 其实就是排他锁和共享锁</p>
+</blockquote>
+</li>
+<li>
+<p>乐观并发控制技术,例如可序列化的快照隔离</p>
+<blockquote>
+<p>乐观锁是一种</p>
+</blockquote>
+<blockquote>
+<p>序列化快照隔离(serializable snapshot isolation)非常有趣,它是根据&quot;快照读隔离&quot;所带来的&quot;幻读&quot;问题而提出的解决办法,即&quot;记录每个活跃事务所读取的记录并在其它事务提交后标记被影响到的记录已经过时&quot;,听起来就是件开销非常大的事. 它与SPL相比的优点就是不需要阻塞. 缺点是对于长时间读取和写入数据的事务很可能会发生冲突并中止更加敏感.</p>
+</blockquote>
+</li>
+</ol>
+<p>一个数据库可以提供可串行性和线性一致性,这种组合被称为严格的可串行性或强的单副本强可串行性(strong-1SR).基于两阶段锁定的可串行化实现(参见&quot;两阶段锁定(2PL)&quot;一节)或实际串行执行(参见第&quot;实际串行执行&quot;)通常是线性一致性的. 但是,可序列化的快照隔离(参见&quot;可序列化的快照隔离(SSI)&quot;)不是线性一致性的:按照设计,它可以从一致的快照中进行读取,以避免锁定读者和写者之间的争用.一致性快照的要点就在于它不会包括比快照更新的写入,因此从快照读取不是线性一致性的.</p>
+<ul>
+<li>
+<p>单主复制: 可能是线性一致性. 脑裂、异步复制情况下违反了线性一致性</p>
+</li>
+<li>
+<p>共识算法: 线性一致性.</p>
+</li>
+<li>
+<p>多主复制: 非线性一致性. 具有多主程序复制的系统通常不是线性一致的,因为它们同时在多个节点上处理写入,并将其异步复制到其他节点. 因此,它们可能会产生冲突的写入,需要解析(参阅&quot;处理写入冲突&quot;).这种冲突是因为缺少单一数据副本人为产生的</p>
+</li>
+<li>
+<p>无主复制: 也许不是线性一致的. 对于无领导者复制的系统,有时候人们会声称通过要求法定人数读写($w + r&gt; n$)可以获得&quot;强一致性&quot;.这取决于法定人数的具体配置,以及强一致性如何定义(通常不完全正确).</p>
+</li>
+</ul>
+<p>基于时钟(例如,在Cassandra中)的&quot;最后写入胜利&quot;冲突解决方法几乎可以确定是非线性的,由于时钟偏差,不能保证时钟的时间戳与实际事件顺序一致.松散的法定人数也破坏了线性一致的可能性.即使使用严格的法定人数,非线性一致的行为也是可能的</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="线性一致性和法定人数">线性一致性和法定人数<a href="#线性一致性和法定人数" class="hash-link" aria-label="线性一致性和法定人数的直接链接" title="线性一致性和法定人数的直接链接">​</a></h3>
+<p>例子:</p>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2022/06/04/dGIOEkbF8WRTxQL.png" alt="dGIOEkbF8WRTxQL" class="img_ev3q"></p>
+<p>图中,$x$ 的初始值为0,写入客户端通过向所有三个副本($n = 3, w = 3$)发送写入将$x$ 更新为1.客户端A并发地从两个节点组成的法定人群($r = 2$ )中读取数据,并在其中一个节点上看到新值1.客户端B也并发地从两个不同的节点组成的法定人数中读取,并从两个节点中取回了旧值0.</p>
+<p>仲裁条件满足( $w + r&gt; n$ ),但是这个执行是非线性一致的: B的请求在A的请求完成后开始,但是B返回旧值,而A返回新值.</p>
+<p>有趣的是,通过牺牲性能,可以使Dynamo风格的法定人数线性化: 读取者必须在将结果返回给应用之前,同步执行读修复,并且写入者必须在发送写入之前,读取法定数量节点的最新状态.然而,由于性能损失,Riak不执行同步读修复. Cassandra在进行法定人数读取时,确实在等待读修复完成;但是由于使用了最后写入为准的冲突解决方案,当同一个键有多个并发写入时,将不能保证线性一致性.</p>
+<p>而且,这种方式只能实现线性一致的读写;不能实现线性一致的比较和设置操作,因为它需要一个共识算法.</p>
+<p>总而言之,最安全的做法是: 假设采用Dynamo风格无主复制的系统不能提供线性一致性.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="cap定理">CAP定理<a href="#cap定理" class="hash-link" aria-label="CAP定理的直接链接" title="CAP定理的直接链接">​</a></h3>
+<p>分布式系统会遇到的三座大山: NPC</p>
+<ul>
+<li>N: Network Delay,网络延迟</li>
+<li>P: Process Pause,进程暂停(GC)</li>
+<li>C: Clock Drift,时钟漂移</li>
+</ul>
+<p>任何线性一致的数据库都有这个问题,不管它是如何实现的.这个问题也不仅仅局限于多数据中心部署,而可能发生在任何不可靠的网络上,即使在同一个数据中心内也是如此. 问题面临的权衡:</p>
+<ol>
+<li>
+<p>如果应用需要线性一致性,且某些副本因为网络问题与其他副本断开连接,那么这些副本掉线时不能处理请求.请求必须等到网络问题解决,或直接返回错误.(无论哪种方式,服务都不可用(unavailable)).</p>
+</li>
+<li>
+<p>如果应用不需要线性一致性,那么某个副本即使与其他副本断开连接,也可以独立处理请求(例如多主复制).在这种情况下,应用可以在网络问题前保持可用,但其行为不是线性一致的.</p>
+</li>
+</ol>
+<blockquote>
+<p>PS: 这两种选择有时分别称为CP(在网络分区下一致但不可用)和AP(在网络分区下可用但不一致).但是,这种分类方案存在一些缺陷,所以最好不要这样用.</p>
+</blockquote>
+<p>CAP有时以这种面目出现:一致性,可用性和分区容错性:三者只能择其二.不幸的是这种说法很有误导性,因为网络分区是一种错误,所以它并不是一个选项:不管你喜不喜欢它都会发生.</p>
+<p>在网络正常工作的时候,系统可以提供一致性(线性一致性)和整体可用性.发生网络故障时,你必须在线性一致性和整体可用性之间做出选择.因此,一个更好的表达CAP的方法可以是一致的,或者在分区时可用.一个更可靠的网络需要减少这个选择,但是在某些时候选择是不可避免的.</p>
+<p>在CAP的讨论中,术语可用性有几个相互矛盾的定义,形式化作为一个定理并不符合其通常的含义.许多所谓的“高可用”(容错)系统实际上不符合CAP对可用性的特殊定义.总而言之,围绕着CAP有很多误解和困惑,并不能帮助我们更好地理解系统,所以最好避免使用CAP.</p>
+<blockquote>
+<p>可用性(Availability): 只要收到用户的请求,服务器就必须给出回应(需要加上时间的因素).</p>
+</blockquote>
+<blockquote>
+<p><a href="https://web.archive.org/web/20220126012236/https://zhuanlan.zhihu.com/p/55053121" target="_blank" rel="noopener noreferrer">CAP相关论文</a></p>
+</blockquote>
+<p>通常牺牲&quot;线性一致性&quot;的原因是&quot;性能&quot;,而不是&quot;容错&quot;. &quot;线性一致性&quot;的速度很慢--这始终是事实</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="一些基础设施cap的保证">一些基础设施CAP的保证<a href="#一些基础设施cap的保证" class="hash-link" aria-label="一些基础设施CAP的保证的直接链接" title="一些基础设施CAP的保证的直接链接">​</a></h3>
+<blockquote>
+<p><a href="http://jasonwilder.com/blog/2014/02/04/service-discovery-in-the-cloud/" target="_blank" rel="noopener noreferrer">参考来源</a></p>
+</blockquote>
+<table><thead><tr><th>Name</th><th>Type</th><th>AP or CP</th><th>Language</th><th>Dependencies</th><th>Integration</th></tr></thead><tbody><tr><td>Zookeeper</td><td>General</td><td>CP</td><td>Java</td><td>JVM</td><td>Client Binding</td></tr><tr><td>Doozer</td><td>General</td><td>CP</td><td>Go</td><td></td><td>Client Binding</td></tr><tr><td>Etcd</td><td>General</td><td>Mixed (1)</td><td>Go</td><td></td><td>Client Binding/HTTP</td></tr><tr><td>SmartStack</td><td>Dedicated</td><td>AP</td><td>Ruby</td><td>haproxy/Zookeeper</td><td>Sidekick (nerve/synapse)</td></tr><tr><td>Eureka</td><td>Dedicated</td><td>AP</td><td>Java</td><td>JVM</td><td>Java Client</td></tr><tr><td>NSQ (lookupd)</td><td>Dedicated</td><td>AP</td><td>Go</td><td></td><td>Client Binding</td></tr><tr><td>Serf</td><td>Dedicated</td><td>AP</td><td>Go</td><td></td><td>Local CLI</td></tr><tr><td>Spotify (DNS)</td><td>Dedicated</td><td>AP</td><td>N/A</td><td>Bind</td><td>DNS Library</td></tr><tr><td>SkyDNS</td><td>Dedicated</td><td>Mixed (2)</td><td>Go</td><td></td><td>HTTP/DNS Library</td></tr></tbody></table>
+<blockquote>
+<p>General: 通用; Dedicated: 专用</p>
+</blockquote>
+<blockquote>
+<p>(1) If using the consistent parameter, inconsistent reads are possible
+(2) If using a caching DNS client in front of SkyDNS, reads could be inconsistent</p>
+</blockquote>
+<p>在我们做微服务架构时需要知道CAP并做出架构设计或选型.比如注册中心常用的Eureka和Zookeepr实现,Eureka是AP的,Zookeeper是CP的,Spring Cloud之所以推荐Eureka是因为它认为注册中心的场景允许出现短暂的数据不一致情况,可用性要高于强一致性,再比如数据库HBase与Cassandra,两者同为NoSQL数据,部分需求两者都可满足,但我们要考虑允不允许出现数据不一致,HBase是强一致性的,Cassandra则是弱一致性的,但换来了更好的可用性</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="兰伯特lamport时间">兰伯特(Lamport)时间<a href="#兰伯特lamport时间" class="hash-link" aria-label="兰伯特(Lamport)时间的直接链接" title="兰伯特(Lamport)时间的直接链接">​</a></h3>
+<p>它提供了一个全序: 如果你有两个时间戳,则计数器值大者是更大的时间戳.如果计数器值相同,则节点ID越大的,时间戳越大</p>
+<p><strong>关键思想</strong>: 每个节点和每个客户端跟踪迄今为止所见到的最大计数器值,并在每个请求中包含这个最大计数器值.当一个节点收到最大计数器值大于自身计数器值的请求或响应时,它立即将自己的计数器设置为这个最大值</p>
+<p><strong>兰伯特时间与版本向量的区别</strong>: 版本向量可以区分两个操作是并发的,还是一个因果依赖另一个;而兰伯特时间戳总是施行一个全序.从兰伯特时间戳的全序中,你无法分辨两个操作是并发的还是因果依赖的. 兰伯特时间戳优于版本向量的地方是,它更加紧凑</p>
+<p><strong>缺点</strong>: 当某个节点需要实时处理用户创建用户名的请求时,这样的方法就无法满足了.节点无法马上(right now)决定这个请求是成功还是失败</p>
+<p>总之,为了实诸如如用户名上的唯一约束这种东西,仅有操作的全序是不够的,你还需要知道这个全序何时会尘埃落定.如果你有一个创建用户名的操作,并且确定在全序中,没有任何其他节点可以在你的操作之前插入对同一用户名的声称,那么你就可以安全地宣告操作执行成功.</p>
+<p>全序广播是异步的:消息被保证以固定的顺序可靠地传送,但是不能保证消息何时被送达(所以一个接收者可能落后于其他接收者).相比之下,线性一致性是新鲜性的保证:读取一定能看见最新的写入值线性一致的CAS(或自增并返回)寄存器与全序广播都都等价于共识问题.也就是说,如果你能解决其中的一个问题,你可以把它转化成为其他问题的解决方案</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="分布式事务与共识">分布式事务与共识<a href="#分布式事务与共识" class="hash-link" aria-label="分布式事务与共识的直接链接" title="分布式事务与共识的直接链接">​</a></h3>
+<p>节点能达成一致,对于很多场景都非常重要: 领导选举、原子提交、、、</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="两阶段提交">两阶段提交<a href="#两阶段提交" class="hash-link" aria-label="两阶段提交的直接链接" title="两阶段提交的直接链接">​</a></h3>
+<p>缺点: 协调者有单点问题,当协调者失联后参数者会不知所措</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="三阶段提交three-phase-commit">三阶段提交(Three-Phase Commit)<a href="#三阶段提交three-phase-commit" class="hash-link" aria-label="三阶段提交(Three-Phase Commit)的直接链接" title="三阶段提交(Three-Phase Commit)的直接链接">​</a></h3>
+<p>两阶段提交被称为阻塞(blocking)原子提交协议,因为存在2PC可能卡住并等待协调者恢复的情况.理论上,可以使一个原子提交协议变为非阻塞(nonblocking)的,以便在节点失败时不会卡住.</p>
+<p>3PC假定网络延迟有界,节点响应时间有限;在大多数具有无限网络延迟和进程暂停的实际系统中(见第8章),它并不能保证原子性.</p>
+<p>通常,非阻塞原子提交需要一个完美的故障检测器(perfect failure detector)—— 即一个可靠的机制来判断一个节点是否已经崩溃.在具有无限延迟的网络中,超时并不是一种可靠的故障检测机制,因为即使没有节点崩溃,请求也可能由于网络问题而超时.出于这个原因,2PC仍然被使用,尽管大家都清楚可能存在协调者故障的问题.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="三阶段提交和二阶段提交最大的区别">三阶段提交和二阶段提交最大的区别<a href="#三阶段提交和二阶段提交最大的区别" class="hash-link" aria-label="三阶段提交和二阶段提交最大的区别的直接链接" title="三阶段提交和二阶段提交最大的区别的直接链接">​</a></h3>
+<ol>
+<li>
+<p>由于协调者[Coordinator]和参与者[Cohort]都设置了超时机制(在2PC中,只有协调者拥有超时机制,即如果在一定时间内没有收到cohort的消息则默认失败)</p>
+</li>
+<li>
+<p>在2PC的准备阶段和提交阶段之间,插入预提交阶段,使3PC拥有CanCommit、PreCommit、DoCommit三个阶段.说白了,PreCommit是一个缓冲,保证了在最后提交阶段之前各参与节点的状态是一致的</p>
+</li>
+</ol>
+<ul>
+<li>CanCommit阶段. 协调者向参与者发送commit请求,参与者如果可以提交就返回Yes响应,否则返回No响应</li>
+<li>PreCommit阶段. Coordinator根据Cohort的反应情况来决定是否可以继续事务的PreCommit操作.<!-- -->
+<ul>
+<li>假如Coordinator从所有的Cohort获得的反馈都是Yes响应,那么就会进行事务的预执行:<!-- -->
+<ul>
+<li>发送预提交请求.Coordinator向Cohort发送PreCommit请求,并进入Prepared阶段.</li>
+<li>事务预提交.Cohort接收到PreCommit请求后,会执行事务操作,并将undo和redo信息记录到事务日志中.</li>
+<li>响应反馈.如果Cohort成功的执行了事务操作,则返回ACK响应,同时开始等待最终指令.</li>
+</ul>
+</li>
+<li>假如有任何一个Cohort向Coordinator发送了No响应,或者等待超时之后,Coordinator都没有接到Cohort的响应,那么就中断事务:<!-- -->
+<ul>
+<li>发送中断请求.Coordinator向所有Cohort发送abort请求.</li>
+<li>中断事务.Cohort收到来自Coordinator的abort请求之后(或超时之后,仍未收到Cohort的请求),执行事务的中断</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DoCommit阶段. 该阶段进行真正的事务提交,也可以分为以下两种情况:<!-- -->
+<ul>
+<li>执行提交<!-- -->
+<ul>
+<li>发送提交请求.Coordinator接收到Cohort发送的ACK响应,那么他将从预提交状态进入到提交状态.并向所有Cohort发送doCommit请求.</li>
+<li>事务提交.Cohort接收到doCommit请求之后,执行正式的事务提交.并在完成事务提交之后释放所有事务资源.</li>
+<li>响应反馈.事务提交完之后,向Coordinator发送ACK响应.</li>
+<li>完成事务.Coordinator接收到所有Cohort的ACK响应之后,完成事务.</li>
+</ul>
+</li>
+<li>中断事务. Coordinator没有接收到Cohort发送的ACK响应(可能是接受者发送的不是ACK响应,也可能响应超时),那么就会执行中断事务<!-- -->
+<ul>
+<li>发送中断请求.Coordinator向所有Cohort发送abort请求</li>
+<li>事务回滚.Cohort接收到abort请求之后,利用其在阶段二记录的undo信息来执行事务的回滚操作,并在完成回滚之后释放所有的事务资源.</li>
+<li>反馈结果.Cohort完成事务回滚之后,向Coordinator发送ACK消息</li>
+<li>中断事务.Coordinator接收到参与者反馈的ACK消息之后,执行事务的中断</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>在doCommit阶段,如果Cohort无法及时接收到来自Coordinator的doCommit或者rebort请求时,会在等待超时之后,会继续进行事务的提交.</p>
+<blockquote>
+<p>(其实这个应该是基于概率来决定的,一句话概括就是,当进入第三阶段时,由于网络超时等原因,虽然参与者没有收到commit或者abort响应,但是他有理由相信:成功提交的几率很大.) 最本质来讲,3PC避免了状态停滞,在2PC有可能因为各种原因,产生状态停滞.但是3PC会让状态继续下去,虽然有可能继续下去是错的.3PC的问题是明显的(并没有完全解决2PC的问题3): 即如果进入PreCommit后,Coordinator发出的是abort请求,如果只有一个Cohort收到并进行了abort操作,而其他对于系统状态未知的Cohort会根据3PC选择继续Commit,那么系统的不一致性就存在了.所以无论是2PC还是3PC都存在问题.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="共识算法和全序广播">共识算法和全序广播<a href="#共识算法和全序广播" class="hash-link" aria-label="共识算法和全序广播的直接链接" title="共识算法和全序广播的直接链接">​</a></h3>
+<p>全序广播非正式地讲需要满足两个安全属性:</p>
+<ul>
+<li>
+<p>可靠交付: 没有消息丢失,如果消息被传递到一个节点,它将被传递到所有节点</p>
+</li>
+<li>
+<p>全序交付: 消息以相同的顺序传播给每一个节点</p>
+</li>
+</ul>
+<p>全序网络在机器出现故障时也要保证机器恢复后消息能够及时通过并送达,它相当于重复进行多轮共识(每次共识决定与一次消息传递相对应):</p>
+<ul>
+<li>由于&quot;一致同意&quot;属性,所有节点决定以相同的顺序传递相同的消息.</li>
+<li>由于&quot;完整性&quot;属性,消息不会重复.</li>
+<li>由于&quot;有效性&quot;属性,消息不会被损坏,也不能凭空编造.</li>
+<li>由于&quot;终止&quot;属性,消息不会丢失.</li>
+</ul>
+<p>违反及时性,&quot;最终一致性&quot;; 违反完整性,&quot;永无一致性&quot;</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="批处理">批处理<a href="#批处理" class="hash-link" aria-label="批处理的直接链接" title="批处理的直接链接">​</a></h3>
+<p>MapReduce中Reducer才会输出结果文件到HDFS.</p>
+<p>Hadoop MapReduce没有工作流(workflow)概念,所以不能向unix中的管道(pipeline)一样直接将一个进程的输出作为另一个进程的输入,仅用一个很小的内存缓冲区. 不过流处理就很像了</p>
+<p>当我们在讨论连接的时候,我们指的是在数据集中解析某种关联的全量存在. 例如我们假设一个作业是同时处理所有用户的数据,而非仅仅是为某个特定用户查找数据.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="表仓库连接问题的处理">表|仓库连接问题的处理<a href="#表仓库连接问题的处理" class="hash-link" aria-label="表|仓库连接问题的处理的直接链接" title="表|仓库连接问题的处理的直接链接">​</a></h3>
+<p>最简单的方法是逐个遍历活动事件,并为每个遇到的用户ID查询用户数据库. 更好的方法是获取用户数据库的副本(例如,使用ETL进程从数据库备份中提取数据),并将它和用户行为日志放入同一个分布式文件系统中.然后可以将用户数据库存储在HDFS中的一组文件中,而用户活动记录存储在另一组文件中,并能用MapReduce将所有相关记录集中到同一个地方进行高效处理</p>
+<p>把查询关联数据任务作为一组MapReduce,它可以很好的帮你在不影响应用逻辑的情况下能透明地重试失败的任务.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="处理倾斜">处理倾斜<a href="#处理倾斜" class="hash-link" aria-label="处理倾斜的直接链接" title="处理倾斜的直接链接">​</a></h3>
+<p>社交网络中,大多数用户可能会与几百人有连接,但少数名人可能有数百万的追随者.这种不成比例的活动数据库记录被称为关键对象(linchpin object)或热键(hot key)</p>
+<p>由于MapReduce作业只有在所有Mapper和Reducer都完成时才完成,所有后续作业必须等待最慢的Reducer才能启动.</p>
+<p>解决方法:</p>
+<ul>
+<li>检测热键技术 + 多Reducer处理. PS: 后期再进行key的处理的时候,你需要把所有和hot key相关的reduce都再次进行重复发送才行</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="reduce端连接和map端连接">Reduce端连接和Map端连接<a href="#reduce端连接和map端连接" class="hash-link" aria-label="Reduce端连接和Map端连接的直接链接" title="Reduce端连接和Map端连接的直接链接">​</a></h3>
+<p>Reducer中执行实际的连接逻辑,被称为Reduce端连接.Mapper扮演着预处理输入数据的角色: 从每个输入记录中提取键值,将键值对分配给Reducer分区,并按键排序.</p>
+<p>Reduce端方法的优点是不需要对输入数据做任何假设: 无论其属性和结构如何,Mapper都可以对其预处理以备连接.然而不利的一面是,排序,复制至Reducer,以及合并Reducer输入,所有这些操作可能开销巨大.当数据通过MapReduce阶段时,数据可能需要落盘好几次,取决于可用的内存缓冲区.</p>
+<p>另一方面,如果你能对输入数据作出某些假设,则通过使用所谓的Map端连接来加快连接速度是可行的.这种方法使用了一个阉掉Reduce与排序的MapReduce作业,每个Mapper只是简单地从分布式文件系统中读取一个输入文件块,然后将输出文件写入文件系统,仅此而已.</p>
+<p>适用于执行Map端连接的最简单场景是大数据集与小数据集连接的情况.要点在于小数据集需要足够小,以便可以将其全部加载到每个Mapper的内存中.</p>
+<p>Map端连接有好几种优化方式: 广播散列连接、分区散列连接、Map端合并连接、MapReduce工作流与Map端连接、批处理它不属于事务处理,也不是分析.它和分析比较接近,因为批处理通常会扫过输入数据集的绝大部分.然而MapReduce作业工作流与用于分析目的的SQL查询是不同的.批处理过程的输出通常不是报表,而是一些其他类型的结构</p>
+<p>Google最初使用MapReduce是为其搜索引擎建立索引,虽然Google后来也不仅仅是为这个目的而使用MapReduce.但如果从构建搜索索引的角度来看,更能帮助理解MapReduce. (直至今日,Hadoop MapReduce仍然是为Lucene/Solr构建索引的好方法)</p>
+<p>MapReduce的优点是索引过程很容易理解:文档进,索引出</p>
+<p>MapReduce应用大数据集成到系统中更好的解决方案是在批处理作业内创建一个全新的数据库,并将其作为文件写入分布式文件系统中作业的输出目录,就像上节中的搜索索引一样.这些数据文件一旦写入就是不可变的,可以批量加载到处理只读查询的服务器中.不少键值存储都支持</p>
+<p>在MapReduce作业中构建数据库文件,包括Voldemort、Terrapin、ElephantDB和HBase批量加载.</p>
+<p>Hadoop开放了将数据不加区分地转储到HDFS的可能性,允许后续再研究如何做进一步处理. 实践经验表明,简单地使数据快速可用——即使它很古怪,难以使用,使用原始格式——也通常要比事先决定理想数据模型要更有价值</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="物化中间状态">物化中间状态<a href="#物化中间状态" class="hash-link" aria-label="物化中间状态的直接链接" title="物化中间状态的直接链接">​</a></h3>
+<p>将这个中间状态写入文件的过程称为物化(materialization). 与Unix管道相比,MapReduce完全物化中间状态的方法存在不足之处:</p>
+<ol>
+<li>
+<p>MapReduce作业只有在前驱作业(生成其输入)中的所有任务都完成时才能启动,而由Unix管道连接的进程会同时启动,输出一旦生成就会被消费.不同机器上的数据倾斜或负载不均意味着一个作业往往会有一些掉队的任务,比其他任务要慢得多才能完成.必须等待至前驱作业的所有任务完成,拖慢了整个工作流程的执行.</p>
+</li>
+<li>
+<p>Mapper通常是多余的:它们仅仅是读取刚刚由Reducer写入的同样文件,为下一个阶段的分区和排序做准备.在许多情况下,Mapper代码可能是前驱Reducer的一部分:如果Reducer和Mapper的输出有着相同的分区与排序方式,那么Reducer就可以直接串在一起,而不用与Mapper相互交织.</p>
+</li>
+<li>
+<p>将中间状态存储在分布式文件系统中意味着这些文件被复制到多个节点,这些临时数据这么搞就比较过分了.</p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="流处理">流处理<a href="#流处理" class="hash-link" aria-label="流处理的直接链接" title="流处理的直接链接">​</a></h3>
+<p>了解决MapReduce的这些问题,几种用于分布式批处理的新执行引擎被开发出来,其中最著名的是Spark、Tez和Flink.它们的设计方式有很多区别,但有一个共同点:把整个工作流作为单个作业来处理,而不是把它分解为独立的子作业</p>
+<p>由于它们将工作流显式建模为 数据从几个处理阶段穿过,所以这些系统被称为数据流引擎(dataflow engines).像MapReduce一样,它们在一条线上通过反复调用用户定义的函数来一次处理一条记录,它们通过输入分区来并行化载荷,它们通过网络将一个函数的输出复制到另一个函数的输入.</p>
+<p>与MapReduce不同,这些功能不需要严格扮演交织的Map与Reduce的角色,而是可以以更灵活的方式进行组合.我们称这些函数为算子(operators),数据流引擎提供了几种不同的选项来将一个算子的输出连接到另一个算子的输入:</p>
+<ol>
+<li>
+<p>一种选项是对记录按键重新分区并排序,就像在MapReduce的混洗阶段一样.这种功能可以用于实现排序合并连接和分组,就像在MapReduce中一样.</p>
+</li>
+<li>
+<p>另一种可能是接受多个输入,并以相同的方式进行分区,但跳过排序.当记录的分区重要但顺序无关紧要时,这省去了分区散列连接的工作,因为构建散列表还是会把顺序随机打乱.</p>
+</li>
+<li>
+<p>对于广播散列连接,可以将一个算子的输出,发送到连接算子的所有分区.</p>
+</li>
+</ol>
+<p>这种类型的处理引擎是基于像Dryad和Nephele这样的研究系统,与MapReduce模型相比,它有几个优点:</p>
+<ol>
+<li>
+<p>排序等昂贵的工作只需要在实际需要的地方执行,而不是默认地在每个Map和Reduce阶段之间出现.</p>
+</li>
+<li>
+<p>没有不必要的Map任务,因为Mapper所做的工作通常可以合并到前面的Reduce算子中(因为Mapper不会更改数据集的分区).</p>
+</li>
+<li>
+<p>由于工作流中的所有连接和数据依赖都是显式声明的,因此调度程序能够总览全局,知道哪里需要哪些数据,因而能够利用局部性进行优化.</p>
+<blockquote>
+<p>例如,它可以尝试将消费某些数据的任务放在与生成这些数据的任务相同的机器上,从而数据可以通过共享内存缓冲区传输,而不必通过网络复制.</p>
+</blockquote>
+</li>
+<li>
+<p>通常,算子间的中间状态足以保存在内存中或写入本地磁盘,这比写入HDFS需要更少的I/O(必须将其复制到多台机器,并将每个副本写入磁盘). MapReduce已经对Mapper的输出做了这种优化,但数据流引擎将这种思想推广至所有的中间状态.</p>
+</li>
+<li>
+<p>算子可以在输入就绪后立即开始执行;后续阶段无需等待前驱阶段整个完成后再开始.</p>
+</li>
+<li>
+<p>与MapReduce(为每个任务启动一个新的JVM)相比,现有Java虚拟机(JVM)进程可以重用来运行新算子,从而减少启动开销.</p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="容错">容错<a href="#容错" class="hash-link" aria-label="容错的直接链接" title="容错的直接链接">​</a></h3>
+<p>Spark、Flink和Tez避免将中间状态写入HDFS,因此它们采取了不同的方法来容错:如果一台机器发生故障,并且该机器上的中间状态丢失,则它会从其他仍然可用的数据重新计算.</p>
+<p>为了实现这种重新计算,框架必须跟踪一个给定的数据是如何计算的 —— 使用了哪些输入分区？应用了哪些算子？<strong>Spark使用弹性分布式</strong></p>
+<p>数据集(RDD)的抽象来跟踪数据的谱系,而Flink对算子状态存档,允许恢复运行在执行过程中遇到错误的算子.</p>
+<p><a href="https://zhuanlan.zhihu.com/p/91749572" target="_blank" rel="noopener noreferrer">RDD</a>  - 基本上是论文里的</p>
+<p>排序算子不可避免地需要消费全部的输入后才能生成任何输出,因为输入中最后一条输入记录可能具有最小的键,因此需要作为第一条记录输出.因此,任何需要排序的算子都需要至少暂时地累积状态.但是工作流的许多其他部分可以以流水线方式执行</p>
+<p>上面讲的所有存储都有一个假设: <strong>输入是有限的,即已知和有限的大小.</strong></p>
+<p>数据库和消息队列在对创建衍生数据的方式有巨大影响: 批处理过程的一个关键特性是,你可以反复运行它们,试验处理步骤,不用担心损坏输入(因为输入是只读的).而 AMQP/JMS风格的消息传递并非如此:收到消息是具有破坏性的,因为确认可能导致消息从代理中被删除,因此你不能期望再次运行同一个消费者能得到相同的结果</p>
+<p>基于日志的消息代理(log-based message brokers)就是&quot;既有数据库的持久存储方式,又有消息传递的低延迟通知&quot;. Apache Kafka ,Amazon Kinesis Streams和Twitter的DistributedLog都是基于日志的消息代理. Google Cloud Pub/Sub 在架构上类似,但对外暴露的是JMS风格的API,而不是日志抽象.尽管这些消息代理将所有消息写入磁盘,但通过跨多台机器分区,每秒能够实现数百万条消息的吞吐量,并通过复制消息来实现容错性</p>
+<p>消费者无法跟上生产者发送信息的速度的处理选择: 丢弃信息,进行缓冲或施加背压. 在这种分类法里,基于日志的方法是缓冲的一种形式,具有很大,但大小固定的缓冲区(受可用磁盘空间的限制).</p>
+<p>双写跑不了&quot;数据冲突&quot;的问题. 所以还是用CDC把.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="流一般来说可以做三种事">&quot;流&quot;一般来说,可以做三种事<a href="#流一般来说可以做三种事" class="hash-link" aria-label="&quot;流&quot;一般来说,可以做三种事的直接链接" title="&quot;流&quot;一般来说,可以做三种事的直接链接">​</a></h3>
+<ol>
+<li>
+<p>你可以将事件中的数据写入数据库,缓存,搜索索引或类似的存储系统,然后能被其他客户端查询.</p>
+</li>
+<li>
+<p>你能以某种方式将事件推送给用户,例如发送报警邮件或推送通知,或将事件流式传输到可实时显示的仪表板上. 在这种情况下,人是流的最终消费者.</p>
+</li>
+<li>
+<p>你可以处理一个或多个输入流,并产生一个或多个输出流.流可能会经过由几个这样的处理阶段组成的流水线,最后再输出(选项1或2).</p>
+</li>
+</ol>
+<p>这里主要讨论选项3: 处理流以产生其他衍生流.处理这样的流的代码片段,被称为算子(operator)或作业(job)与批量作业相比的一个关键区别是,流不会结束.这种差异会带来很多隐含的结果.正如本章开始部分所讨论的,排序对无界数据集没有意义,因此无法使用排序合并联接(请参阅“Reduce端连接与分组”).容错机制也必须改变:对于已经运行了几分钟的批处理作业,可以简单地从头开始重启失败任务,但是对于已经运行数年的流作业,重启后从头开始跑可能并不是一个可行的选项</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="复合事件处理">复合事件处理<a href="#复合事件处理" class="hash-link" aria-label="复合事件处理的直接链接" title="复合事件处理的直接链接">​</a></h3>
+<p>CEP(complex,event processing)是为分析事件流而开发出的一种方法,CEP系统通常使用高层次的声明式查询语言,比如SQL,或者图形用户界面,来描述应该检测到的事件模式.这些查询被提交给处理引擎,该引擎消费输入流,并在内部维护一个执行所需匹配的状态机.当发现匹配时,引擎发出一个复合事件(complex event)(因此得名),并附有检测到的事件模式详情. 在这些系统中,查询和数据之间的关系与普通数据库相比是颠倒的.通常情况下,数据库会持久存储数据,并将查询视为临时的:当查询进入时,数据库搜索与查询匹配的数据,然后在查询完成时丢掉查询. CEP引擎反转了角色:查询是长期存储的,来自输入流的事件不断流过它们,搜索匹配事件模式的查询.</p>
+<p>ES就实现了这个功能，<a href="https://developer.aliyun.com/article/776868" target="_blank" rel="noopener noreferrer">参考文章</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/77289303" target="_blank" rel="noopener noreferrer">HyperLogLog算法</a></p>
+<p>要校正不正确的设备时钟,一种方法是记录三个时间戳:</p>
+<ol>
+<li>
+<p>事件发生的时间,取决于设备时钟</p>
+</li>
+<li>
+<p>事件发送往服务器的时间,取决于设备时钟</p>
+</li>
+<li>
+<p>事件被服务器接收的时间,取决于服务器时钟</p>
+</li>
+</ol>
+<p>通过从第三个时间戳中减去第二个时间戳,可以估算设备时钟和服务器时钟之间的偏移(假设网络延迟与所需的时间戳精度相比可忽略不计).然后可以将该偏移应用于事件时间戳,从而估计事件实际发生的真实时间(假设设备时钟偏移在事件发生时与送往服务器之间没有变化).</p>
+<p>这并不是流处理独有的问题,批处理有着完全一样的时间推理问题.只是在流处理的上下文中,我们更容易意识到时间的流逝.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="流处理的容错">流处理的容错<a href="#流处理的容错" class="hash-link" aria-label="流处理的容错的直接链接" title="流处理的容错的直接链接">​</a></h3>
+<p>在流处理中也出现了同样的容错问题,但是处理起来没有那么直观:等待某个任务完成之后再使其输出可见并不是一个可行选项,因为你永远无法处理完一个无限的流.</p>
+<p>一个解决方案是将流分解成小块,并像微型批处理一样处理每个块.这种方法被称为微批次(microbatching),它被用于Spark Streaming.</p>
+<p>批次的大小通常约为1秒,这是对性能妥协的结果:较小的批次会导致更大的调度与协调开销,而较大的批次意味着流处理器结果可见之前的延迟要更长</p>
+<p>微批次也隐式提供了一个与批次大小相等的滚动窗口(按处理时间而不是事件时间戳分窗).任何需要更大窗口的作业都需要显式地将状态从一个微批次转移到下一个微批次.</p>
+<p>Apache Flink则使用不同的方法,它会定期生成状态的滚动存档点并将其写入持久存储.如果流算子崩溃,它可以从最近的存档点重启,并丢弃从最近检查点到崩溃之间的所有输出.存档点会由消息流中的&quot;壁障&quot;(barrier)触发,类似于微批次之间的边界,但不会强制一个特定的窗口大小</p>
+<p>在流处理框架的范围内,微批次与存档点方法提供了与批处理一样的恰好一次语义.但是,只要输出离开流处理器(例如,写入数据库,向外部消息代理发送消息,或发送电子邮件),框架就无法抛弃失败批次的输出了.在这种情况下,重启失败任务会导致外部副作用发生两次,只有微批次或存档点不足以阻止这一问题</p>
+<p>在Lambda架构中建议并行运行两个不同的系统: 批处理系统和独立的流系统. 流处理器消耗事件并快速生成对视图的近似更新,批处理器稍后将使用同一组事件并生成衍生视图的更正版本. 这个设计背后的原因是批处理更简单,因此不易出错,而流处理被认为是不太可靠和难以容错的. 而且,流处理可以使用快速近似算法,而批处理使用较慢的精确算法.</p>
+<p>虽然因果是个很重要的概念,但实际上如果跟踪所有的因果关系是不切实际的</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="dynamo">Dynamo<a href="#dynamo" class="hash-link" aria-label="Dynamo的直接链接" title="Dynamo的直接链接">​</a></h3>
+<p><strong>解决数据冲突会带来两个额外问题: 何时解决? 谁来解决?</strong></p>
+<p>Dynamo针对的主要是需要&quot;永远可写&quot;数据仓库的应用,并且它的&quot;延迟敏感&quot;使得它不能像Chord和Pastry一样使用多跳路由.</p>
+<p>Dynamo可以被描述为: 一个零跳(zero hop)分布式哈希表(DHT)</p>
+<p>在发生故障并且存在并发更新的场景下,版本会发生分叉</p>
+<p>vector clock有一个潜在问题: 如果有多个节点先后参与同一个对象的写操作,那这个对象的clock vector会变得很长. 但在实际中这不太可能发生,因为写操作只会发生在perference list(存key的值的物理节点列表)的前N个节点中的一个来执行. 只有在网络分裂或多台服务器挂掉的情况下,写操作才可能由非preference list前N个节点来执行,导致vector clock变长. Dynamo采用了一种vector clock截断方案: 另外保存一个和(node, counter)对应的时间戳,记录对应的节点最后一次更新该记录的时间.当vector clock里的(node, counter) 数量达到一个阈值(例如,10)时,就删除最老的一项. 这样会带来无法精确判断部分后代的因果关系的问题.</p>
+<p>Merkle Tree缺点: 每当有节点加入或离开系统时,一些key range会变,因此对应的tree需要重新计算</p>
+<p>判断不可达: 节点B只要没有应答节点A的消息,A就可以认为B不可达,即便B可以应答C的消息</p>
+<p>中心化故障检测协议使用简单的 gossip 风格协议,使得系统内的每个节点都可以感知到其他节点的加入或离开</p>
+<p>写请求由preference list内的前N个节点中的任意一个参与者,好处是可以保证写入的顺序化,坏处是会导致不均匀的负载分布,损害SLA. 为了解决这个问题,preference list内的所有N个节点都可以参与写操作,而且为一个写操作之前通常有一个读操作,因此写操作的参与者都选择为: 前一次读操作返回最快的那个节点,这个信息存储在读操作返回的上下文中</p></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/06/22/DDIA/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="博文分页导航"><a class="pagination-nav__link pagination-nav__link--prev" href="/blog/2025/06/23/Redis设计与实现"><div class="pagination-nav__sublabel">较新一篇</div><div class="pagination-nav__label">Redis设计与实现</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/blog/2025/06/21/GFS"><div class="pagination-nav__sublabel">较旧一篇</div><div class="pagination-nav__label">GFS</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#设计数据密集型应用" class="table-of-contents__link toc-highlight">设计数据密集型应用</a><ul><li><a href="#将一条记录分解为若干列的算法实现" class="table-of-contents__link toc-highlight">将一条记录分解为若干列的算法实现</a></li><li><a href="#可靠性可扩展性可维护性" class="table-of-contents__link toc-highlight">可靠性、可扩展性、可维护性</a></li><li><a href="#twitter推送系统" class="table-of-contents__link toc-highlight">Twitter推送系统</a></li><li><a href="#延迟和响应时间的区别" class="table-of-contents__link toc-highlight">延迟和响应时间的区别</a></li><li><a href="#表结构的规范化和非规范化" class="table-of-contents__link toc-highlight">表结构的规范化和非规范化</a></li><li><a href="#两大类存储引擎----日志结构log-structured的存储引擎和面向页面page-oriented的存储引擎" class="table-of-contents__link toc-highlight">两大类存储引擎 -- 日志结构(log-structured)的存储引擎和面向页面(page-oriented)的存储引擎</a></li><li><a href="#sstablessorted-string-table和lsm树log-structured-merge-tree-lsmt" class="table-of-contents__link toc-highlight">SSTables(Sorted String Table)和LSM树（Log-Structured Merge-Tree, LSMT）</a></li><li><a href="#编码" class="table-of-contents__link toc-highlight">编码</a></li><li><a href="#分布式数据" class="table-of-contents__link toc-highlight">分布式数据</a></li><li><a href="#单领导者" class="table-of-contents__link toc-highlight">单领导者</a></li><li><a href="#逻辑日志复制基于行" class="table-of-contents__link toc-highlight">逻辑日志复制(基于行):</a></li><li><a href="#异步复制下的数据不一致解决方法" class="table-of-contents__link toc-highlight">异步复制下的数据不一致解决方法</a></li><li><a href="#多领导者" class="table-of-contents__link toc-highlight">多领导者</a></li><li><a href="#无主复制" class="table-of-contents__link toc-highlight">无主复制</a></li></ul></li><li><a href="#分区" class="table-of-contents__link toc-highlight">分区</a><ul><li><a href="#两种用二级索引对数据库进行分区的方法-基于文档的分区document-based和基于关键词term-based的分区" class="table-of-contents__link toc-highlight">两种用二级索引对数据库进行分区的方法: 基于文档的分区(document-based)和基于关键词(term-based)的分区</a></li><li><a href="#再平衡" class="table-of-contents__link toc-highlight">再平衡</a></li><li><a href="#请求路由" class="table-of-contents__link toc-highlight">请求路由</a></li><li><a href="#事务" class="table-of-contents__link toc-highlight">事务</a></li><li><a href="#基础的事务隔离级别-读已提交read-committed" class="table-of-contents__link toc-highlight">基础的事务隔离级别: 读已提交(Read Committed)</a></li><li><a href="#快照隔离snapshot-isolation" class="table-of-contents__link toc-highlight">快照隔离(snapshot isolation)</a></li><li><a href="#防止丢失更新" class="table-of-contents__link toc-highlight">防止丢失更新</a></li><li><a href="#分布式系统的麻烦" class="table-of-contents__link toc-highlight">分布式系统的麻烦</a></li><li><a href="#一致性与共识" class="table-of-contents__link toc-highlight">一致性与共识</a></li><li><a href="#线性一致性" class="table-of-contents__link toc-highlight">线性一致性</a></li><li><a href="#可序列化级别大部分使用了三种技术" class="table-of-contents__link toc-highlight">可序列化级别大部分使用了三种技术</a></li><li><a href="#线性一致性和法定人数" class="table-of-contents__link toc-highlight">线性一致性和法定人数</a></li><li><a href="#cap定理" class="table-of-contents__link toc-highlight">CAP定理</a></li><li><a href="#一些基础设施cap的保证" class="table-of-contents__link toc-highlight">一些基础设施CAP的保证</a></li><li><a href="#兰伯特lamport时间" class="table-of-contents__link toc-highlight">兰伯特(Lamport)时间</a></li><li><a href="#分布式事务与共识" class="table-of-contents__link toc-highlight">分布式事务与共识</a></li><li><a href="#两阶段提交" class="table-of-contents__link toc-highlight">两阶段提交</a></li><li><a href="#三阶段提交three-phase-commit" class="table-of-contents__link toc-highlight">三阶段提交(Three-Phase Commit)</a></li><li><a href="#三阶段提交和二阶段提交最大的区别" class="table-of-contents__link toc-highlight">三阶段提交和二阶段提交最大的区别</a></li><li><a href="#共识算法和全序广播" class="table-of-contents__link toc-highlight">共识算法和全序广播</a></li><li><a href="#批处理" class="table-of-contents__link toc-highlight">批处理</a></li><li><a href="#表仓库连接问题的处理" class="table-of-contents__link toc-highlight">表|仓库连接问题的处理</a></li><li><a href="#处理倾斜" class="table-of-contents__link toc-highlight">处理倾斜</a></li><li><a href="#reduce端连接和map端连接" class="table-of-contents__link toc-highlight">Reduce端连接和Map端连接</a></li><li><a href="#物化中间状态" class="table-of-contents__link toc-highlight">物化中间状态</a></li><li><a href="#流处理" class="table-of-contents__link toc-highlight">流处理</a></li><li><a href="#容错" class="table-of-contents__link toc-highlight">容错</a></li><li><a href="#流一般来说可以做三种事" class="table-of-contents__link toc-highlight">&quot;流&quot;一般来说,可以做三种事</a></li><li><a href="#复合事件处理" class="table-of-contents__link toc-highlight">复合事件处理</a></li><li><a href="#流处理的容错" class="table-of-contents__link toc-highlight">流处理的容错</a></li><li><a href="#dynamo" class="table-of-contents__link toc-highlight">Dynamo</a></li></ul></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>

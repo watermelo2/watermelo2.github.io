@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">GFS | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/en/blog/2025/06/21/GFS"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" property="og:locale:alternate" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="GFS | My Site"><meta data-rh="true" name="description" content="GFS、MapReduce、BigTable"><meta data-rh="true" property="og:description" content="GFS、MapReduce、BigTable"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-06-21T00:00:00.000Z"><link data-rh="true" rel="icon" href="/en/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/en/blog/2025/06/21/GFS"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/06/21/GFS" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/06/21/GFS" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/06/21/GFS" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/en/blog/2025/06/21/GFS","mainEntityOfPage":"https://watermelo2.github.io/en/blog/2025/06/21/GFS","url":"https://watermelo2.github.io/en/blog/2025/06/21/GFS","headline":"GFS","name":"GFS","description":"GFS、MapReduce、BigTable","datePublished":"2025-06-21T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/en/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/en/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/en/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/en/assets/css/styles.e55a2139.css">
+<script src="/en/assets/js/runtime~main.7582449a.js" defer="defer"></script>
+<script src="/en/assets/js/main.782f9090.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/en/img/1.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/en/"><div class="navbar__logo"><img src="/en/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/en/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/en/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="Blog recent posts navigation"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/en/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">GFS</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-06-21T00:00:00.000Z">June 21, 2025</time> · <!-- -->16 min read</div></header><div id="__blog-post-container" class="markdown"><h3 class="anchor anchorWithStickyNavbar_LWe7" id="gfsmapreducebigtable">GFS、MapReduce、BigTable<a href="#gfsmapreducebigtable" class="hash-link" aria-label="Direct link to GFS、MapReduce、BigTable" title="Direct link to GFS、MapReduce、BigTable">​</a></h3>
+<table><thead><tr><th>Google 技术</th><th>开源替代品（Hadoop 生态）</th></tr></thead><tbody><tr><td>Chubby</td><td>ZooKeeper</td></tr><tr><td>GFS</td><td>HDFS</td></tr><tr><td>BigTable</td><td>HBase</td></tr><tr><td>MapReduce</td><td>Hadoop MapReduce</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="前言">前言<a href="#前言" class="hash-link" aria-label="Direct link to 前言" title="Direct link to 前言">​</a></h3>
+<p>读论文（尤其是长的、需要记很多概念的）时的技巧: <a href="https://paper-notes.zhjwpku.com/assets/pdfs/how-to-read-a-paper.pdf" target="_blank" rel="noopener noreferrer">How to Read a Paper</a></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="gfs">GFS<a href="#gfs" class="hash-link" aria-label="Direct link to GFS" title="Direct link to GFS">​</a></h3>
+<blockquote>
+<p>参考：<a href="https://kb.cnblogs.com/page/174130/" target="_blank" rel="noopener noreferrer">博客1</a>、<a href="https://mr-dai.github.io/gfs/" target="_blank" rel="noopener noreferrer">博客2</a></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="客户端与缓存">客户端与缓存<a href="#客户端与缓存" class="hash-link" aria-label="Direct link to 客户端与缓存" title="Direct link to 客户端与缓存">​</a></h3>
+<ul>
+<li>
+<p>客户端<strong>不缓存文件数据</strong>，但会缓存<strong>元数据</strong>。</p>
+</li>
+<li>
+<p>元数据直到客户端缓存信息过期或文件被重新打开时，才会从 Master 重新获取。</p>
+</li>
+<li>
+<p>ChunkServer <strong>不需要缓存文件数据</strong>，因为 chunk 是本地文件，Linux 系统的 Buffer Cache 已经缓存频繁访问的文件。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="网络传输优化">网络传输优化<a href="#网络传输优化" class="hash-link" aria-label="Direct link to 网络传输优化" title="Direct link to 网络传输优化">​</a></h3>
+<p>GFS 的数据流传输对网络拓扑进行了优化： 每个机器会尝试推送数据到<strong>网络拓扑中最近的目标机器</strong>（通过 IP 地址估算“距离”）。</p>
+<p>理想耗时：<code>B / T + R * L</code></p>
+<ul>
+<li>
+<p>B：数据量</p>
+</li>
+<li>
+<p>T：网络吞吐量（如 100 Mbps）</p>
+</li>
+<li>
+<p>R：副本数</p>
+</li>
+<li>
+<p>L：延迟（如 &lt; 1ms）</p>
+</li>
+</ul>
+<blockquote>
+<p>举例：1MB 数据流 ≈ 80ms（理想情况）</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="master-结构">Master 结构<a href="#master-结构" class="hash-link" aria-label="Direct link to Master 结构" title="Direct link to Master 结构">​</a></h3>
+<p>Master 主要存储三类元数据：</p>
+<ol>
+<li>
+<p>文件和 chunk 的命名空间</p>
+</li>
+<li>
+<p>文件到 chunk 的映射</p>
+</li>
+<li>
+<p>每个 chunk 副本的位置</p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="数据一致性">数据一致性<a href="#数据一致性" class="hash-link" aria-label="Direct link to 数据一致性" title="Direct link to 数据一致性">​</a></h3>
+<ul>
+<li>
+<p>四种状态：<strong>一致、一致但未定义、不一致、undefined</strong></p>
+</li>
+<li>
+<p>GFS 通过<strong>版本侦测机制</strong>识别异常副本：</p>
+</li>
+<li>
+<p>租赁授予后，Master 和 ChunkServer 会持久化记录版本号。</p>
+</li>
+<li>
+<p>ChunkServer 重启后报告版本号，Master 可发现落后副本。</p>
+</li>
+<li>
+<p>若 Master 发现某副本版本高于自己，认为自己之前授予租赁失败。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="写时可读--应用侧规避">写时可读 &amp; 应用侧规避<a href="#写时可读--应用侧规避" class="hash-link" aria-label="Direct link to 写时可读 &amp; 应用侧规避" title="Direct link to 写时可读 &amp; 应用侧规避">​</a></h3>
+<ul>
+<li>
+<p>GFS 遵循标准文件 API，不提供“写时隔离”，即：</p>
+</li>
+<li>
+<p>文件写入时仍可读，可能读到未写完数据。</p>
+</li>
+<li>
+<p>常见规避方法：</p>
+</li>
+<li>
+<p>写临时文件后原子重命名</p>
+</li>
+<li>
+<p>记录 checkpoint，限制读取区间</p>
+</li>
+<li>
+<p>应用级 checksum</p>
+</li>
+</ul>
+<blockquote>
+<p>比较严谨的程序会使用各种方法来避免此问题,比如先写入临时文件,写入结束时才原子的重命名文件,此时才对读线程可见. 或者在写入过程中不断记录写入完成量,称之为<code>checkpoint</code>,读线程不会随意读文件的任何位置,它会判断<code>checkpoint</code>（哪个偏移之前的数据是写入完全的,也就是<code>defined</code>）,<code>checkpoint</code>甚至也可以像GFS一样做应用级别的<code>checksum</code>.这些措施都可以帮助<code>reader</code>只读取到<code>defined</code>区域</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="快照与备份的区别">快照与备份的区别<a href="#快照与备份的区别" class="hash-link" aria-label="Direct link to 快照与备份的区别" title="Direct link to 快照与备份的区别">​</a></h3>
+<ul>
+<li>
+<p>快照：某一刻的<strong>状态记录（元数据）</strong></p>
+</li>
+<li>
+<p>备份：某一刻的数据副本（数据复制）</p>
+</li>
+<li>
+<p>快照机制保障：</p>
+</li>
+<li>
+<p>快照期间写入会锁定物理单元</p>
+</li>
+<li>
+<p>若未快照或机制失效，则无法恢复初始数据</p>
+</li>
+</ul>
+<blockquote>
+<p>理论上,某个地址的数据发生变化前做过快照的话,发生变化时会锁定物理单元不能改写.所以如果发生“最初数据不存在了”,意味着要么没做过快照,要么快照机制已经被破坏了,自然就无法恢复了.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="namespace-锁">Namespace 锁<a href="#namespace-锁" class="hash-link" aria-label="Direct link to Namespace 锁" title="Direct link to Namespace 锁">​</a></h3>
+<ul>
+<li>
+<p>快照时释放所有租赁，引入“命名空间锁”</p>
+</li>
+<li>
+<p>操作加锁顺序：</p>
+</li>
+<li>
+<p>先按命名空间层级排序，再按字典序排序</p>
+</li>
+<li>
+<p>删除文件不会立即删除 chunk：</p>
+</li>
+<li>
+<p>重命名为隐藏文件（含删除时间戳）</p>
+</li>
+<li>
+<p>3 天后清理（可配置）</p>
+</li>
+</ul>
+<blockquote>
+<p>每当授予一个新的租赁给某个chunk,都会增长chunk版本号并通知各副本. master和这个副本都持久化记录新版本号. 这些都是在写操作被处理之前就完成了.如果某个副本当前不可用,它的chunk版本号不会被更新.master可以侦测到此chunkserver有旧的副本,因为chunkserver重启时会汇报它的chunk及其版本号信息.如果master看到一个比自己记录的还要高的版本号,它会认为自己在授予租赁时发生了故障,继而认为更高的版本才是最新的.</p>
+</blockquote>
+<p>GFS会在做快照的时候释放所有租赁，同时引入“命名空间锁”来保证并发的执行以及某些点的串行。</p>
+<p>GFS虽然看似是文件目录结构存储形式，但实际上完全不是。它不会维护文件目录结构，以及没有 inode 信息要维护，不支持 listFile，创建 <code>/root/daxigua</code> 时也不需要申请 <code>/root</code> 的写锁（但会申请读锁）。</p>
+<p>为了防止死锁，一个操作必须按照顺序来申请锁：</p>
+<ul>
+<li>
+<p>首先按命名空间的层级顺序</p>
+</li>
+<li>
+<p>在相同层级再按字典排序</p>
+</li>
+</ul>
+<p>当一个文件被删除时：</p>
+<ul>
+<li>
+<p>master 并不会立即打印删除操作的日志，也不会立刻回收资源，仅将文件重命名为一个隐藏的名字（包含删除时间戳）</p>
+</li>
+<li>
+<p>master 扫描命名空间时会删除超过 3 天的隐藏文件（周期可配）</p>
+</li>
+<li>
+<p>删除前隐藏文件仍可被读，只需重命名即可恢复</p>
+</li>
+<li>
+<p>隐藏文件被彻底删除时，才会从元数据中移除，切断所有 chunk 引用</p>
+</li>
+</ul>
+<p>GFS、TFS、Haystack 都是自己定义一个逻辑存储块：</p>
+<ul>
+<li>
+<p>目的：将用户数据转换为系统自定义格式，防止用户直接操作存储细节</p>
+</li>
+<li>
+<p>普通 Linux 文件系统提升 I/O 性能的常用方案：</p>
+</li>
+<li>
+<p>固定大小的文件</p>
+</li>
+<li>
+<p>预分配空间</p>
+</li>
+<li>
+<p>合理的文件总数量</p>
+</li>
+<li>
+<p>合理的目录结构</p>
+</li>
+<li>
+<p>所以必须定义明确的逻辑存储单元</p>
+</li>
+</ul>
+<p>GFS、Haystack中都有协调组件,它们的作者都希望能将其简化,原因是 -- <strong>人如果有两个大脑那么很多事情会很麻烦</strong>:</p>
+<ul>
+<li>
+<p>如果协调器有两个,那客户端听谁的、两个协调器信息是否需要同步、两个协调器在指定策略时是否有资源竞争.</p>
+</li>
+<li>
+<p>GFS的只有当元数据操作的日志已经成功flush到本地磁盘和所有master副本上才会认为其成功,master副本只参与 &quot;备份&quot;</p>
+</li>
+<li>
+<p>GFS有Shadow Master(只读的),但只是作为容灾备用,不会在线参与协调,它读取的是master副本的操作日志</p>
+</li>
+</ul>
+<p>GFS 中日志成功 flush 到本地磁盘</p>
+<blockquote>
+<p>在存储时,Haystack的客户端直接面对所有存储组件(所有主备物理卷,分别手动写入),GFS的客户端只面对主DataServer</p>
+</blockquote>
+<p>Haystack用&quot;新增+删除&quot;来模拟修改的,因为它需要承担图片的真实文件中的存储格式和检索等责任. 而GFS把这些交给用户,所以如果用户将100KB的文件原地修改为一个101KB的文件,那么最后面那1KB文件就会破坏掉原先的数据</p>
+<p>GFS的愿景是给用户提供一个无限容量、放心使用的硬盘,快速的存取文件,而不是特定于某种特殊场景(小文件或图片)</p>
+<p>GFS为什么会有租赁机制而Haystack和TFS没有: 编程界面的问题. Haystack和TFS的客户端中面对的是一个图片,只需要将图片存到服务端然后返回图片UUID就行了,其它副本存储成ABC、BAC、CBA、BCA都没有问题. 而GFS是按照文件系统来设计的,这种情况也就是之前所说的undefined问题</p>
+<p>GFS的实现HDFS中的HA部分是基于Zookeeper实现的,一个Active节点,多个Standby节点,Active节点失败后所有Standby节点会竞争. 为了防止&quot;脑裂&quot;问题,FailoverController会通知Standby节点强制下线之前断连的Active节点(可以配置脚本)</p>
+<p><strong>Q</strong>: GFS 是怎么确定最近的 Replica 的位置的？</p>
+<p><strong>A</strong>: 论文中有提到是基于备选服务器的IP来判断距离的,我判断是人为控制相近的IP(网段作为一个单位,IP作为一个单位,或者更新)实际位置相近.</p>
+<blockquote>
+<p>当然,&quot;wifi探针&quot;能实现更实际的&quot;测距&quot;功能,&quot;AP工作模式&quot;更是能返回连接者的MAC地址</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="face-book-haystack"><a href="http://web.archive.org/web/20190603070105/http://www.importnew.com/3292.html" target="_blank" rel="noopener noreferrer">Face Book Haystack</a><a href="#face-book-haystack" class="hash-link" aria-label="Direct link to face-book-haystack" title="Direct link to face-book-haystack">​</a></h3>
+<p>架构范式: 元数据总控 + 分布式协调调度 + 分区存储</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="背景">背景<a href="#背景" class="hash-link" aria-label="Direct link to 背景" title="Direct link to 背景">​</a></h3>
+<blockquote>
+<p>以前的存储图片的方案(基于NFS和NAS),需要提供每秒1 million图片的能力. 以前方案存在一个问题: 以前方案中因为元数据查询而导致了过多的磁盘操作. Haystack竭尽全力的减少每个图片的元数据,让其能够全部在内存中处理有所元数据</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="为什么不构建成一个类似gfs的系统">为什么不构建成一个类似GFS的系统<a href="#为什么不构建成一个类似gfs的系统" class="hash-link" aria-label="Direct link to 为什么不构建成一个类似GFS的系统" title="Direct link to 为什么不构建成一个类似GFS的系统">​</a></h3>
+<p>Fack Book大部分用户数据都存储在Mysql数据库,文件存储主要用于开发工作、日志数据以及图片.</p>
+<p>NAS设备其实为这些场景提供了性价比很好的方案. 此外,补充了hadoop以供海量日志数据处理. 面对图片服务的long tail问题(不常用图片突然并发),Mysql、NAS、Hadoop都不太合适. 基于NAS的方案,一个图片对应一个文件,且每一个文件需要至少一个inode,这已经占了几百byte,无法将所有inode都存到缓存中,所以需要一个定制系统. <strong>每个数据只会写入一次、读操作频繁、从不修改、很少删除</strong></p>
+<p>NFS很多元数据（比如文件权限），是无用的而且浪费了很多存储容量</p>
+<p>更大的性能消耗在于文件的元数据必须从磁盘读到内存来定位文件,访问元数据就是吞吐量瓶颈所在即使是压缩了元数据,每个图片存储为一个文件还是会导致元数据过多,难以被缓存. 所以将多个图片存储在单个文件中,控制文件个数,维护大型文件</p>
+<p>读取单个照片就需要好几个磁盘操作:</p>
+<ul>
+<li>
+<p>一个（有时候更多）转换文件名为inode number</p>
+</li>
+<li>
+<p>另一个从磁盘上读取inode</p>
+</li>
+<li>
+<p>最后一个读取文件本身句柄打开文件</p>
+</li>
+</ul>
+<p>hadoop以供海量日志数据处理</p>
+<p>基于NAS的方案,一个图片对应到一个文件,每个文件需要至少一个inode,这块需要的内存就很昂贵 Haystack的取舍是: 接受long tail的磁盘IO这个现实,但会尽量减免除了真实访问图片数据之外的其它操作,并压缩文件系统元数据的空间,将所有元数据都放到内存中.</p>
+<p>一个文件存储多个文件,个数可控</p>
+<p>Haystack在设计时是假设在没有CDN的环境</p>
+<p><code>http://&lt;CDN&gt;/&lt;Cache&gt;/&lt;Machine id&gt;/&lt;Logical volume, Photo&gt; </code></p>
+<p>大部分图片在上传之后很快就会被频繁访问</p>
+<p>内存中维护的数据结构<code>[key: {needle.key,needle.alternate_key},value: {needle.flag,needle.data,needle.size,needle.offset}]</code></p>
+<p><code>needle.alternate_key</code>是图片副本的标识,我认为的实际数据结构: <code>Map&lt;long/*needle.key*/,Map&lt;int/*alternate_key*/,Object&gt;&gt;</code></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mapreduce">MapReduce<a href="#mapreduce" class="hash-link" aria-label="Direct link to MapReduce" title="Direct link to MapReduce">​</a></h3>
+<blockquote>
+<p>参考: <a href="https://zhuanlan.zhihu.com/p/122571315" target="_blank" rel="noopener noreferrer"># MapReduce：在大型集群上简化数据处理</a></p>
+</blockquote>
+<p>用于离线批处理大规模的计算(函数)</p>
+<p>该论文讲到: 如何利用大型集群来合理设计MapReduce模型、如何复用MapReduce任务、Master是单点,目前的做法是上传check point,但当前在</p>
+<p>执行的任务还是会重新再执行一次、combiner函数提前做好部分reduce任务</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mapreduce的总结">MapReduce的总结<a href="#mapreduce的总结" class="hash-link" aria-label="Direct link to MapReduce的总结" title="Direct link to MapReduce的总结">​</a></h3>
+<p>通过限制编程模型可以很容易进行并行和分布式计算; 网络带宽是一种很昂贵的资源;</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="总结">总结<a href="#总结" class="hash-link" aria-label="Direct link to 总结" title="Direct link to 总结">​</a></h3>
+<p>这篇是比较老的论文了,东西比较简单,从现在的各种产物来看MapReduce的概念已经不太适应大部分需求了,现在大家追求于实时计算出结果. 因为看过《DDIA》,所以这边这篇论文就总结少一点,等到开始做《DDIA》的笔记时多写点,毕竟涉及到&quot;流处理&quot;、&quot;流批处理&quot;</p>
+<blockquote>
+<p>附上一份Tiny MapReduce作业: <a href="https://gist.github.com/watermelo2/45650ac7598ab393b065aa0a62a53357" target="_blank" rel="noopener noreferrer">code</a></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="bigtable">BigTable<a href="#bigtable" class="hash-link" aria-label="Direct link to BigTable" title="Direct link to BigTable">​</a></h3>
+<blockquote>
+<p>参考: <a href="https://dblab.xmu.edu.cn/post/google-bigtable/" target="_blank" rel="noopener noreferrer">论文</a>、<a href="https://niceaz.com/2019/03/24/bigtable/" target="_blank" rel="noopener noreferrer">文章</a></p>
+</blockquote>
+<p>最初是为了用于Google Analytics</p>
+<p>用来管理结构化数据的分布式存储系统</p>
+<p>Bigtable将数据视为普通字符串(简单数据模型)且不关注其内容</p>
+<p>Bigtable是一个稀疏的、分布式的、持久化的多维排序字典(map).该字典通过行键(row key)、列键(column)和时间戳(timestamp)索引,字典中的每个值都是字节数组<code>(row:string, column:string, time:int64) -&gt; string</code>. 这是在调研了类BigTable系统的各种</p>
+<p>潜在用途后决定采用的数据模型. 驱动做出部分设计决策的案例是: 假设我们想要持有一份可在很多项目中使用的大量web页面和相关信息的</p>
+<p>副本,我们称这个副本构成的特殊的表为Webtable.</p>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2025/06/25/PyY3taHTvxGOw6X.png" alt="1750850151662.jpg" class="img_ev3q"></p>
+<p>上面的<code>contents</code>和<code>anchor</code>都是列族,并且<code>contents</code>列族中的数据都是经过反转的,这样可以使得&quot;域名相同的网页被分组到连续的行中&quot;从而被分配到临近的Tablet(针对表分区后的基本单位)中.</p>
+<p>列族是访问控制（access control）的基本单位. 使用格式命名：列族名:限定符. 访问控制以及磁盘和内存统计都在列族级别执行</p>
+<p>Bigtable中的单元格可以包含相同数据的不同版本,这些版本使用时间戳(64位)索引.</p>
+<p>在上面的例子中为“content：”列中存储的爬取到的页面设置的时间戳为：该版本的页面被爬取到的实际时间.垃圾回收机制允许我们仅保留每个页面的最近3个版本(可配)</p>
+<p>Bigtable支持单行事务; 可以作为MapReduce的IO;</p>
+<p>为了减少memtable的读写冲突(主要是读取memtable的冲突),采用了&#x27;copy-on-write&#x27;来允许读操作和写操作同时进行</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="spanner">Spanner<a href="#spanner" class="hash-link" aria-label="Direct link to Spanner" title="Direct link to Spanner">​</a></h3>
+<blockquote>
+<p>参考: <a href="http://dblab.xmu.edu.cn/post/google-spanner/#introduction" target="_blank" rel="noopener noreferrer">论文</a></p>
+</blockquote>
+<ul>
+<li>
+<p>universe: 一份Spanner的部署</p>
+</li>
+<li>
+<p>zone: 部署管理、物理隔离的单位. 一个zone有一个zonemaster和几百到几千个spanserver.前者为spannerserver分配数据,后者向客户端提供数据服务.客户端使用每个zone的location proxy来定位给它分配的为其提供数据服务的spanserver.universe master和placement driver目前是单例.universe master主要是一个控制台,其显示了所有zone的状态信息,以用来交互式调试.placement driver分钟级地处理zone间的自动化迁移.placement driver定期与spanserver交互来查找需要移动的数据,以满足更新后的副本约束或进行负载均衡</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="truetime使用两种形式的参考时间原子钟gps">TrueTime使用两种形式的参考时间(原子钟,GPS)<a href="#truetime使用两种形式的参考时间原子钟gps" class="hash-link" aria-label="Direct link to TrueTime使用两种形式的参考时间(原子钟,GPS)" title="Direct link to TrueTime使用两种形式的参考时间(原子钟,GPS)">​</a></h3>
+<p>因为它们有不同的故障原因: GPS参考源的弱点有天线和接收器故障、本地无线电干扰、相关故障（例如,如闰秒处理不正确的设计故障、和欺骗等）、和GPS系统停机.原子时钟可能会以与GPS和彼此不相关的方式发生故障,且在长时间后会由于频繁错误而发生明显的漂移.</p>
+<p>Spanner Tablet和BigTable Tablet区别在于: <strong>BigTable Tablet需要按顺序排序,而Spanner Tablet没有这个要求,它只想将多个被频繁访问的目录整合到一起</strong></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="bigtable在应用中的一些毛病">BigTable在应用中的一些毛病<a href="#bigtable在应用中的一些毛病" class="hash-link" aria-label="Direct link to BigTable在应用中的一些毛病" title="Direct link to BigTable在应用中的一些毛病">​</a></h3>
+<ol>
+<li>
+<p>缺少类似SQL的界面,缺少关系数据库拥有的丰富的功能</p>
+</li>
+<li>
+<p>只支持单行事务,缺少跨行事务</p>
+</li>
+<li>
+<p>需要在跨数据中心的多个副本间保持一致性</p>
+</li>
+</ol>
+<p>Percolator是为了解决BigTable跨行事务的问题(通过两阶段锁),但付出的代价(可用性和性能问题)过于昂贵</p>
+<p>Spanner也是用两阶段锁来实现的,不同的是,Spanner会通过Paxos组来保存事务管理器的&quot;状态&quot;,这样就不会在协调者出问题的时候所有参与者锁死的问题</p>
+<p>TrueTime系统的时间是经过投票得出来的(Marzullo算法探测和拒绝欺骗)</p>
+<p>当前使用的时钟的漂移比率是200微妙/秒,Daemon的投票间隔是30秒,所以偏移会在<code>0~6</code>ms之间变化,加上time master的1ms延迟,所以是<code>1~7</code>ms之间的变化</p>
+<p>假如事务开始时TrueTime API返回的时间是<code>{t1, ε1}</code>,此时真实时间在 <code>t1-ε1</code>到<code>t1+ε1</code>之间；事务结束时TrueTime API返回的时间是<code>{t2,ε2}</code>,此时真实时间在<code>t2-ε2</code>到<code>t2+ε2</code>之间.Spanner会在<code>t1+ε1</code>和<code>t2-ε2</code>之间选择一个时间点作为事务的时间戳(等到结束时间的最小值大于开始时间的最大值),但这需要保证<code>t1+ε1</code>小于<code>t2-ε2</code>,为了保证这点,Spanner会在事务执行过程中等待,直到<code>t2-ε2</code>大于<code>t1+ε1</code>时才提交事务.由此可以推导出,Spanner中一个事务至少需要2ε的时间才能完成</p>
+<p>TrueTimeAPI的实现大体上类似于网络时间协议NTP,但只有两个层次.第一层次,服务器是拥有高精度计时设备的,每个机房若干台,大部分机器都装备了GPS 接收器,剩下少数机器是为GPS系统全部失效的情况而准备的,叫做“末日”服务器,装备了原子钟.所有的Spanner服务器都属于第二层,定期向多个第一层的时间服务器获取时间来校正本地时钟,先减去通信时间,再去除异常值,最后求交集</p>
+<p>GPS: 保持模式15ns,非保持模式30ns</p>
+<p>Spanner实现分布式事务主要思想是: 全局唯一的物理时间 + 所有机器等待到某一时间后再操作(读、写)</p>
+<p>只读事务的处理: 如果scope的值是由单个Paxos组来提供的,最简单的情况下(没有prepare的事务)直接用Sread=LastTS()就够了. 如果scope的值是由多个Paxos组来提供的,在最复杂的情况下,需要由多个组的领导者来根据LastTS()协商得到Sread,Spanner当前实现了一个更加简单的选择,可以避免这么多次沟通: 让读操作在Sread=LastTS()时刻去执行.</p>
+<p>最后,将transaction management safe time由tablet的粒度细化到了row key range的粒度. 目的是为了在当事务卡在2PC过程中时,其它的读请求能读到比较新的快照点</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="chubby">Chubby<a href="#chubby" class="hash-link" aria-label="Direct link to Chubby" title="Direct link to Chubby">​</a></h3>
+<p>参考: <a href="https://storage.googleapis.com/pub-tools-public-publication-data/pdf/c64be13661eaea41dcc4fdd569be4858963b0bd3.pdf" target="_blank" rel="noopener noreferrer">论文</a>、[文章](<a href="https://www.slideshare.net/romain_jacotin/the-google-chubby-lock-service-for-looselycoupled-distributed-systems" target="_blank" rel="noopener noreferrer">https://www.slideshare.net/romain_jacotin/the-google-chubby-lock-service-for-looselycoupled-distributed-systems</a></p>
+<p>)</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="dremel">Dremel<a href="#dremel" class="hash-link" aria-label="Direct link to Dremel" title="Direct link to Dremel">​</a></h3>
+<p>发明了一种列式方式存储嵌套数据的格式(数据结构)</p>
+<blockquote>
+<p>参考: <a href="http://web.archive.org/web/20190528113556/http://www.importnew.com/2617.html" target="_blank" rel="noopener noreferrer">论文</a>、<a href="https://blog.twitter.com/engineering/en_us/a/2013/dremel-made-simple-with-parquet" target="_blank" rel="noopener noreferrer">文章</a></p>
+</blockquote></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/06/21/GFS/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Blog post page navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/en/blog/2025/06/22/DDIA"><div class="pagination-nav__sublabel">Newer post</div><div class="pagination-nav__label">DDIA</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/en/blog/2025/06/19/Maven管理"><div class="pagination-nav__sublabel">Older post</div><div class="pagination-nav__label">Maven管理</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#gfsmapreducebigtable" class="table-of-contents__link toc-highlight">GFS、MapReduce、BigTable</a></li><li><a href="#前言" class="table-of-contents__link toc-highlight">前言</a></li><li><a href="#gfs" class="table-of-contents__link toc-highlight">GFS</a></li><li><a href="#客户端与缓存" class="table-of-contents__link toc-highlight">客户端与缓存</a></li><li><a href="#网络传输优化" class="table-of-contents__link toc-highlight">网络传输优化</a></li><li><a href="#master-结构" class="table-of-contents__link toc-highlight">Master 结构</a></li><li><a href="#数据一致性" class="table-of-contents__link toc-highlight">数据一致性</a></li><li><a href="#写时可读--应用侧规避" class="table-of-contents__link toc-highlight">写时可读 &amp; 应用侧规避</a></li><li><a href="#快照与备份的区别" class="table-of-contents__link toc-highlight">快照与备份的区别</a></li><li><a href="#namespace-锁" class="table-of-contents__link toc-highlight">Namespace 锁</a></li><li><a href="#face-book-haystack" class="table-of-contents__link toc-highlight">Face Book Haystack</a></li><li><a href="#背景" class="table-of-contents__link toc-highlight">背景</a></li><li><a href="#为什么不构建成一个类似gfs的系统" class="table-of-contents__link toc-highlight">为什么不构建成一个类似GFS的系统</a></li><li><a href="#mapreduce" class="table-of-contents__link toc-highlight">MapReduce</a></li><li><a href="#mapreduce的总结" class="table-of-contents__link toc-highlight">MapReduce的总结</a></li><li><a href="#总结" class="table-of-contents__link toc-highlight">总结</a></li><li><a href="#bigtable" class="table-of-contents__link toc-highlight">BigTable</a></li><li><a href="#spanner" class="table-of-contents__link toc-highlight">Spanner</a></li><li><a href="#truetime使用两种形式的参考时间原子钟gps" class="table-of-contents__link toc-highlight">TrueTime使用两种形式的参考时间(原子钟,GPS)</a></li><li><a href="#bigtable在应用中的一些毛病" class="table-of-contents__link toc-highlight">BigTable在应用中的一些毛病</a></li><li><a href="#chubby" class="table-of-contents__link toc-highlight">Chubby</a></li><li><a href="#dremel" class="table-of-contents__link toc-highlight">Dremel</a></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>

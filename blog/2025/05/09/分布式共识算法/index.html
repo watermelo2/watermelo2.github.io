@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">分布式共识算法 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/blog/2025/05/09/分布式共识算法"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="分布式共识算法 | My Site"><meta data-rh="true" name="description" content="分布式共识算法"><meta data-rh="true" property="og:description" content="分布式共识算法"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-05-09T00:00:00.000Z"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/blog/2025/05/09/分布式共识算法"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/05/09/分布式共识算法" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/09/分布式共识算法" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/09/分布式共识算法" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/blog/2025/05/09/分布式共识算法","mainEntityOfPage":"https://watermelo2.github.io/blog/2025/05/09/分布式共识算法","url":"https://watermelo2.github.io/blog/2025/05/09/分布式共识算法","headline":"分布式共识算法","name":"分布式共识算法","description":"分布式共识算法","datePublished":"2025-05-09T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/assets/css/styles.e55a2139.css">
+<script src="/assets/js/runtime~main.849cc757.js" defer="defer"></script>
+<script src="/assets/js/main.0ae3829a.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/1.svg"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="搜索" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="最近博文导航"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">分布式共识算法</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-05-09T00:00:00.000Z">2025年5月9日</time> · <!-- -->阅读需 17 分钟</div></header><div id="__blog-post-container" class="markdown"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="分布式共识算法">分布式共识算法<a href="#分布式共识算法" class="hash-link" aria-label="分布式共识算法的直接链接" title="分布式共识算法的直接链接">​</a></h2>
+<blockquote>
+<p>参考: <a href="https://zhuanlan.zhihu.com/p/145057409" target="_blank" rel="noopener noreferrer">入门(没有Learner角色)</a>、<a href="http://linbingdong.com/2017/04/17/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E5%88%97%E6%96%87%E7%AB%A0%E2%80%94%E2%80%94Paxos%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E6%8E%A8%E5%AF%BC/" target="_blank" rel="noopener noreferrer">有推理,有Learner、没有Multi-Paxos</a>、<a href="https://www.cnblogs.com/mindwind/p/5231986.html" target="_blank" rel="noopener noreferrer">总结一致性问题</a>、<a href="https://www.bilibili.com/video/BV1C5411L7qT" target="_blank" rel="noopener noreferrer">Paxos 分布式共识算法的介绍和 Go 实现，论文笔记</a>、<a href="https://raft.github.io/" target="_blank" rel="noopener noreferrer">Raft演示视频</a></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="三个阶段">三个阶段<a href="#三个阶段" class="hash-link" aria-label="三个阶段的直接链接" title="三个阶段的直接链接">​</a></h3>
+<ul>
+<li>
+<p>第一阶段：Prepare阶段。Proposer向Acceptors发出Prepare请求，Acceptors针对收到的Prepare请求进行Promise承诺。</p>
+</li>
+<li>
+<p>第二阶段：Accept阶段。Proposer收到多数Acceptors承诺的Promise后，向Acceptors发出Propose请求，Acceptors针对收到的Propose请求进行Accept处理。</p>
+</li>
+<li>
+<p>第三阶段：Learn阶段。Proposer在收到多数Acceptors的Accept之后，标志着本次Accept成功，决议形成，将形成的决议发送给所有Learners。</p>
+</li>
+</ul>
+<p>Learn阶段之前决议已经形成.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="promise">Promise<a href="#promise" class="hash-link" aria-label="Promise的直接链接" title="Promise的直接链接">​</a></h3>
+<blockquote>
+<p>Acceptors收到Prepare请求后，做出<code>两个承诺，一个应答</code>.</p>
+</blockquote>
+<ul>
+<li>
+<p>两个承诺：</p>
+<ul>
+<li>不再接受Proposal ID小于等于（注意：这里是<code>&lt;=</code>）当前请求的Prepare请求。</li>
+<li>不再接受Proposal ID小于（注意：这里是<code>&lt;</code>）当前请求的Propose请求。</li>
+</ul>
+</li>
+<li>
+<p>一个应答：</p>
+<p>不违背以前作出的承诺下，回复已经Accept过的提案中Proposal ID最大的那个提案的Value和Proposal ID，没有则返回空值。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="propose">Propose<a href="#propose" class="hash-link" aria-label="Propose的直接链接" title="Propose的直接链接">​</a></h3>
+<blockquote>
+<p>Proposer 收到多数Acceptors的Promise应答后，从应答中选择Proposal ID最大的提案的Value，作为本次要发起的提案。如果所有应答的提案Value均为空值，则可以自己随意决定提案Value。然后携带当前Proposal ID，向所有Acceptors发送Propose请求。</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="accept">Accept<a href="#accept" class="hash-link" aria-label="Accept的直接链接" title="Accept的直接链接">​</a></h3>
+<blockquote>
+<p>Acceptor收到Propose请求后，在不违背自己之前作出的承诺下，接受并持久化当前Proposal ID和提案Value。</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="learn">Learn<a href="#learn" class="hash-link" aria-label="Learn的直接链接" title="Learn的直接链接">​</a></h3>
+<blockquote>
+<p>Proposer收到多数Acceptors的Accept后，决议形成，将形成的决议发送给所有Learners</p>
+</blockquote>
+<p>注意:</p>
+<ul>
+<li>只有被提出（Propose）的值才可能被最终选定（Chosen）。</li>
+<li>只有一个值会被选定（Chosen）。</li>
+<li>进程只会获知到已经确认被选定（Chosen）的值。</li>
+</ul>
+<p>Distinguished Proposer: 解决Liveness问题. 或者随机等待.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="设计思路">设计思路<a href="#设计思路" class="hash-link" aria-label="设计思路的直接链接" title="设计思路的直接链接">​</a></h3>
+<p>Safety表述:</p>
+<ul>
+<li>
+<p>只有被提出（Propose）的值才可能被最终选定（Chosen）。</p>
+</li>
+<li>
+<p>只有一个值会被选定（Chosen）。</p>
+</li>
+<li>
+<p>进程只会获知到已经确认被选定（Chosen）的值。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="读第二遍">读第二遍<a href="#读第二遍" class="hash-link" aria-label="读第二遍的直接链接" title="读第二遍的直接链接">​</a></h3>
+<p>对某个数据的值达成一致--最终要做到每个Proposer、Acceptor和Learner都认为同一个value被选定.</p>
+<p>Safety表述:</p>
+<ul>
+<li>
+<p>只有被提出的value才能被选定.</p>
+</li>
+<li>
+<p>只有一个value被选定，并且.</p>
+</li>
+<li>
+<p>如果某个进程认为某个value被选定了，那么这个value必须是真的被选定的那个。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="视频-bittiger">视频: BitTiger<a href="#视频-bittiger" class="hash-link" aria-label="视频: BitTiger的直接链接" title="视频: BitTiger的直接链接">​</a></h3>
+<ul>
+<li>
+<p>弱一致性、最终一致性: DNS、Gossip(Cassandra).</p>
+</li>
+<li>
+<p>强一致性: 同步、Paxos、Raft(Multi-Paxos)、ZAB(Multi-Paxos)</p>
+</li>
+</ul>
+<p>Paxos是一个共识算法. 系统的最终一致性不仅要达成共识,还取决于客户端的行为.</p>
+<p>主从: 强一致性,单个节点失败会阻塞.</p>
+<p>多数派: 每次写入保证大于N/2个节点,每次读保证从N/2中个节点读. 比如5个节点时必须保证3个节点写入成功,读时需要至少从3个节点中读取数据来判断数据是否正确.</p>
+<p>活锁: 还在prepare阶段,还没有确定提案内容时有两个或以上的proposer不停发生竞争关系. <strong>解决</strong>:发生竞争时某个proposer来个random sleep.</p>
+<p>Proposer来判断是否prepare阶段是否达到的多数派</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="multi-paxos">Multi-Paxos<a href="#multi-paxos" class="hash-link" aria-label="Multi-Paxos的直接链接" title="Multi-Paxos的直接链接">​</a></h3>
+<p>Leader: 唯一的proposer,所有的请求都需要经过此proposer. Leader存在时不会发生竞争提案. 多Client时只需要一轮的rpc(因为后续的都不需要prepare). 这种情况只有在当前仅有一个proposer(即leader)时才会发生.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="raft">Raft<a href="#raft" class="hash-link" aria-label="Raft的直接链接" title="Raft的直接链接">​</a></h3>
+<p>Node节点在N times内没有leader发送心跳,则开始竞选leader.</p>
+<p>当有三个节点并且leader已经挂掉时,还是可以成功实现可用性的,把那个挂掉的leader当作不赞成节点.</p>
+<p>当票数持平时node会random sleep暂停竞选.</p>
+<p>在心跳包中同步log.</p>
+<p>网络分区时会有多个leader. 有分区时需要保证有个多数派的分区,即保证node节点为单数. 多数派用于确认写入成功(写的时候需要有多数节点写入成功). 网络分区恢复时会有一个term(周期)判断,低版本同步高版本log.</p>
+<p>Raft写入并做Salve同步有点像2PC.</p>
+<p>当5个节点时,有3个节点挂掉,Raft一致性则不会让它们成功写入任何数据.</p>
+<p>有4中返回状态: SUCC、FAIL、UNKNOWN、TIMEOUT.</p>
+<p>TIMEOUT或UNKNOWN时有可能最终成功了,也有可能最终失败了. leader节点会最终同步一致性数据,但极端情况下:</p>
+<ul>
+<li>
+<p>A(Leader)、B、C、D、E</p>
+</li>
+<li>
+<p>A、B存活并接受Client写入数据.</p>
+</li>
+<li>
+<p>A、B返回UNKNOWN.</p>
+</li>
+<li>
+<p>A、B宕机,C、D、E恢复.</p>
+</li>
+<li>
+<p>C(Leader)、D、E接受Client数据并返回成功.</p>
+</li>
+<li>
+<p>A、B恢复并向C同步数据,A、B之前写的那条数据丢失.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="zab">ZAB<a href="#zab" class="hash-link" aria-label="ZAB的直接链接" title="ZAB的直接链接">​</a></h3>
+<p>与Raft不同点:</p>
+<ul>
+<li>
+<p>叫法: ZAB将某一个leader的周期称为epoch,raft称为term.</p>
+</li>
+<li>
+<p>实现: raft保证日志连续性,心跳方向为leader-&gt;follower. ZAB则相反. raft选主一定要有最新log的节点才能当leader,paxos没有这个限制,只需要同步log就行.</p>
+</li>
+</ul>
+<p>Zookeeper用ZAB达成共识.</p>
+<p>Etcd集群用的Raft达成共识.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa">QA<a href="#qa" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>
+<p>Q: 在leader宕机并且暂时未选举对应leader期间client发请求会怎样?</p>
+<ul>
+<li>A: 会TIMEOUT,一致性协议会保证一致性、分区容错,并且适当牺牲可用性. 这个过程很短,leader失败不可怕,只要系统能这个leader失败后还能选举下一个并且保证内容一致就可以.</li>
+</ul>
+</li>
+<li>
+<p>Q: Docker和虚拟机有什么区别?</p>
+<ul>
+<li>A: Docker是Client-Server模型,可以上传镜像到服务器.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="paxos-overview">Paxos Overview<a href="#paxos-overview" class="hash-link" aria-label="Paxos Overview的直接链接" title="Paxos Overview的直接链接">​</a></h3>
+<blockquote>
+<p>Paxos( <a href="http://lamport.azurewebsites.net/pubs/lamport-paxos.pdf" target="_blank" rel="noopener noreferrer">The Part-Time Parliament</a> )共识算法由<a href="http://www.lamport.org/" target="_blank" rel="noopener noreferrer">Leslie Lamport</a>在1989年首次发布，后来由于大多数人不太能接受他的幽默风趣的介绍方法（其实用比喻的方式介绍长篇的理论，确实让人比较难理解），于是在2001年重新写一篇名叫 <a href="http://lamport.azurewebsites.net/pubs/paxos-simple.pdf" target="_blank" rel="noopener noreferrer">Paxos Made Simple</a> 论文，相当于原始Paxos算法的简化版，主要讲述两阶段共识协议部分。这篇文章与原始文章在讲述Paxos算法上最大的不同就是用的都是计算机术语，看起来也轻松很多</p>
+</blockquote>
+<ul>
+<li>Paxos算法是分布式系统中的一个共识算法家族，也是第一个有完整数学证明的共识算法</li>
+<li>&quot;世界上只有两种分布式共识算法，一种是Paxos算法，另一种是类Paxos算法&quot;</li>
+<li>现在比较流行的zab和raft算法也是基于Paxos算法设计的</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="basic-paxos">Basic Paxos<a href="#basic-paxos" class="hash-link" aria-label="Basic Paxos的直接链接" title="Basic Paxos的直接链接">​</a></h3>
+<blockquote>
+<p>Basic Paxos是在一轮决策中对一个或多个被提议(propose)的值，最终选出一个值达成共识</p>
+</blockquote>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/11/25/QNySRqFdtV9C1vE.png" alt="paxos" class="img_ev3q"></p>
+<p>Basic Paxos 可以解决的问题:</p>
+<ul>
+<li>选主</li>
+<li>资源互斥访问</li>
+<li>复制日志的一致性</li>
+<li>其它</li>
+</ul>
+<p>容错模型:</p>
+<ul>
+<li>异步网络，网络是不可靠的，消息可能丢失、重复、延迟、网络分区，但是不包括拜占庭错误，即消息不会被篡改和伪造</li>
+<li>只要大多数（majority）服务器还运行，决议就能继续进行</li>
+</ul>
+<p><a href="https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf" target="_blank" rel="noopener noreferrer">FLP</a>定理:</p>
+<ul>
+<li>Agreement：所有server必须对同一个值达成共识</li>
+<li>Validity：达成共识的值必须是提议的有效值</li>
+<li>Termination：最终会对一个值达成共识（Paxos不一定）</li>
+</ul>
+<p><a href="https://lrita.github.io/images/posts/distribution/safety-and-liveness-properties-a-survey.pdf" target="_blank" rel="noopener noreferrer">Safety &amp; Liveness</a>:</p>
+<ul>
+<li>
+<p>Safety（不会有坏事发生）:</p>
+<ul>
+<li>
+<p>只有一个值达成共识</p>
+</li>
+<li>
+<p>一个server不会知道某个值达成共识，除非它真的已经达成共识</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Liveness（好事一定会发生）:</p>
+<ul>
+<li>
+<p>最终一定会达成共识（在多个proposer的情况下不能保证，即basic paxos是不能保证终止的，为了保证终止就需要选出一个leader，每次的提议只通过一个leader来发起）</p>
+</li>
+<li>
+<p>如果共识达成最终所有服务器都能知道</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Paxos 角色构成:</p>
+<ul>
+<li>
+<p>Proposer</p>
+<ul>
+<li>处理客户端请求，主动发起提议</li>
+</ul>
+</li>
+<li>
+<p>Acceptor</p>
+<ul>
+<li>被动接收来自Proposer的提议消息，并返回投票结果，通知learner</li>
+</ul>
+</li>
+<li>
+<p>Learner</p>
+<ul>
+<li>被动接收来自Acceptor的消息</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>实际中一个节点经常扮演三个角色</p>
+</blockquote>
+<p>Paxos两阶段协议:</p>
+<ul>
+<li>
+<p>Phase1</p>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/11/25/4GFMBADS26csk9f.png" alt="phase1" class="img_ev3q"></p>
+</li>
+<li>
+<p>Phase2</p>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/11/25/18t9hLfxgr5UFBs.png" alt="phase2" class="img_ev3q"></p>
+</li>
+</ul>
+<p>Paxos经典场景:</p>
+<ul>
+<li>
+<p>单个Proposer发起提议情况</p>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/11/25/ysJh2MlYkf8zDpL.png" alt="single_proposer" class="img_ev3q"></p>
+</li>
+<li>
+<p>多个Proposer情况</p>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/11/25/DSziGuaBo6Lhcj2.png" alt="many_proposer" class="img_ev3q"></p>
+</li>
+<li>
+<p>死锁情况</p>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/11/25/Yzb8E5x6BPKkm2d.png" alt="live_lock" class="img_ev3q"></p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="multi-paxos-1">Multi Paxos<a href="#multi-paxos-1" class="hash-link" aria-label="Multi Paxos的直接链接" title="Multi Paxos的直接链接">​</a></h3>
+<blockquote>
+<p>The Preliminary Protocol(初级协议) -&gt; The Basic Protocol(基本协议) -&gt; The Complete Synod Protocol(完整神会协议) -&gt; The Multi-Decree Parliament(多法令议会协议)</p>
+</blockquote>
+<ul>
+<li>当需要决定多个值时就需要连续执行多次Paxos算法，一般执行一次Paxos算法的过程称作A Paxos Run 或者 A Paxos Instance</li>
+<li>Multi-Paxos是由The Complete Synod Protocol衍生而来，The Complete Synod Protocol通过选主解决了进展性问题（同时也是满足一致性的）</li>
+<li>在Paxos算法中，选主只是为了解决进展性问题，不会影响一致性，即使出现脑裂Paxos算法也是安全的，只会影响进展性</li>
+<li>两阶段协议效率太低，可以有优化的空间。在单个Leader的情况下，如果前一次已经accept成功，接下来不再需要prepare阶段，直接进行accept</li>
+<li>一般的Multi-Paxos可以简单总结为（选主 + 两阶段的优化），但是选主也不是必须的（舍弃一定的进展性）</li>
+<li>多个instance可以并发的进行</li>
+<li>Multi Paxos通常是指一类共识算法，不是精确的指定某个共识算法</li>
+</ul>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/11/25/Vom8MrQuOZ3Ywbd.png" alt="mutil-paxos" class="img_ev3q"></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="implementing-state-machine">Implementing State Machine<a href="#implementing-state-machine" class="hash-link" aria-label="Implementing State Machine的直接链接" title="Implementing State Machine的直接链接">​</a></h3>
+<blockquote>
+<p>Basic Paxos -&gt; Multi Paxos -&gt; Replicated State Machine</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="basic-paxos-implement-with-go">Basic Paxos Implement With Go<a href="#basic-paxos-implement-with-go" class="hash-link" aria-label="Basic Paxos Implement With Go的直接链接" title="Basic Paxos Implement With Go的直接链接">​</a></h3>
+<blockquote>
+<p>本人另一篇关于<a href="https://github.com/vision9527/raft-demo" target="_blank" rel="noopener noreferrer">Raft算法实现-GO语言</a>的分享，可以帮助大家更好的理解共识算法的实际应用和实现。</p>
+</blockquote>
+<blockquote>
+<p>运行测试用例：go test -v</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="the-part-time-parliament">The Part-Time Parliament<a href="#the-part-time-parliament" class="hash-link" aria-label="The Part-Time Parliament的直接链接" title="The Part-Time Parliament的直接链接">​</a></h3>
+<blockquote>
+<p><a href="https://github.com/vision9527/paxos/blob/main/lamport-paxos-vision9527.pdf" target="_blank" rel="noopener noreferrer">The The Part-Time Parliament 个人阅读笔记</a></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="reference">Reference<a href="#reference" class="hash-link" aria-label="Reference的直接链接" title="Reference的直接链接">​</a></h3>
+<ul>
+<li><a href="http://lamport.azurewebsites.net/pubs/lamport-paxos.pdf" target="_blank" rel="noopener noreferrer">The Part-Time Parliament</a></li>
+<li><a href="http://lamport.azurewebsites.net/pubs/paxos-simple.pdf" target="_blank" rel="noopener noreferrer">Paxos Made Simple</a></li>
+<li><a href="https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf" target="_blank" rel="noopener noreferrer">FLP定理</a></li>
+<li><a href="https://lrita.github.io/images/posts/distribution/safety-and-liveness-properties-a-survey.pdf" target="_blank" rel="noopener noreferrer">Safety &amp; Liveness</a></li>
+<li><a href="https://www.cs.rutgers.edu/~pxk/417/notes/paxos.html" target="_blank" rel="noopener noreferrer">Understanding Paxos</a></li>
+<li><a href="https://www.youtube.com/watch?v=d7nAGI_NZPk" target="_blank" rel="noopener noreferrer">Google TechTalks About Paxos</a></li>
+<li><a href="https://www.youtube.com/watch?v=JEpsBg0AO6o" target="_blank" rel="noopener noreferrer">Paxos lecture (Raft user study)</a></li>
+<li><a href="https://github.com/vision9527/raft-demo" target="_blank" rel="noopener noreferrer">raft-demo</a></li>
+<li><a href="https://www.cs.utexas.edu/users/lorenzo/corsi/cs380d/papers/paper2-1.pdf" target="_blank" rel="noopener noreferrer">Paxos Made Live - Chubby</a></li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="paxos-made-simple">Paxos-Made-Simple<a href="#paxos-made-simple" class="hash-link" aria-label="Paxos-Made-Simple的直接链接" title="Paxos-Made-Simple的直接链接">​</a></h3>
+<ul>
+<li>
+<p>确保标号为n的proposal有value为v</p>
+<ul>
+<li>
+<p>S中没有一个acceptor接受过number小于n的proposal.</p>
+</li>
+<li>
+<p>v是S中的acceptor接受过的number小于n的最大number的proposa的value.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>如果acceptor因为它已经接受了更高的number的prepare request而忽略了其它的prepare或者accept request,那么它应该通知对应的proposer放弃该proposal. 这是对性能的优化,并不会影响正确性.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="oceanbase"><a href="http://oceanbase.org.cn/?cat=16" target="_blank" rel="noopener noreferrer">OceanBase</a><a href="#oceanbase" class="hash-link" aria-label="oceanbase的直接链接" title="oceanbase的直接链接">​</a></h3>
+<p>最大commit原则</p>
+<p>Paxos成员组是固定的,并且所有成员启动后都使你加载一致的成员组信息. 在实际工程应用中往往需要在不停服务的情况下修改成员组.</p>
+<p>在线成员组变更方案的几个基本要求:</p>
+<ul>
+<li>
+<p>成员组正常Paxos日志同步服务不中断</p>
+</li>
+<li>
+<p>任何情况下宕机都能够保证存活的多数派成员间能够选举leader</p>
+</li>
+<li>
+<p>不会出现1个以上的多数派选出大于1个leader的情况</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="raft-1">Raft<a href="#raft-1" class="hash-link" aria-label="Raft的直接链接" title="Raft的直接链接">​</a></h3>
+<ul>
+<li>
+<p>如果有任何的服务器节点已经应用了一个确定的日志条目到它的状态机中，那么其他服务器节点不能在同一个日志索引位置应用一个不同的指令</p>
+</li>
+<li>
+<p>Raft 一致性算法的浓缩总结（不包括成员变换和日志压缩）</p>
+</li>
+</ul>
+<table><thead><tr><th>特性</th><th>解释</th></tr></thead><tbody><tr><td>选举安全特性</td><td>对于一个给定的任期号，最多只会有一个领导人被选举出来（5.2 节）</td></tr><tr><td>领导人只附加原则</td><td>领导人绝对不会删除或者覆盖自己的日志，只会增加（5.3 节）</td></tr><tr><td>日志匹配原则</td><td>如果两个日志在相同的索引位置的日志条目的任期号相同，那么我们就认为这个日志从头到这个索引位置之间全部完全相同（5.3 节）</td></tr><tr><td>领导人完全特性</td><td>如果某个日志条目在某个任期号中已经被提交，那么这个条目必然出现在更大任期号的所有领导人中（5.4 节）</td></tr><tr><td>状态机安全特性</td><td>如果一个领导人已经将给定的索引值位置的日志条目应用到状态机中，那么其他任何的服务器在这个索引位置不会应用一个不同的日志（5.4.3 节）</td></tr></tbody></table>
+<ul>
+<li>
+<p>在 Raft 算法中，领导人处理不一致是通过强制跟随者直接复制自己的日志来解决了。这意味着在跟随者中的冲突的日志条目会被领导人的日志覆盖.</p>
+</li>
+<li>
+<p>崩溃分领导人崩溃、跟随着崩溃和候选者崩溃.</p>
+</li>
+<li>
+<p>领导人选举是 Raft 中对时间要求最为关键的方面. Raft 可以选举并维持一个稳定的领导人,只要系统满足下面的时间要求：</p>
+<blockquote>
+<p><code>广播时间（broadcastTime） &lt;&lt; 选举超时时间（electionTimeout） &lt;&lt; 平均故障间隔时间（MTBF）</code></p>
+</blockquote>
+</li>
+<li>
+<p>只有拥有 C-old,new 日志条目的服务器才有可能被选举为领导人</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="raft成员变更">Raft成员变更<a href="#raft成员变更" class="hash-link" aria-label="Raft成员变更的直接链接" title="Raft成员变更的直接链接">​</a></h3>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/11/27/GjDi2nzOdo78MhB.jpg" alt="image" class="img_ev3q"></p>
+<p>上图描述了分布式中的一个头疼问题: 同样的动作发生的时间却不一样,存在一个时间点时会同时存在OldConfig和NewConfig. 这样会执行共识算法中因为&#x27;基数&#x27;不同从而导致&#x27;非共识&#x27;的情况.</p>
+<p>比如上图,就配置的集群下<code>Server[1,2]</code>可以选举Server1为Leader,Server3不同意没关系,过半就可以了. 新配置集群下<code>Server[3,4,5]</code>则可以选举出Server5为<strong>第二个Leader</strong>.</p>
+<p>Raft针对这个问题处理:</p>
+<blockquote>
+<p>Leader收到<code>C-old</code>到<code>C-new</code>的请求,会为了共同一致存储配置(<code>C-old,new</code>). 如果领导人崩溃了,被选出来的新领导人只有可能是<code>C-old</code>或<code>C-old,new</code>. 这取决于赢得选举的候选人是否已经接收到了<code>C-old,new</code>配置. 一旦<code>C-old,new</code>被提交了,C-old也不能做决定了. 并且领导人完全特征保证了只有拥有<code>C-old,new</code>日志条目的服务器才有可能被选举为领导人. 这个时候,领导人创建一条关于C-new配置的日志并复制给集群就是安全的,旧的配置就已经失效,同步不适用新的配置的服务器就可以被关闭了.</p>
+</blockquote>
+<p>新加入的节点不会立即加入到集群中(选举),而是等待数据追上集群的进度.</p>
+<p>Raft两阶段成员变更步骤:</p>
+<blockquote>
+<p>设计成员变更算法的目的是为了保证在切换的过程中因Leader崩溃、网络分区导致出现多Leader问题. Raft还有一种成员变更算法的思路是<code>每次只变更一个节点,这样[C-old,C-new]中必有交集节点,从而解决分区时的elect问题</code></p>
+</blockquote>
+<ul>
+<li>
+<p>Leader收到成员变更请求从C-old切成C-new.</p>
+</li>
+<li>
+<p>Leader在本地生成一个新的Log Entry,内容是[C-old,C-new],代表当前时刻新旧成员配置共存,写入本地日志,同时将该Log Entry复制至[C-old,C-new]中的所有副本. 在此之后新的日志同步需要保证得到C-old和C-new两个多数派的确认。</p>
+</li>
+<li>
+<p>Follower收到[C-old,C-new]的Log Entry后更新本地日志,并且此时就以该配置作为自己的成员配置.</p>
+</li>
+<li>
+<p>如果C-old和C-new中的两个多数派确认了[C-old,C-new]这条日志,Leader就提交这个Log Entry.</p>
+</li>
+<li>
+<p>Leader生成一条新的Log Entry,其内容是新成员配置C-new,同样将该Log Entry写入本地日志,同时复制到Follower上.</p>
+</li>
+<li>
+<p>Follower收到新成员配置C-new后,将其写入日志,并且从此刻起,就以该配置作为自己的成员配置,并且如果发现自己不在C-new这个成员配置中会自动退出.</p>
+</li>
+<li>
+<p>Leader收到C-new的多数派确认后,表示成员变更成功,后续的日志只要得到C-new多数派确认即可,Leader给客户端回复成员变更执行成功.</p>
+</li>
+</ul>
+<p>Raft成员变更方案二(每次只变更一个成员):</p>
+<blockquote>
+<p>来源: <a href="http://oceanbase.org.cn/?p=160" target="_blank" rel="noopener noreferrer">Paxos三部曲之三: Paxos成员组变更</a>、<a href="https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md" target="_blank" rel="noopener noreferrer">raft论文</a>、<a href="https://github.com/OneSizeFitsQuorum/raft-thesis-zh_cn/blob/master/raft-thesis-zh_cn.md" target="_blank" rel="noopener noreferrer">raft作者博士毕业论文</a></p>
+</blockquote>
+<ul>
+<li>
+<p>成员变更限制每次只能增加或删除一个成员(如果要变更多个成员则需要连续变更多次).</p>
+</li>
+<li>
+<p>成员变更由Leader发起,C-new得到多数派确认后,返回客服端成员变更成功.</p>
+</li>
+<li>
+<p>一次成员变更成功前不允许开始下一次成员变更,因此新任Leader在开始提供服务前要将自己本地保存的最新成员配置重新投票形成多数派确认.</p>
+</li>
+<li>
+<p>Leader只要开始同步新成员配置,即可开始使用新的成员配置进行日志同步.</p>
+</li>
+</ul>
+<p>MySQL实现不了强一致的分布式事务,MySQL主从同步最强只能做成<code>semi-sync</code>,但在Master Crash然后重新恢复时主从同步会退化成<code>async-sync</code>. 最新是通过group replication来实现强一致,底层是通过类似Paxos协议来实现主从的binlog复制.</p>
+<p>Spanner通过GPS时钟和原子钟来实现分布式事务的实现: 只要有一个强有序的事务id,整个事务系统就会很简单(不管是实现MVVC还是隔离级别).</p>
+<p>需要注意的问题: 此时Leader可能并不在<code>C-new</code>中,这表示此时Leader在管理<code>C-old</code>和<code>C-new</code>,但并不包括自己.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="byzantine-generals-problem">Byzantine Generals Problem<a href="#byzantine-generals-problem" class="hash-link" aria-label="Byzantine Generals Problem的直接链接" title="Byzantine Generals Problem的直接链接">​</a></h3>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%B0%86%E5%86%9B%E9%97%AE%E9%A2%98" target="_blank" rel="noopener noreferrer">wiki</a></p></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/05/09/分布式共识算法/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="博文分页导航"><a class="pagination-nav__link pagination-nav__link--prev" href="/blog/2025/05/10/DES加密"><div class="pagination-nav__sublabel">较新一篇</div><div class="pagination-nav__label">DES加密</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/blog/2025/05/08/深入理解Java虚拟机"><div class="pagination-nav__sublabel">较旧一篇</div><div class="pagination-nav__label">深入理解Java虚拟机</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#分布式共识算法" class="table-of-contents__link toc-highlight">分布式共识算法</a><ul><li><a href="#三个阶段" class="table-of-contents__link toc-highlight">三个阶段</a></li><li><a href="#promise" class="table-of-contents__link toc-highlight">Promise</a></li><li><a href="#propose" class="table-of-contents__link toc-highlight">Propose</a></li><li><a href="#accept" class="table-of-contents__link toc-highlight">Accept</a></li><li><a href="#learn" class="table-of-contents__link toc-highlight">Learn</a></li><li><a href="#设计思路" class="table-of-contents__link toc-highlight">设计思路</a></li><li><a href="#读第二遍" class="table-of-contents__link toc-highlight">读第二遍</a></li><li><a href="#视频-bittiger" class="table-of-contents__link toc-highlight">视频: BitTiger</a></li><li><a href="#multi-paxos" class="table-of-contents__link toc-highlight">Multi-Paxos</a></li><li><a href="#raft" class="table-of-contents__link toc-highlight">Raft</a></li><li><a href="#zab" class="table-of-contents__link toc-highlight">ZAB</a></li><li><a href="#qa" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#paxos-overview" class="table-of-contents__link toc-highlight">Paxos Overview</a></li><li><a href="#basic-paxos" class="table-of-contents__link toc-highlight">Basic Paxos</a></li><li><a href="#multi-paxos-1" class="table-of-contents__link toc-highlight">Multi Paxos</a></li><li><a href="#implementing-state-machine" class="table-of-contents__link toc-highlight">Implementing State Machine</a></li><li><a href="#basic-paxos-implement-with-go" class="table-of-contents__link toc-highlight">Basic Paxos Implement With Go</a></li><li><a href="#the-part-time-parliament" class="table-of-contents__link toc-highlight">The Part-Time Parliament</a></li><li><a href="#reference" class="table-of-contents__link toc-highlight">Reference</a></li><li><a href="#paxos-made-simple" class="table-of-contents__link toc-highlight">Paxos-Made-Simple</a></li><li><a href="#oceanbase" class="table-of-contents__link toc-highlight">OceanBase</a></li><li><a href="#raft-1" class="table-of-contents__link toc-highlight">Raft</a></li><li><a href="#raft成员变更" class="table-of-contents__link toc-highlight">Raft成员变更</a></li><li><a href="#byzantine-generals-problem" class="table-of-contents__link toc-highlight">Byzantine Generals Problem</a></li></ul></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>

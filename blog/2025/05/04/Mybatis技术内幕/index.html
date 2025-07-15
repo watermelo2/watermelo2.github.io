@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Mybatis技术内幕 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/blog/2025/05/04/Mybatis技术内幕"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Mybatis技术内幕 | My Site"><meta data-rh="true" name="description" content="Mybatis技术内幕"><meta data-rh="true" property="og:description" content="Mybatis技术内幕"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-05-04T00:00:00.000Z"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/blog/2025/05/04/Mybatis技术内幕"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/05/04/Mybatis技术内幕" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/04/Mybatis技术内幕" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/04/Mybatis技术内幕" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/blog/2025/05/04/Mybatis技术内幕","mainEntityOfPage":"https://watermelo2.github.io/blog/2025/05/04/Mybatis技术内幕","url":"https://watermelo2.github.io/blog/2025/05/04/Mybatis技术内幕","headline":"Mybatis技术内幕","name":"Mybatis技术内幕","description":"Mybatis技术内幕","datePublished":"2025-05-04T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/assets/css/styles.e55a2139.css">
+<script src="/assets/js/runtime~main.849cc757.js" defer="defer"></script>
+<script src="/assets/js/main.0ae3829a.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/1.svg"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="搜索" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="最近博文导航"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">Mybatis技术内幕</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-05-04T00:00:00.000Z">2025年5月4日</time> · <!-- -->阅读需 22 分钟</div></header><div id="__blog-post-container" class="markdown"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="mybatis技术内幕">Mybatis技术内幕<a href="#mybatis技术内幕" class="hash-link" aria-label="Mybatis技术内幕的直接链接" title="Mybatis技术内幕的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="关键类">关键类<a href="#关键类" class="hash-link" aria-label="关键类的直接链接" title="关键类的直接链接">​</a></h3>
+<p>XPath、Reflector、TypeParameterResolver、ObjectFactory、Property工具集、MetaClass、ObjectWrapper、MetaObject、TypeHandler、TypeHandlerRegistry、TypeAliasRegistry</p>
+<ul>
+<li>Executor: 主要负责维护一级缓存和二级缓存,并提供事务管理的相关操作,它会将数据库相关操作委托给<code>StatementHandler</code>完成.</li>
+<li>StatementHandler: 首先通过<code>ParameterHandler</code>完成SQL语句的实参绑定,然后通过<code>java.sql.Statement</code>对象执行SQL语句并得到结果集,最后通过<code>ResultSetHandler</code>完成结果集的映射,得到结果对象并返回.</li>
+<li>PropertyParser是Mybatis用来解析XML文件中的占位符,占位符号都是可以自定义的(也有默认).比如:<code>${username:root}</code>其中<code>:</code>是默认值的分割符,<code>username</code>会在<code>Properties</code>中找相应的值,如果找不到则使用root作为数据库的默认值.</li>
+</ul>
+<blockquote>
+<p>JavaBean规范: 类中定义成员变量没有关系. 例如,存在<code>getA()</code>方法和<code>setA(String a)</code>方法,无论类中是否定义了字段<code>String a</code>,我们都认为该类中是否存在属性<code>a</code></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="几大类型">几大类型<a href="#几大类型" class="hash-link" aria-label="几大类型的直接链接" title="几大类型的直接链接">​</a></h3>
+<ul>
+<li>
+<p>ParameterizedType参数化类型: <code>List&lt;String&gt;、Service&lt;User&gt;</code>这自种带有泛型的类型.</p>
+<ul>
+<li><code>Type getRawType()</code>: 返回参数化类型中的原始类型,例如<code>List&lt;String&gt;</code>的原始类型为<code>List</code></li>
+<li><code>Type[] getActualTypeArguments()</code>: 获取参数化类型的类型变量或实际类型列表,如<code>Map&lt;Integer,String&gt;</code>的实际泛型列表<code>Integer</code>和<code>String</code>. 需要注意的是,该列表的元素类型都是<code>Type</code>,也就是说存在多层嵌套的情况.</li>
+<li><code>Type getOwnerType()</code>: 返回是类型所属的类型,例如存在<code>A&lt;T&gt;</code>类,其中定义了内部类<code>InnerA&lt;I&gt;</code>,则<code>InnerA&lt;I&gt;</code>所属的类型为<code>A&lt;T&gt;</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>TypeVariable</code>类型变量: 反映在JVM编译该泛型前的信息,如<code>List&lt;T&gt;</code>中的<code>T</code>就是类型变量,在编译时需要被转换为一个具体的类型后才能正常使用.</p>
+<ul>
+<li><code>Type[] getBounds()</code>: 获取类型变量的上边界,如果为声明上边界则默认为<code>Object</code>. 例如<code>class Test&lt;K extends Person&gt;</code>中<code>K</code>的上边界就是<code>Person</code>.</li>
+<li><code>D getGenericDeclaration()</code>: 获取声明该类型变量的原始类型,例如<code>class Test&lt;K extends Person&gt;</code>中的原始类型是<code>Test</code>.</li>
+<li><code>String getName()</code>: 获取在源码中定义时的名字,上例中为<code>K</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>GenericArrayType</code>: 数组类型且组成元素时<code>ParameterizedType</code>或<code>TypeVariable</code>. 例如<code>List&lt;String&gt;[]</code>或<code>T[]</code>.</p>
+</li>
+<li>
+<p><code>WildcardType</code>通配符泛型: <code>? extends Number</code>和<code>? super Integer</code>.</p>
+<ul>
+<li><code>Type[] getUpperBounds()</code>: 返回泛型变量的上界.</li>
+<li><code>Type[] getLowerBounds()</code>: 返回泛型变量的下界.</li>
+</ul>
+</li>
+</ul>
+<p><code>org.apache.ibatis.reflection.TypeParameterResolver#resolveParameterizedType()</code>参数含义:</p>
+<ul>
+<li>待解析的<code>ParameterizedType</code>类型; <code>Map&lt;K,V&gt;</code>对应的<code>ParameterizedType</code>对象.</li>
+<li>解析操作的起始类型; <code>TestType.SubClass&lt;Long&gt;</code>对应的<code>ParameterizedType</code>对象.</li>
+<li>定义该字段或方法的类的<code>Class</code>对象; <code>ClassA</code>(声明<code>map</code>字段的类)相应的<code>Class</code>对象.</li>
+</ul>
+<p><code>org.apache.ibatis.reflection.property.PropertyTokenizer</code>: 用于解析表达式, 如: <code>&lt;result property=&quot;order[0].item[0].name&quot; column=&quot;itemName1&quot; /&gt;</code>它可以解析里面的<code>[]</code>、<code>0</code>、<code>.</code>. <code>PropertyTokenizer.next()</code>方法会创建新的<code>PropertyTokenizer</code>并继续解析. 像上面的第一次解析后的结构为: <code>indexName=order[0]; name=order; index=0; children=item[0].name;</code></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa">QA<a href="#qa" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>问: VFS主要是用来干嘛的?<!-- -->
+<ul>
+<li>答: 获取指定资源,对于获取在jar包里的指定目录的文件很有用,mybatis提供<code>DefaultVFS</code>、<code>JBoss6VFS</code>两个实现. 它在<code>ResolveUtil</code>用到了.</li>
+</ul>
+</li>
+</ul>
+<p>Mapper接口方法参数中有两个特殊的参数: <code>RowBounds</code>、<code>ResultHandler</code></p>
+<p><code>org.apache.ibatis.binding.MapperMethod#executeForMany</code>里的<code>convertToDeclaredCollection</code>方法有点东西,用到了<code>ObjectFactory</code>和<code>ObjectWrapper</code>和<code>MetaObject#addAll()</code>.  实际上就是用了反射创建了<code>returnType</code>的对象并调用了<code>addAll()</code>方法(是以<code>Collection</code>类型的基础上调的).</p>
+<p><code>MapperMethod</code>的<code>execute()</code>方法针对不用类型的SQL做出了不同处理,并封装处理了返回对应,将SQL返回的数据转换成了Mapper接口方法的返回数据类型结构的数据,但最终处理的还是SqlSession,它只是和入口(桥梁).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="核心层">核心层<a href="#核心层" class="hash-link" aria-label="核心层的直接链接" title="核心层的直接链接">​</a></h3>
+<p>Mybatsi初始化、动态SQL语句的解析、结果集的映射、参数解析以及SQL语句的执行.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="初始化">初始化<a href="#初始化" class="hash-link" aria-label="初始化的直接链接" title="初始化的直接链接">​</a></h4>
+<p><code>Interceptor</code>的名字可以是<code>typeAlias</code>中的.</p>
+<p><code>XMLMapperBuilder.parse()</code>方法用于解析<code>Mapper</code>--<code>XML映射节点关系</code>.</p>
+<p><code>MapperBuilderAssistant#useNewCache</code>将<code>Mapper.xml</code>中的<code>namespace</code>作为Cache实现类的id存到config中.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="高级">高级<a href="#高级" class="hash-link" aria-label="高级的直接链接" title="高级的直接链接">​</a></h4>
+<ul>
+<li>
+<p><code>resultMap</code>节点继承关系--将父节点的<code>resultMapping</code>以及<code>CONSTRUCTOR</code>中被当前<code>resultMap</code>覆盖的<code>resultMapping</code>去掉<code>column</code>属性是<code>{prop1=col1,prop2=col2}</code>形式时,特殊处理<code>MapperBuilderAssistant#parseCompositeColumnName</code></p>
+</li>
+<li>
+<p>匿名嵌套映射通过<code>processNestedResultMappings()</code>方法解析(该方法貌似并没有完成真正的映射,只是在<code>config</code>中加了个属于自己的位置).</p>
+</li>
+<li>
+<p>MappedStatement: 表示映射配置文件中定义的SQL节点.</p>
+</li>
+<li>
+<p>SqlNode: 相当于<code>&lt;SQL&gt;</code>节点里的一个动态标签.</p>
+<ul>
+<li>MixedSqlNode: SqlNode的一个实现类,充当组合模式里的&#x27;根节点&#x27;.</li>
+</ul>
+</li>
+</ul>
+<p><code>XMLMapperBuilder#bindMapperForNamespace</code>: 完成映射配置文件与Mapper接口的绑定SqlSource里面有SqlNode(动态标签对应的对象).</p>
+<p><code>XMLStatementBuilder#processSelectKeyNodes</code>只是解析了<code>selectKey</code>标签.</p>
+<p>构造函数对应的<code>ResultMapping.falgs</code>属性中会有一个<code>CONSTRUCTOR</code>标志,如果是id的话会多个ID标志.</p>
+<p>Mybatis中涉及OGNL表达式的功能主要是: 存取Java对象树中的属性、调用Java对象树中的方法等.</p>
+<p>Pattern: <code>TestSqlNode</code>解析占位符<code>${}</code>节点的时候会检查是否匹配表达式(Mybatis没用过).  <code>&lt;if&gt;</code>标签中<code>test</code>表达式返回true,非0,非空都表示true.</p>
+<p><code>SqlSourceBuilder#parse</code>: 将经过<code>sqlNode</code>处理后的sql解析占位符参数并返回标准的(传入<code>?</code>对应的参数就可以直接执行的)静态SQL源码</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-1">QA<a href="#qa-1" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>
+<p>问: 这个SqlNode是谁来解析、拼装的...</p>
+<ul>
+<li>答: 真正解析是在<code>XMLScriptBuilder#parseDynamicTags()</code>,但它的上层总入口是在<code>XMLScriptBuilder#parseScriptNode()</code>. 因为调用<code>parseDynamicTags()</code>方法的有很多地方(很多<code>NodeHandler</code>).</li>
+</ul>
+</li>
+<li>
+<p>问: 虽然DynamicSqlSource是在实际执行SQL前,RawSqlSource是在Mybatis初始化时就完成了解析,但为什么说一个防注入一个不防注入呢？</p>
+<ul>
+<li>解释: 他们的区别在于Dynamic(<code>DynamicSqlSource</code>,下文都这么叫)解析的<code>&lt;SQL&gt;</code>是动态的,它里面的SQL不能直接被<code>java.sql.PreparedStatement</code>执行,需要根据实际参数将动态节点(SqlNode)以及<code>${}</code>占位符参数(这个其实是次要的)解析好后才能执行; 而Raw(<code>RawSqlSource</code>,下文都这么叫)里的SQL只有含有#<!-- -->占位符且只有一个<code>StaticTextSqlNode</code>,只需要将<code>#{}</code>里面的属性名替换成<code>?</code>再将属性名处理映射好并封装成对象,当CRUD的时候给<code>ParameterHandler</code>处理一下然后直接丢给<code>java.sql.PreparedStatement</code>就行了. 所以说Raw在解析<code>MappedStatement</code>的时候就可以将除<code>ParameterHandler</code>意外的其它所有事都可以处理完. 而Dynamic需要根据实际参数来处理<code>SqlNode</code>(其中包含对<code>${}</code>占位符的处理,<code>TextSqlNode</code>),通过<code>SqlSourceBuilder</code>来处理含<code>#{}</code>的SQL.</li>
+<li>答: 问题本身问的有问题,应该是为什么Dynamic的SqlSource需要在执行<code>MapperMethod</code>时才会创建,而Raw在解析<code>MappedMethod</code>时就创建好了? 从上面的解析中可以看出Dynamic需要处理<code>SqlNode</code>、<code>#{}</code>、<code>${}</code>,最主要的是需要处理SqlNode. SqlSource是通过<code>SqlSourceBuilder</code>来创建的, 而<code>SqlSourceBuilder</code>需要的第一个参数就是需要经过SqlNode处理完后的<code>原生SQL</code>,而动态<code>SqlNode</code>需要根据实际参数才能处理并返回SQL,这个是最主要的原因. 而<code>Raw</code>不存在这个问题,它的<code>SqlNode</code>只是单纯的<code>StaticTextSqlNode</code>,可以忽视.而后面那句--<code>一个防注入,一个不防注入</code>的原因是由<code>#{}</code>占位符解析后的结果在SQL中为<code>?</code>,它由<code>PreparedStatement</code>特殊处理,而<code>${}</code>占位符是由<code>mybatis</code>通过OGNL表达式来解析的,它是直接设置value.</li>
+<li>题外: <code>mybatis</code>其实提供了&#x27;白名单&#x27;的功能,在<code>TextSqlNode#injectionFilter</code>,它是专门针对<code>${}</code>表达式的值进行过滤的,但是目前不提供给用户设置.</li>
+</ul>
+<blockquote>
+<p>注意: 235页说道--前面介绍<code>XMLScriptBuilder#parseDynamicTags()</code>方法时提到过,如果节点只包含<code>#{}</code>占位符而不包含动态SQL节点或含未解析的<code>${}</code>占位符的话,则不是动态SQL语句,会创建相应的<code>StaticTextSqlNode</code>对象.在<code>XMLScriptBuilder#parseScriptNode()</code>方法中会判断整个SQL节点是否为动态的,如果不是动态的SQL节点,则创建相应的<code>RawSqlSource</code>对象.</p>
+</blockquote>
+</li>
+<li>
+<p>问: <code>mybatis</code>是在哪里处理的嵌套的<code>columnPrefix</code>前缀拼接的问题? 我看<code>DefaultResultSetHandler#createParameterizedResultObject()</code>等地方都是直接拿来拼接,说明在这之前已经解析好了.</p>
+<ul>
+<li>答: <code>createParameterizedResultObject()</code>方法其实也处理了一部分的列名拼接,这个方法有个<code>columnPrefix</code>参数表示前缀,这个前缀是已经拼接好嵌套结果映射的前缀(例子在下面: 当前解析的节点为<code>result1</code>.<code>result2</code>时, 它的<code>columnPrefix=result2_</code>.当继续解析 <code>result1</code>.<code>result2</code>.<code>result3时</code>,它的<code>columnPrefix=result2_result3)</code>. 然后<code>createParameterizedResultObject()</code>会对<code>constructorMappings</code>进行解析,解析到为普通映射时会先调用<code>prependPrefix()</code>方法将<code>columnPrefix</code>和当前<code>column</code>进行拼接. 所以说嵌套查询时主要靠<code>getColumnPrefix()</code>和<code>prependPrefix()</code>组合返回实际列名的.</li>
+</ul>
+<p>例子:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;resultMap id=&quot;result1&quot; type=&quot;A&quot;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;result property=&quot;coll&quot; column=&quot;coll&quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;association property=&quot;result2&quot; columnPrefix=&quot;result2_&quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/resultMap&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;resultMap id=&quot;result2&quot; type=&quot;SubA&quot; extends=&quot;resultl&quot;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;result property=&quot;col2&quot; column=&quot; col2 &quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;association property=&quot;result3&quot; columnPrefix=&quot;result3_&quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/resultMap&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;resultMap id=&quot;result3&quot; type=&quot;SubA&quot; extends=&quot;resultl&quot;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;result property=&quot;col2&quot; column=&quot; col2 &quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/resultMap&gt;</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<p><code>&lt;discriminator&gt;</code>标签可能存在多层,在<code>DefaultResultSetHandler#resolveDiscriminatedResultMap()</code>中会做处理并返回最终的ResultMap.</p>
+<p>例:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;resultMap id=&quot;result1&quot; type=&quot;A&quot;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;result property=&quot;coll&quot; column=&quot;coll&quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;discriminator javaType=&quot;int&quot; column=&quot;col2&quot;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &lt;case value=&quot;2&quot; resultMap=&quot;result2&quot;&gt;&lt;/case&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &lt;case value=&quot;5&quot; resultMap=&quot;result3&quot;&gt;&lt;/ case&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;/discriminator&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/resultMap&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;resultMap id=&quot;result2&quot; type=&quot;SubA&quot; extends=&quot;resultl&quot;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;result property=&quot;col2&quot; column=&quot; col2 &quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/resultMap&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;resultMap id=&quot;result3&quot; type=&quot;SubA&quot; extends=&quot;resultl&quot;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;result property=&quot;col2&quot; column=&quot; col2 &quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/resultMap&gt;</span><br></span></code></pre></div></div>
+<blockquote>
+<p>说明: 一个ResultMap只能存在discriminator,它里面的case会封装成一个<code>Map(key-&gt;value,value-&gt;resultMapId)</code>,映射的时候会根据当前column(会调<code>DefaultResultSetHandlerNew#prependPrefix()</code>处理前缀的列名拼接)的值取到对应的resultMapId,剩下的就当作正常的ResultMap来处理了.</p>
+</blockquote>
+<blockquote>
+<p>注意: <code>&lt;association property=&quot;pointRecord&quot; resultSet=&quot;cmsArticlePointRecord&quot; columnPrefix=&quot;point_record_&quot; autoMapping=&quot;true&quot;/&gt;</code>像这样的结果映射mybatis会帮忙创建一个resultMap,入口在<code>MapperBuilderAssistant#setStatementResultMap()</code></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-2">QA<a href="#qa-2" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>问: 使用Stream将整个流里的数据遍历一遍(并且加上中间操作)然后筛选出指定条件数据并返回.<!-- -->
+<ul>
+<li>答: Stream的<code>map()</code>、<code>filter()</code>等方法都可以在遍历的时候修改元素,但不知道符不符合规范.</li>
+</ul>
+</li>
+</ul>
+<p><code>select</code>标签的<code>resultOrdered</code>可以优化嵌套映射结果集时的内存使用问题,但随之会产生另外一个问题--引用已清除的主结果对象的情况(如: 结果A、B、A,配置为false的时候后面那个A能正确找到前面已经存在的A并合并数据,但如果配置为true的时候后面那个A找不到前面的那个A,因为数据已经被清除了,导致返回结果中有A、B、A三条数据). 不过可以通过分组等方式(将想要合并的数据顺序排列即可),这可能会产生其它问题(SQL复杂度、数据库压力).</p>
+<p>说说对它这个命名的看法: 我光看这个名字+文档想了很久它到底想表达什么,在初次翻源码时也不能体会这个属性有什么用,当了解了具体功能后回头看看这个命名发现好像是那么个意思(如果站在<code>你认为你这条SQL将数据排列好了,配置我为true时,我后台会帮你优化内存</code>),但我相信取这个名字对于不了解的人来说这个功能他是排斥的.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-3">QA<a href="#qa-3" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>
+<p>问: 碰到过模块项目启动时报红--<code>Has been loaded by XML or SqlProvider, ignoring the injection of the SQL</code>,这是什么原因?</p>
+<ul>
+<li>答: 这个是<code>mybatis-plus</code>输出的error信息,从<code>AbstractMethod#addMappedStatement()</code>方法抛出的,原因是<code>mybatis-plus</code>需要默认将<code>BaseMapper&lt;T&gt;</code>的一些方法注入到具体的<code>Mapper.class</code>中,如果出现了同名的<code>MappedMethod</code>则会输出这个<code>error</code>并且不会将当前想要注入的方法加到<code>config.mappedStatements</code>中.</li>
+</ul>
+<blockquote>
+<p>注意: mybatis的<code>Mapper.xml</code>、<code>Mapper.class</code>解析是先于<code>mybatis-plus</code>的,所以手写的<code>MapperMethod</code>一定先于<code>mybatis-plus</code>后自动添加的<code>MappedMethod</code>.</p>
+</blockquote>
+</li>
+</ul>
+<p>mybatis配置文件配置项<code>aggressiveLazyLoading</code>: 当该配置项为true时,表示有延迟加载属性的对象在被调用,将完全加载其属性,否则属性将按需加载. 在3.4.1版本之后,该配置的默认值为false,之前版本默认为true.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="boundsqldefaultparameterhandler">BoundSql+DefaultParameterHandler<a href="#boundsqldefaultparameterhandler" class="hash-link" aria-label="BoundSql+DefaultParameterHandler的直接链接" title="BoundSql+DefaultParameterHandler的直接链接">​</a></h3>
+<blockquote>
+<p>猜测: BoundSql的sql字段存的是能直接给Statement执行的sql,BoundSql里还有和<code>parameterMappings</code>存放之前sql的占位符信息,然后会到<code>additionalParameters</code>中找占位符参数对应的值,最后调<code>Statement.preparexxx(sql,params);</code></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="errorcontext">ErrorContext<a href="#errorcontext" class="hash-link" aria-label="ErrorContext的直接链接" title="ErrorContext的直接链接">​</a></h3>
+<p>一个使用ThreadLocal来维护(保存)mybatis在当前线程发生错误产生对应信息的工具类,提供了一些标准化(格式化)的消息输出. 主要还是省去了参数之间的传递.</p>
+<p>mybatis好像挺喜欢用<strong>工厂+Mgr这种组合构建那种多态对象</strong></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-4">QA<a href="#qa-4" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>问: Environment怎样生成的?<!-- -->
+<ul>
+<li>答: <code>org.apache.ibatis.builder.xml.XMLConfigBuilderNew#environmentsElement()</code></li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="访问模式">访问模式<a href="#访问模式" class="hash-link" aria-label="访问模式的直接链接" title="访问模式的直接链接">​</a></h3>
+<blockquote>
+<p>观点: 我记得我之前总结过(其实是当时的感觉)这个模式就是让java实现动态多分配功能的,它会产生很多&#x27;逃逸&#x27;对象....</p>
+</blockquote>
+<p>示例: <code>com.watermelon.mybatis.tool.sqlparser.SelectSqlParser</code>、 <code>net.sf.jsqlparser.statement.select</code>包</p>
+<p>好处:</p>
+<ul>
+<li>针对一个数据结构,如果要增加新的处理算法,则只要增加新的Visitor接口实现即可.无须修改任何其他的代码,这符合&quot;开放--封闭&quot;原则(这个不是这个模式特有的).</li>
+<li>将整个数据结构中所有元素对象的处理操作集中到一个<code>ConcreteVisitor</code>对象中,这样便于维护(这不就是穷举方法的意思么..这也能叫好处?).</li>
+<li>在处理处理一个复杂数据结构时,并不是每个元素都是ConcreteVisitor对象需要处理的,<code>ConcreteVisitor</code>可以跨越等级结构,处理属于不同层级的元素.</li>
+<li>可以通过访问者来分离无关的行为,把相关的行为封装在一起,构成一个访问者,这样每一个访问者的功能都比较单一(本质是接口带来的好处).</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>最致命的缺点,每增加一种需要处理的元素则需要到每个Visitor接口里以及所有的实现中修改代码(可能有时候会用absImple减少&#x27;开支&#x27;,但这是&#x27;坏味道代码&#x27;).</li>
+<li>难理解(这大概是那二十几种设计模式中能排上前几名的难理解的模式).</li>
+<li>不利于错误定位(光靠代码来定位很难,因为它实现的是动态多分派).</li>
+</ul>
+<p><code>mybatis-spring.jar</code>: 将Mybatis的事务交给Spring来管理,还可以将SqlSession等对象交给Spring管理. 与Spring集成时,Mybatis中的SqlSessionFactory对象由SqlSessionFactoryBean创建的. <code>mybatis-spring</code>导了<code>com.atomikos</code>家的<code>transactions-jdbc</code>,里面有jta等等</p>
+<p>SpringManagedTransactionFactory是默认的事务工厂</p>
+<p>org.springframework.jdbc.datasource.DataSourceUtils支撑着第三方整合Spring的DataSource.</p>
+<p>SqlSessionTemplate是mybatis-spring的核心,在整合Spring时用来代替DefaultSqlSession的,线程安全.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="persistenceexceptiontranslator异常转换器">PersistenceExceptionTranslator(异常转换器)<a href="#persistenceexceptiontranslator异常转换器" class="hash-link" aria-label="PersistenceExceptionTranslator(异常转换器)的直接链接" title="PersistenceExceptionTranslator(异常转换器)的直接链接">​</a></h3>
+<blockquote>
+<p>将 MyBatis 底层异常转换为 Spring 的 <code>DataAccessException</code> 体系</p>
+</blockquote>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">public class MyBatisExceptionTranslator implements PersistenceExceptionTranslator {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public DataAccessException translateExceptionIfPossible(RuntimeException ex) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        // 1. 处理嵌套异常</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        if (ex instanceof PersistenceException) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            // 2. 解析MyBatis异常链</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            Throwable cause = ex.getCause();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            if (cause instanceof ErrorContext) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                cause = cause.getCause(); // 剥离ErrorContext包装</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            // 3. 分类转换</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            if (cause instanceof SQLException) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                return new UncategorizedSQLException(</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    &quot;MyBatis SQLException&quot;, </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    ((SQLException) cause).getSQLState(),</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    (SQLException) cause);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            return new MyBatisSystemException(ex);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return null; // 非MyBatis异常不处理</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="errorcontext-1">ErrorContext<a href="#errorcontext-1" class="hash-link" aria-label="ErrorContext的直接链接" title="ErrorContext的直接链接">​</a></h3>
+<blockquote>
+<p>Mybatis本身处理异常的类,记录异常发生时的完整上下文信息</p>
+</blockquote>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">public class ErrorContext {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    private String activity;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    private String object;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    private String message;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    private String sql;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    private Throwable cause;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // 线程安全的上下文存储（ThreadLocal）</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    private static final ThreadLocal&lt;ErrorContext&gt; LOCAL = new ThreadLocal&lt;&gt;();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public static ErrorContext instance() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        ErrorContext context = LOCAL.get();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        if (context == null) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            context = new ErrorContext();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            LOCAL.set(context);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return context;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>SpringManagedTransactionFactory: Spring在没有TransactionFactory时默认的txFactory,它返回的是SpringManagedTransaction</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="重看">重看<a href="#重看" class="hash-link" aria-label="重看的直接链接" title="重看的直接链接">​</a></h3>
+<blockquote>
+<p>第二章: 解析器模块、反射工具箱(重点)、类型转换、日志模块、资源加载、DataSource、Transaction、binding 模块、缓存模块</p>
+</blockquote>
+<blockquote>
+<p>第三章: Mybatis初始化(重点)、SqlNode&amp;SqlSource、ResultSetHandler(重点)、KeyGenerator、StatementHandler、Executor、接口层</p>
+</blockquote>
+<blockquote>
+<p>第四章: 插件模块</p>
+</blockquote>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="复习笔记">复习笔记<a href="#复习笔记" class="hash-link" aria-label="复习笔记的直接链接" title="复习笔记的直接链接">​</a></h4>
+<p>四个TokenHandler对应的使用场景:</p>
+<ul>
+<li>VariableTokenHandler: 解析指定属性占位符对应在<code>mybatis-config.xml</code> ==&gt; <code>&lt;propertiys&gt;</code>中的值,如果没有则还会处理默认值.</li>
+<li>ParameterMappingTokenHandler:</li>
+<li>BindingTokenParser:</li>
+<li>DynamicCheckerTokenParser:</li>
+</ul>
+<p>用到TypeParameterResolver的地方:   <code>Reflector#addGetMethod==&gt;TypeParameterResolver#resolveReturnType</code></p>
+<p>java.lang.reflect.Type的几个子类的含义,作用以及如何使用都得结合实际案例才好理解. 如<code>com.watermelon.mybatis.example.reflection.TestType</code>以及<code>org.apache.ibatis.reflection.TypeParameterResolver</code>的备注.</p>
+<blockquote>
+<p>对于Type这块复习如果不懂可以重新看看P41里面的定义,每个类型描述看第一句足矣.</p>
+</blockquote>
+<p><code>org.apache.ibatis.reflection.MetaClass#findProperty(java.lang.String)</code>它不处理属性表达式中的集合下标. 比如: a[0].name; 它只处理a.name;</p>
+<p>ObjectWrapperFactory默认实现是不支持返回ObjectWrapper的. 可以在<code>mybatis-config.xml</code>中配置自定义的工厂.</p>
+<p>MetaObject用于Mybatis的哪一层.</p>
+<p>P65图2-17展示图第6步<code>resolveCollection()</code>方法后少了一步<code>getCollectionValue()</code>的调用.</p>
+<p>Mybatis的MetaObject构造函数中可以通过自定义ObjectWrapper来自定义ObjectWrapper. 我认为它是为了让一些特殊的JavaBean能够自定义处理策略,比如:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Data</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">private static class CCC extends HashMap&lt;String, String&gt; {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    private List&lt;Integer&gt; b;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">} </span><br></span></code></pre></div></div>
+<ul>
+<li>像这么一个类创建ObjectWrapper的时候会默认看作MapWrapper(因为它是Map接口的实现),当我们用属性表达式<code>b[0].value</code>想要获取属性b,下标为0的Integer
+对应的value属性时就会报错,因为MapWrapper最终还是会调<code>map.get()</code>方法来取值的. 所以这个时候就得自定义处理了.</li>
+<li>还有<code>MapperMethodNew#executeForMany()</code>方法处理多元素返回值时,如果你定义了不是Array也不是Collection,但想让它作为多元素类型的方法返回值你只能自
+定义<code>ObjectFactory#isCollection()</code>识别它是集合,并且自定义ObjectWrapperFactory创建自定义ObjectWrapper让它为你自定义的集合能<code>addAll()</code>.</li>
+</ul>
+<p><code>ObjectWrapper.instantiatePropertyValue()</code>会初始化表达式路径上为空的属性,但是不能初始化集合类型字段中的集合元素. 比如<code>b[1].value</code>,当b为空或者 b下标为1的值为空时,都会抛异常的.  b为空抛异常是因为走了<code>BeanWrapper.set()</code>方法的第一个分支(属性表达式含有下标元素获取),它<code>resolveCollection()</code>返回的数据为空,然后调<code>setCollectionValue()</code>则抛异常. 下标1为空时抛异常是因为调<code>setCollectionValue()</code>本质上是调<code>List.add(index)</code>,所以报错.</p>
+<p>Type和Class之间的关系</p>
+<p>P98 jdk动态代理</p>
+<p>BaseJdbcLogger: 将JDBC操作通过指定的日志框架打印出来.</p>
+<p><code>org.apache.ibatis.binding.MapperMethod#execute()</code>这是调用MapperMethod的入口.</p>
+<p><code>org.apache.ibatis.binding.MapperMethod#execute()</code>这里处理ResultHandler时还判断了当前方法返回值是否为<code>VOID</code></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-5">QA<a href="#qa-5" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>问: 看完书处理下<code>CmsArticleMapper#insert()</code>方法不返回主键的问题<!-- -->
+<ul>
+<li>答: CmsArticle自己生成了个<code>@TableId</code>直接<code>type=INPUT</code>,所以不会生成Jdbc3KeyGenerator.<!-- -->
+<ul>
+<li>说明: 这个是<code>mybatis-plus</code>的东西,我粗略的看了看它的代码.都看得懂,但是感觉有点吃力,它是通过<code>AbstractSqlInjector#getMethodList()</code>方法来获取自动注入MapperMethod的集合,自动注入实际上就是调的MapperBuilderAssistant,注入INSERT方法的时候会判断<code>TableId#idType</code>是否为AUTO是的话就追加Jdbc3的生成器. ISqlInjector的调用栈: <code>MybatisMapperAnnotationBuilder#parse</code>(继承了<code>MapperAnnotationBuilder)==&gt;ISqlInjector#inspectInject()==&gt;methodList.foreach()</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>org.apache.ibatis.session.SqlSessionFactoryBuilder#build(java.io.Reader, java.lang.String, java.util.Properties)</code>是mybatis初始化入口方法</p>
+<p>BaseBuilder有如下几个子类:</p>
+<ul>
+<li>XMLMapperBuilder: 父节解析<code>mybatis-config.xml</code>中的mapper映射文件节点并注册到config中.</li>
+<li>MapperBuilderAssistant: 用户构建ResultMap、Discriminator、ParameterMapping、Cache、RefCache等对象的助手类</li>
+</ul>
+<p><code>org.apache.ibatis.builder.SqlSourceBuilder.ParameterMappingTokenHandler</code>:</p>
+<ul>
+<li>
+<p>XMLScriptBuilder: 解析<code>&lt;SQL&gt;</code>节点里的SQL脚本语言并将其包装成SqlSource. SQL脚本语言里面有SQL语句、动态参数、动态标签等. SqlSource能够将解析后的结果处理并返回可以执行的SQL语句.</p>
+</li>
+<li>
+<p>XMLConfigBuilder: 用于解析<code>mybatis-config.xml</code>构建config的.</p>
+</li>
+<li>
+<p>XMLStatementBuilder: 用于解析整个<code>&lt;SQL&gt;</code>节点(包括<code>&lt;insert&gt;</code>、<code>&lt;update&gt;</code>、<code>&lt;select&gt;</code>、<code>&lt;delete&gt;</code>),调用方是在<code>XMLMapperBuilder#buildStatementFromContext(List&lt;XNode&gt;, String)</code>. 应该是<code>&lt;SQL&gt;</code>节点需要解析的太多了,抽出一个类来.</p>
+</li>
+<li>
+<p>SqlSourceBuilder: 主要完成解析<code>#{}</code>占位符,将其解析成<code>ParameterMapping</code>保存到<code>StaticSqlSource</code>中,并将<code>#{}</code>替换成<code>?</code></p>
+</li>
+<li>
+<p>问: <code>enableInjectionValidation=true;</code>、<code>injectionExpression=expressionStr;</code> 这两个参数在哪里处理的</p>
+<ul>
+<li>答: 没有找到这个在哪里</li>
+</ul>
+</li>
+</ul>
+<p><code>org.apache.ibatis.builder.MapperBuilderAssistant#unresolvedCacheRef</code>字段对应的<code>issue 676</code>,mybatis用来保证cacheRef引用Cache对象成功. 不过没找到对应那个issue,实在搞不懂为什么需要用这个字段,是为了记录调用过useCacheRef()方法失败吗?</p>
+<p><code>org.apache.ibatis.builder.MapperBuilderAssistant#parseCompositeColumnName()</code>方法解析复合列名</p>
+<p><code>org.apache.ibatis.builder.xml.XMLMapperBuilder#processNestedResultMappings()</code>处理嵌套映射</p>
+<ul>
+<li>
+<p>问: 奇了怪,为什么一个ResultMap只能有一个Discriminator.</p>
+<ul>
+<li>答: 这个解释不了.</li>
+</ul>
+</li>
+<li>
+<p>问: <code>org.apache.ibatis.builder.xml.XMLIncludeTransformerNew#applyIncludes(org.w3c.dom.Node, java.util.Properties, boolean)</code>会不会把所有<code>${}</code>占位符都解析了??? 那后面动态SQL怎么玩???</p>
+<ul>
+<li>答: 并不会将所有的<code>${}</code>占位符都解析了,只会把当前<code>variablesContext</code>中有的值给填充进去,<code>${}</code>中取方法参数的那些占位符要等到实际调用<code>MappedMethod</code>的时候才能拿到值.</li>
+</ul>
+</li>
+<li>
+<p>问: <code>#{}</code>占位符的处理在哪里?</p>
+<ul>
+<li>答: 在<code>org.apache.ibatis.builder.SqlSourceBuilder#parse()</code>方法中处理了,它是在mybatis启动的时候调用链中的一员. 它会通过<code>org.apache.ibatis.builder.SqlSourceBuilder.ParameterMappingTokenHandler#buildParameterMapping()</code>方法将<code>#{}</code>占位符中的属性解析成一个个的ParameterMapping对象并保存到<code>parameterMappings</code>. <code>buildParameterMapping()</code>方法还会将SQL中的#<!-- -->占位符替换成&#x27;?&#x27;号,最后封装成<code>org.apache.ibatis.builder.StaticSqlSource</code>并将对应的字段填充.</li>
+</ul>
+</li>
+</ul>
+<p>解析ResultMap、CacheRef、Statement、Methods(注解的)时出现IncompleteElementException错误则不会影响Mybatis的启动.</p>
+<p>IncompleteElementException: <code>XMLMapperBuilder#configurationElement()</code>方法解析映射配置文件时,是按照从文件头到文件尾的顺序解析的,但是有时候在解析一个节点时,会引用定义在该节点之后的、还未解析的节点,这就会导致解析失败井抛出IncompleteElementException</p>
+<ul>
+<li>
+<p>问: 谈谈这&#x27;四大对象&#x27;</p>
+<ul>
+<li>答:<!-- -->
+<ul>
+<li>写在前面: 这个不算是回答这个问题把,只能算把四大对象介绍了一下,实际上对<code>mybatis</code>的设计、接口定义的作用场景和目的有些地方感觉还是不能明白.
+正文: <code>ParameterHandler</code>和<code>ResultSetHandler</code>接口相关动作比较单一.<code>ParameterHandler</code>如批注所说的一样是用来给<code>PreparedStatement</code>设值的,用来整合<code>mybatis</code>之前解析 、处理<code>MappedMethod的</code>参数后返回的<code>BoundSql</code>. 而<code>ResultSetHandler</code>就更加<code>单一</code>了,它连备注我都没看到,功能是将<code>ResultSet</code>中的数据根据<code>ResultMap</code>转换成<code>MappedMethod</code>返回的指定类型(说白了就是对<code>&lt;resultMap&gt;</code>标签的处理).  <code>Executor</code>的功能实现依托于<code>StatementHandler</code>,<code>mybatis</code>目前自身的实现类主要还是对SQL进行优化以及事务,不过我把它看成是<code>StatementHandler</code>的一个上层,属于<code>StatementHandler</code>的应用层. <code>StatementHandler</code>是最接近SQL执行器的接口,提供基本的CRUD方法,几个实现主要是区分几种不同类型的SQL(指的是存过型、带参型、无参型). <code>四大对象</code>感觉很少有需要用户自定义的场景,更多的时候是实现<code>mybatis</code>提供的<code>Interceptor</code>来实现特殊功能.<code>mybati-plus</code>覆写了个<code>ParameterHandler</code>,我没有细看,它主要用它来实现它自己提供的几个主键生成规则. 可以看我之前在<code>KeyGenerator</code>接口里写的批注,感觉这个接口<code>mybatis</code>是不打算给用户自定义使用的,所以<code>mybatis-plus</code>另想办法了.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>问: <code>ResultMap.idResultMappings</code>有什么用?</p>
+<ul>
+<li>答: 它对应<code>&lt;resultMap&gt;</code>标签的子标签<code>&lt;id&gt;</code>标签.DefaultResultSetHandler用来构建CacheKey的其中最主要的一个元素,具体场景是处理嵌套映射的时候确定一条唯一的记录(有个场景是为了准确的<code>找爸爸</code>). 最好每个<code>&lt;resultMap&gt;</code>都配个这个,因为如果不配的话就会将已显示配置的<code>&lt;result/&gt;</code>、<code>&lt;association/&gt;</code>等映射标签全部取出来并且获取它们的名称、值用来创建CacheKey,如果一个显示的映射标签都没配的话则会将所有列的值、属性名作为CacheKey. 但是需要注意的是,<code>&lt;id/&gt;</code>标签里的属性名、值是用来确定一条<code>唯一记录</code>的,不要乱配.</li>
+</ul>
+<blockquote>
+<p>提示: 一个<code>&lt;resultMap/&gt;</code>、<code>&lt;constructor/&gt;</code>里可以有多个<code>&lt;id/&gt;</code>标签.具体看<code>mybatis-3-mapper.dtd</code>:</p>
+</blockquote>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;!ELEMENT resultMap (constructor?,id*,result*,association*,collection*, discriminator?)&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;!ATTLIST resultMap</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">id CDATA #REQUIRED</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">type CDATA #REQUIRED</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">extends CDATA #IMPLIED</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">autoMapping (true|false) #IMPLIED</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;!ELEMENT constructor (idArg*,arg*)&gt;</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<p>书上在介绍MapperFactoryBean、MapperScannerConfigurer自动装配<code>Mapper.class</code>这块少介绍了FactoryBean这个接口的功能,如果不知道这个接口在Spring中的应用的话
+书上说的自动装配是连不起来的.</p>
+<p>mybatis的批注跟mybatis-spring的批注比起来真的是天差地别</p></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/05/04/Mybatis技术内幕/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="博文分页导航"><a class="pagination-nav__link pagination-nav__link--prev" href="/blog/2025/05/05/RocketMQ"><div class="pagination-nav__sublabel">较新一篇</div><div class="pagination-nav__label">RocketMQ</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/blog/2025/05/03/MySQL是怎么运行的"><div class="pagination-nav__sublabel">较旧一篇</div><div class="pagination-nav__label">MySQL是怎么运行的</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#mybatis技术内幕" class="table-of-contents__link toc-highlight">Mybatis技术内幕</a><ul><li><a href="#关键类" class="table-of-contents__link toc-highlight">关键类</a></li><li><a href="#几大类型" class="table-of-contents__link toc-highlight">几大类型</a></li><li><a href="#qa" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#核心层" class="table-of-contents__link toc-highlight">核心层</a></li><li><a href="#qa-1" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#qa-2" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#qa-3" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#boundsqldefaultparameterhandler" class="table-of-contents__link toc-highlight">BoundSql+DefaultParameterHandler</a></li><li><a href="#errorcontext" class="table-of-contents__link toc-highlight">ErrorContext</a></li><li><a href="#qa-4" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#访问模式" class="table-of-contents__link toc-highlight">访问模式</a></li><li><a href="#persistenceexceptiontranslator异常转换器" class="table-of-contents__link toc-highlight">PersistenceExceptionTranslator(异常转换器)</a></li><li><a href="#errorcontext-1" class="table-of-contents__link toc-highlight">ErrorContext</a></li><li><a href="#重看" class="table-of-contents__link toc-highlight">重看</a></li><li><a href="#qa-5" class="table-of-contents__link toc-highlight">QA</a></li></ul></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>

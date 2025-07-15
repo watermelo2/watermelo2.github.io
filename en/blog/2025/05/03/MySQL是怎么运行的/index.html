@@ -1,0 +1,1464 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">MySQL是怎么运行的 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/en/blog/2025/05/03/MySQL是怎么运行的"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" property="og:locale:alternate" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="MySQL是怎么运行的 | My Site"><meta data-rh="true" name="description" content="MySQL存储"><meta data-rh="true" property="og:description" content="MySQL存储"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-05-03T00:00:00.000Z"><link data-rh="true" rel="icon" href="/en/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/en/blog/2025/05/03/MySQL是怎么运行的"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/05/03/MySQL是怎么运行的" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/03/MySQL是怎么运行的" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/03/MySQL是怎么运行的" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/en/blog/2025/05/03/MySQL是怎么运行的","mainEntityOfPage":"https://watermelo2.github.io/en/blog/2025/05/03/MySQL是怎么运行的","url":"https://watermelo2.github.io/en/blog/2025/05/03/MySQL是怎么运行的","headline":"MySQL是怎么运行的","name":"MySQL是怎么运行的","description":"MySQL存储","datePublished":"2025-05-03T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/en/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/en/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/en/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/en/assets/css/styles.e55a2139.css">
+<script src="/en/assets/js/runtime~main.7582449a.js" defer="defer"></script>
+<script src="/en/assets/js/main.782f9090.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/en/img/1.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/en/"><div class="navbar__logo"><img src="/en/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/en/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/en/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="Blog recent posts navigation"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/en/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">MySQL是怎么运行的</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-05-03T00:00:00.000Z">May 3, 2025</time> · <!-- -->85 min read</div></header><div id="__blog-post-container" class="markdown"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="mysql存储">MySQL存储<a href="#mysql存储" class="hash-link" aria-label="Direct link to MySQL存储" title="Direct link to MySQL存储">​</a></h2>
+<blockquote>
+<p>参考: <a href="https://juejin.im/book/5bffcbc9f265da614b11b731" target="_blank" rel="noopener noreferrer">从根儿上理解MySQL</a>、</p>
+</blockquote>
+<p><a href="https://www.liuquanhao.com/posts/mysql%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%99%A8%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" target="_blank" rel="noopener noreferrer">【官方】MySQL性能优化使用指南</a></p>
+<p>SQL相关:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">CREATE TABLE 表名 (列的信息) ROW_FORMAT=行格式名称;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ALTER TABLE 表名 ROW_FORMAT=行格式名称;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ALTER TABLE 表名 TABLESPACE [=] innodb_file_per_table; #把已经存在系统表空间中的表转移到独立表空间(括号可有可无)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ALTER TABLE 表名 TABLESPACE [=] innodb_system; #把已经存在独立表空间的表转移到系统表空间(括号可有可无)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ANALYZE TABLE 表名; # 手动更新统计信息(innodb_table_stats和innodb_index_stats表)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">XPLAIN FORMAT=JSON [SQL]; # 查看执行计划详细信息</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SHOW WARNINGS; # 当code值为1003时,Message字段展示的信息类似于查询优化器将我们的查询语句重写后的语句(被优化的SQL前面需要有EXPLAIN).</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SHOW ENGINE INNODB STATUS; # 查看关于InnoDB存储引擎运行过程中的一些状态信息.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>文件扩展名对应存储内容(没有特殊说明则默认为针对InnoDB的):</p>
+<ul>
+<li>
+<p>*.opt: 包含当前数据库的各种属性,比如数据库的字符集和比较规则.</p>
+</li>
+<li>
+<p>*.frm: 用于描述表结构(创建视图也会有一个这个,只不过它没.idb).</p>
+</li>
+<li>
+<p>*.idb: 独立表空间存储表中的数据.</p>
+</li>
+<li>
+<p>*.MYI: 索引文件(MyISAM).</p>
+</li>
+<li>
+<p>*.MYD: 数据文件(MyISAM).</p>
+</li>
+<li>
+<p>%username%.pid: 服务器进程文件.</p>
+</li>
+<li>
+<p>ibdata1: 系统表空间.</p>
+</li>
+<li>
+<p>ibtmp1: 数据目录中的临时表空间.</p>
+</li>
+<li>
+<p><code>ib_logfile{i}</code>: 存放redo log.</p>
+</li>
+</ul>
+<p>配置:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[server]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 创建两个大小为512M的文件作为系统表空间,`autoextend`表明这两个文件如果不够回自动扩展data2文件的大小</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innodb_data_file_path=data1:512M;data2:512M:autoextend</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 刻意将表数据存储到`系统表空间`</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innodb_file_per_table=0</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 缓存页大小(单位: 字节)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innodb_buffer_pool_size = 268435456</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 缓存页LRU链表的old区域在LRU链表中所占的比例(默认37)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innodb_old_blocks_pct=40</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 配置读个Buffer Pool实例</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innodb_buffer_pool_instances = 2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># chunk size(默认值: 128M,单位: 字节)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innodb_buffer_pool_chunk_size=134217728</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>如果某个客户端改变了某个系统变量在<code>GLOBAL</code>作用范围的值,并不会影响该系统变量在当前已经连接的客户端作用范围为<code>SESSION</code>的值,只会影响后续连入的客户端在作用范围为<code>SESSION</code>的值</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="字符集比较规则后缀含义">字符集比较规则后缀含义<a href="#字符集比较规则后缀含义" class="hash-link" aria-label="Direct link to 字符集比较规则后缀含义" title="Direct link to 字符集比较规则后缀含义">​</a></h3>
+<table><thead><tr><th>后缀</th><th>英文释义</th><th>描述</th></tr></thead><tbody><tr><td>_ai</td><td>accent insensitive</td><td>不区分重音</td></tr><tr><td>_as</td><td>accent sensitive</td><td>区分重音</td></tr><tr><td>_ci</td><td>case insensitive</td><td>不区分大小写</td></tr><tr><td>_cs</td><td>case sensitive</td><td>区分大小写</td></tr><tr><td>_bin</td><td>binary</td><td>以二进制方式比较</td></tr></tbody></table>
+<p>4种不同类型的行格式,分别是<code>Compact</code>、<code>Redundant</code>、<code>Dynamic</code>和<code>Compressed</code>.</p>
+<p>语法:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">CREATE TABLE 表名 (列的信息) ROW_FORMAT=行格式名称;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ALTER TABLE 表名 ROW_FORMAT=行格式名称;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="compact行格式">COMPACT行格式<a href="#compact行格式" class="hash-link" aria-label="Direct link to COMPACT行格式" title="Direct link to COMPACT行格式">​</a></h3>
+<p>结构:</p>
+<table><thead><tr><th>记录的额外信息</th><th>记录的真实数据</th></tr></thead><tbody><tr><td>变长字段长度列表</td><td>NULL值列表</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="变长字段长度列表">变长字段长度列表<a href="#变长字段长度列表" class="hash-link" aria-label="Direct link to 变长字段长度列表" title="Direct link to 变长字段长度列表">​</a></h3>
+<ul>
+<li>
+<p>范围: VARCHAR(M)、VARBINARY(M)、各种TEXT类型,各种BLOB类型. 如果是例如utf8这种编码的情况下(长度在1~3之间),因为存在随机性,所以CHAR类型在此时也算变长.</p>
+</li>
+<li>
+<p>存储: 所有变长字段的真实数据占用的字节长度都存放在记录的开头部位,从而形成一个变长字段长度列表,各变长字段数据占用的字节数按照列的顺序逆序存放.</p>
+</li>
+</ul>
+<blockquote>
+<p>例子: c1、c2、c4列存储的内容分别为&#x27;aaaa&#x27;、&#x27;bbb&#x27;、&#x27;d&#x27;,且字符编码为ASCII,那么他们的变长字段长度列表用十六进制表示就是&#x27;010204&#x27;. 需要注意的是,字段长度的表示不一定是一个字节,像此时内容占用的字节数比较小用一个字节就够了(这里说的是单个字段. 实际上它是有一套计算规则,大体上就是根据定义的字段字符类型最大长度和实际长度来判断).</p>
+</blockquote>
+<blockquote>
+<p>注意: 值为 NULL 的列的长度是不存储的.</p>
+</blockquote>
+<ul>
+<li>
+<p>NULL值列表:</p>
+</li>
+<li>
+<p>范围: 允许存储NULL的列.</p>
+</li>
+<li>
+<p>存储: 每个允许存储NULL的列对应一个bit位,bit位按照列的顺序逆序排列,bit位为1表示该列值为NULL,否则表示值不为NULL,并且不满一个字节时高位补0.</p>
+</li>
+<li>
+<p>注意: 值为非NULL的列是不存储的</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="记录头信息">记录头信息<a href="#记录头信息" class="hash-link" aria-label="Direct link to 记录头信息" title="Direct link to 记录头信息">​</a></h3>
+<p>存储: 由固定的5个字节组成(40个bit位).</p>
+<p>含义看图:</p>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2019/12/19/GAT423rh78YE1Dq.png" alt="含义看图" class="img_ev3q"></p>
+<p>介绍:</p>
+<p>| 名称 | 大小(单位<!-- -->:bit<!-- -->) | 描述 |</p>
+<table><thead><tr><th>字段名</th><th>位数</th><th>说明</th></tr></thead><tbody><tr><td>预留位1</td><td>1</td><td>没有使用</td></tr><tr><td>预留位2</td><td>1</td><td>没有使用</td></tr><tr><td>delete_mask</td><td>1</td><td>标记该记录是否被删除</td></tr><tr><td>min_rec_mask</td><td>1</td><td>B+树的每层非叶子节点中的最小记录都会添加该标记</td></tr><tr><td>n_owned</td><td>4</td><td>表示当前记录拥有的记录数</td></tr><tr><td>heap_no</td><td>13</td><td>表示当前记录在记录堆的位置信息（0、1位置被特殊最大、最小值占用）</td></tr><tr><td>record_type</td><td>3</td><td>表示当前记录的类型：<code>0-普通记录</code>、<code>1-B+树非叶子节点记录</code>、<code>2-最小记录</code>、<code>3-最大记录</code></td></tr><tr><td>next_record</td><td>16</td><td>表示下一条记录的相对位置（按主键值从小到大排序后的下一条记录）</td></tr></tbody></table>
+<blockquote>
+<p>n_owned: 代表以当前记录结尾的这个分组中共有几条记录.</p>
+</blockquote>
+<p>说明:</p>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/01/07/aNvQYmh3xprbj4Z.png" alt="图片" class="img_ev3q"></p>
+<blockquote>
+<p>InnoDB对数据页中的每个组中的记录条数有规定,对于最小记录所在的分组只能有1条记录,最大记录所在的分组拥有的记录条数只能在<code>1~8</code>条之间,剩下的分组中记录的条数范围只能在是<code>4~8</code>条之间.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="记录的真实数据">记录的真实数据<a href="#记录的真实数据" class="hash-link" aria-label="Direct link to 记录的真实数据" title="Direct link to 记录的真实数据">​</a></h3>
+<blockquote>
+<p>存储: 除了我们自己创建的列数据之外,MySQL会为每个记录默认的添加一些列(也称为隐藏列).</p>
+</blockquote>
+<table><thead><tr><th>列名</th><th>是否必须</th><th>占用空间</th><th>描述</th></tr></thead><tbody><tr><td>DB_ROW_ID</td><td>否</td><td>6字节</td><td>行ID，唯一标识一条记录</td></tr><tr><td>DB_TRX_ID</td><td>是</td><td>6字节</td><td>事务ID</td></tr><tr><td>DB_ROLL_PTR</td><td>是</td><td>7字节</td><td>回滚指针</td></tr></tbody></table>
+<blockquote>
+<p>说明: DB_ROW_ID是在没有主键、没有Unique键的情况下添加的.</p>
+</blockquote>
+<p>delete_mask: 删除的记录只是打一个删除标记而已,所有被删除掉的记录都会组成一个所谓的垃圾链表,在这个链表中的记录占用的空间称之为所谓的可重用空间,之后如果有新记录插入到表中的话,可能把这些被删除的记录占用的存储空间覆盖掉</p>
+<blockquote>
+<p>提示: 当数据页中存在多条被删除掉的记录时,这些记录的next_record属性将会把这些被删除掉的记录组成一个垃圾链表,以备之后重用这部分存储空间</p>
+</blockquote>
+<ul>
+<li>Redundant行格式</li>
+</ul>
+<blockquote>
+<p>不介绍,<a href="https://juejin.im/book/5bffcbc9f265da614b11b731/section/5bffda656fb9a049b13deba8" target="_blank" rel="noopener noreferrer">看原文</a></p>
+</blockquote>
+<ul>
+<li>
+<p>Dynamic行格式: 与&#x27;Compact行格式&#x27;不同的是&#x27;行溢出&#x27;数据时会在记录的真实数据处直接存储其它页面的地址,不会记录字段真实数据的前768个字节.</p>
+</li>
+<li>
+<p>Compressed行格式: 采用压缩压缩算法对页面进行压缩,以节省空间.</p>
+</li>
+</ul>
+<blockquote>
+<p>页: 一个页一般是16KB(并且一个页中至少存放两行记录),当记录中的数据太多,当前页放不下的时候,会把多余的数据存储到其他页中,这种现象称为行溢出.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="数据页结构">数据页结构<a href="#数据页结构" class="hash-link" aria-label="Direct link to 数据页结构" title="Direct link to 数据页结构">​</a></h3>
+<table><thead><tr><th>名称</th><th>中文名</th><th>占用空间大小</th><th>描述</th></tr></thead><tbody><tr><td>File Header</td><td>文件头部</td><td>38字节</td><td>页的一些通用信息（如页类型、前后页指针等）</td></tr><tr><td>Page Header</td><td>页面头部</td><td>56字节</td><td>数据页专有的一些信息（如记录数、空闲空间位置等）</td></tr><tr><td>Infimum + Supremum</td><td>最小记录和最大记录</td><td>26字节</td><td>两个虚拟的行记录（构成记录的边界）</td></tr><tr><td>User Records</td><td>用户记录</td><td>不确定</td><td>实际存储的行记录内容（按主键顺序排列）</td></tr><tr><td>Free Space</td><td>空闲空间</td><td>不确定</td><td>页中尚未使用的空间（链表结构管理）</td></tr><tr><td>Page Directory</td><td>页面目录</td><td>不确定</td><td>页中某些记录的相对位置（用于二分查找的槽位数组）</td></tr><tr><td>File Trailer</td><td>文件尾部</td><td>8字节</td><td>校验页是否完整（通过校验和验证页的完整性）</td></tr></tbody></table>
+<ul>
+<li>heap_no: 表示当前记录在本页中的位置,从2开始.</li>
+</ul>
+<blockquote>
+<p>提示: 0和1两个伪记录一个代表最小记录,一个代表最大记录(单词Infimum和Supremum的二进制体现),并且它们存在<code>Infimum + Supremum</code>空间中,并不和UserRecords存一起.</p>
+</blockquote>
+<ul>
+<li>File Trailer: 用于判断是否将内存中的数据完整同步到磁盘.</li>
+</ul>
+<p>前4个字节代表页的校验和: 这个部分是和File Header中的校验和相对应的.每当一个页面在内存中修改了,在同步之前就要把它的校验和算出来,因为File Header在页面的前边,所以校验和会被首先同步到磁盘,当完全写完时,校验和也会被写到页的尾部,如果完全同步成功,则页的首部和尾部的校验和应该是一致的.如果写了一半儿断电了,那么在File Header中的校验和就代表着已经修改过的页,而在File Trailer中的校验和代表着原先的页,二者不同则意味着同步中间出了错.</p>
+<p>后4个字节代表页面被最后修改时对应的日志序列位置(LSN): 这个部分也是为了校验页的完整性的.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="page-header">Page Header<a href="#page-header" class="hash-link" aria-label="Direct link to Page Header" title="Direct link to Page Header">​</a></h3>
+<p>用来存放一个数据页存储的记录的状态信息,总共56个字节.</p>
+<table><thead><tr><th>名称</th><th>占用空间大小</th><th>描述</th></tr></thead><tbody><tr><td>PAGE_N_DIR_SLOTS</td><td>2字节</td><td>页目录中的槽数量</td></tr><tr><td>PAGE_HEAP_TOP</td><td>2字节</td><td>未使用的空间最小地址（该地址之后是Free Space）</td></tr><tr><td>PAGE_N_HEAP</td><td>2字节</td><td>本页中的记录数量（包括最小/最大记录及标记为删除的记录）</td></tr><tr><td>PAGE_FREE</td><td>2字节</td><td>第一个标记为删除的记录地址（已删除记录通过next_record组成可重用链表）</td></tr><tr><td>PAGE_GARBAGE</td><td>2字节</td><td>已删除记录占用的字节数</td></tr><tr><td>PAGE_LAST_INSERT</td><td>2字节</td><td>最后插入记录的位置</td></tr><tr><td>PAGE_DIRECTION</td><td>2字节</td><td>记录插入的方向（PAGE_LEFT/PAGE_RIGHT/PAGE_NO_DIRECTION）</td></tr><tr><td>PAGE_N_DIRECTION</td><td>2字节</td><td>同一方向连续插入的记录数量</td></tr><tr><td>PAGE_N_RECS</td><td>2字节</td><td>有效记录数量（不包括最小/最大记录和已删除记录）</td></tr><tr><td>PAGE_MAX_TRX_ID</td><td>8字节</td><td>修改当前页的最大事务ID（仅二级索引定义）</td></tr><tr><td>PAGE_LEVEL</td><td>2字节</td><td>当前页在B+树中的层级（叶子节点为0）</td></tr><tr><td>PAGE_INDEX_ID</td><td>8字节</td><td>索引ID（标识当前页所属的索引）</td></tr><tr><td>PAGE_BTR_SEG_LEAF</td><td>10字节</td><td>B+树叶子段的头部信息（仅Root页定义）</td></tr><tr><td>PAGE_BTR_SEG_TOP</td><td>10字节</td><td>B+树非叶子段的头部信息（仅Root页定义）</td></tr></tbody></table>
+<ul>
+<li>
+<p>PAGE_DIRECTION: 假如新插入的一条记录的主键值比上一条记录的主键值大,我们说这条记录的插入方向是右边,反之则是左边. 用来表示最后一条记录插入方向的状态就是PAGE_DIRECTION.</p>
+</li>
+<li>
+<p>PAGE_N_DIRECTION: 假设连续几次插入新记录的方向都是一致的,InnoDB会把沿着同一个方向插入记录的条数记下来,这个条数就用PAGE_N_DIRECTION这个状态表示.当然,如果最后一条记录的插入方向改变了的话,这个状态的值会被清零重新统计</p>
+</li>
+<li>
+<p>PAGE_BTR_SEG_LEAF和PAGE_BTR_SEG_TOP: 它们两个都对应一个结构(后面会讲),这两个字段是用来定位&#x27;段&#x27;对应的&#x27;INODE Entry&#x27;的.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="file-header">File Header<a href="#file-header" class="hash-link" aria-label="Direct link to File Header" title="Direct link to File Header">​</a></h3>
+<p>用来描述各种页的通用信息.</p>
+<table><thead><tr><th>名称</th><th>占用空间大小</th><th>描述</th></tr></thead><tbody><tr><td>FIL_PAGE_SPACE_OR_CHKSUM</td><td>4字节</td><td>页的校验和（checksum值）</td></tr><tr><td>FIL_PAGE_OFFSET</td><td>4字节</td><td>页号（物理页号）</td></tr><tr><td>FIL_PAGE_PREV</td><td>4字节</td><td>上一个页的页号（构成双向链表）</td></tr><tr><td>FIL_PAGE_NEXT</td><td>4字节</td><td>下一个页的页号（构成双向链表）</td></tr><tr><td>FIL_PAGE_LSN</td><td>8字节</td><td>页面最后修改时对应的日志序列号（Log Sequence Number）</td></tr><tr><td>FIL_PAGE_TYPE</td><td>2字节</td><td>页的类型（0x45BF=数据页，0x0002=undo日志页等）</td></tr><tr><td>FIL_PAGE_FILE_FLUSH_LSN</td><td>8字节</td><td>仅在系统表空间的第一个页定义，表示文件至少刷新到的LSN值</td></tr><tr><td>FIL_PAGE_ARCH_LOG_NO_OR_SPACE_ID</td><td>4字节</td><td>页所属的表空间ID（MySQL 5.7+）或归档日志编号（旧版本）</td></tr></tbody></table>
+<ul>
+<li>
+<p>FIL_PAGE_SPACE_OR_CHKSUM: 这个代表当前页面的校验和(checksum). 对于一个很长很长的字节串来说,会通过某种算法来计算一个比较短的值来代表这个很长的字节串,这个比较短的值就称为校验和. 这样在比较两个很长的字节串之前先比较这两个长字节串的校验和,如果校验和都不一样两个长字节串肯定是不同的, 所以省去了直接比较两个比较长的字节串的时间损耗.</p>
+</li>
+<li>
+<p>FIL_PAGE_OFFSET: 每一个页都有一个单独的页号,就跟你的身份证号码一样,InnoDB通过页号来可以唯一定位一个页</p>
+</li>
+<li>
+<p>FIL_PAGE_TYPE: InnoDB为了不同的目的而把页分为不同的类型.</p>
+</li>
+</ul>
+<table><thead><tr><th>类型名称</th><th>十六进制</th><th>描述</th></tr></thead><tbody><tr><td>FIL_PAGE_TYPE_ALLOCATED</td><td>0x0000</td><td>新分配但未初始化的页</td></tr><tr><td>FIL_PAGE_UNDO_LOG</td><td>0x0002</td><td>存储undo日志的页</td></tr><tr><td>FIL_PAGE_INODE</td><td>0x0003</td><td>存储段信息（INODE entry）的页</td></tr><tr><td>FIL_PAGE_IBUF_FREE_LIST</td><td>0x0004</td><td>Insert Buffer的空闲管理页</td></tr><tr><td>FIL_PAGE_IBUF_BITMAP</td><td>0x0005</td><td>Insert Buffer的位图页</td></tr><tr><td>FIL_PAGE_TYPE_SYS</td><td>0x0006</td><td>系统数据页（已废弃）</td></tr><tr><td>FIL_PAGE_TYPE_TRX_SYS</td><td>0x0007</td><td>事务系统数据页（存储事务ID、回滚段等）</td></tr><tr><td>FIL_PAGE_TYPE_FSP_HDR</td><td>0x0008</td><td>表空间头部页（管理区extents和段segments）</td></tr><tr><td>FIL_PAGE_TYPE_XDES</td><td>0x0009</td><td>扩展描述页（EXTENT DESCRIPTOR）</td></tr><tr><td>FIL_PAGE_TYPE_BLOB</td><td>0x000A</td><td>存储溢出数据的大对象页（当行数据超过页大小时使用）</td></tr><tr><td>FIL_PAGE_INDEX</td><td>0x45BF</td><td>索引页/数据页（B+树叶子节点和非叶子节点）</td></tr></tbody></table>
+<ul>
+<li>FIL_PAGE_PREV和FIL_PAGE_NEXT: 用于关联数据. 并不是所有类型的页都有这个属性(当然,&#x27;数据页&#x27;是有的,而且主要还是用于&#x27;B+树&#x27;).</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="页分裂">页分裂<a href="#页分裂" class="hash-link" aria-label="Direct link to 页分裂" title="Direct link to 页分裂">​</a></h3>
+<p>下一个数据页中用户记录的主键值必须大于上一个页中用户记录的主键值</p>
+<p>目录项记录的含义</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="聚簇索引">聚簇索引<a href="#聚簇索引" class="hash-link" aria-label="Direct link to 聚簇索引" title="Direct link to 聚簇索引">​</a></h3>
+<ol>
+<li>
+<p>使用记录主键值的大小进行记录和页的排序(包括目录项记录的页).</p>
+</li>
+<li>
+<p>B+树的叶子节点存储的是完整的用户记录.</p>
+</li>
+</ol>
+<p>在InnoDB存储引擎中,聚簇索引就是数据的存储方式(所有的用户记录都存储在了叶子节点),也就是所谓的索引即数据,数据即索引</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="字符串比较规则">字符串比较规则<a href="#字符串比较规则" class="hash-link" aria-label="Direct link to 字符串比较规则" title="Direct link to 字符串比较规则">​</a></h3>
+<p>从前往后比,一旦能到了能分出大小的字符(不一样的字符)就能得出哪个更大了,不需要再比较后面的.</p>
+<blockquote>
+<p>说明: 这样的比较规则就能够天然的支持&#x27;匹配列前缀&#x27;了.</p>
+</blockquote>
+<p>索引优化: 在创建字符串的索引时最好设置只匹配前N个字符作为创建索引、比较字符串的依据(我们管这叫&#x27;索引列前缀&#x27;). 这样能够减少页空间以及比较时间. 如:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">CREATE TABLE person_info(</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">name VARCHAR(100) NOT NULL,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">birthday DATE NOT NULL,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">phone_number CHAR(11) NOT NULL,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">country varchar(100) NOT NULL,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">KEY idx_name_birthday_phone_number (name(10), birthday, phone_number)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>说明: name(10)就表示在建立的B+树索引中只保留记录的前10个字符的编码,这种只索引字符串值的前缀的策略是我们非常鼓励的,尤其是在字符串类型能存储的字符比较多的时候.</p>
+<p>索引列前缀对排序的影响: 无法支持排序....比如:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SELECT * FROM person_info ORDER BY name LIMIT 10;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>说明: 因为只存了前10个字符,所以无法进行具体的排序了.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="数据目录">数据目录<a href="#数据目录" class="hash-link" aria-label="Direct link to 数据目录" title="Direct link to 数据目录">​</a></h3>
+<blockquote>
+<p>介绍: MySQL服务器程序在启动时会到文件系统的某个目录下加载一些文件,之后在运行过程中产生的数据也都会存储到这个目录下的某些文件中,这个目录就称为&#x27;数据目录&#x27;.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="innodb表空间">InnoDB表空间<a href="#innodb表空间" class="hash-link" aria-label="Direct link to InnoDB表空间" title="Direct link to InnoDB表空间">​</a></h3>
+<p>系统表空间(system tablespace): 存放表数据,可自动扩展,默认文件名为&#x27;ibdata1&#x27;,只有一份. 从MySQL5.5.7到MySQL5.6.6之间的各个版本中,我们表中的数据都会被默认存储到这里.</p>
+<p>独立表空间(file-per-table tablespace): MySQL5.6.6以及之后的版本默认使用这个.</p>
+<p>配置:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[server]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 0表示使用系统表空间. 1表示使用独立表空间</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innodb_file_per_table=0</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>语法:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># &#x27;=&#x27;号可有可无</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 已经存在系统表空间中的表转移到独立表空间</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ALTER TABLE 表名 TABLESPACE [=] innodb_file_per_table;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 已经存在独立表空间的表转移到系统表空间</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ALTER TABLE 表名 TABLESPACE [=] innodb_system;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>其他类型的表空间: 通用表空间(general tablespace)、undo表空间(undo tablespace)、临时表空间(temporary tablespace)等等...</p>
+<p>MyISAM存储表数据: 它和InnoDB不一样,索引都是二级索引,所以数据和索引是分开存储的,而且没有表空间的说法.</p>
+<p>每个表由三个文件组成:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">test.frm</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">test.MYD</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">test.MYI</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="系统数据库">系统数据库<a href="#系统数据库" class="hash-link" aria-label="Direct link to 系统数据库" title="Direct link to 系统数据库">​</a></h3>
+<ul>
+<li>
+<p>mysql: 存储了MySQL的用户账户和权限信息,一些存储过程、事件的定义信息,一些运行过程中产生的日志信息,一些帮助信息以及时区信息等</p>
+</li>
+<li>
+<p>information_schema: 保存着MySQL服务器维护的所有其他数据库的信息,比如有哪些表、哪些视图、哪些触发器、哪些列、哪些索引吧啦吧啦. 这些信息并不是真实的用户数据,而是一些描述性信息,有时候也称之为元数据</p>
+</li>
+<li>
+<p>performance_schema: 保存MySQL服务器运行过程中的一些状态信息,算是对MySQL服务器的一个性能监控.包括统计最近执行了哪些语句,在执行过程的每个阶段都花费了多长时间,内存的使用情况等等信息.</p>
+</li>
+<li>
+<p>sys: 主要是通过视图的形式把information_schema和performance_schema结合起来,让程序员可以更方便的了解MySQL服务器的一些性能信息.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="表空间里的区">表空间里的&#x27;区&#x27;<a href="#表空间里的区" class="hash-link" aria-label="Direct link to 表空间里的&#x27;区&#x27;" title="Direct link to 表空间里的&#x27;区&#x27;">​</a></h3>
+<blockquote>
+<p>说明: 为了方便管理,同一&#x27;表空间&#x27;中,对于16KB的页来说,连续的64个页就是一个&#x27;区&#x27;(英文名&#x27;extent&#x27;),也就是一个区默认占用1MB空间大小. 每256个区被划分成一组. 也就是说,最多一个&#x27;区&#x27;=1MB、一个&#x27;组&#x27;=256MB</p>
+</blockquote>
+<ul>
+<li>碎片区: 碎片区中的页可以用于不同的目的,比如有些页用于段A,有些页用于段B,有些页甚至哪个段都不属于.碎片区直属于表空间,并不属于任何一个段</li>
+</ul>
+<blockquote>
+<p>PS: 段是一些零散的页面以及一些完整的区的集合.</p>
+</blockquote>
+<p>区大体上可以分为4种类型: 空闲的区、有剩余空间的碎片区、没有剩余空间的碎片区、附属于某个段的区</p>
+<p>存放叶子节点的区的集合就算是一个段(segment),存放非叶子节点的区的集合也算是一个段</p>
+<blockquote>
+<p>PS: 区=64个页.</p>
+</blockquote>
+<p>每一个区都对应着一个XDES Entry结构,这个结构记录了对应的区的一些属性</p>
+<p>某个段分配存储空间的策略:</p>
+<ol>
+<li>
+<p>在刚开始向表中插入数据的时候,段是从某个碎片区以单个页面为单位来分配存储空间的.</p>
+</li>
+<li>
+<p>当某个段已经占用了32个碎片区页面之后(512KB),就会以完整的区为单位来分配存储空间.</p>
+</li>
+</ol>
+<p>区的四种状态:</p>
+<table><thead><tr><th>状态名</th><th>含义</th><th>技术细节</th></tr></thead><tbody><tr><td>FREE</td><td>空闲的区</td><td>- 位于表空间的FREE链表- 可分配给任何段或作为碎片区使用</td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
+<blockquote>
+<p>说明: 处于FREE、FREE_FRAG以及FULL_FRAG这三种状态的区都是独立的,算是直属于表空间;而处于FSEG状态的区是附属于某个段的.</p>
+</blockquote>
+<p>如果我们想定位表空间内的某一个位置的话,只需指定页号以及该位置在指定页号中的页内偏移量即可.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="xdes-entryextent-descriptor-entry">XDES Entry(Extent Descriptor Entry)<a href="#xdes-entryextent-descriptor-entry" class="hash-link" aria-label="Direct link to XDES Entry(Extent Descriptor Entry)" title="Direct link to XDES Entry(Extent Descriptor Entry)">​</a></h3>
+<blockquote>
+<p>为了方便管理这些各种状态的区,InnoDb设计了XDES Entry的结构,用来记录对应的区的一些属性.</p>
+</blockquote>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="xdes-entry结构">XDES Entry结构<a href="#xdes-entry结构" class="hash-link" aria-label="Direct link to XDES Entry结构" title="Direct link to XDES Entry结构">​</a></h4>
+<ul>
+<li>
+<p>Segment ID(8字节): 每一个段都有一个唯一的编号. 此处的SegmentID字段表示就是该区所在的段.当然前提是该区已经被分配给某个段了,不然的话该字段的值没啥意义</p>
+</li>
+<li>
+<p>List Node(12字节): 帮助XDES Entry组成一个链表. 包括: Pre Node Page Number、Pre Node Offset、Next Node Page Number、Next Node Offset</p>
+</li>
+<li>
+<p>State(4字节): 表名区状态. FREE(空闲)、FREE_FRAG(有剩余空间)、FULL_FRAG(没有剩余空间)和FSEG(附属于某个段的区).</p>
+</li>
+<li>
+<p>Page State Bitmap(16字节): 128个比特位,一个区默认64个页. 划分下就是2个比特位对应区中的一个页,第一个bit表示页是否空闲,第二个还没用.</p>
+</li>
+</ul>
+<p>为了解决各个段对应的XDES Entry链表数据分配不均匀问题:</p>
+<blockquote>
+<p>原因: 因为段中数据已经占满了32个零散的页后分配完整的区,但不能获取到段对应的区的链表. 所以每个段都有它独立的(区)链表,并且可以根据段号(也就是Segment ID) 来建立链表,只能有多少个段就建立多少个链表. 导致资源存在浪费(有的区是完全空闲的,有的区还有一些页面可以用,有的区已经没有空闲页面可以用了). 所以有必要细分,设计InnoDB的大叔们为每个段中的区对应的XDES Entry结构建立了三个链表(基节点信息在INODE Entry中). 每一个索引都对应两个段,每个段都会维护上述的3个链表: FREE链表、NOT_FULL链表、FULL链表</p>
+</blockquote>
+<blockquote>
+<p>假如一个表有两个索引,则有15个链表: 4个段*3个链表+直属于表空间的3个链表</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="list-base-node链表基节点结构">List Base Node(链表基节点结构)<a href="#list-base-node链表基节点结构" class="hash-link" aria-label="Direct link to List Base Node(链表基节点结构)" title="Direct link to List Base Node(链表基节点结构)">​</a></h3>
+<blockquote>
+<p>说明: 包含了(上面的)链表的头节点和尾节点的指针以及这个链表中包含了多少节点的信息. INODE Entry中根据它记录的信息来找各种区.</p>
+</blockquote>
+<p>结构:</p>
+<ul>
+<li>
+<p>List Length: 表明该链表一共有多少节点</p>
+</li>
+<li>
+<p>First Node Page Number和First Node Offset: 表明该链表的头节点在表空间中的位置(XDES Entry链表头节点的指针)</p>
+</li>
+<li>
+<p>Last Node Page Number和Last Node Offset: 表明该链表的尾节点在表空间中的位置(XDES Entry链表尾节点的指针)</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="链表小结">链表小结<a href="#链表小结" class="hash-link" aria-label="Direct link to 链表小结" title="Direct link to 链表小结">​</a></h3>
+<p>综上所述,表空间是由若干个区组成的,每个区都对应一个XDES Entry的结构,</p>
+<p>直属于表空间的区对应的XDES Entry结构可以分成FREE、FREE_FRAG和FULL_FRAG这3个链表;</p>
+<p>每个段可以附属若干个区,每个段中的区对应的XDES Entry结构可以分成FREE、NOT_FULL和FULL这3个链表.</p>
+<p>每个链表都对应一个List Base Node的结构,这个结构里记录了链表的头、尾节点的位置以及该链表中包含的节点数.</p>
+<p>正是因为这些链表的存在,管理这些区才变成了一件so easy的事情.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="inode-entry">INODE Entry<a href="#inode-entry" class="hash-link" aria-label="Direct link to INODE Entry" title="Direct link to INODE Entry">​</a></h3>
+<blockquote>
+<p>和每个区都有对应是XDES Entry来记录这个区中的属性一样,INODE Entry结构来记录段中的属性.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="inode-entry结构">INODE Entry结构<a href="#inode-entry结构" class="hash-link" aria-label="Direct link to INODE Entry结构" title="Direct link to INODE Entry结构">​</a></h3>
+<ul>
+<li>
+<p>Segment ID: INODE Entry结构对应的段的编号(ID).</p>
+</li>
+<li>
+<p>NOT_FULL_N_USED: 在NOT_FULL链表中已经使用了多少个页面.下次从NOT_FULL链表分配空闲页面时可以直接根据这个字段的值定位到. 而不用从链表中的第一个页面开始遍历着寻找空闲页面.</p>
+</li>
+<li>
+<p>3个List Base Node: 分别为段的FREE链表、NOT_FULL链表、FULL链表定义了List Base Node,这样我们想查找某个段的某个链表的头节点和尾节点的时候,就可以直接到这个部分找到对应链表的List Base Node.</p>
+</li>
+<li>
+<p>Magic Number: 这个值是用来标记这个INODE Entry是否已经被初始化了(初始化的意思就是把各个字段的值都填进去了).如果这个数字是值的97937874, 表明该INODE Entry已经初始化,否则没有被初始化.</p>
+</li>
+<li>
+<p>Fragment Array Entry: 段是一些零散页面和一些完整的区的集合,每个Fragment Array Entry结构都对应着一个零散的页面,这个结构一共4个字节, 表示一个零散页面的页号</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fil_page_type_fsp_hdr类型的页">FIL_PAGE_TYPE_FSP_HDR类型的页<a href="#fil_page_type_fsp_hdr类型的页" class="hash-link" aria-label="Direct link to FIL_PAGE_TYPE_FSP_HDR类型的页" title="Direct link to FIL_PAGE_TYPE_FSP_HDR类型的页">​</a></h3>
+<p>第一个组的第一个页面,也是表空间的第一个页面,页号为0. 存储了表空间的一些整体属性以及第一个组内256个区的对应的XDES Entry结构.</p>
+<p>结构:</p>
+<ul>
+<li>
+<p>File Header(38字节): 页的一些通用信息.</p>
+</li>
+<li>
+<p>File Space Header(112字节): 表空间的一些整体属性信息.</p>
+</li>
+<li>
+<p>XDES Entry(10240字节): 存储本组256个区对应的属性信息.</p>
+</li>
+<li>
+<p>Empty Space(5986字节): 用于页结构的填充,没啥实际意义.</p>
+</li>
+<li>
+<p>File Trailer(8字节): 校验页是否完整.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="file-space-header结构">File Space Header结构<a href="#file-space-header结构" class="hash-link" aria-label="Direct link to File Space Header结构" title="Direct link to File Space Header结构">​</a></h3>
+<table><thead><tr><th>字段名称</th><th>占用空间大小</th><th>描述</th></tr></thead><tbody><tr><td>Space ID</td><td>4字节</td><td>表空间的唯一标识ID</td></tr><tr><td>Not Used</td><td>4字节</td><td>保留未使用的空间（通常为0）</td></tr><tr><td>Size</td><td>4字节</td><td>当前表空间占用的总页数（以16KB为单位）</td></tr><tr><td>FREE Limit</td><td>4字节</td><td>未被初始化的最小页号（&gt;=此值的区未加入FREE链表）</td></tr><tr><td>Space Flags</td><td>4字节</td><td>表空间属性标志位（如压缩页大小、加密标志等）</td></tr><tr><td>FRAG_N_USED</td><td>4字节</td><td>FREE_FRAG链表中已使用的页面总数</td></tr><tr><td>List Base Node for FREE List</td><td>16字节</td><td>管理全部空闲区的链表基节点</td></tr><tr><td>List Base Node for FREE_FRAG List</td><td>16字节</td><td>管理部分空闲的碎片区链表基节点</td></tr><tr><td>List Base Node for FULL_FRAG List</td><td>16字节</td><td>管理无空闲的碎片区链表基节点</td></tr><tr><td>Next Unused Segment ID</td><td>8字节</td><td>下一个未使用的段ID（自增分配）</td></tr><tr><td>List Base Node for SEG_INODES_FULL List</td><td>16字节</td><td>管理已满的INODE页链表基节点</td></tr><tr><td>List Base Node for SEG_INODES_FREE List</td><td>16字节</td><td>管理空闲的INODE页链表基节点</td></tr></tbody></table>
+<ul>
+<li>
+<p>FREE Limit: 在该字段表示的页号之前的区都被初始化了,之后的区尚未被初始化.</p>
+</li>
+<li>
+<p>Next Unused Segment ID: 为了方便新建索引时选择&#x27;唯一Segment ID&#x27;.</p>
+</li>
+<li>
+<p>Space Flags: 4个字节,32个比特位,存了些表空间的属性. 不展开来了解,可以看<a href="https://juejin.im/book/5bffcbc9f265da614b11b731/section/5c061ac46fb9a049e66003f2" target="_blank" rel="noopener noreferrer">原文</a></p>
+</li>
+</ul>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/01/10/xabV9lKcYg3Qzkq.png" alt="截图" class="img_ev3q"></p>
+<p>List Base Node for SEG_INODES_FULL List和List Base Node for SEG_INODES_FREE List: 每个段对应的INODE</p>
+<p>Entry结构会集中存放到一个类型为INODE的页中,如果表空间中的段特别多,则会有多个INODE Entry结构,可能一个页放不下,这些INODE类型的页会组成两种列表:</p>
+<ol>
+<li>
+<p>SEG_INODES_FULL链表: 该链表中的INODE类型的页面都已经被INODE Entry结构填充满了,没空闲空间存放额外的INODE Entry了.</p>
+</li>
+<li>
+<p>SEG_INODES_FREE链表: 该链表中的INODE类型的页面仍有空闲空间来存放INODE Entry结构.</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>XDES Entry部分: 为什么只能存放256个,因为XDES Entry结构大小是40字节,但一个页面的大小有限,只能存放256个XDES Entry结构.</p>
+</li>
+<li>
+<p>FIL_PAGE_TYPE_XDES类型页: 除去第一个分组以外的每个分组的第一个页面的类型定义为&#x27;XDES&#x27;(简写). 全称&#x27;extent descriptor&#x27;,用来登记本组256个区的属性.</p>
+</li>
+</ul>
+<p>结构: 少了File Space Header,也就是除了少了记录表空间整体属性的部分之外,其余的部分是一样的.</p>
+<ul>
+<li>
+<p>FIL_PAGE_IBUF_BITMAP类型页: 每个分组的第二个页面的类型都是IBUF_BITMAP,这种类型的页里边记录了一些有关Change Buffer的东西.<a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-change-buffer.html" target="_blank" rel="noopener noreferrer">Change Buffer存根</a></p>
+</li>
+<li>
+<p>FIL_PAGE_INODE类型页: 第一个分组的第三个页面的类型是INODE. 每个索引定义了两个段,而且为某些特殊功能定义了些特殊的段. 为了方便管理,为每个段设计了一个INODE Entry结构,这个结构中记录了关于这个段的相关属性.这个INODE类型的页就是为了存储INODE Entry结构而存在的(在表空间的第一个&#x27;组&#x27;里).</p>
+</li>
+</ul>
+<p>结构:</p>
+<ul>
+<li>
+<p>File Header(38字节)</p>
+</li>
+<li>
+<p>List Node for INODE Page List(12字节): 存储上一个INODE页面和下一个INODE页面的指针</p>
+</li>
+<li>
+<p>INODE Entry(16320字节)</p>
+</li>
+<li>
+<p>Empty Space(6字节): 用于页结构的填充,没啥实际意义</p>
+</li>
+<li>
+<p>File Trailer(8字节)</p>
+</li>
+</ul>
+<p>介绍:</p>
+<ul>
+<li>
+<p>INODE Entry: 每个INODE Entry结构占用192字节,一个页面里可以存储85个这样的结构.</p>
+</li>
+<li>
+<p>List Node for INODE Page List: 因为一个表空间中可能存在超过85个段,所以可能一个INODE类型的页面不足以存储所有的段对应的INODE Entry结构,所以就需要额外的INODE类型的页面来存储这些结构.</p>
+</li>
+</ul>
+<blockquote>
+<p>其它: 它的基节点是存放在FSP_HDR页的File Space Header里的,也就是说基节点是固定的,方便.</p>
+</blockquote>
+<p>创建段(索引)时的INODE Entry分配也是有套流程的.</p>
+<p>Segment Header:</p>
+<blockquote>
+<p>段是一个逻辑上的概念. INODE Entry来记录段的属性.</p>
+</blockquote>
+<p>INDEX类型的页有一个Page Header中有PAGE_BTR_SEG_LEAF和PAGE_BTR_SEG_TOP两个字段,这里再介绍下:</p>
+<ul>
+<li>
+<p>PAGE_BTR_SEG_LEAF(10字节): B+树叶子段的头部信息. 仅在B+树的根页定义!!!</p>
+</li>
+<li>
+<p>PAGE_BTR_SEG_TOP(10字节): B+树非叶子段的头部信息. 仅在B+树的根页定义!!!</p>
+</li>
+</ul>
+<p>它们两个其实都对应着一个叫Segment Header的结构:</p>
+<ul>
+<li>
+<p>Space ID of the INODE Entry: INODE Entry结构所在的表空间ID</p>
+</li>
+<li>
+<p>Page Number of the INODE Entry: INODE Entry结构所在的页面页号</p>
+</li>
+<li>
+<p>Byte Offset of the INODE Entry: INODE Entry结构在该页面中的偏移量</p>
+</li>
+</ul>
+<p>PAGE_BTR_SEG_LEAF记录着叶子节点段对应的INODE Entry结构的地址是哪个表空间的哪个页面的哪个偏移量,PAGE_BTR_SEG_TOP记录着非叶子节点段对应的INODE Entry结构的地址是哪个表空间的哪个页面的哪个偏移量. 这样子索引和其(段)对应的关系就建立起来了. 还有一点就是因为一个索引值对应两个段,所以只需要在索引的根页面中记录着两个结构.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="系统表空间">系统表空间<a href="#系统表空间" class="hash-link" aria-label="Direct link to 系统表空间" title="Direct link to 系统表空间">​</a></h3>
+<p>表空间 ID(Space ID)是0.</p>
+<p>系统表空间与独立表空间的一个非常明显的不同之处就是在表空间开头有许多记录整个系统属性的页面.</p>
+<p>系统表空间和独立表空间的第1个区的前三个页面的类型都是一致的,其它不同的页面如下:</p>
+<table><thead><tr><th>页号</th><th>页面类型</th><th>英文描述</th><th>描述</th></tr></thead><tbody><tr><td>0</td><td>FSP_HDR</td><td>File Space Header</td><td>表空间头部信息（管理extents和segments）</td></tr><tr><td>1</td><td>IBUF_BITMAP</td><td>Insert Buffer Bitmap</td><td>Insert Buffer的位图页</td></tr><tr><td>2</td><td>INODE</td><td>Index Node</td><td>段信息节点页</td></tr><tr><td>3</td><td>SYS</td><td>Insert Buffer Header</td><td>Insert Buffer的头部信息（包含缓冲区的控制结构）</td></tr><tr><td>4</td><td>INDEX</td><td>Insert Buffer Root</td><td>Insert Buffer的B+树根页（存储实际缓冲变更）</td></tr><tr><td>5</td><td>TRX_SYS</td><td>Transaction System</td><td>事务系统数据（含事务ID计数器、回滚段指针等）</td></tr><tr><td>6</td><td>SYS</td><td>First Rollback Segment</td><td>系统回滚段头页（预分配的第0号回滚段）</td></tr><tr><td>7</td><td>SYS</td><td>Data Dictionary Header</td><td>数据字典头部信息（含InnoDB元数据索引根页号）</td></tr></tbody></table>
+<p>系统表空间的extent 1和extent 2这两个区,也就是页号从64~191这128个页面被称为Doublewrite buffer,也就是双写缓冲区. <a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-doublewrite-buffer.html" target="_blank" rel="noopener noreferrer">Doublewrite Buffer存根</a></p>
+<p>4个特殊表分别为: SYS_TABLES、SYS_COLUMNS、SYS_INDEXES、SYS_FIELDS. 它们记录了所有表的表信息(包括它们自己).</p>
+<p>页号为7的页面,类型为SYS,记录了Data Dictionary Header,也就是数据字典的头部信息. 它记录了4个特殊表(表示表的表)的聚簇索引和二级索引对应的B+树位置. 除了这4个表的5个索引的根页面信息外,这个页号为7的页面还记录了整个InnoDB存储引擎的一些全局属性:</p>
+<p>Data Dictionary Header页的Data Dictionary Header字段的信息:</p>
+<ul>
+<li>
+<p>Max Row ID: 记录下一次DB_ROW_ID(InnoDB为我们在没ID Key、UNIQUE索引的情况下自动创建的列)的值. 全局共享、自增.</p>
+</li>
+<li>
+<p>Max Table ID: 所有表都对应一个ID.</p>
+</li>
+<li>
+<p>Max Index ID: 所有索引都对应一个ID.</p>
+</li>
+<li>
+<p>Max Space ID: 所有表空间都对应一个ID.</p>
+</li>
+<li>
+<p>Root of SYS_TABLES clust index: SYS_TABLES表聚簇索引的根页面的页号</p>
+</li>
+<li>
+<p>Root of SYS_TABLE_IDS sec index: SYS_TABLES表为ID列建立的二级索引的根页面的页号</p>
+</li>
+<li>
+<p>Root of SYS_COLUMNS clust index: SYS_COLUMNS表聚簇索引的根页面的页号</p>
+</li>
+<li>
+<p>Root of SYS_INDEXES clust index: SYS_INDEXES表聚簇索引的根页面的页号</p>
+</li>
+<li>
+<p>Root of SYS_FIELDS clust index: SYS_FIELDS表聚簇索引的根页面的页号</p>
+</li>
+</ul>
+<blockquote>
+<p>注意: 在information_schema数据库中的这些以INNODB_SYS开头的表并不是真正的内部系统表(内部系统表就是我们上边唠叨的以SYS开头的那些表),而是在存储引擎启动时读取这些以SYS开头的系统表,然后填充到这些以INNODB_SYS开头的表中.以INNODB_SYS开头的表和以SYS开头的表中的字段并不完全一样.</p>
+</blockquote>
+<p>单表访问方法</p>
+<p>Block Nested-Loop Join(基于块的嵌套连接)算法: 就是执行连接查询前申请的一块固定大小的内存(join buffer),先把若干条驱动表结果集中的记录装在这个join buffer中,然后开始扫描被驱动表,每一条被驱动表的记录一次性和join buffer中的多条驱动表记录做匹配. 这样就可以避免被驱动表的O(N^2)次查询了.</p>
+<p>设置: join_buffer_size(默认为262144byte,也就是256KB).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="基于成本的优化">基于成本的优化<a href="#基于成本的优化" class="hash-link" aria-label="Direct link to 基于成本的优化" title="Direct link to 基于成本的优化">​</a></h3>
+<ul>
+<li>
+<p>组成:</p>
+</li>
+<li>
+<p>读取一个页面: 1.0</p>
+</li>
+<li>
+<p>读取以及检测一条记录是否符合条件: 0.2</p>
+</li>
+</ul>
+<p>MySQL为每个表维护了一系列的统计信息: 聚簇索引占用的页面数、该表中的记录数</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="计算索引的成本">计算索引的成本<a href="#计算索引的成本" class="hash-link" aria-label="Direct link to 计算索引的成本" title="Direct link to 计算索引的成本">​</a></h3>
+<ul>
+<li>
+<p>I/O成本: 回表</p>
+</li>
+<li>
+<p>CPU成本: 读取二级索引记录的成本 + 读取并检测回表后聚簇索引记录的成本(检测除二级索引条件外的搜索条件)</p>
+</li>
+</ul>
+<p>MySQL把通过直接访问索引对应的B+树来计算某个范围区间对应的索引记录条数的方式称之为index dive</p>
+<p>像会为每个表维护一份统计数据一样,MYSQL也会为表中的每一个索引维护一份统计数据:</p>
+<table><thead><tr><th>属性名</th><th>描述</th></tr></thead><tbody><tr><td>Table</td><td>索引所属表的名称（与information_schema.TABLES表关联）</td></tr><tr><td>Non_unique</td><td>是否非唯一索引：0=唯一索引（聚簇索引/唯一二级索引、1=普通索引</td></tr><tr><td>Key_name</td><td>索引名称：- PRIMARY=聚簇索引idx_*=二级索引</td></tr><tr><td>Seq_in_index</td><td>索引列位置序号（从1开始，联合索引按定义顺序排列）</td></tr><tr><td>Column_name</td><td>索引列名称（可包含函数索引的表达式）</td></tr><tr><td>Collation</td><td>排序规则：A=ASC升序 D=DESC降序NULL=无排序</td></tr><tr><td>Cardinality</td><td>基数（不重复值的估计数，通过ANALYZE TABLE更新）</td></tr><tr><td>Sub_part</td><td>前缀索引长度（如为name(10)表示前10字符）NULL=全列索引</td></tr><tr><td>Packed</td><td>压缩算法（通常为NULL，表示未压缩）</td></tr><tr><td>Null</td><td>是否允许NULL：YES=允许 &#x27;&#x27;=不允许</td></tr><tr><td>Index_type</td><td>索引类型：BTREE=B+树（默认）&gt;FULLTEXT=全文HASH=内存哈希</td></tr><tr><td>Comment</td><td>列注释（创建表时定义）</td></tr><tr><td>Index_comment</td><td>索引注释（通过COMMENT子句定义）</td></tr></tbody></table>
+<p>IN语句中的参数个数大于或等于系统变量eq_range_index_dive_limit的值的话,就不会使用index dive的方式计算各个单点区间对应的索引记录条数,而是使用索引统计数据,这里所指的索引统计数据指的是这两个值:</p>
+<ol>
+<li>
+<p>使用SHOW TABLE STATUS展示出的Rows值,也就是一个表中有多少条记录.</p>
+</li>
+<li>
+<p>使用SHOW INDEX语句展示出的&#x27;Cardinality&#x27;属性.</p>
+</li>
+</ol>
+<p>计算一个值重复次数: <code>一个值的重复次数 ≈ Rows ÷ Cardinality</code></p>
+<p>假设这个值为10(条),再带入<code>SELECT * FROM single_table WHERE key1 IN(&#x27;aa1&#x27;,&#x27;aa2&#x27;,&#x27;aa3&#x27;,......,&#x27;zzz&#x27;)</code>. 假设IN语句中有2w个参数的话,就直接使用统计数据来估算这些参数需要单点区间对应的记录条数了,每个参数大约对应10条记录,所以总共需要回表的记录数: <code>2w * 10 = 20w</code></p>
+<p>MYSQL在进行两表连接成本分析时的连接顺序并不一定会按照执行的SQL连接顺序一样进行分析,而是同时会将驱动表、被驱动表交叉分析.</p>
+<p>如果原本的被驱动表作为驱动表时的总执行成本更少的话,则可能它会作为驱动表,另一个作为被驱动表.</p>
+<p>连接成本计算: <code>连接查询总成本 = 单次访问驱动表的成本 + 驱动表扇出数 x 单次访问被驱动表的成本</code></p>
+<p>优化重点: 尽量减少驱动表的扇出、对被驱动表的访问成本尽量低.</p>
+<p>建议: 尽量在被驱动表的连接列上建立索引,这样就可以使用ref访问方法来降低访问被驱动表的成本了.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="server层的一些操作对应的成本常数">server层的一些操作对应的&#x27;成本常数&#x27;<a href="#server层的一些操作对应的成本常数" class="hash-link" aria-label="Direct link to server层的一些操作对应的&#x27;成本常数&#x27;" title="Direct link to server层的一些操作对应的&#x27;成本常数&#x27;">​</a></h3>
+<table><thead><tr><th>常数名称</th><th>默认值</th><th>描述</th></tr></thead><tbody><tr><td>disk_temptable_create_cost</td><td>40.0</td><td>创建磁盘临时表的固定成本（增大可减少磁盘临时表使用）</td></tr><tr><td>disk_temptable_row_cost</td><td>1.0</td><td>磁盘临时表每行读写成本（增大可减少磁盘临时表使用）</td></tr><tr><td>key_compare_cost</td><td>0.1</td><td>记录比较成本（影响排序操作，增大会使优化器优先使用索引排序）</td></tr><tr><td>memory_temptable_create_cost</td><td>2.0</td><td>创建内存临时表的固定成本（增大可减少内存临时表使用）</td></tr><tr><td>memory_temptable_row_cost</td><td>0.2</td><td>内存临时表每行读写成本（增大可减少内存临时表使用）</td></tr><tr><td>row_evaluate_cost</td><td>0.2</td><td>检查记录是否符合搜索条件的成本（增大使优化器更倾向使用索引）</td></tr></tbody></table>
+<p>说明:</p>
+<p>MySQL在执行诸如DISTINCT查询、分组查询、Union查询以及某些特殊条件下的排序查询都可能在内部先创建一个临时表,使用这个临时表来辅助完成查询(比如对于DISTINCT查询可以建一个带有UNIQUE索引的临时表,直接把需要去重的记录插入到这个临时表中,插入完成之后的记录就是结果集了).在数据量大的情况下可能创建基于磁盘的临时表,也就是为该临时表使用MyISAM、InnoDB等存储引擎,在数据量不大时可能创建基于内存的临时表,也就是使用Memory存储引擎. 创建临时表和对这个临时表进行写入和读取的操作代价挺高.</p>
+<p>更新server端某个成本常数值:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">-- cost_value=NULL表示用默认值</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">UPDATE mysql.server_cost SET cost_value = 0.4 WHERE cost_name = &#x27;row_evaluate_cost&#x27;;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">FLUSH OPTIMIZER_COSTS;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>engine层比server层多两列:</p>
+<ul>
+<li>
+<p>engine_name: 成本常数适用的存储引擎名称.如果该值为default,意味着对应的成本常数适用于所有的存储引擎</p>
+</li>
+<li>
+<p>device_type: 存储引擎使用的设备类型,这主要是为了区分常规的机械硬盘和固态硬盘. &#x27;MySQL 5.7.21&#x27;没有对其作区分,默认为0.</p>
+</li>
+</ul>
+<table><thead><tr><th>成本常数名称</th><th>默认值</th><th>描述</th></tr></thead><tbody><tr><td>io_block_read_cost</td><td>1.0</td><td>从磁盘读取一个数据块的成本• InnoDB: 1块=1页(16KB) • MyISAM: 1块=4096字节增大此值会使优化器更倾向使用索引</td></tr><tr><td>memory_block_read_cost</td><td>1.0</td><td>从内存读取一个数据块的成本• 与磁盘读取使用相同块大小定义 影响内存临时表和缓冲池的访问成本计算</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="innodb_table_stats表各列">innodb_table_stats表各列<a href="#innodb_table_stats表各列" class="hash-link" aria-label="Direct link to innodb_table_stats表各列" title="Direct link to innodb_table_stats表各列">​</a></h3>
+<table><thead><tr><th>字段名</th><th>描述</th></tr></thead><tbody><tr><td>database_name</td><td>数据库名（与information_schema.SCHEMATA关联）</td></tr><tr><td>table_name</td><td>表名（与information_schema.TABLES关联）</td></tr><tr><td>last_update</td><td>统计信息最后更新时间（格式：YYYY-MM-DD HH:MM<!-- -->:SS<!-- -->）</td></tr><tr><td>n_rows</td><td>表行数估计值（基于随机采样，非精确值）</td></tr><tr><td>clustered_index_size</td><td>聚簇索引占用的16KB页数（InnoDB表=整个表的物理大小）</td></tr><tr><td>sum_of_other_index_sizes</td><td>所有二级索引占用的16KB页数总和</td></tr></tbody></table>
+<p>n_rows统计规则: 按照一定算法(并不是纯粹随机的)选取几个叶子节点页面,计算每个页面中主键值记录数量,然后计算平均一个页面中主键值的记录数量乘以全部叶子节点的数量就算是该表的n_rows值.</p>
+<blockquote>
+<p>说明: &#x27;innodb_stats_persistent_sample_pages&#x27;是用来控制使用永久性的统计数据时,计算统计数据时的采样的页面数量(越大越精确,越耗时. 默认20). 可以通过创建表时指定&#x27;STATS_SAMPLE_PAGES&#x27;属性来指明.</p>
+</blockquote>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">CREATE TABLE 表名 (...) Engine=InnoDB, STATS_SAMPLE_PAGES = 具体的采样页面数量;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">OR</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ALTER TABLE 表名 Engine=InnoDB, STATS_SAMPLE_PAGES = 具体的采样页面数量;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="innodb_index_stats表各列">innodb_index_stats表各列<a href="#innodb_index_stats表各列" class="hash-link" aria-label="Direct link to innodb_index_stats表各列" title="Direct link to innodb_index_stats表各列">​</a></h3>
+<table><thead><tr><th>字段名</th><th>描述</th></tr></thead><tbody><tr><td>database_name</td><td>索引所属的数据库名称</td></tr><tr><td>table_name</td><td>索引所属的表名称</td></tr><tr><td>index_name</td><td>索引名称（PRIMARY=聚簇索引，idx_*=二级索引）</td></tr><tr><td>last_update</td><td>统计信息最后更新时间（YYYY-MM-DD HH:MM<!-- -->:SS<!-- -->格式）</td></tr><tr><td>stat_name</td><td>统计项名称（n_diff_pfxNN=基数统计，n_leaf_pages=叶子页数等）</td></tr><tr><td>stat_value</td><td>统计项数值（根据stat_name不同有不同含义）</td></tr><tr><td>sample_size</td><td>采样页面数（由innodb_stats_persistent_sample_pages控制）</td></tr><tr><td>stat_description</td><td>统计项说明（如n_diff_pfx01表示第一列的基数）</td></tr></tbody></table>
+<ul>
+<li>
+<p>stat_name:</p>
+</li>
+<li>
+<p>n_leaf_pages: 表示该索引的叶子节点占用多少页面.</p>
+</li>
+<li>
+<p>size: 表示该索引共占用多少页面.</p>
+</li>
+<li>
+<p>n_diff_pfxNN: 表示对应的索引列不重复的值有多少.</p>
+</li>
+</ul>
+<p>说明: &#x27;n_diff_pfxNN&#x27;中的&#x27;NN&#x27;是可被替换为01、02、03的数字.</p>
+<p>拿idx_key_part来说,具体含义:</p>
+<ul>
+<li>
+<p>n_diff_pfx01表示的是统计key_part1这单单一个列不重复的值有多少.</p>
+</li>
+<li>
+<p>n_diff_pfx02表示的是统计key_part1、key_part2这两个列组合起来不重复的值有多少.</p>
+</li>
+<li>
+<p>n_diff_pfx03表示的是统计key_part1、key_part2、key_part3这三个列组合起来不重复的值有多少.</p>
+</li>
+<li>
+<p>n_diff_pfx04表示的是统计key_part1、key_part2、key_part3、id这四个列组合起来不重复的值有多少(注意下这个).</p>
+</li>
+</ul>
+<p>注意: 像idx_key2这种本就是唯一索引来说,它只有n_diff_pfx01一个统计项.</p>
+<ul>
+<li>sample_size: 在计算某些索引列中包含多少不重复值时,需要对一些叶子节点页面进行采样,sample_size列就表明了采样的页面数量是多少.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="定期更新统计数据">定期更新统计数据<a href="#定期更新统计数据" class="hash-link" aria-label="Direct link to 定期更新统计数据" title="Direct link to 定期更新统计数据">​</a></h3>
+<ul>
+<li>
+<p>开启innodb_stats_auto_recalc(默认ON): 当表发生变动的记录数量超过了表大小的10%,则会异步重新计算、统计数据.</p>
+</li>
+<li>
+<p>手动调用ANALYZE TABLE语句来更新统计信息(同步的):</p>
+</li>
+</ul>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ANALYZE TABLE single_table;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<ul>
+<li>还有一点就是&#x27;innodb_index_stats&#x27;、&#x27;innodb_table_stats&#x27;两个表都是普通表,可以自己手动改数据的.</li>
+</ul>
+<p>索引列不重复值的数量&#x27;这个统计数据对于MySQL查询优化器十分重要,因为通过它可以计算出索引列中平均一个值重复多少行,它的应用场景主要有两个:</p>
+<ol>
+<li>单表查询中单点区间太多,比如: <code>SELECT * FROM tbl_name WHERE key IN (&#x27;xx1&#x27;, &#x27;xx2&#x27;, ..., &#x27;xxn&#x27;);</code></li>
+</ol>
+<p>当<code>IN</code>里的参数数量过多时,采用&#x27;index dive&#x27;的方式直接访问B+树索引去统计每个单点区间对应的记录的数量就太耗费性能了,</p>
+<p>所以直接依赖统计数据中的平均一个值重复多少行来计算单点区间对应的记录数量.</p>
+<ol start="2">
+<li>连接查询时,如果有涉及两个表的等值匹配连接条件,该连接条件对应的被驱动表中的列又拥有索引时,则可以使用ref访问方法来对被驱动表进行查询,比如:</li>
+</ol>
+<p><code>SELECT * FROM t1 JOIN t2 ON t1.column = t2.key WHERE ...;</code></p>
+<p>在真正执行对t2表的查询前,t1.comumn的值是不确定的,所以我们也不能通过index dive的方式直接访问B+树索引去统计每个单点区间对应的记录的数量,</p>
+<p>所以也只能依赖统计数据中的平均一个值重复多少行来计算单点区间对应的记录数量.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="innodb_stats_method">innodb_stats_method<a href="#innodb_stats_method" class="hash-link" aria-label="Direct link to innodb_stats_method" title="Direct link to innodb_stats_method">​</a></h3>
+<p>介绍: 用于在计算某个索引列不重复值的数量时如何对待NULL值.</p>
+<ul>
+<li>nulls_equal:认为所有NULL值都是相等的.这个值也是innodb_stats_method的默认值.</li>
+</ul>
+<blockquote>
+<p>说明: 如果某个索引列中NULL值特别多的话,这种统计方式会让优化器认为某个列中平均一个值重复次数特别多,所以倾向于不使用索引进行访问(成本太高).</p>
+</blockquote>
+<ul>
+<li>nulls_unequal:认为所有NULL值都是不相等的.</li>
+</ul>
+<blockquote>
+<p>说明: 与上面相反.</p>
+</blockquote>
+<ul>
+<li>nulls_ignored:直接把NULL值忽略掉.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="基于规则的优化">基于规则的优化<a href="#基于规则的优化" class="hash-link" aria-label="Direct link to 基于规则的优化" title="Direct link to 基于规则的优化">​</a></h3>
+<p>在外连接查询中,指定的WHERE子句中包含被驱动表中的列不为NULL值的条件称之为空值拒绝(英文名<!-- -->:reject-NULL<!-- -->).</p>
+<p>子查询:</p>
+<p>说明: MySQL把由子查询结果集组成的表称之为派生表.</p>
+<ul>
+<li>
+<p>标量子查询: 只返回一个单一值的子查询. <code>SELECT (SELECT m1 FROM t1 LIMIT 1);</code></p>
+</li>
+<li>
+<p>行子查询: 返回一条记录的子查询(需要包含多个列,只包含一个列就成了标量子查询). <code>- SELECT * FROM t1 WHERE (m1, n1) = (SELECT m2, n2 FROM t2 LIMIT 1);</code></p>
+</li>
+</ul>
+<p>列子查询: 查询出一个列,不过这个列的数据需要包含多条记录(只包含那一条记录就成了标量子查询). <code>SELECT * FROM t1 WHERE m1 IN (SELECT m2 FROM t2);</code></p>
+<ul>
+<li>表子查询: 查询结果既包含很多条记录,又包含很多个列. <code>SELECT * FROM t1 WHERE (m1, n1) IN (SELECT m2, n2 FROM t2);</code></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="in子查询的优化"><code>IN</code>子查询的优化:<a href="#in子查询的优化" class="hash-link" aria-label="Direct link to in子查询的优化" title="Direct link to in子查询的优化">​</a></h4>
+<p><code>IN</code>子查询带来的问题:</p>
+<ul>
+<li>
+<p>结果集太多,内存可能装不下.</p>
+</li>
+<li>
+<p>对于外层查询来说,如果子查询的结果集太多,那就意味着IN子句中的参数特别多,这就导致:</p>
+</li>
+<li>
+<p>无法有效的使用索引,只能对外层查询进行全表扫描.</p>
+</li>
+<li>
+<p>在对外层查询执行全表扫描时,由于IN子句中的参数太多,这会导致检测一条记录是否符合和IN子句中的参数匹配花费的时间太长.</p>
+</li>
+</ul>
+<p>解决方案: 不直接将不相关子查询的结果集当作外层查询的参数,而是将该结果集写入一个临时表里.</p>
+<ul>
+<li>
+<p>该临时表的列就是子查询结果集中的列.</p>
+</li>
+<li>
+<p>写入临时表的记录会被去重.</p>
+</li>
+<li>
+<p>一般情况下子查询结果集不会大的离谱,所以会为它建立基于内存的使用Memory存储引擎的临时表,而且会为该表建立哈希索引.</p>
+</li>
+</ul>
+<p>其它说明:</p>
+<p><code>tmp_table_size</code>和<code>max_heap_table_size</code>用于配置存放子查询结果集临时表的内存大小,默认值16777216Byte(一个页的大小). 一旦超过了这个大小就会转而使用基于磁盘的存储引擎来保存结果集中的记录,索引类型也会由哈希索引转变为B+数索引.</p>
+<p>MySQL对IN类型的子查询优化会将其转变为内连接,关联的表(此时不能说是被驱动方)为那个IN返回的临时表.</p>
+<p>SQL: <code>SELECT * FROM s1 WHERE key1 IN (SELECT common_field FROM s2 WHERE key3 = &#x27;a&#x27;);</code></p>
+<p>转换后: <code>SELECT s1.* FROM s1 INNER JOIN materialized_table ON key1 = m_val;</code></p>
+<p>说明: <code>materialized_table</code>为假设的临时表,<code>m_val</code>为假设<code>materialized_table</code>表中对应之前的<code>common_field</code>字段.</p>
+<ul>
+<li>
+<p>内连接成本组合:</p>
+</li>
+<li>
+<p>s1表作为驱动表时:</p>
+</li>
+<li>
+<p>物化子查询时需要的成本</p>
+</li>
+<li>
+<p>扫描s1表时的成本</p>
+</li>
+<li>
+<p><code>s1表中的记录数量 × 通过m_val = xxx对materialized_table表进行单表访问的成本</code>(我们前边说过物化表中的记录是不重复的,并且为物化表中的列建立了索引,所以这个步骤显然是非常快的)</p>
+</li>
+<li>
+<p>materialized_table作为驱动表时:</p>
+</li>
+<li>
+<p>物化子查询时需要的成本</p>
+</li>
+<li>
+<p>扫描物化表时的成本</p>
+</li>
+<li>
+<p>`物化表中的记录数量 × 通过key1 = xxx对s1表进行单表访问的成本(key1列上建立了索引,所以这个步骤非常快)</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="将子查询转换为semi-join">将子查询转换为semi-join<a href="#将子查询转换为semi-join" class="hash-link" aria-label="Direct link to 将子查询转换为semi-join" title="Direct link to 将子查询转换为semi-join">​</a></h3>
+<p>示例SQL: <code>SELECT * FROM s1 WHERE key1 IN (SELECT common_field FROM s2 WHERE key3 = &#x27;a&#x27;);</code></p>
+<p>模拟内连接: <code>SELECT s1.* FROM s1 INNER JOIN s2 ON s1.key1 = s2.common_field WHERE s2.key3 = &#x27;a&#x27;;</code></p>
+<p>semi-join: <code>SELECT s1.* FROM s1 SEMI JOIN s2 ON s1.key1 = s2.common_field WHERE key3 = &#x27;a&#x27;;</code></p>
+<p>目的: 不进行物化操作直接把子查询转换未连接查询.</p>
+<p>说明: 将s1表和s2表进行半连接的意思就是...对于s1表的某条记录来说,我们只关心在s2表中是否存在与之匹配的记录是否存在,而不关心具体有多少条记录与之匹配,最终的结果集中只保留s1表的记录.</p>
+<p>具体实现:</p>
+<ul>
+<li>
+<p>Table pullout(子查询中的表上拉): 子查询的查询列表处只有主键或者唯一索引列时,可以直接把子查询中的表上拉到外层查询的FROM子句中, 并把子查询中的搜索条件合并到外层查询的搜索条件中.</p>
+</li>
+<li>
+<p>DuplicateWeedout execution strategy(重复值消除): 将子查询转换为半连接查询后,s1表中的某条记录可能在s2表中有多条匹配的记录, 所以该条记录可能多次被添加到最后的结果集中,为了消除重复,我们可以建立一个临时表,每当某条s1表中的记录要加入结果集时,就首先把这条记录的id值加入到这个临时表里,如果添加成功,说明之前这条s1表中的记录并没有加入最终的结果集,现在把该记录添加到最终的结果集;如果添加失败,说明之前这条s1表中的记录已经加入过最终的结果集,这里直接把它丢弃就好了.</p>
+</li>
+<li>
+<p>LooseScan execution strategy(松散扫描):</p>
+</li>
+</ul>
+<p>示例SQL: <code>SELECT * FROM s1 WHERE key3 IN (SELECT key1 FROM s2 WHERE key1 &gt; &#x27;a&#x27; AND key1 &lt; &#x27;b&#x27;);</code></p>
+<p>说明: 在子查询中,对于s2表的访问可以使用到key1列的索引,而恰好子查询的查询列表处就是key1列,这样在将该查询转换为半连接查询后,如果将s2作为驱动表执行查询的话,那么s2的结果集:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| key1 |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| aa |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| aa |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| aa |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| ab |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| ab |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| ac |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| ac |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">| ac |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">+------+</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>只需要取第一条不重复的值到s1表中查找s1.key3 = &#x27;aa&#x27;的记录,如果能在s1表中找到对应的记录,那么就把对应的记录加入到结果集.</p>
+<p>依此类推,其他值相同的二级索引记录,也只需要取第一条记录的值到s1表中找匹配的记录,这种虽然是扫描索引,但只取值相同的记录的第一条去做匹配操作的方式称之为松散扫描.</p>
+<ul>
+<li>
+<p>Semi-join Materialization execution strategy(物化连接): 上面讲的物化表的连接本质上也算是一种semi-join.</p>
+</li>
+<li>
+<p>FirstMatch execution strategy(首次匹配): 先取一条外层查询的中的记录,然后到子查询的表中寻找符合匹配条件的记录,如果能找到一条,则将该外层查询的记录放入最终的结果集并且停止查找更多匹配的记录,如果找不到则把该外层查询的记录丢弃掉;然后再开始取下一条外层查询中的记录,重复上边这个过程.</p>
+</li>
+</ul>
+<p>适用条件:</p>
+<ul>
+<li>
+<p>该子查询必须是和IN语句组成的布尔表达式,并且在外层查询的WHERE或者ON子句中出现.</p>
+</li>
+<li>
+<p>外层查询也可以有其他的搜索条件,只不过和IN子查询的搜索条件必须使用AND连接起来.</p>
+</li>
+<li>
+<p>该子查询必须是一个单一的查询,不能是由若干查询由UNION连接起来的形式.</p>
+</li>
+<li>
+<p>该子查询不能包含GROUP BY或者HAVING语句或者聚集函数.</p>
+</li>
+</ul>
+<p>其它优化: 虽然上面写了很多不适用于semi-join优化的场景,但是MySQL还是有些其它手段来想办法将其优化.</p>
+<p>对于不相关子查询来说,可以尝试把它们物化之后再参与查询.</p>
+<blockquote>
+<p>SQL: <code>SELECT * FROM s1 WHERE key1 NOT IN (SELECT common_field FROM s2 WHERE key3 = &#x27;a&#x27;);</code></p>
+</blockquote>
+<blockquote>
+<p>说明: 先将子查询物化,然后再判断key1是否在物化表的结果集中可以加快查询执行的速度.</p>
+</blockquote>
+<p>不管子查询是相关的还是不相关的,都可以把IN子查询尝试转为EXISTS子查询,其实对于任意一个IN子查询来说,都可以被转为EXISTS子查询.</p>
+<blockquote>
+<p>通用例子: <code>outer_expr IN (SELECT inner_expr FROM ... WHERE subquery_where);</code></p>
+</blockquote>
+<blockquote>
+<p>转换结果: <code>EXISTS (SELECT inner_expr FROM ... WHERE subquery_where AND outer_expr=inner_expr);</code></p>
+</blockquote>
+<blockquote>
+<p>例子:</p>
+</blockquote>
+<blockquote>
+<p>转换前: <code>SELECT * FROM s1 WHERE key1 IN (SELECT key3 FROM s2 where s1.common_field = s2.common_field) OR key2 &gt; 1000;</code></p>
+</blockquote>
+<blockquote>
+<p>转换后: <code>SELECT * FROM s1 WHERE EXISTS (SELECT 1 FROM s2 where s1.common_field = s2.common_field AND s2.key3 = s1.key1)</code></p>
+</blockquote>
+<p><code>OR key2 &gt; 1000;</code></p>
+<p>注意(显得有点多余了):</p>
+<ol>
+<li>
+<p>相关子查询并不是一个独立的查询不能转换为物化表来执行查询.</p>
+</li>
+<li>
+<p>如果IN子查询不满足转换为semi-join的条件,又不能转换为物化表或者转换为物化表的成本太大,那么它就会被转换为EXISTS查询.</p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="explain查看执行计划是在server层的功能">EXPLAIN查看执行计划(是在server层的功能)<a href="#explain查看执行计划是在server层的功能" class="hash-link" aria-label="Direct link to EXPLAIN查看执行计划(是在server层的功能)" title="Direct link to EXPLAIN查看执行计划(是在server层的功能)">​</a></h3>
+<p>select_type: 查询的类型. 在包含小查询的查询中,如果我们知道了这个属性,就知道了这这个小查询在整个大查询中扮演了什么角色.</p>
+<p>类型:</p>
+<table><thead><tr><th>类型名称</th><th>描述</th></tr></thead><tbody><tr><td>SIMPLE</td><td>简单查询（不包含UNION或子查询）</td></tr><tr><td>PRIMARY</td><td>主查询（包含UNION/子查询时最外层的第一个查询）</td></tr><tr><td>UNION</td><td>UNION操作中第一个之后的查询</td></tr><tr><td>UNION RESULT</td><td>UNION结果的去重临时表查询</td></tr><tr><td>SUBQUERY</td><td>被物化的独立子查询（仅执行一次）</td></tr><tr><td>DEPENDENT SUBQUERY</td><td>相关子查询（对外层有依赖，每行执行一次）</td></tr><tr><td>DEPENDENT UNION</td><td>UNION中依赖外层查询的非第一个查询</td></tr><tr><td>DERIVED</td><td>被物化的派生表（FROM子句中的子查询）</td></tr><tr><td>MATERIALIZED</td><td>被优化器物化的子查询（通常用于IN/NOT IN子查询）</td></tr><tr><td>UNCACHEABLE SUBQUERY</td><td>结果不可缓存的子查询（每行重新计算）</td></tr><tr><td>UNCACHEABLE UNION</td><td>属于不可缓存子查询的UNION中的第二个及以后的查询</td></tr></tbody></table>
+<p>补充:</p>
+<p>SUBQUERY示例SQL: <code>EXPLAIN SELECT * FROM s1 WHERE key1 IN (SELECT key1 FROM s2) OR key3 = &#x27;a&#x27;;</code></p>
+<ul>
+<li>
+<p>type:</p>
+</li>
+<li>
+<p>unique_subquery: 类似于两表连接中被驱动表的eq_ref访问方法,unique_subquery是针对在一些包含IN子查询的查询语句中,=如果查询优化器决定将IN子查询转换为EXISTS子查询,而且子查询可以使用到主键进行等值匹配的话,那么该子查询执行计划的type列的值就是unique_subquery.</p>
+</li>
+</ul>
+<blockquote>
+<p>示例SQL: <code>EXPLAIN SELECT * FROM s1 WHERE key2 IN (SELECT id FROM s2 where s1.key1 = s2.key1) OR key3 = &#x27;a&#x27;;</code></p>
+</blockquote>
+<ul>
+<li>index_subquery: 与unique_subquery类似,只不过访问子查询中的表时使用的是普通的索引.</li>
+</ul>
+<blockquote>
+<p>示例SQL: <code>EXPLAIN SELECT * FROM s1 WHERE common_field IN (SELECT key3 FROM s2 where s1.key1 = s2.key1) OR key3 = &#x27;a&#x27;;</code></p>
+</blockquote>
+<ul>
+<li>
+<p>key_len: key_len列表示当优化器决定使用某个索引执行查询时,该索引记录的最大长度,它是由三个部分构成的:</p>
+</li>
+<li>
+<p>对于使用固定长度类型的索引列来说,它实际占用的存储空间的最大长度就是该固定值,对于指定字符集的变长类型的索引列来说,比如某个索引列的类型是VARCHAR(100),使用的字符集是utf8,那么该列实际占用的最大存储空间就是100 × 3 = 300个字节.</p>
+</li>
+<li>
+<p>如果该索引列可以存储NULL值,则key_len比不可以存储NULL值时多1个字节.</p>
+</li>
+<li>
+<p>对于变长字段来说,都会有2个字节的空间来存储该变长列的实际长度.</p>
+</li>
+</ul>
+<blockquote>
+<p>用2个字节的原因: 因为EXPLAIN是server层的功能,并且它的目的只是为了让我们区分些索引信息(比如联合索引中具体用了几个索引列).</p>
+</blockquote>
+<ul>
+<li>
+<p>filter扇出策略:</p>
+</li>
+<li>
+<p>如果使用的是全表扫描的方式执行的单表查询,那么计算驱动表扇出时需要估计出满足搜索条件的记录到底有多少条.</p>
+</li>
+<li>
+<p>如果使用的是索引执行的单表扫描,那么计算驱动表扇出的时候需要估计出满足除使用到对应索引的搜索条件外的其他搜索条件的记录有多少条.</p>
+</li>
+</ul>
+<blockquote>
+<p>比如: <code>EXPLAIN SELECT * FROM s1 WHERE key1 &gt; &#x27;z&#x27; AND common_field = &#x27;a&#x27;;</code> MySQL会使用<code>idx_key1</code>索引来执行查询,那么<code>filtered</code>的计算就是满足common_field=&#x27;a&#x27;这个条件的记录数占根据<code>idx_key1</code>索引筛选后的记录数的百分比.</p>
+</blockquote>
+<ul>
+<li>
+<p>Extra值含义:</p>
+</li>
+<li>
+<p>No tables used: 查询语句的没有FROM子句.</p>
+</li>
+<li>
+<p>Impossible WHERE: 查询语句的WHERE子句永远为FALSE.</p>
+</li>
+<li>
+<p>No matching min/max row: 查询列表处有MIN或者MAX聚集函数,但是并没有符合WHERE子句中的搜索条件的记录.</p>
+</li>
+<li>
+<p>Using index: 查询列表以及搜索条件中只包含属于某个索引的列,也就是在可以使用索引覆盖的情况下,在Extra列将会提示该额外信息.</p>
+</li>
+<li>
+<p>Using index condition: 搜索条件中虽然出现了索引列,但却不能使用到索引. 比如: <code>LIKE &#x27;%a&#x27;;</code></p>
+</li>
+<li>
+<p>Using where: 当使用全表扫描来执行对某个表的查询,并且该语句的WHERE子句中有针对该表的搜索条件时,在Extra列中会提示上述额外信息. 当使用索引访问来执行对某个表的查询,并且该语句的WHERE子句中有除了该索引包含的列之外的其他搜索条件时,在Extra列中也会提示上述额外信息.</p>
+</li>
+<li>
+<p>Using join buffer (Block Nested Loop): 在连接查询执行过程中,当被驱动表不能有效的利用索引加快访问速度,MySQL一般会为其分配一块名叫<code>join buffer</code>的内存块来加快查询速度,也就是基于块的嵌套循环算法.</p>
+</li>
+<li>
+<p>Not exists: 当使用左(外)连接时,如果WHERE子句中包含要求被驱动表的某个列等于NULL值的搜索条件,而且那个列又是不允许存储NULL值的,那么在该表的执行计划的Extra列就会提示Not exists额外信息.</p>
+</li>
+<li>
+<p>Using intersect(...)、Using union(...)和Using sort_union(...): 说明准备使用对应的索引方式执行查询.</p>
+</li>
+<li>
+<p>Zero limit: LIMIT子句的参数为0时,表示压根儿不打算从表中读出任何记录,将会提示该额外信息.</p>
+</li>
+<li>
+<p>Using filesort: 有一些情况下对结果集中的记录进行排序是可以使用到索引的.</p>
+</li>
+<li>
+<p>Using temporary: 查询的过程中会建立临时表,比如<code>DISTINCT</code>、<code>GROUP BY</code>、<code>UNION</code>等.</p>
+</li>
+<li>
+<p>Start temporary, End temporary: 子查询时,查询优化器会优先尝试将IN子查询转换成semi-join,而semi-join又有好多种执行策略,当执行策略为DuplicateWeedout时,也就是通过建立临时表来实现为外层查询中的记录进行去重操作时,驱动表查询执行计划的Extra列将显示Start temporary提示,被驱动表查询执行计划的Extra列将显示End temporary提示.</p>
+</li>
+<li>
+<p>LooseScan: 在将In子查询转为semi-join时,如果采用的是LooseScan执行策略,则在驱动表执行计划的Extra列就是显示LooseScan提示.</p>
+</li>
+<li>
+<p>FirstMatch(tbl_name): 在将In子查询转为semi-join时,如果采用的是FirstMatch执行策略,则在被驱动表执行计划的Extra列就是显示FirstMatch(tbl_name)提示.</p>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="查看执行计划详细信息">查看执行计划详细信息<a href="#查看执行计划详细信息" class="hash-link" aria-label="Direct link to 查看执行计划详细信息" title="Direct link to 查看执行计划详细信息">​</a></h4>
+<blockquote>
+<p>语法: EXPLAIN FORMAT=JSON [SQL];</p>
+</blockquote>
+<p>返回部分截取:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&quot;cost_info&quot;: {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&quot;read_cost&quot;: &quot;1840.84&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&quot;eval_cost&quot;: &quot;193.76&quot;,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&quot;prefix_cost&quot;: &quot;2034.60&quot;, # 单次查询s1表总共的成本</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&quot;data_read_per_join&quot;: &quot;1M&quot; # 读取的数据量</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<ul>
+<li>
+<p>read_cost: 由&#x27;IO成本&#x27;和&#x27;检测rows*(1-filter)条记录的CPU成本&#x27;. <code>rows</code>和<code>filter</code>都是FORMAT=JSON返回的字段.</p>
+</li>
+<li>
+<p>eval_cost: 检测&#x27;rows * filter&#x27;条记录的成本. eval: 评估.</p>
+</li>
+<li>
+<p>prefix_cost: 单独查询s1表的成本. 也就是: read_cost + eval_cost;</p>
+</li>
+</ul>
+<blockquote>
+<p>注意: 书上说主要是观察&#x27;prefix_cost&#x27;的成本值,没必要关注为什么计算出&#x27;read_cost&#x27;和&#x27;eval_cost&#x27;.还有,被驱动表的&#x27;prefix_cost&#x27;是额外加上了驱动表的&#x27;prefix_cost&#x27;成本.</p>
+</blockquote>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="查看mysql内部优化后执行sql语句">查看MYSQL内部(优化后)执行SQL语句<a href="#查看mysql内部优化后执行sql语句" class="hash-link" aria-label="Direct link to 查看MYSQL内部(优化后)执行SQL语句" title="Direct link to 查看MYSQL内部(优化后)执行SQL语句">​</a></h4>
+<blockquote>
+<p>语法: 执行完SQL后再执行: <code>SHOW WARNINGS;</code>.</p>
+</blockquote>
+<p>返回示例:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">*************************** 1. row ***************************</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Level: Note</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Code: 1003</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Message: /* select#1 */ select `xiaohaizi`.`s1`.`key1` AS `key1`,`xiaohaizi`.`s2`.`key1` AS `key1` from `xiaohaizi`.`s1` join `xiaohaizi`.`s2` where ((`xiaohaizi`.`s1`.`key1` = `xiaohaizi`.`s2`.`key1`) and (`xiaohaizi`.`s2`.`common_field` is not null))</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">1 row in set (0.00 sec)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>说明: 最常见的就是code=1003,Message字段展示的信息类似于查询优化器将我们的查询语句重写后的SQL. 需要注意的是并不是等价于最终执行SQL,只是一个参考依据!</p>
+<p>基于成本的优化主要集中在optimize阶段,对于单表查询来说,我们主要关注optimize阶段的<code>rows_estimation</code>这个过程,这个过程深入分析了对单表查询的各种执行方案的成本;对于多表连接查询来说,我们更多需要关注<code>considered_execution_plans</code>这个过程,这个过程里会写明各种不同的连接方式所对应的成本</p>
+<p>即使我们只需要访问一个页的一条记录,那也需要先把整个页的数据加载到内存中</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="buffer-pool">Buffer Pool<a href="#buffer-pool" class="hash-link" aria-label="Direct link to Buffer Pool" title="Direct link to Buffer Pool">​</a></h3>
+<blockquote>
+<p>链接: <a href="https://juejin.im/book/5bffcbc9f265da614b11b731/section/5c238f0851882521eb44c51f" target="_blank" rel="noopener noreferrer">Buffer Pool</a></p>
+</blockquote>
+<p>配置:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[server]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 单位: 字节</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innodb_buffer_pool_size = 268435456</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="lsnlog-sequeue-number">LSN(Log Sequeue Number)<a href="#lsnlog-sequeue-number" class="hash-link" aria-label="Direct link to LSN(Log Sequeue Number)" title="Direct link to LSN(Log Sequeue Number)">​</a></h3>
+<blockquote>
+<p>链接: <a href="https://juejin.im/book/5bffcbc9f265da614b11b731/section/5c7522daf265da2de165acc3" target="_blank" rel="noopener noreferrer">掘金</a></p>
+</blockquote>
+<p>说明: 记录写入的redo log日志量. 初始值为8704. 实际上统计lsn的增长量时,时按照log block body(实际写入的日志量)+log block header + log block trailer.</p>
+<p>暂时把每个页对应的控制信息占用的一块内存称为一个&#x27;控制块&#x27;. 控制块和缓存页是医医对应的,它们都被存放到Buffer Pool中,其中控制块被存放到Buffer Pool的前边,缓存页被存放到Buffer Pool后边</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="buffer-pool里的一些链表">Buffer Pool里的一些链表<a href="#buffer-pool里的一些链表" class="hash-link" aria-label="Direct link to Buffer Pool里的一些链表" title="Direct link to Buffer Pool里的一些链表">​</a></h3>
+<ul>
+<li>
+<p>free链表: 存放空闲缓存页.</p>
+</li>
+<li>
+<p>flush链表: 存放脏页.</p>
+</li>
+<li>
+<p>LRU链表: 用于清除不常用数据.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="划分区域的lru链表">划分区域的LRU链表<a href="#划分区域的lru链表" class="hash-link" aria-label="Direct link to 划分区域的LRU链表" title="Direct link to 划分区域的LRU链表">​</a></h3>
+<blockquote>
+<p>背景: 普通LRU链表会因为&#x27;InnoDB预读&#x27;、&#x27;扫描全表&#x27;导致&#x27;劣币驱逐良币&#x27;现象.</p>
+</blockquote>
+<p>介绍: 将LUR链表分成两个区域: young区域、old区域.</p>
+<p>查看: 通过&#x27;innodb_old_blocks_pct&#x27;的值来查看old区域占比.</p>
+<p>具体:</p>
+<ul>
+<li>
+<p>针对预读的页面可能不进行后续访情况的优化: 当磁盘上的某个页面在初次加载到Buffer Pool中的某个缓存页时,该缓存页对应的控制块会被放到old区域的头部.这样针对预读到Buffer Pool却不进行后续访问的页面就会被逐渐从old区域逐出,而不会影响young区域中被使用比较频繁的缓存页.</p>
+</li>
+<li>
+<p>针对全表扫描时,短时间内访问大量使用频率非常低的页面情况的优化: 在对某个处在old区域的缓存页进行第一次访问时就在它对应的控制块中记录下来这个访问时间,如果后续的访问时间与第一次访问的时间在某个时间间隔内(系统变量innodb_old_blocks_time),那么该页面就不会被从old区域移动到young区域的头部,否则将它移动到young区域的头部.</p>
+</li>
+</ul>
+<blockquote>
+<p>进一步优化LRU链表: 为了避免频繁的对LRU链表进行节点移动操作,只有被访问的缓存页位于young区域的1/4的后边,才会被移动到LRU链表头部.</p>
+</blockquote>
+<p>多个Buffer Pool实例有利于多线程加锁时的访问速度:</p>
+<p>配置:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[server]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innodb_buffer_pool_instances = 2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>每个Buffer Pool实例实际占多少内存空间 = <code>innodb_buffer_pool_size/innodb_buffer_pool_instances</code></p>
+<blockquote>
+<p>注意: 当innodb_buffer_pool_size的值小于1G的时候设置多个实例是无效的</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="buffer-pool-chunk">Buffer Pool Chunk:<a href="#buffer-pool-chunk" class="hash-link" aria-label="Direct link to Buffer Pool Chunk:" title="Direct link to Buffer Pool Chunk:">​</a></h3>
+<p>原因: Buffer Pool的大小只能在服务器启动时通过配置innodb_buffer_pool_size启动参数来调整大小,在服务器运行过程中是不允许调整该值的. 不过设计MySQL的大叔在5.7.5以及之后的版本中支持了在服务器运行过程中调整Buffer Pool大小的功能,但是有一个问题,就是每次当我们要重新调整Buffer Pool大小时,都需要重新向操作系统申请一块连续的内存空间,然后将旧的Buffer Pool中的内容复制到这一块新空间,这是极其耗时的.所以设计MySQL的大叔们决定不再一次性为某个Buffer Pool实例向操作系统申请一大片连续的内存空间,而是以一个所谓的chunk为单位向操作系统申请空间.也就是说一个Buffer Pool实例其实是由若干个chunk组成的,一个chunk就代表一片连续的内存空间,里边儿包含了若干缓存页与其对应的控制块.</p>
+<p>配置:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[server]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># 单位: 字节</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">innodb_buffer_pool_chunk_size=134217728</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<blockquote>
+<p>注意:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>这个chunck的大小是在服务器运行过程中不能修改的.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>innodb_buffer_pool_size必须是innodb_buffer_pool_chunk_size × innodb_buffer_pool_instances的倍数. 这主要是想保证每一个Buffer Pool实例中包含的chunk数量相同.</li>
+</ul>
+</blockquote>
+<p>Buffer Pool的缓存页除了用来缓存磁盘上的页面以外,还可以存储锁信息、自适应哈希索引等信息.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="查看关于innodb存储引擎运行过程中的一些状态信息">查看关于InnoDB存储引擎运行过程中的一些状态信息<a href="#查看关于innodb存储引擎运行过程中的一些状态信息" class="hash-link" aria-label="Direct link to 查看关于InnoDB存储引擎运行过程中的一些状态信息" title="Direct link to 查看关于InnoDB存储引擎运行过程中的一些状态信息">​</a></h3>
+<blockquote>
+<p>命令: <code>SHOW ENGINE INNODB STATUS;</code></p>
+</blockquote>
+<p>信息:</p>
+<table><thead><tr><th>属性名</th><th>含义</th></tr></thead><tbody><tr><td>Total memory allocated</td><td>代表Buffer Pool向操作系统申请的连续内存空间大小,包括全部控制块、缓存页、以及碎片的大小</td></tr><tr><td>Dictionary memory allocated</td><td>为数据字典信息分配的内存空间大小,这个内存空间和Buffer Pool没啥关系,不包括在Total memory allocated中</td></tr><tr><td>Buffer pool size</td><td>代表该Buffer Pool可以容纳多少缓存页</td></tr><tr><td>Free buffers</td><td>代表当前Buffer Pool还有多少空闲缓存页,也就是free链表中还有多少个节点</td></tr><tr><td>Database pages</td><td>代表LRU链表中的页的数量,包含young和old两个区域的节点页面数量</td></tr><tr><td>Old database pages</td><td>代表LRU链表old区域的节点页面数量</td></tr><tr><td>Modified db pages</td><td>代表脏页数量,也就是flush链表中节点的页面数量</td></tr><tr><td>Pending reads</td><td>正在等待从磁盘上加载到Buffer Pool中的页面数量</td></tr><tr><td>Pending writes LRU</td><td>即将从LRU链表中刷新到磁盘中的页面数量</td></tr><tr><td>Pending writes flush list</td><td>即将从flush链表中刷新到磁盘中的页面数量</td></tr><tr><td>Pending writes single page</td><td>即将以单个页面的形式刷新到磁盘中的页面数量</td></tr><tr><td>Pages made young</td><td>代表LRU链表中曾经从old区域移动到young区域头部的节点数量</td></tr><tr><td>Page made not young</td><td>在将innodb_old_blocks_time设置的值大于0时,首次访问或者后续访问某个处在old区域的节点时由于不符合时间间隔的限制而不能将其移动到young区域头部时,Page made not young的值会加1</td></tr><tr><td>youngs/s</td><td>代表每秒从old区域被移动到young区域头部的节点数量</td></tr><tr><td>non-youngs/s</td><td>代表每秒由于不满足时间限制而不能从old区域移动到young区域头部的节点数量</td></tr><tr><td>Pages read、created、written</td><td>代表读取,创建,写入了多少页.后边跟着读取、创建、写入的速率</td></tr><tr><td>Buffer pool hit rate</td><td>表示在过去某段时间,平均访问1000次页面,有多少次该页面已经被缓存到Buffer Pool了</td></tr><tr><td>young-making rate</td><td>表示在过去某段时间,平均访问1000次页面,有多少次访问使页面移动到young区域的头部了(包括blocks_times和1/4的因素)</td></tr><tr><td>not (young-making rate)</td><td>表示在过去某段时间,平均访问1000次页面,有多少次访问没有使页面移动到young区域的头部(因素同上)</td></tr><tr><td>LRU len</td><td>代表LRU链表中节点的数量</td></tr><tr><td>unzip_LRU</td><td>代表unzip_LRU链表中节点的数量</td></tr><tr><td>I/O sum</td><td>最近50s读取磁盘页的总数</td></tr><tr><td>I/O cur</td><td>现在正在读取的磁盘页数量</td></tr><tr><td>I/O unzip sum</td><td>最近50s解压的页面数量</td></tr><tr><td>I/O unzip cur</td><td>正在解压的页面数量</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="redo-log临时笔记">redo log临时笔记<a href="#redo-log临时笔记" class="hash-link" aria-label="Direct link to redo log临时笔记" title="Direct link to redo log临时笔记">​</a></h3>
+<ul>
+<li>
+<p>info bits: 表示记录头信息的前4个比特位的值以及record_type的值. 对底层页面中的一次原子访问的过程称之为一个Mini-Transaction,简称mtr. mtr生成的redo log放在了大小为512字节的页中.(暂时叫block),一个block可以存放多个mtr,并且存放在log block body中. 全部填满则为512字节.</p>
+</li>
+<li>
+<p>redo log buffer(log buffer): 为了解决磁盘速度过慢的问题而用来缓存redo log的.</p>
+</li>
+<li>
+<p>buf_free全局变量: 用来指明后续写入的redo日志应该写入到log buffer中起始的哪个位置.</p>
+</li>
+</ul>
+<p>flush链表刷新到磁盘是从链表后面开始往前刷新.</p>
+<p>我记得在<code>mysql技术内幕</code>里面讲过,redo log块的大小和磁盘扇区大小一样,都是512字节了,因此重做日志的写入可以保证原子性,不需要doublewrite技术.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="undo-log">undo log<a href="#undo-log" class="hash-link" aria-label="Direct link to undo log" title="Direct link to undo log">​</a></h3>
+<p>事务id怎么生成的:</p>
+<ul>
+<li>
+<p>服务器会在内存中维护一个全局变量,每当需要为某个事务分配一个事务id时,就会把该变量的值当作事务id分配给该事务,并且把该变量自增1.</p>
+</li>
+<li>
+<p>每当这个变量的值为256的倍数时,就会将该变量的值刷新到系统表空间的页号为5的页面中一个称之为Max Trx ID的属性处,这个属性占用8个字节的存储空间.</p>
+</li>
+<li>
+<p>当系统下一次重新启动时,会将上边提到的Max Trx ID属性加载到内存中,将该值加上256之后赋值给我们前边提到的全局变量(因为在上次关机时该全局变量的值可能大于Max Trx ID属性值).</p>
+</li>
+</ul>
+<p>事务id和roll_pointer都是Compact行格式里的扩展字段(属于隐藏列) undo_demo table_id为7597,事务id的分配和row_id的分配类似. roll_pointer本质上是指向一个undo记录的指针(7个字节). 将被删除记录加入到垃圾链表时,实际上加入到链表的头节点处,会跟着修改PAGE_FREE属性的值</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="trx_undo_del_mark_rec类型的undo日志">TRX_UNDO_DEL_MARK_REC类型的undo日志<a href="#trx_undo_del_mark_rec类型的undo日志" class="hash-link" aria-label="Direct link to TRX_UNDO_DEL_MARK_REC类型的undo日志" title="Direct link to TRX_UNDO_DEL_MARK_REC类型的undo日志">​</a></h3>
+<ul>
+<li>
+<p>info bits: 记录old trx_id、old roll_pointer后就可以通过old roll_pointer找到记录在修改前对应的undo log. 索引列各列信息</p>
+</li>
+<li>
+<p><code>&lt;pos,len,value&gt;</code>: 包括该列在记录中的位置(用pos表示),该列占用的存储空间大小(用len表示),该列实际值(用value表示). 主要用于在事务提交后对该&#x27;中间状态记录&#x27;做真正删除的阶段二(purge阶段).</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="trx_undo_upd_exist_rec类型的undo日志">TRX_UNDO_UPD_EXIST_REC类型的undo日志<a href="#trx_undo_upd_exist_rec类型的undo日志" class="hash-link" aria-label="Direct link to TRX_UNDO_UPD_EXIST_REC类型的undo日志" title="Direct link to TRX_UNDO_UPD_EXIST_REC类型的undo日志">​</a></h3>
+<ul>
+<li>n_updated: 共有多少个列被更新了.</li>
+</ul>
+<blockquote>
+<p>注意: n_updated后边跟着的<code>&lt;pos, old_len, old_value&gt;</code>分别表示被更新列在记录中的位置、更新前该列占用的存储空间大小、更新前该列的真实值(注意下&#x27;更新前&#x27;).如果在UPDATE语句中更新的列包含索引列,那么也会添加索引列各列信息这个部分,否则的话是不会添加这个部分的.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa">QA<a href="#qa" class="hash-link" aria-label="Direct link to QA" title="Direct link to QA">​</a></h3>
+<ul>
+<li>
+<p>问: 为什么update时,对于不更新主键并且前后大小不一致的记录,可以直接删除并加入垃圾链表;而对更新主键的update操作,却使用delete mask的方式来标记删除?</p>
+</li>
+<li>
+<p>答:</p>
+</li>
+<li>
+<p>(猜测一),如果不是主键更新的话,即使删掉了记录,新的记录主键也一样,那么就可以找到这个主键,然后通过roll_pointer构成版本链; 如果是更新主键的话,如果也是</p>
+</li>
+</ul>
+<p>直接删除,那么就无法在这个页面找到这个记录了,这样的话就无法根据这条记录的roll_pointer找到版本链了,所以先标记删除再插入.</p>
+<ul>
+<li>(猜测二),直接删除数据是因为innodb其实初衷还是想复用以前数据的分配空间的(毕竟起码聚簇索引不用改),但是无奈不能用了,所以只能直接删掉再重新分配空间.</li>
+</ul>
+<blockquote>
+<p>这个猜测的基点是在&#x27;delete_mark会触发索引等一系列的数据清除,而直接删数据再分配不会触发&#x27;上的.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fil_page_undo_log页结构">FIL_PAGE_UNDO_LOG页结构<a href="#fil_page_undo_log页结构" class="hash-link" aria-label="Direct link to FIL_PAGE_UNDO_LOG页结构" title="Direct link to FIL_PAGE_UNDO_LOG页结构">​</a></h3>
+<blockquote>
+<p><code>Undo Page Header</code>是<code>FIL_PAGE_UNDO_LOG页</code>所特有的</p>
+</blockquote>
+<p>结构介绍:</p>
+<ul>
+<li>
+<p>Undo Page Header:</p>
+</li>
+<li>
+<p>TRX_UNDO_PAGE_TYPE(2字节): 本页面准备存储什么种类的undo log.</p>
+</li>
+<li>
+<p>TRX_UNDO_INSERT(01): 类型为TRX_UNDO_INSERT_REC的undo日志属于此大类,一般由INSERT语句产生, 或者在UPDATE语句中有更新主键的情况也会产生此类型的undo log.</p>
+</li>
+<li>
+<p>TRX_UNDO_UPDATE(10): 除了类型为TRX_UNDO_INSERT_REC的undo日志,其他类型的undo日志都属于这个大类, 比如TRX_UNDO_DEL_MARK_REC、TRX_UNDO_UPD_EXIST_REC等,一般由DELETE、UPDATE语句产生的undo日志属于这个大类.</p>
+</li>
+<li>
+<p>TRX_UNDO_PAGE_START(2字节): 表示第一条undo日志在本页面中的起始偏移量.</p>
+</li>
+<li>
+<p>TRX_UNDO_PAGE_FREE(2字节): 表示当前页面中存储的最后一条undo日志结束时的偏移量. 从这个位置开始,可以继续写入新的undo日志.</p>
+</li>
+<li>
+<p>TRX_UNDO_PAGE_NODE(12字节): 一个List Node结构,undo页面可以通过这个属性连成一个链表.</p>
+</li>
+</ul>
+<blockquote>
+<p>说明: 之所以把undo日志分成两个大类,是因为类型为TRX_UNDO_INSERT_REC的undo日志在事务提交后可以直接删除掉,而其他类型的undo日志还需要为所谓的MVCC服务, 不能直接删除掉,对它们的处理需要区别对待.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="单个事务中的fil_page_undo_log页面链表">单个事务中的<code>FIL_PAGE_UNDO_LOG页面链表</code><a href="#单个事务中的fil_page_undo_log页面链表" class="hash-link" aria-label="Direct link to 单个事务中的fil_page_undo_log页面链表" title="Direct link to 单个事务中的fil_page_undo_log页面链表">​</a></h3>
+<ul>
+<li>first undo page: 通过TRX_UNDO_PAGE_NODE组成的链表中的第一个undo页,除了记录Undo Page Header之外,还会记录其他的一些管理信息.</li>
+</ul>
+<blockquote>
+<p>比如: Undo Log Segment Header、Undo Log Header.</p>
+</blockquote>
+<p>一个事务中最多有4个以undo页为节点组成的链表: 分为两大类<code>普通表</code>、<code>临时表</code>,每类都可以有<code>insert undo</code>、<code>update undo</code>类型的链表.</p>
+<blockquote>
+<p>注意: 这个分配是&#x27;按需分配&#x27;,意思就是需要分配的时候再分配,不是开启了事务就直接分配.</p>
+</blockquote>
+<ul>
+<li>Undo Log Segment Header: 每一个undo页面链表都对应一个段,称为undo log segment,也就是说链表中的页面都是从这个段里面申请的.所以他们在undo页面链表的第一个页面(first undo page)中设计了一个称之为Undo Log Segment Header的部分.这个部分中包含了该链表对应的段的segment header信息以及其他的一些关于这个段的信息.</li>
+</ul>
+<p>结构介绍:</p>
+<ul>
+<li>
+<p>TRX_UNDO_STATE: 本undo页面链表处在什么状态. 包含:</p>
+</li>
+<li>
+<p>TRX_UNDO_ACTIVE: 一个活跃的事务正在往这个段里边写入undo日志.</p>
+</li>
+<li>
+<p>TRX_UNDO_CACHED: 处在该状态的undo页面链表等待着之后被其他事务重用.</p>
+</li>
+<li>
+<p>TRX_UNDO_TO_FREE: 对于insert undo链表来说,如果在它对应的事务提交之后,该链表不能被重用,那么就会处于这种状态.</p>
+</li>
+<li>
+<p>TRX_UNDO_TO_PURGE: 对于update undo链表来说,如果在它对应的事务提交之后,该链表不能被重用,那么就会处于这种状态.</p>
+</li>
+<li>
+<p>TRX_UNDO_PREPARED: 包含处于PREPARE阶段的事务产生的undo日志(在分布式事务中才会出现该状态).</p>
+</li>
+<li>
+<p>TRX_UNDO_LAST_LOG: 本undo页面链表中最后一个Undo Log Header的位置.</p>
+</li>
+<li>
+<p>TRX_UNDO_FSEG_HEADER: 本undo页面链表对应的段的Segment Header信息.</p>
+</li>
+<li>
+<p>TRX_UNDO_PAGE_LIST: undo页面链表的基节点(TRX_UNDO_PAGE_NODE组成的链表的基节点,当然这个节点只存在于first undo page中).</p>
+</li>
+<li>
+<p>Undo Log Header: 一个undo页面链表代表一组(注意是&quot;undo页面链表&quot;),在每写入一组undo log时,都会在这组undo log前先记录一下关于这组的一些属性, undo log header便是存储这些属性的地方.</p>
+</li>
+<li>
+<p>TRX_UNDO_TRX_ID: 生成本组undo日志的事务id.</p>
+</li>
+<li>
+<p>TRX_UNDO_TRX_NO: 事务提交后生成的一个需要序号,使用此序号来标记事务的提交顺序(先提交的此序号小,后提交的此序号大).</p>
+</li>
+<li>
+<p>TRX_UNDO_DEL_MARKS: 标记本组undo日志中是否包含由于delete mark操作产生的undo日志.</p>
+</li>
+<li>
+<p>TRX_UNDO_LOG_START: 表示本组undo日志中第一条undo日志的在页面中的偏移量.</p>
+</li>
+<li>
+<p>TRX_UNDO_XID_EXISTS: 本组undo日志是否包含XID信息.</p>
+</li>
+<li>
+<p>TRX_UNDO_DICT_TRANS: 标记本组undo日志是不是由DDL语句产生的.</p>
+</li>
+<li>
+<p>TRX_UNDO_TABLE_ID: 如果TRX_UNDO_DICT_TRANS为真,那么本属性表示DDL语句操作的表的table id.</p>
+</li>
+<li>
+<p>TRX_UNDO_NEXT_LOG: 下一组的undo日志在页面中开始的偏移量(重用时候的&#x27;组&#x27;).</p>
+</li>
+<li>
+<p>TRX_UNDO_PREV_LOG: 上一组的undo日志在页面中开始的偏移量(同上).</p>
+</li>
+<li>
+<p>TRX_UNDO_HISTORY_NODE: 一个12字节的List Node结构,代表一个称之为History链表的节点(下面有介绍).</p>
+</li>
+</ul>
+<blockquote>
+<p>TRX_UNDO_HISTORY_NODE介绍: 如果当前undo log(链表)类型为update并且事务提交了并且不满足加入cached链表,则会将其在对应的roll back segment中对应的slot设置为FIL_NULL,并且将undo log加入history list中(它在Roll back Segment Header中),history list中的节点指针就是undo log header的TRX_UNDO_HISTORY_NODE(也就是这个).</p>
+</blockquote>
+<blockquote>
+<p>参考: <a href="http://mysql.taobao.org/monthly/2015/04/01/" target="_blank" rel="noopener noreferrer">taobao数据库内核月报</a></p>
+</blockquote>
+<p>小结: 对于没有重用的<code>undo页面链表</code>来说,链表的第一个页面,也就是<code>first undo page</code>在真正写入<code>undo log</code>前,会填充<code>Undo Page Header</code>、<code>Undo Log Segment Header</code>、<code>Undo Log Header</code>这3个部分,之后才开始正式写入undo日志.对于其他的页面来说,在真正写入undo日志前,只会填充<code>Undo Page Header</code>.链表的<code>List Base Node</code>存放到<code>first undo page</code>的<code>Undo Log Segment Header</code>部分,<code>List Node</code>信息存放到每一个undo页面的<code>undo Page Header</code>部分.</p>
+<p>重用策略: 为了解决undo页面链表存储不饱满问题,决定在事务提交后在某些情况下重用该事务的undo页面链表. 该链表中只包含一个undo页面: 多页面的情况下维护、可用方面不可观. 该undo页面已经使用的空间小于整个页面空间的3/4: 分insert undo链表和update undo链表两种情况.</p>
+<ul>
+<li>
+<p>insert undo链表: 这种类型的undo日志在事务提交之后就没用了,就可以被清除掉.所以在某个事务提交后,重用这个事务的insert undo链表(这个链表中只有一个页面)时,可以直接把之前事务写入的一组undo日志覆盖掉,从头开始写入新事务的一组undo日志(包括维护<code>Undo Page Header</code>、<code>Undo Log Segment Header</code>、<code>Undo Log Header</code>中的一些属性).</p>
+</li>
+<li>
+<p>update undo链表: 在一个事务提交后,它的update undo链表中的undo日志也不能立即删除掉(这些日志用于MVCC).所以如果之后的事务想重用update undo链表时,就不能覆盖之前事务写入的undo日志.这样就相当于在同一个undo页面中写入了多组的undo日志.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="回滚段">回滚段<a href="#回滚段" class="hash-link" aria-label="Direct link to 回滚段" title="Direct link to 回滚段">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="rollback-segment-header">Rollback Segment Header:<a href="#rollback-segment-header" class="hash-link" aria-label="Direct link to Rollback Segment Header:" title="Direct link to Rollback Segment Header:">​</a></h4>
+<blockquote>
+<p>说明: 由于同一时刻系统里可以有很多个undo页面链表存在,为了更好的管理这些链表,设计了这个Rollback Segment Header页面.它存放了各个undo页面链表的first undo page的页号,并把每个页号都称为undo slot.通过这些first undo page,可以访问到各个事务的undo log链表.</p>
+</blockquote>
+<blockquote>
+<p>其它: 每个Rollback Segment Header页面都对应着一个段,称为Rollback Segment(可以叫&#x27;回滚段&#x27;). 一个这个页面能包含1024个undo slot,FIL_NULL(0XFFFFFFFF)用来标识当前undo solot是否已经被别的事务占用了(已经 存放了别的first undo page).</p>
+</blockquote>
+<blockquote>
+<p>注意: 如果Rollback Segment Header中的1024个undo solt都不为FIL_null,那么此时不能再获得新的undo页面链表,所以会报错.</p>
+</blockquote>
+<p>结构介绍:</p>
+<ul>
+<li>
+<p>TRX_RSEG_MAX_SIZE: 本Rollback Segment中管理的所有undo页面链表中的undo页面数量之和的最大值.</p>
+</li>
+<li>
+<p>TRX_RSEG_HISTORY_SIZE: History链表占用的页面数量(看Undo Log Header的TRX_UNDO_HISTORY_NODE介绍).</p>
+</li>
+<li>
+<p>TRX_RSEG_HISTORY: History链表的基节点(同上).</p>
+</li>
+<li>
+<p>TRX_RSEG_FSEG_HEADER: 本Rollback Segment对应的10字节大小的Segment Header结构,通过它可以找到本段对应的INODE Entry.</p>
+</li>
+<li>
+<p>TRX_RSEG_UNDO_SLOTS: 各个undo页面链表的first undo page的页号集合,也就是undo slot集合.</p>
+</li>
+</ul>
+<p>当一个事务提交时,它所占用的undo slot有两种命运:</p>
+<ul>
+<li>
+<p>如果该undo slot指向的undo页面链表符合被重用的条件,那么该undo slot就处于被缓存的状态(该undo页面链表的<code>TRX_UNDO_STATE</code>为<code>TRX_UNDO_CACHED</code>). 被缓存的<code>undo slot</code>都会被加入到某个链表,如果对应的undo页面链表是<code>insert undo</code>链表,则该<code>undo slot</code>会被加入<code>insert undo cached</code>链表,如果对应的undo页面链表是<code>update undo</code>链表,则该<code>undo slot</code>会被加入<code>update undo cached</code>链表.</p>
+</li>
+<li>
+<p>如果不符合被重用的条件,那么:</p>
+</li>
+<li>
+<p>如果对应的undo页面链表是insert undo链表,则该undo页面链表的<code>TRX_UNDO_STATE</code>属性会被设置为<code>TRX_UNDO_TO_FREE</code>,之后该undo页面链表对应的段会被释放掉(复习: 每一个undo页面链表都对应一个段--<code>Undo Log Segment Header</code>),然后把该<code>undo slot</code>的值设置为FIL_NULL.</p>
+</li>
+<li>
+<p>如果对应的Undo页面链表是update undo链表,则该Undo页面链表的<code>TRX_UNDO_STATE</code>属性会被设置为<code>TRX_UNDO_TO_PURGE</code>,则会将该undo slot的值设置为FIL_NULL,然后将本次事务写入的一组undo日志放到的History链表中(需要注意的是,这里并不会将Undo页面链表对应的段给释放掉,因为这些undo日志还有用).</p>
+</li>
+</ul>
+<blockquote>
+<p>注意<!-- -->:cached<!-- -->链表是对应<code>Rollback Segment</code>的.</p>
+</blockquote>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="多个回滚段">多个<code>回滚段</code><a href="#多个回滚段" class="hash-link" aria-label="Direct link to 多个回滚段" title="Direct link to 多个回滚段">​</a></h4>
+<blockquote>
+<p>说明: 一个事务最多分配4个Undo页面链表,而一个回滚段里最多1024个undo slot,显然支持某个时间段存活的事务很少,所以InnoDB定义了128个回滚段,它们存放在系统表空间的第5号页面的某个区域.</p>
+</blockquote>
+<p>结构: <code>SpaceID(4字节)+Page Number(4字节) ==&gt; 表空间ID + 页号</code>,这意味着不同的回滚段可能分布在不同的表空间中.</p>
+<p>最终结构图:</p>
+<p><img decoding="async" loading="lazy" src="https://i.loli.net/2020/01/16/BytfXs91GPOrmVN.png" alt="最终结构图" class="img_ev3q"></p>
+<p>临时表对应的回滚段存储空间和普通表对应的回滚段的不同.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="回滚段的分类">回滚段的分类<a href="#回滚段的分类" class="hash-link" aria-label="Direct link to 回滚段的分类" title="Direct link to 回滚段的分类">​</a></h3>
+<ul>
+<li>
+<p>0号、33~127号回滚段: 其中第0号回滚段必须在系统表空间中,第<code>33～127</code>号回滚段既可以在系统表空间中,也可以在自己配置的undo表空间中.如果一个事务在执行过程中由于对普通表的记录做了改动需要分配undo页面链表时,必须从这一类的段中分配相应的undo slot.</p>
+</li>
+<li>
+<p>1～32号: 这些回滚段必须在临时表空间. 如果一个事务在执行过程中由于对临时表的记录做了改动需要分配undo页面链表时,必须从这一类的段中分配相应的undo slot</p>
+</li>
+</ul>
+<blockquote>
+<p>配置: 通过在配置文件[server]下配置innodb_rollback_segments来设置,可配置范围是<code>1~128</code>,但是这个参数并不会影响针对临时表的回滚段数量,针对临时表的回滚段数量一直是32. 也就是说这个值包含了临时表空间的数(取<code>2~33</code>和1没区别).</p>
+</blockquote>
+<p>为事务分配undo页面链表: 略.</p>
+<blockquote>
+<p>注意: 如果一个事务在执行过程中既对普通表的记录做了改动,又对临时表的记录做了改动,那么需要为这个记录分配2个回滚段.并发执行的不同事务其实也可以被分配相同的回滚段,只要分配不同的undo slot就可以了.</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="事务隔离级别和mvcc临时笔记">事务隔离级别和MVCC临时笔记<a href="#事务隔离级别和mvcc临时笔记" class="hash-link" aria-label="Direct link to 事务隔离级别和MVCC临时笔记" title="Direct link to 事务隔离级别和MVCC临时笔记">​</a></h3>
+<p>隐式事务: 语句结束事务就提交了.</p>
+<p>下面是SQL标准定义:</p>
+<ul>
+<li>
+<p>脏写(Dirty Write): 一个事务修改了另一个未提交事务修改过的数据.</p>
+</li>
+<li>
+<p>脏读(Dirty Read): 一个事务读到了另一个未提交事务修改过的数据.</p>
+</li>
+<li>
+<p>不可重复读(Non-Repeatable Read): 一个事务只能读到另一个已经提交的事务修改过的数据,并且其他事务每对该数据进行一次修改并提交后,该事务都能查询得到最新值. 等于就是一个事务多次读发现值都不一样.</p>
+</li>
+</ul>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2025/06/29/zTlMjKPIU4qvC8E.png" alt="1751165290394.jpg" class="img_ev3q"></p>
+<ul>
+<li>幻读(Phantom): 一个事务先根据某些条件查询出一些记录,之后另一个事务又向表中插入了符合这些条件的记录,原先的事务再次按照该条件查询时,能把另一个事务插入的记录也读出来.</li>
+</ul>
+<blockquote>
+<p>注意: 如果Session B中是删除了一些符合number &gt; 0的记录而不是插入新记录,那Session A中之后再根据number &gt; 0的条件读取的记录变少了,这种现象不属于幻读,幻读强调的是一个事务按照某个相同条件多次读取记录时,后读取时读到了之前没有读到的记录. 对于先前已经读到的记录,之后又读取不到的情况,这相当于对每一条记录都发生了不可重复读的现象. 幻读强调了读取到了之前读取没有获取到的记录.</p>
+</blockquote>
+<p>4个隔离级别: <code>READ UNCOMMITTED</code>(未提交读)、<code>READ COMMITTED</code>(已提交读)、<code>REPEATABLE READ</code>(可重复读)、<code>SERIALIZABLE</code>(可串行化)</p>
+<table><thead><tr><th>隔离级别</th><th>脏读</th><th>不可重复读</th><th>幻读</th></tr></thead><tbody><tr><td>READ UNCOMMITTED</td><td>Possible</td><td>Possible</td><td>Possible</td></tr><tr><td>READ COMMITTED</td><td>Not Possible</td><td>Possible</td><td>Possible</td></tr><tr><td>REPEATABLE READ</td><td>Not Possible</td><td>Not Possible</td><td>Possible</td></tr><tr><td>SERIALIZABLE</td><td>Not Possible</td><td>Not Possible</td><td>Not Possible</td></tr></tbody></table>
+<blockquote>
+<p>注意: 不论是哪种隔离级别,都不允许脏写的情况发生.</p>
+</blockquote>
+<blockquote>
+<p>上面是SQL标准定义,但MySQL在<code>REPEATABLE READ</code>隔离级别下,是可以禁止幻读问题的发生的.</p>
+</blockquote>
+<p>需要判断一下版本链中的哪个版本是当前事务可见的.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="readview判断记录的某个版本是否可见的规则">ReadView判断记录的某个版本是否可见的规则<a href="#readview判断记录的某个版本是否可见的规则" class="hash-link" aria-label="Direct link to ReadView判断记录的某个版本是否可见的规则" title="Direct link to ReadView判断记录的某个版本是否可见的规则">​</a></h3>
+<ul>
+<li>
+<p>如果被访问版本的trx_id属性值与ReadView中的creator_trx_id值相同,意味着当前事务在访问它自己修改过的记录,所以该版本可以被当前事务访问.</p>
+</li>
+<li>
+<p>如果被访问版本的trx_id属性值小于ReadView中的min_trx_id值,表明生成该版本的事务在当前事务生成ReadView前已经提交,所以该版本可以被当前事务访问.</p>
+</li>
+<li>
+<p>如果被访问版本的trx_id属性值大于或等于ReadView中的max_trx_id值,表明生成该版本的事务在当前事务生成ReadView后才开启,所以该版本不可以被当前事务访问.</p>
+</li>
+<li>
+<p>如果被访问版本的trx_id属性值在ReadView的min_trx_id和max_trx_id之间,那就需要判断一下trx_id属性值是不是在m_ids列表中,如果在,说明创建ReadView时生成该版本的事务还是活跃的,该版本不可以被访问;如果不在,说明创建ReadView时生成该版本的事务已经被提交,该版本可以被访问.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rc和rr隔离级别在mvcc中的不同">RC和RR隔离级别在MVCC中的不同<a href="#rc和rr隔离级别在mvcc中的不同" class="hash-link" aria-label="Direct link to RC和RR隔离级别在MVCC中的不同" title="Direct link to RC和RR隔离级别在MVCC中的不同">​</a></h3>
+<ul>
+<li>
+<p>READ COMMITTED: 每次查询开始时都会生成一个独立的ReadView.</p>
+</li>
+<li>
+<p>REPEATABLE READ: 只会在第一次执行查询语句时生成一个ReadView,之后的查询就不会重复生成了.</p>
+</li>
+</ul>
+<p>所谓的MVCC只是在我们进行普通的SELECT查询时才生效,截止到目前我们所见的所有SELECT语句都算是普通的查询</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="锁临时笔记">锁临时笔记<a href="#锁临时笔记" class="hash-link" aria-label="Direct link to 锁临时笔记" title="Direct link to 锁临时笔记">​</a></h3>
+<p>解决脏读、不可重复读、幻读这些问题:</p>
+<ul>
+<li>
+<p>方案一: 读操作利用多版本并发控制(MVCC),写操作进行加锁.</p>
+</li>
+<li>
+<p>方案二: 读、写操作都采用加锁的方式.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="general-log">general log<a href="#general-log" class="hash-link" aria-label="Direct link to general log" title="Direct link to general log">​</a></h3>
+<p>说明: 开启general log会将所有到达MySQL Server的SQL语句记录下来,一般用于故障排除.</p>
+<blockquote>
+<p>文档: <a href="https://dev.mysql.com/doc/refman/5.7/en/query-log.html" target="_blank" rel="noopener noreferrer">query log介绍</a>、<a href="https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_log_output" target="_blank" rel="noopener noreferrer">log_output介绍</a></p>
+</blockquote>
+<p>相关参数: <code>general_log</code>、<code>log_output</code>、<code>general_log_file</code></p>
+<ul>
+<li>
+<p>general_log: 用于开关.</p>
+</li>
+<li>
+<p>log_output: 多选,逗号分隔,可取FILE、TABLE、NONE(默认). 为NONE则general_log开启了也不会记录log;</p>
+</li>
+</ul>
+<blockquote>
+<p>TABLE方式默认在存到<code>mysql.general_log</code>表中.方便各种查询.</p>
+</blockquote>
+<ul>
+<li>general_log_file: 日志文件名,不指定的话默认为<code>${hostname}.log</code>,位于<code>${datadir}</code>数据目录下.</li>
+</ul>
+<p>补充: <code>log_output=table</code>时创建的表结构:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">CREATE TABLE `general_log` (</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">`event_time` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">`user_host` mediumtext NOT NULL,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">`thread_id` bigint(21) unsigned NOT NULL,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">`server_id` int(10) unsigned NOT NULL,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">`command_type` varchar(64) NOT NULL,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">`argument` mediumblob NOT NULL</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">) ENGINE=CSV DEFAULT CHARSET=utf8 COMMENT=&#x27;General log&#x27;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<p>存储引擎为CSV,它的数据会直接存储到<code>.csv</code>文件中,存储引擎可以按需更改.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mysql慢查询日志slow-query-log">mysql慢查询日志(slow-query-log)<a href="#mysql慢查询日志slow-query-log" class="hash-link" aria-label="Direct link to mysql慢查询日志(slow-query-log)" title="Direct link to mysql慢查询日志(slow-query-log)">​</a></h3>
+<p>说明: 日志由SQL语句组成,可用于分析执行时间较长的查询. TODO 分析工具</p>
+<blockquote>
+<p>文档: <a href="https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html" target="_blank" rel="noopener noreferrer">slow-query-log介绍</a></p>
+</blockquote>
+<p>它里面记录了其它参数具体含义以及用法.</p>
+<p>相关参数: <code>slow_query_log</code>(开关)、<code>long_query_time</code>、<code>slow_query_log_file</code>(记录的文件的绝对路径)</p>
+<ul>
+<li>long_query_time(单位: 秒): 设置大于long_query_time秒的查询语句会被记录.</li>
+</ul>
+<p>补充:</p>
+<ol>
+<li>
+<p>注意之前介绍<code>general log</code>时配置的<code>log_output</code>参数不仅仅影响<code>general log</code>的存储方式还影响<code>slow query log</code>的存储方式.</p>
+</li>
+<li>
+<p><code>slow-query-log</code>记录的内容:</p>
+</li>
+</ol>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SET timestamp=1581303604;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">select * from single_table2 where common_field NOT like &#x27;%1EER%&#x27; OR key_part3 LIKE &#x27;%Y4483FAY%&#x27;;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Time: 2020-02-10T03:05:22.213741Z</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># User@Host: root[root] @ localhost [::1] Id: 23</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Query_time: 0.152589 Lock_time: 0.000998 Rows_sent: 67319 Rows_examined: 99982</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="日志分析工具">日志分析工具<a href="#日志分析工具" class="hash-link" aria-label="Direct link to 日志分析工具" title="Direct link to 日志分析工具">​</a></h3>
+<blockquote>
+<p>mysql有个专门分析这个的脚本,在<code>${MYSQL_HOME}\bin\mysqldumpslow.pl</code>中,需要<code>perl</code>环境才能跑.</p>
+</blockquote>
+<ul>
+<li>
+<p>使用命令: <code>perl mysqldumpslow.pl -s -r -t 20 ${datadir}\mysql-slow.log</code></p>
+</li>
+<li>
+<p>提示: 参数含义也可以看<code>mysqldumpslow.pl</code>代码批注.</p>
+</li>
+<li>
+<p>介绍: 它主要还是用于过滤、排序日志.</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-1">QA<a href="#qa-1" class="hash-link" aria-label="Direct link to QA" title="Direct link to QA">​</a></h3>
+<ul>
+<li>
+<p>问: 同样都是使用B+Tree,InnoDB和MyISAM的实现细节有什么区别?</p>
+</li>
+<li>
+<p>答:</p>
+</li>
+<li>
+<p>主键索引：主要区别是聚集索引和非聚集索引上,前者除了保存主键外还有数据,后者除了主索引key外只保存记录的地址<code>address</code>(可以理解为行号)</p>
+</li>
+<li>
+<p>辅助索引：前者叶节点中保存的是辅助索引key和主键索引的值PK,后者保存的是辅助索引key和对应的主键索引的地址address(可以理解为行号)</p>
+</li>
+</ul>
+<blockquote>
+<p>所以MyISAM的索引文件和数据文件是彼此独立存在的,并且MyISAM的主键索引和辅助索引在存储结构上是一样的,都是在叶子节点上保存了数据的地址,唯一不同的是辅助索引的关键字是允许重复的.对于通过辅助索引来检索记录的操作来说,由于InnoDB存储的是主键的值,还需要再次查询主键索引才可以获得记录的内容,而MyISAM存储的也是主键行号,可以直接读取行号对应的记录内容(不需要从<code>B+Tree</code>里查找)</p>
+</blockquote>
+<ul>
+<li>
+<p>问: InnoDB的辅助索引的叶子节点存储主键的值而不是地址,好处是什么?</p>
+</li>
+<li>
+<p>答: 减少了当出现行记录移动或者数据页分裂时辅助索引的维护工作,虽然使用主键值当作指针会让辅助索引占用更多空间,但好处是,Innodb在移动行时无需更新辅助索引中的主键值,而MyISAM需要调整其辅助索引的叶子节点中保存的主键的地址.</p>
+</li>
+<li>
+<p>问: MySQL运行中,需要保证Binlog和Redo Log的一致性,如果顺序不一致,则意味着<code>Master-Slave</code>可能不一致,它是怎么保证的?</p>
+</li>
+<li>
+<p>答: 二阶段提交,内部会自动将普通事务当做一个XA事务(内部分布式事务)来处理:</p>
+</li>
+<li>
+<p>Commit会被自动的分成Prepare和Commit两个阶段</p>
+</li>
+<li>
+<p>Binlog会被当做事务协调者(<code>Transaction Coordinator</code>),<code>Binlog Event</code>会被当做协调者日志</p>
+</li>
+</ul>
+<p>当有事务提交时:</p>
+<ul>
+<li>
+<p>InnoDB进入Prepare阶段,并且<code>write/sync redo log</code>,写<code>redo log</code>,将事务的XID写入到redo日志中,binlog不作任何操作</p>
+</li>
+<li>
+<p>进行<code>write/sync Binlog</code>,写binlog日志,也会把XID写入到Binlog</p>
+</li>
+<li>
+<p>调用InnoDB引擎的Commit完成事务的提交,将Commit信息写入到redo日志中</p>
+</li>
+</ul>
+<p>如果是在第一步和第二步失败,则整个事务回滚;如果是在第三步失败,则MySQL在重启后会检查XID是否已经提交,若没有提交, 也就是事务需要重新执行,就会在存储引擎中再执行一次提交操作,保障<code>redo log</code>和binlog数据的一致性,防止数据丢失.</p>
+<p>在实际执行中,还牵扯到操作系统缓存Buffer何时同步到文件系统中,所以MySQL支持用户自定义在Commit时如何将<code>log buffer</code>中的日志刷到<code>log file</code>中,通过变量<code>innodb_flush_log_at_trx_Commit</code>的值来决定.在<code>log buffer</code>中的内容称为脏日志.(全局搜下<code>log buffer</code>)</p>
+<p>如果要严格保证数据不丢失,必须得保证<code>innodb_flush_log_at_trx_commit</code>配置为1. 如果配置成0,则<code>redo log</code>即使标记为commit状态了,由于此时redo log处于<code>redo log buffer</code>中,如果断电,<code>redo log buffer</code>内存中的数据会丢失,此时如果恰好<code>buffer pool</code>中的脏页也还没有刷新到磁盘,而<code>redo log</code>也丢失了,所以在MySQL重启后,由于丢失了一条<code>redo log</code>,因此就会丢失一条<code>redo log</code>对应的重做日志,这样断电前提交的那一次事务的数据也就丢失了; 如果配置成2,则事务提交时,会将<code>redo log buffer</code>(实际上是此次事务所对应的那条<code>redo log</code>所在的<code>redo log block</code>写入磁盘,但是操作系统通常都会存在os cache,所以这时候的写只是将数据写入到了os cache,如果机器断电,数据依然会丢失.而如果配置成1(默认),则表示事务提交时,就将对应的<code>redo log block</code>写入到磁盘,同时调用fsync,fsync会将数据强制从<code>os cache</code>中刷入到磁盘中,因此数据不会丢失.从效率上来说,0的效率最高,因为不涉及到磁盘IO,但是会丢失数据;而1的效率最低,但是最安全,不会丢失数据.2的效率居中,会丢失数据.在实际的生产环境中,通常要求是的是&quot;双1配置&quot;,即将<code>innodb_flush_log_at_trx_commit</code>设置为1,另外一个1指的是写binlog时,将sync_binlog设置为1,这样binlog的数据就不会丢失.</p>
+<ul>
+<li>
+<p>问: MySQL的Binlog数据类型有哪些?</p>
+<ul>
+<li>
+<p>答: 包括以下三种：</p>
+<ul>
+<li>
+<p>statement 格式: 记录为基本语句,包含 Commit</p>
+</li>
+<li>
+<p>row 格式: 记录为基于行</p>
+</li>
+<li>
+<p>mixed 格式: 日志记录使用混合格式</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>PS: 不论是statement还是row格式,binlog都会添加一个<code>XID_EVENT</code>作为事务的结束,该事件记录了事务的ID也就是Xid,在MySQL进行崩溃恢复时根据binlog中提交的情况来决定如何恢复</p>
+</blockquote></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/05/03/MySQL是怎么运行的/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Blog post page navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/en/blog/2025/05/04/Mybatis技术内幕"><div class="pagination-nav__sublabel">Newer post</div><div class="pagination-nav__label">Mybatis技术内幕</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/en/blog/2025/05/02/MySQL预编译"><div class="pagination-nav__sublabel">Older post</div><div class="pagination-nav__label">MySQL预编译</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#mysql存储" class="table-of-contents__link toc-highlight">MySQL存储</a><ul><li><a href="#字符集比较规则后缀含义" class="table-of-contents__link toc-highlight">字符集比较规则后缀含义</a></li><li><a href="#compact行格式" class="table-of-contents__link toc-highlight">COMPACT行格式</a></li><li><a href="#变长字段长度列表" class="table-of-contents__link toc-highlight">变长字段长度列表</a></li><li><a href="#记录头信息" class="table-of-contents__link toc-highlight">记录头信息</a></li><li><a href="#记录的真实数据" class="table-of-contents__link toc-highlight">记录的真实数据</a></li><li><a href="#数据页结构" class="table-of-contents__link toc-highlight">数据页结构</a></li><li><a href="#page-header" class="table-of-contents__link toc-highlight">Page Header</a></li><li><a href="#file-header" class="table-of-contents__link toc-highlight">File Header</a></li><li><a href="#页分裂" class="table-of-contents__link toc-highlight">页分裂</a></li><li><a href="#聚簇索引" class="table-of-contents__link toc-highlight">聚簇索引</a></li><li><a href="#字符串比较规则" class="table-of-contents__link toc-highlight">字符串比较规则</a></li><li><a href="#数据目录" class="table-of-contents__link toc-highlight">数据目录</a></li><li><a href="#innodb表空间" class="table-of-contents__link toc-highlight">InnoDB表空间</a></li><li><a href="#系统数据库" class="table-of-contents__link toc-highlight">系统数据库</a></li><li><a href="#表空间里的区" class="table-of-contents__link toc-highlight">表空间里的&#39;区&#39;</a></li><li><a href="#xdes-entryextent-descriptor-entry" class="table-of-contents__link toc-highlight">XDES Entry(Extent Descriptor Entry)</a></li><li><a href="#list-base-node链表基节点结构" class="table-of-contents__link toc-highlight">List Base Node(链表基节点结构)</a></li><li><a href="#链表小结" class="table-of-contents__link toc-highlight">链表小结</a></li><li><a href="#inode-entry" class="table-of-contents__link toc-highlight">INODE Entry</a></li><li><a href="#inode-entry结构" class="table-of-contents__link toc-highlight">INODE Entry结构</a></li><li><a href="#fil_page_type_fsp_hdr类型的页" class="table-of-contents__link toc-highlight">FIL_PAGE_TYPE_FSP_HDR类型的页</a></li><li><a href="#file-space-header结构" class="table-of-contents__link toc-highlight">File Space Header结构</a></li><li><a href="#系统表空间" class="table-of-contents__link toc-highlight">系统表空间</a></li><li><a href="#基于成本的优化" class="table-of-contents__link toc-highlight">基于成本的优化</a></li><li><a href="#计算索引的成本" class="table-of-contents__link toc-highlight">计算索引的成本</a></li><li><a href="#server层的一些操作对应的成本常数" class="table-of-contents__link toc-highlight">server层的一些操作对应的&#39;成本常数&#39;</a></li><li><a href="#innodb_table_stats表各列" class="table-of-contents__link toc-highlight">innodb_table_stats表各列</a></li><li><a href="#innodb_index_stats表各列" class="table-of-contents__link toc-highlight">innodb_index_stats表各列</a></li><li><a href="#定期更新统计数据" class="table-of-contents__link toc-highlight">定期更新统计数据</a></li><li><a href="#innodb_stats_method" class="table-of-contents__link toc-highlight">innodb_stats_method</a></li><li><a href="#基于规则的优化" class="table-of-contents__link toc-highlight">基于规则的优化</a></li><li><a href="#将子查询转换为semi-join" class="table-of-contents__link toc-highlight">将子查询转换为semi-join</a></li><li><a href="#explain查看执行计划是在server层的功能" class="table-of-contents__link toc-highlight">EXPLAIN查看执行计划(是在server层的功能)</a></li><li><a href="#buffer-pool" class="table-of-contents__link toc-highlight">Buffer Pool</a></li><li><a href="#lsnlog-sequeue-number" class="table-of-contents__link toc-highlight">LSN(Log Sequeue Number)</a></li><li><a href="#buffer-pool里的一些链表" class="table-of-contents__link toc-highlight">Buffer Pool里的一些链表</a></li><li><a href="#划分区域的lru链表" class="table-of-contents__link toc-highlight">划分区域的LRU链表</a></li><li><a href="#buffer-pool-chunk" class="table-of-contents__link toc-highlight">Buffer Pool Chunk:</a></li><li><a href="#查看关于innodb存储引擎运行过程中的一些状态信息" class="table-of-contents__link toc-highlight">查看关于InnoDB存储引擎运行过程中的一些状态信息</a></li><li><a href="#redo-log临时笔记" class="table-of-contents__link toc-highlight">redo log临时笔记</a></li><li><a href="#undo-log" class="table-of-contents__link toc-highlight">undo log</a></li><li><a href="#trx_undo_del_mark_rec类型的undo日志" class="table-of-contents__link toc-highlight">TRX_UNDO_DEL_MARK_REC类型的undo日志</a></li><li><a href="#trx_undo_upd_exist_rec类型的undo日志" class="table-of-contents__link toc-highlight">TRX_UNDO_UPD_EXIST_REC类型的undo日志</a></li><li><a href="#qa" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#fil_page_undo_log页结构" class="table-of-contents__link toc-highlight">FIL_PAGE_UNDO_LOG页结构</a></li><li><a href="#单个事务中的fil_page_undo_log页面链表" class="table-of-contents__link toc-highlight">单个事务中的<code>FIL_PAGE_UNDO_LOG页面链表</code></a></li><li><a href="#回滚段" class="table-of-contents__link toc-highlight">回滚段</a></li><li><a href="#回滚段的分类" class="table-of-contents__link toc-highlight">回滚段的分类</a></li><li><a href="#事务隔离级别和mvcc临时笔记" class="table-of-contents__link toc-highlight">事务隔离级别和MVCC临时笔记</a></li><li><a href="#readview判断记录的某个版本是否可见的规则" class="table-of-contents__link toc-highlight">ReadView判断记录的某个版本是否可见的规则</a></li><li><a href="#rc和rr隔离级别在mvcc中的不同" class="table-of-contents__link toc-highlight">RC和RR隔离级别在MVCC中的不同</a></li><li><a href="#锁临时笔记" class="table-of-contents__link toc-highlight">锁临时笔记</a></li><li><a href="#general-log" class="table-of-contents__link toc-highlight">general log</a></li><li><a href="#mysql慢查询日志slow-query-log" class="table-of-contents__link toc-highlight">mysql慢查询日志(slow-query-log)</a></li><li><a href="#日志分析工具" class="table-of-contents__link toc-highlight">日志分析工具</a></li><li><a href="#qa-1" class="table-of-contents__link toc-highlight">QA</a></li></ul></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Spring事务 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/blog/2025/06/25/Spring事务"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Spring事务 | My Site"><meta data-rh="true" name="description" content="Spring 默认事务"><meta data-rh="true" property="og:description" content="Spring 默认事务"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-06-25T00:00:00.000Z"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/blog/2025/06/25/Spring事务"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/06/25/Spring事务" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/06/25/Spring事务" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/06/25/Spring事务" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/blog/2025/06/25/Spring事务","mainEntityOfPage":"https://watermelo2.github.io/blog/2025/06/25/Spring事务","url":"https://watermelo2.github.io/blog/2025/06/25/Spring事务","headline":"Spring事务","name":"Spring事务","description":"Spring 默认事务","datePublished":"2025-06-25T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/assets/css/styles.e55a2139.css">
+<script src="/assets/js/runtime~main.849cc757.js" defer="defer"></script>
+<script src="/assets/js/main.0ae3829a.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/1.svg"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="搜索" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="最近博文导航"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">Spring事务</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-06-25T00:00:00.000Z">2025年6月25日</time> · <!-- -->阅读需 16 分钟</div></header><div id="__blog-post-container" class="markdown"><h3 class="anchor anchorWithStickyNavbar_LWe7" id="spring-默认事务">Spring 默认事务<a href="#spring-默认事务" class="hash-link" aria-label="Spring 默认事务的直接链接" title="Spring 默认事务的直接链接">​</a></h3>
+<p>有一个事务 A 和 B，如果把 B 放入到 A 里。<br>
+<strong>问：Spring 开启几个事务？</strong><br>
+<!-- -->答：一个事务</p>
+<p><strong>追问：如果事务 A 只读，事务 B 更新操作，是否能正常运行？</strong><br>
+<!-- -->答：默认情况下能正常运行，当然也能设置不正常运行。</p>
+<p><strong>再问：嵌套事务和开启新事务有什么区别？</strong><br>
+<!-- -->答：嵌套事务在一般情况（非 JTA 事务）时会添加一个 savepoint，其它东西都不会做修改（主要是 <code>TransactionSynchronizationManager</code> 里的值），而在 JTA 事务情况下会新建事务，但不会调用 <code>suspend()</code> 方法挂起事务，也不保存任何挂起事务资源。</p>
+<blockquote>
+<p>注意：JPA 不支持嵌套事务。</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="示例配置">示例配置<a href="#示例配置" class="hash-link" aria-label="示例配置的直接链接" title="示例配置的直接链接">​</a></h3>
+<div class="language-java codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-java codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public PlatformTransactionManager transactionManager() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  JpaTransactionManager transactionManager = new JpaTransactionManager();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  transactionManager.setValidateExistingTransaction(true);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  return transactionManager;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>这样设置会导致不能正常运行。具体看 <code>AbstractPlatformTransactionManager#handleExistingTransaction()</code> 第 475 行。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="类结构关系">类结构关系<a href="#类结构关系" class="hash-link" aria-label="类结构关系的直接链接" title="类结构关系的直接链接">​</a></h3>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">                                  Aware</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         InitializingBean           |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                 |-----      BeanFactoryAware      Advice</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                      |             |                |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                   TransactionAspectSupport     Interceptor   </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                             |------------           |</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">       SuppressWarnings                  |   MethodInterceptor     Serializable</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">             |-------------------------  |     ------|  -----------------|</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                      |  |     |        |    </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                                    TransactionInterceptor</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="七种事务传播行为">七种事务传播行为<a href="#七种事务传播行为" class="hash-link" aria-label="七种事务传播行为的直接链接" title="七种事务传播行为的直接链接">​</a></h3>
+<table><thead><tr><th>传播行为</th><th>描述</th></tr></thead><tbody><tr><td><code>MANDATORY</code></td><td>如果当前无事务则抛出异常，否则加入当前事务。</td></tr><tr><td><code>REQUIRED</code></td><td>如果当前无事务则开启一个事务，否则加入当前事务。</td></tr><tr><td><code>NESTED</code></td><td>如果当前无事务则开启一个事务，否则在一个嵌套的事务中执行。</td></tr><tr><td><code>REQUIRES_NEW</code></td><td>如果当前无事务则开启一个事务，否则挂起当前事务并开启新事务。</td></tr><tr><td><code>NEVER</code></td><td>如果当前有事务则抛出异常。</td></tr><tr><td><code>SUPPORTS</code></td><td>如果当前有事务则加入当前事务。</td></tr><tr><td><code>NOT_SUPPORTED</code></td><td>如果当前有事务则挂起当前事务以无事务状态执行方法。</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="事务涉及到的几个主要类">事务涉及到的几个主要类<a href="#事务涉及到的几个主要类" class="hash-link" aria-label="事务涉及到的几个主要类的直接链接" title="事务涉及到的几个主要类的直接链接">​</a></h3>
+<table><thead><tr><th>名称</th><th>概念说明</th></tr></thead><tbody><tr><td><code>PlatformTransactionManager</code></td><td>事务管理器，管理事务的各生命周期方法，下文简称 <strong>TxMgr</strong>。</td></tr><tr><td><code>TransactionAttribute</code></td><td>事务属性，包含隔离级别、传播行为、是否只读等信息，下文简称 <strong>TxAttr</strong>。</td></tr><tr><td><code>TransactionStatus</code></td><td>事务状态，用于表示当前事务的运行状态，下文简称 <strong>TxStatus</strong>。</td></tr><tr><td><code>TransactionInfo</code></td><td>事务信息，内含 <code>TxMgr</code>、<code>TxAttr</code>、<code>TxStatus</code> 以及上一个事务切面的 <code>TransactionInfo</code>（通过 <code>bindToThread()</code> 方法绑定），下文简称 <strong>TxInfo</strong>。</td></tr><tr><td><code>TransactionSynchronization</code></td><td>事务同步回调接口，包含多个钩子方法，如 <code>beforeCommit</code>、<code>afterCompletion</code> 等，下文简称 <strong>TxSync</strong> 或 <strong>transaction synchronization</strong>。</td></tr><tr><td><code>TransactionSynchronizationManager</code></td><td>事务同步管理器，维护当前线程的事务资源、事务信息以及 <code>TxSync</code> 的集合。</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="transactionsynchronizationmanagerthreadlocal-使用最多的类">TransactionSynchronizationManager：ThreadLocal 使用最多的类<a href="#transactionsynchronizationmanagerthreadlocal-使用最多的类" class="hash-link" aria-label="TransactionSynchronizationManager：ThreadLocal 使用最多的类的直接链接" title="TransactionSynchronizationManager：ThreadLocal 使用最多的类的直接链接">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="核心字段说明">核心字段说明：<a href="#核心字段说明" class="hash-link" aria-label="核心字段说明：的直接链接" title="核心字段说明：的直接链接">​</a></h3>
+<ul>
+<li>
+<p><strong><code>resources</code></strong>：类型为 <code>Map&lt;Object, Object&gt;</code>，用于保存事务相关资源。<br>
+<!-- -->例如：<code>DataSourceTransactionManager</code> 开启物理事务时会将 <code>&lt;DataSource, ConnectionHolder&gt;</code> 绑定到当前线程，这样业务代码中就能通过 <code>Spring</code> 的 <code>DataSourceUtils</code> 拿到线程绑定的 <code>ConnectionHolder</code> 中的 <code>Connection</code>。</p>
+</li>
+<li>
+<p><strong><code>synchronizations</code></strong>：类型为 <code>Set&lt;TransactionSynchronization&gt;</code>，用于保存事务同步回调钩子对象，内部含有：</p>
+<ul>
+<li><code>beforeCommit</code></li>
+<li><code>afterCommit</code></li>
+<li><code>beforeCompletion</code></li>
+</ul>
+<p>开发者也可自定义注册，用于追踪事务生命周期。</p>
+</li>
+<li>
+<p><strong><code>currentTransactionName</code></strong>：当前事务名称。</p>
+</li>
+<li>
+<p><strong><code>currentTransactionReadOnly</code></strong>：当前事务是否只读。</p>
+</li>
+<li>
+<p><strong><code>actualTransactionActive</code></strong>：是否存在物理事务。例如传播行为为 <code>NOT_SUPPORTED</code> 时，这个值为 <code>false</code>。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="问题与解答">问题与解答<a href="#问题与解答" class="hash-link" aria-label="问题与解答的直接链接" title="问题与解答的直接链接">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="q1-transactioninfo-中的-oldtransactioninfo-是干嘛用的">Q1: <code>TransactionInfo</code> 中的 <code>oldTransactionInfo</code> 是干嘛用的？<a href="#q1-transactioninfo-中的-oldtransactioninfo-是干嘛用的" class="hash-link" aria-label="q1-transactioninfo-中的-oldtransactioninfo-是干嘛用的的直接链接" title="q1-transactioninfo-中的-oldtransactioninfo-是干嘛用的的直接链接">​</a></h3>
+<p><strong>A</strong>：配合 <code>ThreadLocal&lt;TransactionInfo&gt; transactionInfoHolder</code> 使用，用于嵌套事务切面时保存上一次事务信息。这样可支持业务代码层手动设置当前事务的回滚等状态。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="相关类简介">相关类简介<a href="#相关类简介" class="hash-link" aria-label="相关类简介的直接链接" title="相关类简介的直接链接">​</a></h3>
+<ul>
+<li><strong><code>BeanFactoryAware</code></strong>：实现该接口的类可以获取 <code>BeanFactory</code> 实例。</li>
+<li><strong><code>TransactionAspectSupport</code></strong>：封装事务切面处理的核心逻辑，常被 <code>TransactionInterceptor</code> 或 <code>AspectJ</code> 使用。</li>
+<li><strong><code>AopUtils</code></strong>：AOP 相关的工具类，常用于获取被代理类的原始类。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="关于-txattr-和-txstatus">关于 <code>txAttr</code> 和 <code>txStatus</code><a href="#关于-txattr-和-txstatus" class="hash-link" aria-label="关于-txattr-和-txstatus的直接链接" title="关于-txattr-和-txstatus的直接链接">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="q2-txattr-是-callbackpreferringplatformtransactionmanager-类型代表什么">Q2: <code>txAttr</code> 是 <code>CallbackPreferringPlatformTransactionManager</code> 类型代表什么？<a href="#q2-txattr-是-callbackpreferringplatformtransactionmanager-类型代表什么" class="hash-link" aria-label="q2-txattr-是-callbackpreferringplatformtransactionmanager-类型代表什么的直接链接" title="q2-txattr-是-callbackpreferringplatformtransactionmanager-类型代表什么的直接链接">​</a></h3>
+<p><strong>A</strong>：</p>
+<ol>
+<li>这个接口与普通事务隔离开，不会影响其它事务；它是 <code>WebSphereUowTransactionManager</code> 中使用的接口，实现了 Spring-TX 的某些机制。</li>
+<li><code>txAttr</code>：代表当前方法声明的事务属性（传播行为、隔离级别等）。
+<code>txStatus</code>：当前事务执行状态以及操作控制句柄。</li>
+<li><code>txAttr</code> 的获取方式：
+来源于 <code>AbstractFallbackTransactionAttributeSource</code>，Spring 会根据方法或类上的注解去匹配。</li>
+<li><code>TransactionStatus</code>：
+封装事务状态，如是否新事务、是否已完成、是否设置为 rollback 等，同时暴露提交、回滚方法。</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="transactionaspectsupportinvokewithintransaction-调用流程"><code>TransactionAspectSupport#invokeWithinTransaction(...)</code> 调用流程<a href="#transactionaspectsupportinvokewithintransaction-调用流程" class="hash-link" aria-label="transactionaspectsupportinvokewithintransaction-调用流程的直接链接" title="transactionaspectsupportinvokewithintransaction-调用流程的直接链接">​</a></h3>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">1. 获取 TransactionAttribute、PlatformTransactionManager 和连接方法信息</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   ↓</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2. 调用 createTransactionIfNecessary(tm, txAttr, jp)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   ↓</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   - 如果 txAttr 没有名称，则封装为 DelegatingTransactionAttribute，名称为 joinpointIdentification</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   - 调用 tm.getTransaction(txAttr) 判断是否需要新建事务，并返回 TransactionStatus</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   - 调用 prepareTransactionInfo(...) 构造 TransactionInfo</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">       ↳ 会保存上一个事务信息（oldTransactionInfo），并绑定当前 txInfo 到 ThreadLocal</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   ↓ #begin_try</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">3. 执行业务逻辑（回调）</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   ↓ #catch_throwable</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">4. 异常处理</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   - 如果抛出异常，调用 completeTransactionAfterThrowing(txInfo, ex)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   - 重新抛出异常</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   ↓ #finally</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">5. 最终处理</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   - 调用 cleanupTransactionInfo(txInfo) 恢复上一层事务信息</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">   - 正常返回时提交事务（commitTransactionAfterReturning(txInfo)）</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="事务挂起-suspendtx-的原理">事务挂起 suspend(tx) 的原理<a href="#事务挂起-suspendtx-的原理" class="hash-link" aria-label="事务挂起 suspend(tx) 的原理的直接链接" title="事务挂起 suspend(tx) 的原理的直接链接">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="q3-connectionholder-和事务线程的关系是什么">Q3: <code>ConnectionHolder</code> 和事务、线程的关系是什么？<a href="#q3-connectionholder-和事务线程的关系是什么" class="hash-link" aria-label="q3-connectionholder-和事务线程的关系是什么的直接链接" title="q3-connectionholder-和事务线程的关系是什么的直接链接">​</a></h3>
+<p><strong>A</strong>：</p>
+<ul>
+<li><code>ConnectionHolder</code> 包含当前数据库连接和事务状态。</li>
+<li>事务管理器会将其绑定到 <code>TransactionSynchronizationManager</code>（即当前线程的本地变量中）。</li>
+<li>实际事务的提交/回滚操作是通过 <code>ConnectionHolder</code> 或其持有的 <code>Connection</code> 实现的。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="q4-suspendtx-是怎么处理事务和线程关系的">Q4: <code>suspend(tx)</code> 是怎么处理事务和线程关系的？<a href="#q4-suspendtx-是怎么处理事务和线程关系的" class="hash-link" aria-label="q4-suspendtx-是怎么处理事务和线程关系的的直接链接" title="q4-suspendtx-是怎么处理事务和线程关系的的直接链接">​</a></h3>
+<p><strong>A</strong>：</p>
+<ul>
+<li>所谓“挂起事务”：<!-- -->
+<ul>
+<li>将当前线程中的事务相关状态信息全部保存到一个 <code>suspendedResources</code> 对象中。</li>
+<li>然后清空线程的事务信息，为即将到来的新事务腾出空间。</li>
+</ul>
+</li>
+<li>它和 <code>TransactionSynchronizationManager</code> 密切协作，实现资源保存与恢复。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanager-的三个事务同步方式">AbstractPlatformTransactionManager 的三个事务同步方式<a href="#abstractplatformtransactionmanager-的三个事务同步方式" class="hash-link" aria-label="AbstractPlatformTransactionManager 的三个事务同步方式的直接链接" title="AbstractPlatformTransactionManager 的三个事务同步方式的直接链接">​</a></h3>
+<table><thead><tr><th>名称</th><th>概念说明</th></tr></thead><tbody><tr><td><code>SYNCHRONIZATION_ALWAYS</code></td><td>即使事务结果为空，也会使用事务同步。</td></tr><tr><td><code>SYNCHRONIZATION_ON_ACTUAL_TRANSACTION</code></td><td>仅当事务结果不为空时，才启用事务同步。</td></tr><tr><td><code>SYNCHRONIZATION_NEVER</code></td><td>永远不会启用事务同步机制。</td></tr></tbody></table>
+<blockquote>
+<p>这些同步策略主要用于控制是否将 <code>TransactionSynchronization</code> 注册到当前事务中，影响如 <code>beforeCommit</code>、<code>afterCompletion</code> 等回调的触发时机与执行。</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanager-详解">AbstractPlatformTransactionManager 详解<a href="#abstractplatformtransactionmanager-详解" class="hash-link" aria-label="AbstractPlatformTransactionManager 详解的直接链接" title="AbstractPlatformTransactionManager 详解的直接链接">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="基本概念">基本概念<a href="#基本概念" class="hash-link" aria-label="基本概念的直接链接" title="基本概念的直接链接">​</a></h3>
+<p><code>AbstractPlatformTransactionManager</code> 是各种事务管理器的抽象基类，封装了事务处理的主流程。子类只需实现以下模板方法：</p>
+<table><thead><tr><th>方法名</th><th>说明</th></tr></thead><tbody><tr><td><code>doGetTransaction()</code></td><td>用于从TxMgr中拿一个事务对象，事务对象具体什么类型AbstractPlatformTransactionManager并不care.如果当前已经有事务的话，返回的对象应该是要包含当前事务信息的.</td></tr><tr><td><code>isExistingTransaction()</code></td><td>用于判断一个事务对象是否对应于一个已经存在的事务.Spring会根据这个方法的返回值来分类讨论事务该如何传播.</td></tr><tr><td><code>doBegin()</code></td><td>物理开启事务.</td></tr><tr><td><code>doSuspend()</code></td><td>将当前事务资源挂起.对于我们常用的DataSourceTransactionManager，它的资源就是ConnectionHolder.会将ConnectionHolder与当前线程脱钩并取出来. ConnectionHolder是跟着走的.</td></tr><tr><td><code>doResume()</code></td><td>恢复当前事务资源.对于我们常用的DataSourceTransactionManager，它会将ConnectionHolder重新绑定到线程上.</td></tr><tr><td><code>doCommit()</code></td><td>物理提交事务.</td></tr><tr><td><code>doRollback()</code></td><td>物理回滚事务.</td></tr><tr><td><code>doSetRollbackOnly()</code></td><td>给事务标记为回滚.对于我们常用的DataSourceTransactionManager，它的实现是拿出事务对象中的ConnectionHolder打上回滚标记.这个标记是一种“全局的标记”，因为隶属于同一个物理事务，都能读到同一个ConnectionHolder.</td></tr></tbody></table>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanagernewtransactionstatus">AbstractPlatformTransactionManager#newTransactionStatus<a href="#abstractplatformtransactionmanagernewtransactionstatus" class="hash-link" aria-label="AbstractPlatformTransactionManager#newTransactionStatus的直接链接" title="AbstractPlatformTransactionManager#newTransactionStatus的直接链接">​</a></h3>
+<ul>
+<li>
+<p><code>suspendedResources</code>：保存上一个被暂停的（调用了 <code>suspend(tx)</code>）资源。</p>
+</li>
+<li>
+<p><code>newSynchronization</code>：这个参数用于决定是否把事务同步更新到当前线程中。</p>
+<blockquote>
+<p>答：在 <code>prepareSynchronization</code> 中会通过这个字段来判断是否需要绑定事务到线程；<br>
+<!-- -->同时在 <code>newTransactionStatus()</code> 中也会判断当前线程是否已经绑定了事务。</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanagergettransactiondefinition">AbstractPlatformTransactionManager#getTransaction(definition)<a href="#abstractplatformtransactionmanagergettransactiondefinition" class="hash-link" aria-label="AbstractPlatformTransactionManager#getTransaction(definition)的直接链接" title="AbstractPlatformTransactionManager#getTransaction(definition)的直接链接">​</a></h3>
+<ul>
+<li>
+<p>调用 <code>doGetTransaction()</code></p>
+<blockquote>
+<p>调用子类重写的方法获取事务对象 <code>tx</code>，如果为空则创建默认的 <code>DefaultTransactionDefinition()</code>。</p>
+</blockquote>
+</li>
+<li>
+<p>调用 <code>isExistingTransaction(tx)</code></p>
+<blockquote>
+<p>判断是否存在事务。<br>
+<!-- -->如果存在事务，则调用 <code>handleExistingTransaction(definition, tx, debugEnable)</code>。</p>
+</blockquote>
+</li>
+<li>
+<p>事务传播行为判断：</p>
+<ul>
+<li>
+<p><strong>MANDATORY</strong></p>
+<blockquote>
+<p>当前无事务则抛出异常。</p>
+</blockquote>
+</li>
+<li>
+<p><strong>REQUIRED、REQUIRES_NEW、NESTED</strong></p>
+<ol>
+<li>调用 <code>suspend(null)</code>，返回 <code>SuspendedResourcesHolder suspendedResources</code>，暂时挂起当前事务。</li>
+<li><code>#begin_try</code>
+<ul>
+<li>声明 <code>newSynchronization</code>，根据当前同步方式判断是否能开启新的同步（传播特性需要创建新的同步）。</li>
+<li>调用 <code>newTransactionStatus(definition, tx, newTransaction, newSynchronization, debug, suspendedResources)</code> 创建新的事务状态。<!-- -->
+<blockquote>
+<p>如果 <code>newSynchronization=true</code> 并且当前线程没有事务，则保持为 <code>true</code>。</p>
+</blockquote>
+</li>
+<li>调用 <code>doBegin(tx, definition)</code> 开启事务。</li>
+<li>调用 <code>prepareSynchronization(status, definition)</code>，如果是新事务则绑定到当前线程。</li>
+<li>返回 <code>txStatus</code>。</li>
+</ul>
+</li>
+<li><code>#catch_RuntimeException_Error</code>
+<ul>
+<li>调用 <code>resume(null, suspendedResources)</code> 恢复之前挂起的事务。</li>
+<li>抛出异常。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>SUPPORTS、NOT_SUPPORTED、NEVER</strong></p>
+<blockquote>
+<p>这几种情况对于当前无事务的逻辑都是直接运行。<br>
+<!-- -->声明 <code>newSynchronization</code>，根据当前同步方式判断是否为 <code>SYNCHRONIZATION_ALWAYS</code>。   因为当前不需要开启新的同步，只有为 <code>SYNCHRONIZATION_ALWAYS</code> 时才为 <code>true</code>。<br>
+<!-- -->调用 <code>prepareTransactionStatus(definition, null, true, newSynchronization, debugEnabled, null)</code>。    该方法等同于 <code>newTransactionStatus()</code> + <code>prepareSynchronization()</code>，注意第二个参数 <code>transaction</code> 为空。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanagerhandleexistingtransactiondefinition-transaction-debugenable">AbstractPlatformTransactionManager#handleExistingTransaction(definition, transaction, debugEnable)<a href="#abstractplatformtransactionmanagerhandleexistingtransactiondefinition-transaction-debugenable" class="hash-link" aria-label="AbstractPlatformTransactionManager#handleExistingTransaction(definition, transaction, debugEnable)的直接链接" title="AbstractPlatformTransactionManager#handleExistingTransaction(definition, transaction, debugEnable)的直接链接">​</a></h3>
+<ul>
+<li>
+<p>当前事务传播为 <strong>NEVER</strong></p>
+<ul>
+<li>抛异常。</li>
+</ul>
+</li>
+<li>
+<p>当前事务传播为 <strong>NOT_SUPPORTED</strong></p>
+<ul>
+<li>将当前事务挂起，</li>
+<li>返回一个没有事务、不是新事务、需要同步到当前线程、有挂起事务的 <code>TransactionStatus</code>。</li>
+</ul>
+</li>
+<li>
+<p>当前事务传播为 <strong>REQUIRES_NEW</strong></p>
+<ul>
+<li>将当前事务挂起。</li>
+<li><code>#begin_try</code>
+<ul>
+<li>构造一个有新的事务、是新事务、需要同步到当前线程、有挂起线程的 <code>TransactionStatus</code>，</li>
+<li>调用 <code>doBegin(tx, definition)</code> 开启新事务，</li>
+<li>同步事务属性到当前线程后返回。</li>
+</ul>
+</li>
+<li><code>#catch_RuntimeException</code>
+<ul>
+<li>调用 <code>resumeAfterBeginException(transaction, suspendedResources, beginEx)</code> 恢复之前的事务，</li>
+<li>抛出异常。</li>
+</ul>
+</li>
+<li><code>#catch_Error</code>
+<ul>
+<li>调用 <code>resumeAfterBeginException(transaction, suspendedResources, beginErr)</code>，</li>
+<li>抛出错误。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>当前事务传播为 <strong>NESTED</strong></p>
+<ul>
+<li>判断是否需要添加数据库 <code>save_point</code>。（JTA 会覆盖该方法走第二个分支）</li>
+<li>如果需要：<!-- -->
+<ul>
+<li>构造一个事务不变、有事务、不是新事务、不需要更新线程属性、没有挂起事务的 <code>TransactionStatus</code>，</li>
+<li>同步事务属性到当前线程，</li>
+<li>调用 <code>status#createAndHoldSavepoint()</code>，</li>
+<li>然后返回。</li>
+</ul>
+</li>
+<li>否则：<!-- -->
+<ul>
+<li>重新构造一个没有挂起事务的新事务 <code>TransactionStatus</code>，</li>
+<li>调用 <code>doBegin(tx, definition)</code> 开启事务，</li>
+<li>同步事务属性到当前线程，</li>
+<li>返回。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>其他情况（到这里还没返回，说明当前需要直接加入上一个事务）：</p>
+<ul>
+<li>需要验证：<!-- -->
+<ul>
+<li>如果上一个事务不是只读的而当前事务是只读的，说明不能沿用上一个事务，抛出异常。</li>
+</ul>
+</li>
+<li>返回：<!-- -->
+<ul>
+<li>调用 <code>prepareTransactionStatus(definition, tx, false, true, debug, null)</code>  // 不需要新建事务。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="问题与解答-1">问题与解答<a href="#问题与解答-1" class="hash-link" aria-label="问题与解答的直接链接" title="问题与解答的直接链接">​</a></h3>
+<p><strong>问：</strong></p>
+<ol>
+<li><code>TransactionSynchronization</code> 是什么？</li>
+<li><code>doSuspend(tx)</code> 主要是做什么操作？</li>
+</ol>
+<p><strong>答：</strong></p>
+<ol>
+<li>它相当于一个事务上下文的监听器，包含资源挂起、恢复，以及事务提交前、提交完成、回滚前、回滚完成的通知钩子。<!-- -->
+<ul>
+<li>例如，<code>org.springframework.orm.hibernate5.SpringSessionSynchronization</code> 是它的一个实现类，会在 <code>flush()</code> 和 <code>beforeCommit()</code> 方法时调用 <code>Session#flush()</code>。</li>
+</ul>
+</li>
+<li>将当前事务从当前线程中“挂起”，并返回当前事务及相关事务资源的信息。<!-- -->
+<ul>
+<li>所谓“挂起”就是把事务资源从当前线程中取出保存，并清空当前线程的事务属性。</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanagersuspendtx">AbstractPlatformTransactionManager#suspend(tx)<a href="#abstractplatformtransactionmanagersuspendtx" class="hash-link" aria-label="AbstractPlatformTransactionManager#suspend(tx)的直接链接" title="AbstractPlatformTransactionManager#suspend(tx)的直接链接">​</a></h3>
+<blockquote>
+<p>将事务挂起并包装成 SuspendedResourcesHolder</p>
+</blockquote>
+<ul>
+<li>
+<p>如果当前线程已经激活，则将当前线程中的所有 <code>TransactionSynchronization</code>（即“钩子函数”）全部挂起，并返回挂起的集合。</p>
+</li>
+<li>
+<p><code>#begin_try</code></p>
+<ul>
+<li>如果传入的 <code>tx</code> 不为空，则调用 <code>doSuspend(tx)</code> 并返回 <code>suspendedResources</code>。</li>
+<li>抓取当前线程绑定的事务名、是否只读、隔离级别、是否存在实际事务等信息，并清空这些绑定。</li>
+<li>将所有数据包装成 <code>SuspendedResourcesHolder</code> 并返回。</li>
+</ul>
+</li>
+<li>
+<p><code>#catch_RuntimeException</code></p>
+<ul>
+<li>调用 <code>doResumeSynchronization(susp)</code> 恢复事务同步。</li>
+<li>抛出异常。</li>
+</ul>
+</li>
+<li>
+<p><code>#catch_Error</code></p>
+<ul>
+<li>调用 <code>doResumeSynchronization(susp)</code> 恢复事务同步。</li>
+<li>抛出错误。</li>
+</ul>
+</li>
+<li>
+<p>如果 <code>tx</code> 不为空，则调用 <code>doSuspend(tx)</code>，然后包装成 <code>SuspendedResourcesHolder(susp)</code> 返回。</p>
+</li>
+<li>
+<p>最后一种情况（<code>tx</code> 为空）则直接返回。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanagerresumetx-resholder">AbstractPlatformTransactionManager#resume(tx, resHolder)<a href="#abstractplatformtransactionmanagerresumetx-resholder" class="hash-link" aria-label="AbstractPlatformTransactionManager#resume(tx, resHolder)的直接链接" title="AbstractPlatformTransactionManager#resume(tx, resHolder)的直接链接">​</a></h3>
+<ul>
+<li>
+<p>如果 <code>resHolder</code> 不为空：</p>
+<ul>
+<li>取出 <code>suspendedResources</code>，</li>
+<li>调用 <code>doResume(tx, suspendedResources)</code> 恢复事务资源，</li>
+<li>取出 <code>TransactionSynchronization</code>（“钩子函数”），</li>
+<li>如果有， 将之前的信息绑定到当前线程。</li>
+</ul>
+</li>
+<li>
+<p>调用 <code>doResumeSynchronization(susp)</code></p>
+<ul>
+<li>会调用所有 <code>TransactionSynchronization</code> 的 <code>resume()</code> 方法，</li>
+<li>并将这些“钩子”加入到当前线程中。</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanagercommittxstatus">AbstractPlatformTransactionManager#commit(txStatus)<a href="#abstractplatformtransactionmanagercommittxstatus" class="hash-link" aria-label="AbstractPlatformTransactionManager#commit(txStatus)的直接链接" title="AbstractPlatformTransactionManager#commit(txStatus)的直接链接">​</a></h3>
+<ul>
+<li>
+<p>如果事务已经完成，则抛出 <code>IllegalTransactionStateException</code> 异常。</p>
+</li>
+<li>
+<p>如果当前本地事务状态被标识为 <code>rollbackOnly</code>，则调用 <code>processRollback(txStatus)</code> 并返回。</p>
+<blockquote>
+<p>无论事务如何传播，每次进入事务管理器，在进入业务方法之前都会将一个 <code>TransactionInfo</code> 对象放入 <code>TransactionAspectSupport#transactionInfoHolder</code>。 <code>TransactionInfo</code> 包含一个 <code>TransactionStatus</code> 对象。 <code>commit</code> 方法在业务方法正常完成后调用，所谓当前本地事务状态就是读取当前 <code>TransactionStatus</code> 对象中的 <code>rollbackOnly</code> 标志位。 这是一个局部标志位，只有创建该状态的那一层在业务方法执行完毕后会读取本层状态的该标志位。   用户代码可以通过 <code>TransactionAspectSupport.currentTransactionStatus().setRollbackOnly()</code> 手动将当前事务层的状态标记为回滚。</p>
+</blockquote>
+</li>
+<li>
+<p>如果事务被标记为全局回滚，且在全局回滚标记情况下不应提交事务，则调用 <code>processRollback(txStatus)</code> 并返回。</p>
+</li>
+<li>
+<p>其他情况，则调用 <code>processCommit(txStatus)</code>。</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanagerprocesscommittxstatus">AbstractPlatformTransactionManager#processCommit(txStatus)<a href="#abstractplatformtransactionmanagerprocesscommittxstatus" class="hash-link" aria-label="AbstractPlatformTransactionManager#processCommit(txStatus)的直接链接" title="AbstractPlatformTransactionManager#processCommit(txStatus)的直接链接">​</a></h3>
+<ul>
+<li>
+<p><code>#begin_try</code></p>
+<ul>
+<li>
+<p><code>#begin_try</code></p>
+<ul>
+<li>
+<p>调用 <code>prepareForCommit(txStatus)</code></p>
+<blockquote>
+<p>模板方法，供子类重写。</p>
+</blockquote>
+</li>
+<li>
+<p>调用 <code>triggerBeforeCommit(txStatus)</code></p>
+<blockquote>
+<p>回调 <code>transaction synchronization</code> 的 <code>beforeCommit</code> 方法。</p>
+</blockquote>
+</li>
+<li>
+<p>调用 <code>triggerBeforeCompletion(txStatus)</code></p>
+<blockquote>
+<p>回调 <code>transaction synchronization</code> 的 <code>beforeCompletion</code> 方法。</p>
+</blockquote>
+</li>
+<li>
+<p>如果当前事务存在 <code>save_point</code>，则释放。</p>
+</li>
+<li>
+<p>如果当前事务为最外层事务，获取当前事务的 <code>globalRollbackOnly</code> 状态，赋值给局部变量 <code>globalRollbackOnly</code>，然后调用 <code>doCommit(txStatus)</code>。</p>
+</li>
+<li>
+<p>或者如果调用 <code>isFailEarlyOnGlobalRollbackOnly()</code> 返回 <code>true</code></p>
+<blockquote>
+<p>这是一个标志位，如果开启，则会尽早抛出异常。默认是 <code>false</code>。<br>
+<!-- -->这样如果内层事务发生异常，回退到外层事务后会进入该判断。</p>
+</blockquote>
+</li>
+<li>
+<p>如果 <code>globalRollbackOnly</code> 为 <code>true</code>，则抛出 <code>UnexpectedRollbackException</code> 异常。</p>
+<blockquote>
+<p>一般用 <code>DataSourceTransactionManager</code> 不会走到这里，这里是为了兼容 JTA，上面的 <code>save_point</code> 也是。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p><code>#catch_UnexpectedRollbackException</code></p>
+<ul>
+<li>调用 <code>triggerAfterCompletion(txStatus, TransactionSynchronization.STATUS_ROLLED_BACK)</code>
+<blockquote>
+<p>回调 <code>transaction synchronization</code> 的 <code>afterCompletion</code> 方法。</p>
+</blockquote>
+</li>
+<li>抛出异常。</li>
+</ul>
+</li>
+<li>
+<p><code>#catch_TransactionException</code></p>
+<blockquote>
+<p>代表 <code>doCommit</code> 发生异常。</p>
+</blockquote>
+<ul>
+<li>如果配置了 <code>rollbackOnCommitFailure</code> 为 <code>true</code>（默认是 <code>false</code>），则调用 <code>doRollbackOnCommitException(txStatus, ex)</code>。</li>
+<li>否则调用 <code>triggerAfterCompletion(txStatus, TransactionSynchronization.STATUS_UNKNOWN)</code>
+<blockquote>
+<p>回调 <code>transaction synchronization</code> 的 <code>afterCompletion</code> 方法。</p>
+</blockquote>
+</li>
+<li>抛出异常。</li>
+</ul>
+</li>
+<li>
+<p><code>#catch_RuntimeException</code></p>
+<ul>
+<li>如果之前没有通知 <code>transaction synchronization</code>，则调用 <code>doRollbackOnCommitException(txStatus, ex)</code>。</li>
+</ul>
+</li>
+<li>
+<p><code>#catch_Error</code></p>
+<ul>
+<li>如果之前没有通知 <code>transaction synchronization</code>，则调用 <code>doRollbackOnCommitException(txStatus, err)</code>。</li>
+</ul>
+</li>
+<li>
+<p><code>#begin_try</code></p>
+<ul>
+<li>调用 <code>triggerAfterCommit(txStatus)</code>
+<blockquote>
+<p>回调 <code>transaction synchronization</code> 的 <code>afterCommit</code> 方法。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>
+<p><code>#finally</code></p>
+<ul>
+<li>调用 <code>triggerAfterCompletion(txStatus, TransactionSynchronization.STATUS_COMMITTED)</code>
+<blockquote>
+<p>回调 <code>transaction synchronization</code> 的 <code>afterCompletion</code> 方法。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>#finally</code></p>
+<ul>
+<li>调用 <code>cleanupAfterCompletion(txStatus)</code>
+<blockquote>
+<p>后续工作：标记 <code>status</code> 为已完成，在最外层清空 <code>transaction synchronization</code> 集合，恢复挂起的事务资源等。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanagerrollbacktxstatus">AbstractPlatformTransactionManager#rollback(txStatus)<a href="#abstractplatformtransactionmanagerrollbacktxstatus" class="hash-link" aria-label="AbstractPlatformTransactionManager#rollback(txStatus)的直接链接" title="AbstractPlatformTransactionManager#rollback(txStatus)的直接链接">​</a></h3>
+<ul>
+<li>如果事务已经完成了，则抛出 <code>IllegalTransactionStateException</code> 异常。</li>
+<li>调用 <code>processRollback(txStatus)</code>。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractplatformtransactionmanagerprocessrollbacktxstatus">AbstractPlatformTransactionManager#processRollback(txStatus)<a href="#abstractplatformtransactionmanagerprocessrollbacktxstatus" class="hash-link" aria-label="AbstractPlatformTransactionManager#processRollback(txStatus)的直接链接" title="AbstractPlatformTransactionManager#processRollback(txStatus)的直接链接">​</a></h3>
+<ul>
+<li><code>#begin_try</code>
+<ul>
+<li><code>#begin_try</code>
+<ul>
+<li>调用 <code>triggerBeforeCompletion(txStatus);</code>
+<blockquote>
+<p>回调 transaction synchronization 对象的 <code>beforeCompletion</code> 方法。</p>
+</blockquote>
+</li>
+<li>如果当前事务存在 <code>save_point</code> 则执行 <code>rollback_save_point;</code></li>
+<li>如果当前事务为外层事务则调用 <code>doRollback(txStatus);</code>
+<blockquote>
+<p>具体由子类实现。</p>
+</blockquote>
+</li>
+<li>如果当前存在事务<!-- -->
+<ul>
+<li>如果内层事务被标记为 <code>rollBackOnly</code> 或者 <code>globalRollbackOnParticipationFailure</code> 开关开启，则调用 <code>doSetRollbackOnly(status);</code>
+<blockquote>
+<p>给当前事务标记需要回滚。<br>
+<!-- -->当前事务为内层事务，如果内层事务打上了 <code>rollBackOnly</code> 标记，则整个事务一定回滚，否则 <code>globalRollbackOnParticipationFailure</code> 起作用。<br>
+<!-- -->它默认开启，即内层事务失败，最终结果是全事务回滚。若关闭该开关，外层事务业务方法可根据情况决定是否回滚。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>#catch_RuntimeException</code>
+<ul>
+<li>调用 <code>triggerAfterCompletion(txStatus, TransactionSynchronization.STATUS_UNKNOWN);</code></li>
+<li>抛出异常 <code>ex</code>。</li>
+</ul>
+</li>
+<li><code>#catch_Error</code>
+<ul>
+<li>调用 <code>triggerAfterCompletion(txStatus, TransactionSynchronization.STATUS_UNKNOWN);</code></li>
+<li>抛出错误 <code>err</code>。</li>
+</ul>
+</li>
+<li>调用 <code>triggerAfterCompletion(txStatus, TransactionSynchronization.STATUS_ROLLED_BACK);</code>
+<blockquote>
+<p>回调 transaction synchronization 对象的 <code>afterCompletion</code> 方法。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><code>#finally</code>
+<ul>
+<li>调用 <code>cleanupAfterCompletion(txStatus);</code>
+<blockquote>
+<p>后续工作：状态标记为 completed，清空事务同步集合，恢复挂起的事务资源等。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="问题与解答-2">问题与解答<a href="#问题与解答-2" class="hash-link" aria-label="问题与解答的直接链接" title="问题与解答的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="问orgspringframeworktransactionsupportcallbackpreferringplatformtransactionmanager-这个接口作用是什么">问：<code>org.springframework.transaction.support.CallbackPreferringPlatformTransactionManager</code> 这个接口作用是什么？<a href="#问orgspringframeworktransactionsupportcallbackpreferringplatformtransactionmanager-这个接口作用是什么" class="hash-link" aria-label="问orgspringframeworktransactionsupportcallbackpreferringplatformtransactionmanager-这个接口作用是什么的直接链接" title="问orgspringframeworktransactionsupportcallbackpreferringplatformtransactionmanager-这个接口作用是什么的直接链接">​</a></h4>
+<ul>
+<li>猜测：<code>TransactionAspectSupport#invokeWithinTransaction(method, targetClass, invocation)</code> 的第308行的分支可能是专门处理它的。</li>
+<li>答：上面已有相关回答。</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="问orgspringframeworktransactiontransactiondefinitiongettimeout-是怎么处理的">问：<code>org.springframework.transaction.TransactionDefinition#getTimeout()</code> 是怎么处理的？<a href="#问orgspringframeworktransactiontransactiondefinitiongettimeout-是怎么处理的" class="hash-link" aria-label="问orgspringframeworktransactiontransactiondefinitiongettimeout-是怎么处理的的直接链接" title="问orgspringframeworktransactiontransactiondefinitiongettimeout-是怎么处理的的直接链接">​</a></h4>
+<ul>
+<li>答：源码中未直接看到处理逻辑，但Hibernate和JPA里均有使用。</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="关键方法说明">关键方法说明<a href="#关键方法说明" class="hash-link" aria-label="关键方法说明的直接链接" title="关键方法说明的直接链接">​</a></h3>
+<ul>
+<li>
+<p><code>AbstractPlatformTransactionManager#doGetTransaction()</code><br>
+<!-- -->模板方法，用于从事务管理器中获取一个事务对象，具体类型由子类决定。如果当前已有事务，则返回包含当前事务信息的对象。</p>
+</li>
+<li>
+<p><code>AbstractPlatformTransactionManager#isExistingTransaction()</code><br>
+<!-- -->用于判断事务对象是否对应已有事务。Spring根据该方法返回值判断事务传播行为。</p>
+</li>
+<li>
+<p><code>AbstractPlatformTransactionManager#doSetRollbackOnly()</code><br>
+<!-- -->给事务标记为回滚。以常用的<code>DataSourceTransactionManager</code>为例，具体实现是从事务对象中取出<code>ConnectionHolder</code>并设置回滚标记。<br>
+<!-- -->这个标记是“全局”的，同一物理事务中的所有参与者都能读取到。</p>
+</li>
+<li>
+<p><code>DefaultTransactionStatus#isNewSynchronization()</code><br>
+<!-- -->用于判断是否是新建的同步事务。</p>
+</li>
+<li>
+<p><code>org.springframework.orm.jpa.EntityManagerHolder</code><br>
+<!-- -->用于包装JPA的<code>EntityManager</code>。</p>
+</li>
+<li>
+<p><code>org.springframework.orm.jpa.JpaTransactionManager.JpaTransactionObject</code></p>
+<ol>
+<li>实现了<code>SmartTransactionObject</code>接口。</li>
+<li>它的<code>EntityManagerHolder</code>是通过<code>TransactionSynchronizationManager#getResource()</code>获取的。</li>
+</ol>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="问题与解答-3">问题与解答<a href="#问题与解答-3" class="hash-link" aria-label="问题与解答的直接链接" title="问题与解答的直接链接">​</a></h3>
+<ul>
+<li><strong>当前事务是否只读的赋值</strong><br>
+<!-- -->在<code>AbstractPlatformTransactionManager#prepareSynchronization(txStatus, definition)</code>方法中，如果需要同步事务状态到当前线程，会把<code>definition</code>中的<code>isReadOnly</code>属性同步进去。<br>
+<!-- -->（<code>definition</code>通常是<code>org.springframework.transaction.interceptor.TransactionAttribute</code>的实现类）</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="nested事务与new事务的区别事务实现分一般情况事务和jta事务">NESTED事务与NEW事务的区别（事务实现分一般情况事务和JTA事务）<a href="#nested事务与new事务的区别事务实现分一般情况事务和jta事务" class="hash-link" aria-label="NESTED事务与NEW事务的区别（事务实现分一般情况事务和JTA事务）的直接链接" title="NESTED事务与NEW事务的区别（事务实现分一般情况事务和JTA事务）的直接链接">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="一般情况">一般情况<a href="#一般情况" class="hash-link" aria-label="一般情况的直接链接" title="一般情况的直接链接">​</a></h3>
+<ol>
+<li>
+<p><strong>NEW事务</strong><br>
+<!-- -->会将当前线程挂起，然后自己开启一个新事务，默认情况下会把当前事务属性保存到线程中。提交或回滚事务时，恢复之前的事务属性。</p>
+</li>
+<li>
+<p><strong>NESTED事务</strong><br>
+<!-- -->不会干预当前事务的任何属性，只是添加一个 savepoint（保存点），当前线程的状态不做任何修改。</p>
+</li>
+<li>
+<p><strong>提交事务时</strong><br>
+<!-- -->会首先判断当前事务是否含有 savepoint：</p>
+<ul>
+<li>如果有，则执行两步操作：获取当前事务的 rollback 属性值；释放 savepoint。</li>
+</ul>
+</li>
+<li>
+<p><strong>回滚事务时</strong><br>
+<!-- -->会首先判断当前事务是否含有 savepoint：</p>
+<ul>
+<li>如果有，则调用 <code>DefaultTransactionStatus#rollbackToHeldSavepoint()</code>；</li>
+<li>该方法会对 savepoint 进行回滚操作，并释放当前线程状态相关的 savepoint 资源。</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>另外<strong>JPA 不支持嵌套事务（savepoint）</strong><br>
+<a href="https://en.wikibooks.org/wiki/Java_Persistence/Transactions#Nested_Transactions" target="_blank" rel="noopener noreferrer">参考链接</a></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="jta事务">JTA事务<a href="#jta事务" class="hash-link" aria-label="JTA事务的直接链接" title="JTA事务的直接链接">​</a></h3>
+<ol>
+<li>
+<p>嵌套事务不会将当前事务挂起，也不会挂起当前线程的 <code>readOnly</code> 等属性。</p>
+</li>
+<li>
+<p>其它细节未确定，不清楚后续是否会恢复相关属性。</p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="问题与解答-4">问题与解答<a href="#问题与解答-4" class="hash-link" aria-label="问题与解答的直接链接" title="问题与解答的直接链接">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="问如何配置事务管理器txmgr打印日志">问：如何配置事务管理器（TxMgr）打印日志？<a href="#问如何配置事务管理器txmgr打印日志" class="hash-link" aria-label="问：如何配置事务管理器（TxMgr）打印日志？的直接链接" title="问：如何配置事务管理器（TxMgr）打印日志？的直接链接">​</a></h3>
+<p>答：</p>
+<p>（这里暂未补充具体内容）</p>
+<hr>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="问spring事务失效排查方向有哪些">问：Spring事务失效排查方向有哪些？<a href="#问spring事务失效排查方向有哪些" class="hash-link" aria-label="问：Spring事务失效排查方向有哪些？的直接链接" title="问：Spring事务失效排查方向有哪些？的直接链接">​</a></h3>
+<ul>
+<li>
+<p><code>@Transactional</code> 注解应用在非 <code>public</code> 修饰的方法上，导致失效。<br>
+<!-- -->参考：<code>AbstractFallbackTransactionAttributeSource#computeTransactionAttribute</code>。</p>
+</li>
+<li>
+<p><code>@Transactional</code> 注解属性 <code>propagation</code> 设置错误。</p>
+</li>
+<li>
+<p><code>@Transactional</code> 注解属性 <code>rollbackFor</code> 设置错误。</p>
+</li>
+<li>
+<p>同一个类内部方法调用，导致 <code>@Transactional</code> 失效。</p>
+</li>
+<li>
+<p>异常被 <code>catch</code> 吃掉，导致 <code>@Transactional</code> 失效（这是经验较少者常见的排查盲点）。</p>
+</li>
+<li>
+<p>数据库引擎不支持事务。</p>
+</li>
+<li>
+<p><code>Spring MVC</code> 扫描的是父容器定义的 <code>Service</code>，而动态代理只定义到 Root 容器。</p>
+</li>
+<li>
+<p>目标对象没有被 Spring 容器管理。</p>
+</li>
+<li>
+<p>分布式事务问题。</p>
+</li>
+</ul></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/06/25/Spring事务/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="博文分页导航"><a class="pagination-nav__link pagination-nav__link--prev" href="/blog/2025/06/26/字符编码"><div class="pagination-nav__sublabel">较新一篇</div><div class="pagination-nav__label">字符编码</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/blog/2025/06/24/凤凰架构"><div class="pagination-nav__sublabel">较旧一篇</div><div class="pagination-nav__label">凤凰架构</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#spring-默认事务" class="table-of-contents__link toc-highlight">Spring 默认事务</a></li><li><a href="#示例配置" class="table-of-contents__link toc-highlight">示例配置</a></li><li><a href="#类结构关系" class="table-of-contents__link toc-highlight">类结构关系</a></li><li><a href="#七种事务传播行为" class="table-of-contents__link toc-highlight">七种事务传播行为</a></li><li><a href="#事务涉及到的几个主要类" class="table-of-contents__link toc-highlight">事务涉及到的几个主要类</a></li><li><a href="#transactionsynchronizationmanagerthreadlocal-使用最多的类" class="table-of-contents__link toc-highlight">TransactionSynchronizationManager：ThreadLocal 使用最多的类</a></li><li><a href="#核心字段说明" class="table-of-contents__link toc-highlight">核心字段说明：</a></li><li><a href="#问题与解答" class="table-of-contents__link toc-highlight">问题与解答</a></li><li><a href="#q1-transactioninfo-中的-oldtransactioninfo-是干嘛用的" class="table-of-contents__link toc-highlight">Q1: <code>TransactionInfo</code> 中的 <code>oldTransactionInfo</code> 是干嘛用的？</a></li><li><a href="#相关类简介" class="table-of-contents__link toc-highlight">相关类简介</a></li><li><a href="#关于-txattr-和-txstatus" class="table-of-contents__link toc-highlight">关于 <code>txAttr</code> 和 <code>txStatus</code></a></li><li><a href="#q2-txattr-是-callbackpreferringplatformtransactionmanager-类型代表什么" class="table-of-contents__link toc-highlight">Q2: <code>txAttr</code> 是 <code>CallbackPreferringPlatformTransactionManager</code> 类型代表什么？</a></li><li><a href="#transactionaspectsupportinvokewithintransaction-调用流程" class="table-of-contents__link toc-highlight"><code>TransactionAspectSupport#invokeWithinTransaction(...)</code> 调用流程</a></li><li><a href="#事务挂起-suspendtx-的原理" class="table-of-contents__link toc-highlight">事务挂起 suspend(tx) 的原理</a></li><li><a href="#q3-connectionholder-和事务线程的关系是什么" class="table-of-contents__link toc-highlight">Q3: <code>ConnectionHolder</code> 和事务、线程的关系是什么？</a></li><li><a href="#q4-suspendtx-是怎么处理事务和线程关系的" class="table-of-contents__link toc-highlight">Q4: <code>suspend(tx)</code> 是怎么处理事务和线程关系的？</a></li><li><a href="#abstractplatformtransactionmanager-的三个事务同步方式" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager 的三个事务同步方式</a></li><li><a href="#abstractplatformtransactionmanager-详解" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager 详解</a></li><li><a href="#基本概念" class="table-of-contents__link toc-highlight">基本概念</a></li><li><a href="#abstractplatformtransactionmanagernewtransactionstatus" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager#newTransactionStatus</a></li><li><a href="#abstractplatformtransactionmanagergettransactiondefinition" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager#getTransaction(definition)</a></li><li><a href="#abstractplatformtransactionmanagerhandleexistingtransactiondefinition-transaction-debugenable" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager#handleExistingTransaction(definition, transaction, debugEnable)</a></li><li><a href="#问题与解答-1" class="table-of-contents__link toc-highlight">问题与解答</a></li><li><a href="#abstractplatformtransactionmanagersuspendtx" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager#suspend(tx)</a></li><li><a href="#abstractplatformtransactionmanagerresumetx-resholder" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager#resume(tx, resHolder)</a></li><li><a href="#abstractplatformtransactionmanagercommittxstatus" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager#commit(txStatus)</a></li><li><a href="#abstractplatformtransactionmanagerprocesscommittxstatus" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager#processCommit(txStatus)</a></li><li><a href="#abstractplatformtransactionmanagerrollbacktxstatus" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager#rollback(txStatus)</a></li><li><a href="#abstractplatformtransactionmanagerprocessrollbacktxstatus" class="table-of-contents__link toc-highlight">AbstractPlatformTransactionManager#processRollback(txStatus)</a></li><li><a href="#问题与解答-2" class="table-of-contents__link toc-highlight">问题与解答</a></li><li><a href="#关键方法说明" class="table-of-contents__link toc-highlight">关键方法说明</a></li><li><a href="#问题与解答-3" class="table-of-contents__link toc-highlight">问题与解答</a></li><li><a href="#nested事务与new事务的区别事务实现分一般情况事务和jta事务" class="table-of-contents__link toc-highlight">NESTED事务与NEW事务的区别（事务实现分一般情况事务和JTA事务）</a></li><li><a href="#一般情况" class="table-of-contents__link toc-highlight">一般情况</a></li><li><a href="#jta事务" class="table-of-contents__link toc-highlight">JTA事务</a></li><li><a href="#问题与解答-4" class="table-of-contents__link toc-highlight">问题与解答</a></li><li><a href="#问如何配置事务管理器txmgr打印日志" class="table-of-contents__link toc-highlight">问：如何配置事务管理器（TxMgr）打印日志？</a></li><li><a href="#问spring事务失效排查方向有哪些" class="table-of-contents__link toc-highlight">问：Spring事务失效排查方向有哪些？</a></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>

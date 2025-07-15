@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Spring | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/blog/2025/05/06/Spring"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Spring | My Site"><meta data-rh="true" name="description" content="Spring框架解析"><meta data-rh="true" property="og:description" content="Spring框架解析"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-05-06T00:00:00.000Z"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/blog/2025/05/06/Spring"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/05/06/Spring" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/06/Spring" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/06/Spring" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/blog/2025/05/06/Spring","mainEntityOfPage":"https://watermelo2.github.io/blog/2025/05/06/Spring","url":"https://watermelo2.github.io/blog/2025/05/06/Spring","headline":"Spring","name":"Spring","description":"Spring框架解析","datePublished":"2025-05-06T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/assets/css/styles.e55a2139.css">
+<script src="/assets/js/runtime~main.849cc757.js" defer="defer"></script>
+<script src="/assets/js/main.0ae3829a.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/1.svg"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="搜索" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="最近博文导航"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">Spring</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-05-06T00:00:00.000Z">2025年5月6日</time> · <!-- -->阅读需 36 分钟</div></header><div id="__blog-post-container" class="markdown"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="spring框架解析">Spring框架解析<a href="#spring框架解析" class="hash-link" aria-label="Spring框架解析的直接链接" title="Spring框架解析的直接链接">​</a></h2>
+<blockquote>
+<p>参考: 《Spring源码深度解析（第2版）》</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="类介绍">类介绍<a href="#类介绍" class="hash-link" aria-label="类介绍的直接链接" title="类介绍的直接链接">​</a></h3>
+<ul>
+<li><code>org.springframework.beans</code>: 这个包下的所有类主要解决了三件事：Bean的定义、Bean的创建以及对Bean的解析.</li>
+<li>ListableBeanFactory、HierarchicalBeanFactory、AutowireCapableBeanFactory这三个接口共同定义了Bean的集合、Bean之间的关系以及Bean行为.</li>
+<li>Expression Language(EL)是JSP2.1规范中定义的<code>unifed expression language</code>扩展</li>
+<li>XmlBeanFactory构造初始化时会忽略BeanNameAware、BeanFactoryAware、BeanClassLoaderAware的接口的自动装配.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="dtd与xsd">DTD与XSD<a href="#dtd与xsd" class="hash-link" aria-label="DTD与XSD的直接链接" title="DTD与XSD的直接链接">​</a></h3>
+<ul>
+<li>
+<p>DTD(<code>Document Type Definition</code>)即文档类型定义,是一种XML约束模式语言,是XML文件的验证机制,属于XML文件组成的一部分.  一个DTD文档包含: 元素的定义规则,元素间关系的定义规则,元素可使用的属性,可使用的实体或符号规则.</p>
+</li>
+<li>
+<p>XSD(<code>XML Schemas Definition</code>)XML Schema描述了XML文档的结构,可以用一个指定地点XML Schema来验证某个XML文档,以检查该XML文档是否符合其要求,但它的功能比DTD更丰富(当然它也有不足). 它本身也是XML文档,符合XML语法结构,可以用通用的XML解析器解析它.</p>
+</li>
+</ul>
+<blockquote>
+<p>具体可以看 <a href="https://baike.baidu.com/item/xsd/18660511" target="_blank" rel="noopener noreferrer">百度百科</a></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="entityresolver">EntityResolver<a href="#entityresolver" class="hash-link" aria-label="EntityResolver的直接链接" title="EntityResolver的直接链接">​</a></h3>
+<p>如果SAX应用程序需要实现&quot;自定义处理外部实体&quot;,则必须实现此接口并使用<code>XMLReader#setEntityResolver()</code>像SAX驱动器注册一个实例. 它的作用是提供给第三方一个获取DTD、XSD的方法,比如放在本地(因为对应解析一个XML,SAX首先读取该XML文档上的头部声明并且根据它去寻找相关的DTD、XSD定义以便对文档进行验证. 而默认的寻找规则就是通过URI地址来下载.),所以实现的时候直接读取本地文件返回给XSD就可以避免从网络获取文件.</p>
+<p>Spring中使用<code>DelegatingEntityResolver#resolveEntity(publicId,systemId)</code>来实现. 先来看看参数含义</p>
+<ul>
+<li>publicId: 共有认可的文件. 一般自己写的DTD文件是用<code>&lt;!DOCTYPE SYSTEM xxxxx&gt;</code>引用的. 并且XSD文件没有这个.</li>
+<li>systemId: 这个不太清楚,获取到的是一个uri,即文件地址.</li>
+</ul>
+<p>Spring的XML配置里有两大类Bean声明: 一种为<code>&lt;bean&gt;</code>、<code>&lt;import&gt;</code>、<code>&lt;alias&gt;</code>、<code>&lt;beans&gt;</code>和另一种类似于<code>&lt;tx:annotation-driven/&gt;</code> 由<code>DefaultBeanDefinitionDocumentReader#parseBeanDefinitions</code>进行分支调用. 因为这两种解析差别很大,需要分开处理.</p>
+<p>BeanDefinitionParserDelegate是解析XML的<code>bean definition</code>的帮助类.</p>
+<p>对应NamespaceHandler解析自定义属性标签也是一大块:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;bean id=&quot;x&quot; class=&quot;x&quot;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &lt;my:pro name=&quot;&quot; /&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/bean&gt;</span><br></span></code></pre></div></div>
+<p><code>org.springframework.beans.factory.support.DefaultListableBeanFactory.registerBeanDefinition(String, BeanDefinition)</code>的<code>hasBeanCreationStarted()</code>这个分支下的代码和之前版本不一样. 从代码上来看是处理多线程的情况,但不知道是因为哪个功能还是问题导致在4.2.2版本加进去了.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="readercontext">ReaderContext<a href="#readercontext" class="hash-link" aria-label="ReaderContext的直接链接" title="ReaderContext的直接链接">​</a></h3>
+<blockquote>
+<p>介绍: Context that gets passed along a bean definition reading process,  encapsulating all relevant configuration as well as state.</p>
+</blockquote>
+<p>它就是一个资源文件的封装,不过它比较<code>高级</code>. 它里面还包含了对应的<code>异常报告器</code>、<code>组件事件监听器</code>、<code>SourceExtractor</code>(不知道怎么用)</p>
+<p>spring加载资源的方式有很多种,它通过Resource来进行抽象(这里想表述的是它能够存储任何地方加载的资源,很通用).并且该Context在解析、注册<code>bean definition</code>的过程中来回传递,在解析过程中如果出现异常都可以通过这个Context来进行输出信息,所以取名为Context非常准确.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="几大特殊的beanpostprocessor">几大特殊的BeanPostProcessor<a href="#几大特殊的beanpostprocessor" class="hash-link" aria-label="几大特殊的BeanPostProcessor的直接链接" title="几大特殊的BeanPostProcessor的直接链接">​</a></h3>
+<blockquote>
+<p><code>InstantiationAwareBeanPostProcessor</code>、<code>MergedBeanDefinitionPostProcessor</code>、<code>SmartInstantiationAwareBeanPostProcessor</code>、<code>DestructionAwareBeanPostProcessor</code>、<code>MergedBeanDefinitionPostProcessor</code>、</p>
+</blockquote>
+<p>其它类似的PostProcessor: <code>BeanDefinitionRegistryPostProcessor</code>、<code>BeanFactoryPostProcessor</code></p>
+<p>注意区分实例化(<code>instant</code>)和初始化(<code>init</code>)的区别,这将涉及到<code>InstantiationAwareBeanPostProcessor</code>和<code>BeanPostProcessor</code>的调用时机</p>
+<p><code>afterPropertiesSet()</code>方法先于<code>init-method</code>配置的方法被执行</p>
+<p><code>AbstractRefreshableApplicationContext.createBeanFactory()</code>这里有个保存父beanFactory的入口,瞧瞧哪些情况用到了(在<code>web mvc</code>里,例如多个servlet用的就是同一个beanFactory)</p>
+<p>StandardBeanExpressionResolver: Spring3增加的SpEL语言支持</p>
+<p>SpEL只依赖core模块. <code>absApplicationContext</code>注册了<code>StandardBeanExpressionResolver</code>实例到beanFactory中. 它的完整调用链如下:
+<code>AbstractBeanFactory#getBean(String)</code>
+==&gt;<code>AbstractBeanFactory#doGetBean(String, Class&lt;T&gt;, Object[], boolean)</code>
+==&gt;<code>AbstractAutowireCapableBeanFactory#createBean(String, RootBeanDefinition, Object[])</code>
+==&gt;<code>AbstractAutowireCapableBeanFactory#doCreateBean(String, RootBeanDefinition, Object[])</code>
+==&gt;<code>AbstractAutowireCapableBeanFactory#populateBean(String, RootBeanDefinition, BeanWrapper)</code>
+==&gt;<code>AbstractAutowireCapableBeanFactory#applyPropertyValues(String, BeanDefinition, BeanWrapper, PropertyValues)</code>
+==&gt;<code>BeanDefinitionValueResolver#resolveValueIfNecessary(Object, Object)</code>
+==&gt;<code>BeanDefinitionValueResolver#doEvaluate(String)</code>
+==&gt;<code>AbstractBeanFactory#evaluateBeanDefinitionString(String, BeanDefinition)</code>
+==&gt;<code>BeanExpressionResolver#evaluate(String, BeanExpressionContext)</code></p>
+<p>语言解析器主要用在解析依赖注入bean以及完成bean的初始化和属性获取后进行属性填充的时候(就是上面这个调用链)</p>
+<p>注意分清楚PropertyEditorRegistrar和PropertyEditorRegistry的区别. 一个是<code>操作者</code>,另一个是<code>注册机</code></p>
+<p>BeanWrapper也是一个PropertyEditorRegistry. <code>BeanWrapper#registerCustomEditor(Class,PropertyEditor)</code>入口
+...
+==&gt;<code>AbstractAutowireCapableBeanFactory#doCreateBean(String, RootBeanDefinition, Object[])</code>
+==&gt;<code>AbstractAutowireCapableBeanFactory#createBeanInstance(String, RootBeanDefinition, Object[])</code>
+==&gt;<code>AbstractAutowireCapableBeanFactory#instantiateBean(String, RootBeanDefinition)</code>
+==&gt;<code>AbstractBeanFactory#initBeanWrapper(BeanWrapper)</code>
+==&gt;<code>AbstractBeanFactory#registerCustomEditors(PropertyEditorRegistry) </code></p>
+<blockquote>
+<p>说明: 这个方法调了<code>registrar#registerCustomEditors(registry)</code>其中就包括<code>AbstractApplicationContext#prepareBeanFactory(ConfigurableListableBeanFactory)</code>注册的ResourceEditorRegistrar用来初始化些基本的<code>资源型</code>&quot;(Resource相关的)以及<code>Class型</code>等属性解析器</p>
+</blockquote>
+<p>PropertyEditorRegistrySupport是PropertyEditorRegistry的实现基类,同时也是BeanWrapperImpl的父类. 它的<code>PropertyEditorRegistrySupport.createDefaultEditors()</code>方法初始化了常用数据类型的属性编辑器(PropertyEditor),唯独没有时间类型的处理...</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa">QA<a href="#qa" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>问: BeanFactoryPostProcessor的执行时机?<!-- -->
+<ul>
+<li>答: 在<code>AbstractApplicationContext#invokeBeanFactoryPostProcessors()</code>中,也就是说BeanFactoryPostProcessor只有在ApplicationContext中才会被启用(想想也是,如果
+在用像DefaultListableBeanFactory这样的类来做spring启动容器的话用<code>post-processor</code>意义不大).</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="propertyresourceconfigurerpostprocessbeanfactoryconfigurablelistablebeanfactory解析属性文件流程"><code>PropertyResourceConfigurer#postProcessBeanFactory(ConfigurableListableBeanFactory)</code>解析属性文件流程<a href="#propertyresourceconfigurerpostprocessbeanfactoryconfigurablelistablebeanfactory解析属性文件流程" class="hash-link" aria-label="propertyresourceconfigurerpostprocessbeanfactoryconfigurablelistablebeanfactory解析属性文件流程的直接链接" title="propertyresourceconfigurerpostprocessbeanfactoryconfigurablelistablebeanfactory解析属性文件流程的直接链接">​</a></h3>
+<p>流程: 解析locations中的所有资源属性文件并总和到Properties中(这部分可配置替换系统属性). 利用<code>PlaceholderResolvingStringValueResolver</code>处理含有<code>${}</code>占位符的属性名(实际上是用的<code>PropertyPlaceholderHelper</code>来解析占位符(可以用<code>:</code>来设置默认值,和mybatis一样的),用PlaceholderResolver来处理占位符的实际文本取值). 整体上来说和mybatis是差不多的.</p>
+<blockquote>
+<p>PS: 这个类已经被弃用了,现在用<code>PropertySourcesPlaceholderConfigurer.</code></p>
+</blockquote>
+<p>BeanFactory和ApplicationContext(准确的说是<code>absApplicationContext</code>)的最大的区别在于ApplicationContext支持各种<code>XXXPostProcessor</code>的注册.</p>
+<p>ApplicationContext虽然有继承BeanFactory,但是继承的是HierarchicalBeanFactory(含继承结构的)和ListableBeanFactory(可遍历的),并不支持扩展(自定义各种属性、功能),所以ApplicationContext得利用ConfigurableListableBeanFactory(可配置的)来实现自己的扩展功能.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="勘误">勘误<a href="#勘误" class="hash-link" aria-label="勘误的直接链接" title="勘误的直接链接">​</a></h3>
+<ul>
+<li>
+<p>P169页的说法是<code>而对于每个监听器来说其实都可以获取到产生的事件,但是是否进行处理则由事件监听器来决定.</code>	,这句话有问题把? 一般是用<code>ResolvableType.isAssignableFrom(ResolvableType, Map&lt;Type, Type&gt;)</code>·`来匹配ApplicationEvent对应的ApplicationListener. 在4.1.7版本中这部分的代码整体上都没有什么改动,所以书上这部分是错的.</p>
+</li>
+<li>
+<p>P171测试用例错误. 明显测的不是字符串转日期</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-1">QA<a href="#qa-1" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>问: 为什<code>么scope=prototype</code>情况下不会特殊处理循环引用???<!-- -->
+<ul>
+<li>答: 因为这样的话每次<code>getBean()</code>都会创建新的实例,所以不能提前<code>曝光</code>bean(提前<code>曝光</code>在这里也可以认为是一种缓存bean),如果缓存了bean的话就会导致依赖的bean与
+当前实际上提前<code>曝光</code>的bean一致.</li>
+</ul>
+</li>
+</ul>
+<p><code>SmartBeanFactory#isEagerInit()</code>文档上写道: 标准的BeanFactory不会急切的初始化,它的<code>{@link #getObject()}</code>只会在被调用时进行实际访问,即使是单例对象也是如此. 但是如果<code>isEagerInit()</code>返回true(默认false)的话,并且该factoryBean为单例的话则会立即初始化(在<code>DefaultListableBeanFactory#preInstantiateSingletons()</code>中),同时也会立即处理<code>post-processor</code>.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-2">QA<a href="#qa-2" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>
+<p>问: Phased接口是和LifeCycle相关的,具体是干嘛的?</p>
+<ul>
+<li>答: 用来在Spring容器本身的生命周期内做些工作的预留接口. 可以看看 SmartLifecycle 以及 DefaultLifecycleProcessor 的处理.</li>
+</ul>
+</li>
+<li>
+<p>问: Lifecycle的start()具体在什么情况下才会被调用(什么场景下适合被调用)?</p>
+<ul>
+<li>答: 如果用默认的DefaultLifecycleProcessor(可以注册名字为lifecycleProcessor的LifecycleProcessor来自定义)则直接调<code>AbstractApplicationContext#start()</code>就可以了. 一般建议用 SmartLifecycle ,具体示例可以看<code>org.springframework.test.watermelon.bean.cycle.Main</code>.</li>
+</ul>
+</li>
+</ul>
+<p>使用CGLIB得考虑两个问题: 无法通知(advise)final方法以及需要将CGLIB二进制发行包放在classpath下面. 需要强制使用CGLIB代理(默认优先JDK,JDK代理实现不了(被代理类没有实现任何接口)时用CGLIB)需要配置:<code> &lt;aop:config proxy-target-class=&quot;true&quot; /&gt;</code>. 需要强制使用CGLIB代理和<code>@AspectJ</code>自动代理支持,需要配置: <code>&lt;aop:aspect-autoproxy proxy-target-class=&quot;true&quot; /&gt;</code>需要用到<code>AopContext.currentProxy()</code>解决方法内部调用代理问题还需要配置: <code>&lt;aop:aspect-autoproxy expose-proxy=&quot;true&quot; /&gt;</code></p>
+<p><code>&lt;aop:config /&gt;</code>注册的是AspectJAwareAdvisorAutoProxyCreator. 用于处理手动设置规则的advise,如:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;aop:config&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;aop:advisor pointcut=&quot;com.xyz.someapp.SystemArchitecture.businessService()&quot; advice-ref=&quot;tx-advice&quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/aop:config&gt;</span><br></span></code></pre></div></div>
+<p><code>&lt;aop:aspect-autoproxy /&gt;</code>注册的是AnnotationAwareAspectJAutoProxyCreator,它继承自AspectJAwareAdvisorAutoProxyCreator,在之前的基础
+上还处理了<code>@Aspect</code>注解的bean</p>
+<ul>
+<li>Q: AutowireCapableBeanFactory.ORIGINAL_INSTANCE_SUFFIX干嘛用的???<!-- -->
+<ul>
+<li>A: <code>AutoProxyUtils#isOriginalInstance(String, Class&lt;?&gt;)</code>用到了</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="勘误-1">勘误<a href="#勘误-1" class="hash-link" aria-label="勘误的直接链接" title="勘误的直接链接">​</a></h3>
+<p>P188批注错误,原文如下(在<code>ReflectiveAspectJAdvisorFactory#getPointcut()</code>方法里):</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">// 提取得到的注解中的表达式,如:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// @Pointcut(&quot;execution(* *.*test*(..))&quot;)中的execution(* *.*test*(..))</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ajexp.setExpression(aspectJAnnotation.getPointcutExpression());</span><br></span></code></pre></div></div>
+<p>正确批注:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">// 提取得到的注解中的表达式,如:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// @Before(&quot;test()&quot;)中的test()</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ajexp.setExpression(aspectJAnnotation.getPointcutExpression());</span><br></span></code></pre></div></div>
+<blockquote>
+<p>说明: 当前方法的上层有且只有一个--<code>ReflectiveAspectJAdvisorFactory#getAdvisors(MetadataAwareAspectInstanceFactory)</code>,该方法在调用<code>getPointcut()</code>
+前会显示过滤掉含有<code>@Pointcut</code>注解的方法.  虽然这个方法声明为<code>private</code>,但目前来看是不会出现原文说的情况.</p>
+</blockquote>
+<p>测试用例: <code>org.springframework.test.watermelon.aop.aspectj.Main</code></p>
+<p>在AOP方面Advisor和Advice的关系是Advisor生产Advice</p>
+<p>MethodMatcher和<code>IntroductionAwareMethodMatcher</code>是匹配<code>bean method</code>是否符合<code>advisor expression</code>的接口. 在<code>AopUtils.canApply(Pointcut, Class&lt;?&gt;, boolean)</code>
+做调用入口,实际上用的是AspectJ框架提供的实现.</p>
+<p><code>ExposeInvocationInterceptor.currentInvocation();</code>:  获取当前AspectJ正在执行代理方法的相关信息(包括代理链、代理方法等)</p>
+<p>P196 批注</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">// 用来控制代理工厂被配置之后,是否还允许修改通知</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// 缺省值为false(即在代理被配置之后,不允许修改代理的配置)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">proxyFactory.setFrozen(this.freezeProxy);</span><br></span></code></pre></div></div>
+<blockquote>
+<p>正确: 缺省值为false(即在代理被配置之后,允许修改代理的配置)</p>
+</blockquote>
+<p>来源依据: <code>AdvisedSupport#removeAdvisor(int)</code></p>
+<p><code>DefaultAopProxyFactory#createAopProxy(AdvisedSupport)</code>是决定用CGLIB还是JDK动态代理的入口</p>
+<p>AdvisedSupportListener用于监听代理类被创建以及修改事件. 但貌似不能准确拿到当前哪个类被代理了.</p>
+<p><code>JdkDynamicAopProxy#invoke(Object, Method, Object[])</code>是JDK实现AOP执行方法的入口</p>
+<p><code>ReflectiveMethodInvocation#proceed()</code>与<code>Advice</code>之间的执行交互:
+说明: <code>实际方法</code>是编码者写的方法,也是被代理的方法. <code>拦截器</code>实际上是一个抽象,每个拦截器都得是或则含有MethodInterceptor,而通过AOP处理<code>org.aspectj</code>包下的<code>增强</code>注解对应的Advice(这里省略了Advisor的介绍)都是MethodInterceptor的实现.</p>
+<p>ReflectiveMethodInvocation维护着当前执行方法对应的所有<code>拦截器</code>,当执行到被代理的方法时会以<code>JdkDynamicAopProxy#invoke(Object, Method,  Object[])</code>为入口,<code>R#proceed()</code>(<code>ReflectiveMethodInvocation#proceed()</code>,下文都这么称呼)为处理代理链的主要方法来实现整个<code>增强</code>功能.  <code>R#proceed()</code>会在每次执行时会维护拦截器的顺序并在调用拦截器的invoke(MethodInvocation方法时将自己传进去.每个拦截器需要在实现自己的<code>增强</code>后调用<code>MethodInvocation#process()</code>方法<code>重回终端</code>R来开始下一个拦截器的处理. 当没有需要处理的拦截器(<code>this.currentInterceptorIndex == this.interceptorsAndDynamicMethodMatchers.size() - 1</code>; 实际上代表的是已经执行过所有的拦截器了)后需要执行<code>实际方法</code>并返回,这个时候<code>后置增强</code>就会开始进行进一步的处理(如果有的话),如下面代码所示:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">try {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  return mi.proceed(); // 调用R#proceed();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">finally {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  invokeAdviceMethod(getJoinPointMatch(), null, null); // R#proceed()方法发现已经执行完所有拦截器后执行&quot;实际方法&quot;并返回时就会进入fially块的&quot;增强&quot;处理.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>其实就是个有<code>深度</code>的动态代理链的<code>流程</code>(注意: 是调用流程一样,不是源代码一样).
+还有个平常我们用<code>org.aspectj</code>包下的<code>@Around</code>注解比较特殊,因为它需要编码者来手动调用<code>R.proceed()</code>方法来<code>重回终端</code>R.</p>
+<p><code>AdvisorChainFactory#getInterceptorsAndDynamicInterceptionAdvice(Advised, Method, Class&lt;?&gt;)</code>这个方法针对方法筛选了<code>增强</code>. 不过默认的实现还是通过AspectJ来实现的. 代码很多,没有看.</p>
+<p><code>AspectJExpressionPointcut#buildPointcutExpression(ClassLoader)</code>根据表达式、表达式所在类、参数(其实为空)构建了表达式对象(PointcutExpression),对于方法匹配切点很关键.</p>
+<p><code>ReflectiveAspectJAdvisorFactory.getAdvisor(Method, MetadataAwareAspectInstanceFactory, int, String)</code>根据AspectJ注解了的方法构建AOP的Advisor对象,这步最关键的就是构建了解析表达式的工具(对象). 其实这个工具是AspectJ提供的.</p>
+<p><code>DefaultAdvisorChainFactory#getInterceptorsAndDynamicInterceptionAdvice(Advised, Method, Class&lt;?&gt;)</code>根据方法返回了对应的AOP拦截器,Advisor会通过AdvisorAdapter来与MethodInterceptor适配. 其中就通过<code>ReflectiveAspectJAdvisorFactory.getAdvisor(..)</code>的表达式工具来判断当前方法是否匹配.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="总结aop">总结AOP<a href="#总结aop" class="hash-link" aria-label="总结AOP的直接链接" title="总结AOP的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="工具怎么注册的">工具怎么注册的<a href="#工具怎么注册的" class="hash-link" aria-label="工具怎么注册的的直接链接" title="工具怎么注册的的直接链接">​</a></h4>
+<p>通过 Spring自定义标签功能 注册用于解析AOP相关标签:
+<code>/spring-aop/src/main/resources/META-INF/spring.handlers</code>、<code>/spring-aop/src/main/resources/META-INF/spring.schemas</code>具体NamespaceHandler为AopNamespaceHandler. 它处理三种标签: <code>config</code>、<code>aspectj-autoproxy</code>、<code>scoped-proxy</code>; 对应BeanDefinitionParser分别是ConfigBeanDefinitionParser(通过手动配置注册Advisor)、AspectJAutoProxyBeanDefinitionParser(通过注解以及手动配置注册Advisor)、ScopedProxyBeanDefinitionDecorator(这个没看)</p>
+<p>上面说的前两个都会在解析标签的时候注册InstantiationAwareBeanPostProcessor,分别是: AspectJAwareAdvisorAutoProxyCreator、AnnotationAwareAspectJAutoProxyCreator(继承自前面那位,因为只是在前面功能上叠加新功能). 如果你能提前注册<code>bean name= &quot;org.springframework.aop.config.internalAutoProxyCreator&quot;</code>且类型AspectJAwareAdvisorAutoProxyCreator、AnnotationAwareAspectJAutoProxyCreator的<code>Generic auto proxy creator</code>(不知道咋描述),那么Spring会用它来实现AOP.</p>
+<p>一般来说标准配置是<code>&lt;aop:aspectj-autoproxy expose-proxy=&quot;true&quot; /&gt;</code>注册带注解的. 给个能展示大部分功能的配置(Spring文档里整合过来的):</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;aop:aspectj-autoproxy expose-proxy=&quot;true&quot; proxy-target-class=&quot;true&quot;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &lt;aop:include name=&quot;regexA&quot;/&gt; </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &lt;aop:include name=&quot;regexB&quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/aop:aspectj-autoproxy&gt; </span><br></span></code></pre></div></div>
+<ul>
+<li>
+<p>expose-proxy: 是否暴露当前代理,默认false.  为true时可以通过<code>AopContext#currentProxy()</code>拿到当前线程执行的代理对象. 它是在<code>JdkDynamicAopProxy#invoke(Object, Method, Object[])</code>处理过程中设置进去的(CGLIB也差不多).</p>
+<blockquote>
+<p>吐槽: <code>AopContext#currentProxy()</code>方法没拿到就抛RTE,报错信息是叫你配置<code>expose-proxy</code>为true. 当我配置了,但是当前真的没代理,那这个异常就会误导吧?</p>
+</blockquote>
+</li>
+<li>
+<p>proxy-target-class: 是否直接代理class(意思是直接继承,用CGLIB代理)永远优于代理任何接口(用JDK代理),默认false. 其实这个字段为false时如果被代理类不符合JDK代理的条件(比如没有实现任何接口. 这个说的不太准确,其实实现了Spring内置的以及内置其它语言一些接口也不算,比如InitializingBean等. 具体可以看<code>ProxyProcessorSupport#evaluateProxyInterfaces(Class&lt;?&gt;, ProxyFactory))</code>时它就会设置当前<code>ProxyFactory.proxyTargetClass=true</code>. 所以说这个不太建议设置为true,除非你能权衡利弊.</p>
+</li>
+<li>
+<p>include: 这个标签时注解版特有的(因为手动配置加上这个多余). 用于配置只符合条件的bean name进行AOP,它的值是正则表达式.  过滤入口在<code>BeanFactoryAspectJAdvisorsBuilder#buildAspectJAdvisors()</code>.</p>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="注册后怎么解析的">注册后怎么解析的<a href="#注册后怎么解析的" class="hash-link" aria-label="注册后怎么解析的的直接链接" title="注册后怎么解析的的直接链接">​</a></h4>
+<p>由于注册了AOP的<code>BeanPostProcessor</code>、<code>InstantiationAwareBeanPostProcessor</code>,每个bean <code>实例化</code>、<code>初始化</code>前后都会经过它. 主要代码逻辑在<code>postProcessBeforeInstantiation()</code>、<code>postProcessAfterInitialization()</code>两个方法.</p>
+<ul>
+<li>
+<p><code>postProcessBeforeInstantiation()</code>: 可以在创建bean实例之前提前用自己的方法创建目标类型(targetSource,通过覆写<code>getCustomTargetSource()</code>方法),这样可以提前创建代理对象.</p>
+</li>
+<li>
+<p><code>postProcessAfterInitialization()</code>: 解析所有适用于当前bean的切面(&quot;增强&quot;方法)并创建并塞入代理对象.</p>
+<ul>
+<li>获取适用于当前bean的Advisor.<!-- -->
+<ul>
+<li>获取所有Advisor: 拿到所有bean,判断是否存在<code>@Aspect</code>注解(其实还有和根据名字判断的,不过那个没用过). 有就通过<code>AspectJAdvisorFactory#getAdvisors(MetadataAwareAspectInstanceFactory)</code>提取出所有Advisor.</li>
+<li>筛选出适用于当前bean的Advisor: 判断当前类是否存在符合Advisor表达式的方法,有一个就算适用(其实这个我没怎么看).</li>
+<li>给子类扩展Advisor: 有个子类就用了. 功能是暴露当前正在被代理执行的方法信息,在集合中的第一个.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="解析后怎么构建的">解析后怎么构建的<a href="#解析后怎么构建的" class="hash-link" aria-label="解析后怎么构建的的直接链接" title="解析后怎么构建的的直接链接">​</a></h4>
+<p>以<code>AbstractAutoProxyCreator#createProxy(Class&lt;?&gt;, String, Object[], TargetSource)</code>为入口,通过<code>ProxyFactory#getProxy(ClassLoader)</code>代理工厂根据不同配置创建代理对象. 这里除了一些扩展接口处理、代理优化、参数设置外就是对创建JDK和CGLIB之间的抉择了(抉择策略就是通过之前说的配置以及JDK弊端; 唯独多了个<code>ProxyConfig#isOptimize()</code>,这个用的少(其实我也不知道哪里设置)).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="构建后怎么执行的">构建后怎么执行的<a href="#构建后怎么执行的" class="hash-link" aria-label="构建后怎么执行的的直接链接" title="构建后怎么执行的的直接链接">​</a></h4>
+<blockquote>
+<p>P.S.: 这里只讲JDK. 之前解析的Advisor会被AdvisorAdapter统一转换成MethodInterceptor,所以下文都叫<code>拦截器</code>.</p>
+</blockquote>
+<p>通过<code>ProxyFactory#getProxy(ClassLoader)</code>返回的代理对象被调用的时候会统一走<code>JdkDynamicAopProxy#invoke(Object, Method, Object[]). </code></p>
+<ul>
+<li>Object方法以及特定接口直接处理并返回(不调用拦截器).</li>
+<li>设置当前线程正在处理的代理类: <code>AopContext.setCurrentProxy(Object)</code></li>
+<li>获取于当前执行的方法适配的拦截器: <code>AdvisedSupport#getInterceptorsAndDynamicInterceptionAdvice(Method, Class&lt;?&gt;);</code> 它底层用的是AspectJ的工具类.</li>
+<li>包装成ReflectiveMethodInvocation并执行<code>Joinpoint#proceed()</code>. 这个的执行流程可以看之前的&quot;<strong><code>ReflectiveMethodInvocation#proceed()</code>与Advice之间的执行交互</strong>&quot;</li>
+</ul>
+<p>事务:
+<code>AnnotationDrivenBeanDefinitionParser#AopAutoProxyConfigurer.configureAutoProxyCreator(Element, ParserContext)</code>是Spring注册事务的入口<code>ParserContext.getRegistry().registerBeanDefinition()</code>这里面的对象结构有点牛逼.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-3">QA<a href="#qa-3" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>问: <code>AnnotationDrivenBeanDefinitionParser.AopAutoProxyConfigurer#configureAutoProxyCreator(Element, ParserContext)</code>最后一段注册聚合beanDefinition是干嘛的?<!-- -->
+<ul>
+<li>答: 只是发送个组件注册事件,因为这个是通过读取xml中的<code>&lt;tx:annotation-driven transaction-manager=&quot;transactionManager&quot; /&gt;</code>来注册bean. 最终是通过
+<code>ReaderContext#fireComponentRegistered()</code>来进行发送事件通知的.</li>
+</ul>
+</li>
+</ul>
+<p>ContextLoaderListener是ServletContextListener的实现,必须为<code>web.xml</code>文件中配置,它用来初始化整个appContext</p>
+<p>P325 举例
+原文举例</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">这里以请求路径http://localhost/app/test/index.html为例,来说明下DefaultRequestToViewNameTranslator是如何工作的.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">该请求路径对应的请求URI为/test/index.html,我们来看下以下几种情况,它分别对应逻辑视图名称是什么.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">1. prefix和suffix如果都存在,其他为默认值,那么对应返回的逻辑视图名称应该是prefixtest/indexsuffiix.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">2. stripLeadingSlash和stripExtension都为false,其他默认,这时候对应的逻辑视图名称是/product/index.html.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">3. 都采用默认配置时,返回的逻视图名称应该是product/index.</span><br></span></code></pre></div></div>
+<p>正确: <code>product</code>改为<code>test</code></p>
+<p>DispatcherServlet在HttpServletRequest中存放着许多<code>Spring mvc</code>容器内置对象的key</p>
+<ul>
+<li>问: FlashMap是干嘛用的? 在<code>DispatcherServlet#doService()</code>中有处理(书上也有介绍).<!-- -->
+<ul>
+<li>答: 用与保存重定向时的参数值.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>参考: <a href="https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller/ann-methods/flash-attributes.html" target="_blank" rel="noopener noreferrer">官方文档</a></p>
+</blockquote>
+<p><code>AbstractHandlerMethodMapping#lookupHandlerMethod(String, HttpServletRequest)</code>根据lookupPath找对应HandlerMethod</p>
+<p><code>UrlBasedViewResolver.createView(String, Locale)</code>用来处理结果视图的,其中特殊的两点是<code>forward: </code>和<code>redirect: </code>,它们最终都是调的servlet对应的api.</p>
+<p>InternalResourceViewResolver: 一般用JSP的视图解析器都是用它,它其实是用来返回JSTL的VIEW. 它提供了<code>缓存</code>、<code>forward:xx</code>和<code>redirect:xx</code>前缀支持
+、配置前缀和后缀. 剩下的处理跳转逻辑、将Model中的数据放入requestAttr中等一系列操作就是通过它返回的InternalResourceView来处理.</p>
+<p><code>spring-boot</code>找启动类的实现方法: <code>SpringApplication#deduceMainApplicationClass()</code>
+<code>spring.boot.enableautoconfiguration</code>属性用来控制<code>spring boot</code>是否启用自动配置. <code>META-INF/spring-autoconfigure-metadata.properties</code>存放自动装配的条件信息,用来过滤不匹配的自动配置.</p>
+<p>待写到源码上的注释:
+<code>AutoConfigurationImportSelector#selectImports(annotationMetadata)</code>中的参数存放的是解析好的启动类指定加载来源(primarySource)的注解信息以及类信息. 比如SystemApplicaiton解析后就会将<code>@SpringCloudApplication</code>、<code>@EnableFeignClients</code>等注解以及类信息存起来</p>
+<p><code>AutoConfigurationImportSelector#getCandidateConfigurations()</code>是加载自动配置文件的入口,加载的是<code>META-INF/spring.factories</code>文件</p>
+<p><code>ImportSelector#selectImports()</code>抽象方法定义为: 返回应该被作为Configuration的类名(重新翻译遍)</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="spring-boot的自动装配整合spring流程"><code>spring-boot</code>的自动装配整合spring流程<a href="#spring-boot的自动装配整合spring流程" class="hash-link" aria-label="spring-boot的自动装配整合spring流程的直接链接" title="spring-boot的自动装配整合spring流程的直接链接">​</a></h3>
+<p><code>AbstractApplicationContext#refresh()</code>
+==&gt;<code>AbstractApplicationContext#invokeBeanFactoryPostProcessors()</code>
+==&gt;<code>ConfigurationClassPostProcessor#postProcessBeanDefinitionRegistry()</code>
+==&gt;<code>ConfigurationClassPostProcessor#processConfigBeanDefinitions()</code>
+==&gt;<code>ConfigurationClassParser#parse(java.util.Set&lt;org.springframework.beans.factory.config.BeanDefinitionHolder&gt;)</code>
+==&gt;<code>ConfigurationClassParser.DeferredImportSelectorGroupingHandler#processGroupImports()</code>
+==&gt;<code>ConfigurationClassParser#processImports()</code>
+==&gt;<code>AutoConfigurationImportSelector#selectImports()</code>: 这个是spring-boot的,它扫描了<code>META-INF/spring-autoconfigure-metadata.properties</code>和<code>META-INF/spring.factories</code>文件返回符合条件的<code>Configuration class name</code>.  可以去笔记文件夹里看时序图.</p>
+<p><code>ConditionEvaluator#shouldSkip(AnnotatedTypeMetadata, ConfigurationPhase)</code>是自动装配时用来根据<code>configuration class</code>上的条件注解判断当前<code>configuration  class</code>是否应该跳过(通过).</p>
+<p><code>ConfigurationClassUtils#isLiteConfigurationCandidate()</code>用来判断<code>configuration class</code>是否存在<code>典型</code>注解(Component、ComponentScan、Import、ImportResource
+、Bean).</p>
+<p>ConfigurationClassPostProcessor会处理并注册<code>@Controller</code>、<code>@Service</code>这样的bean. 看<code>ComponentScanAnnotationParser#parse(AnnotationAttributes, String)</code>传的<code>ClassPathBeanDefinitionScanner.useDefaultFilters</code>就知道了(其实是只注册了
+<code>@Component</code>、<code>@ManagedBean</code>、<code>@Named</code>这三个,但是<code>@Service</code>它们都<code>继承</code>了<code>@Component</code>).</p>
+<p>AnnotationAttributes是spring用来代表 解析spring框架自身注解对应属性、属性值的类. 还是举个例子吧:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Configuration</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@ConditionalOnProperty(prefix=&quot;study&quot;,name=&quot;enable&quot;,havingValue=&quot;true&quot;)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class MyConfiguration{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  // definition some beans.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>这里需要关注的是<code>@ConditionalOnProperty(prefix=&quot;study&quot;,name=&quot;enable&quot;,havingValue=&quot;true&quot;)</code>,它解析后的结果就会为AnnotationAttribute, 每个注解属性、属性值都对应<code>LinkedHashMap.Entry</code></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-4">QA<a href="#qa-4" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>问: <code>@Condition</code>注解对应的解析器应该都是SpringBootCondition的子类吧?<!-- -->
+<ul>
+<li>答: 平常用的<code>@ConditionalOnBean</code>、<code>@ConditionalOnClass</code>对应的Condition都是SpringBootCondition的子类. 但还有很多其它的扩展,比如ConfigurationCondition, 它也非常常用,用于限定解析bean的时机. 一个是限定在解析<code>@Configuration</code>注解时,一个是在限定在添加<code>常规bean</code>(非<code>@Configuration</code>). 具体可以看批注.</li>
+</ul>
+</li>
+</ul>
+<p><code>OnPropertyCondition#determineOutcome()</code>里的ConditionMessage的设计可以看看.</p>
+<p><code>ConditionEvaluator#shouldSkip(AnnotatedTypeMetadata, ConfigurationPhase)</code>是处理<code>@Condition</code>那些条件注解的入口. 自定义Conditional注解只需要<code>继承</code>个<code>@Conditional</code>注解并指定value为具体实现Contiona接口功能的实现类</p>
+<ul>
+<li>问: ConfigurationPhase两个<code>场景</code>的不同处理有什么区别<!-- -->
+<ul>
+<li>答: 之前也提到了. 用于限定当前Condition使用场景,分别是解析<code>@Configuration</code>和常规bean(非<code>@Configuration</code>)时. 调用入口在 <code>ConfigurationClassParser#processConfigurationClass(ConfigurationClass)</code>、<code>ConfigurationClassParser#doProcessConfigurationClass()</code></li>
+</ul>
+</li>
+</ul>
+<p><code>QualifierAnnotationAutowireCandidateResolver#getSuggestedValue()</code>用来处理<code>@Value</code>注解的. 它的上层是<code>DefaultListableBeanFactory#doResolveDependency()</code>
+,同样解析<code>@Value</code>注解里的表达式也是在这里面处理的</p>
+<p>AutowireCandidateResolver是个策略接口,用来选举适合依赖项的bean(用于自动装配依赖项)</p>
+<p>Environment是Spring属性加载的基础,里面包含了Spring已经加载的各个属性(它继承自PropertyResolver),而之所以使用MutablePropertySources封装,是因为MutablePropertySources还能实现单独加载自定义的额外属性的功能.</p>
+<ul>
+<li>问: ConversionService用于类型转换. 看下有哪些地方用到了,还是像mybatis一样所有类型转换都用一个接口.<!-- -->
+<ul>
+<li>答: 调用入口在<code>AbstractPropertyResolver#convertValueIfNecessary(Object, Class&lt;T&gt;)</code>. 专门用来获取、设置属性值的,它底层用的是PropertySources.</li>
+</ul>
+</li>
+</ul>
+<p><code>BeanDefinitionVisitor#visitBeanDefinition(BeanDefinition)</code>用于处理<code>bean definition</code>占位符填充. 上层在<code>PlaceholderConfigurerSupport#doProcessProperties(ConfigurableListableBeanFactory, StringValueResolver)</code>中,顶层是PropertySourcesPlaceholderConfigurer,它是个BeanFactoryPostProcessor.  比如那些在xml中配置的bean(拿数据库连接)的占位符参数值就是在这个时候解析的.</p>
+<p>SmartApplicationListener是Spring的ApplicationListener的一个<code>高级</code>实现,它能够监听多个事件.</p>
+<ul>
+<li>问: <code>ConfigFileApplicationListener.Loader#load()</code>处理了profile,它的上层是??????<!-- -->
+<ul>
+<li>答: 它的最初的入口在SpringApplication#prepareEnvironment()中,它的处理过程中就会发送ApplicationEnvironmentPreparedEvent事件(这个事件的定义就是让监听器们可以检查和修改)通知监听器们可以对Environment进行填充. ConfigFileApplicationListener就是其中的一个监听器,它实际上做的工作是解析获取并激活所有<code>EnvironmentPostProcessor(#1)</code>. 当然,它自己获取的的时候也将自己加进去了,它的功能是用来根据profile加载不同的application配置. <code>EnvironmentPostProcessor</code>的获取是通过SpringFactoriesLoader来拿的,并不是通过注册的<code>bean definition</code>去拿(因为此时还没到解析并注册<code>bean definition</code>,先初始化<code>环境</code>再初始化<code>bean definition</code>,合情合理).   具体代码如下:<!-- -->
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">// 略</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// 创建并初始化Environment</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">ConfigurableEnvironment environment = prepareEnvironment(listeners,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        applicationArguments);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// ...</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// 其实主要就是调AbstractApplicationContext#refresh()</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">refreshContext(context);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// 略</span><br></span></code></pre></div></div>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>SpringApplication#prepareEnvironment()</code>创建并加载Environment的入口</p>
+<ul>
+<li>问: EnvironmentPostProcessor为什么要配置到<code>spring.factories</code>里????<!-- -->
+<ul>
+<li>答: 上面已经答过了,简单来说EnvironmentPostProcessor属于Environment初始化的<code>后置增强</code>. Environment初始化的时候还没有<code>load bean definition</code>,不能通过beanFactory去拿,所以<code>spring boot</code>得重新定义一个在<code>load bean definition</code>动作之前的容器并对其进行统一管理.</li>
+<li>补充: 不能通过beanFactory去拿的原因是它是<code>spring boot</code>里的<code>增强</code>,并不属于spring本身.</li>
+</ul>
+</li>
+</ul>
+<p><code>ConfigFileApplicationListener.Loader#load(PropertySourceLoader, String,ConfigFileApplicationListener.Profile,DocumentFilter, DocumentConsumer) </code> 这个类是真正加载配置文件的入口,也是筛选document是否匹配profiles的入口.</p>
+<p><code>ConfigFileApplicationListener.Loader#loadForFileExtension()</code>是上面的那个<code>load()</code>调用链的<code>上级</code>,它负责用有限的<code>提示</code>尽可能的加载配置文件.
+举个例子:
+三个参数分别是: <code>prefix=&quot;file:./config/bootstrap&quot;</code>、<code>fileExtension=&quot;.properties&quot;</code>、 <code>profile=&quot;dev&quot;</code>. 它会组装两种路径去调三次<code>load()</code>方法, 分别是: <code>file:./config/bootstrap-dev.properties</code>、<code>file:./config/bootstrap.properties</code>. 其中有两次传相同的路径是因为如果配置文件没有指定<code>环境</code>时也会读取(具体细节就是创建了两个不同规则的DocumentFilter).</p>
+<p><code>ConfigFileApplicationListener.Loader.load(PropertySourceLoader, String, Profile, DocumentFilter, DocumentConsumer)</code>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">if (!loaded.isEmpty()) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  loaded.forEach((document) -&gt; consumer.accept(profile, document));</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  if (this.logger.isDebugEnabled()) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    this.logger.debug(&quot;Loaded config file &quot;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        + getDescription(location, resource, profile));</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>这段代码如果是从<code>ConfigFileApplicationListener.Loader#load()</code>过来的话那么它的作用就是将解析过的<code>Document.propertySource</code>存放到<code>loaded</code>字段中供后续整合到<code>SprigAppplication.environment</code>. 具体的可以看它们的批注.</p>
+<p><code>ConfigFileApplicationListener.Loader#addLoadedPropertySources()</code>是将当前加载好的PropertySources存放到<code>environment.propertySources</code>中(
+environment是SpringApplication传过来的,也是它的属性)
+==&gt;<code>{@link #addLoadedPropertySources()}==&gt;{@link #load()}</code>
+==&gt;<code>{@link ConfigFileApplicationListener#addPropertySources(ConfigurableEnvironment, ResourceLoader)}</code>
+==&gt;<code>{@link ConfigFileApplicationListener#postProcessEnvironment(ConfigurableEnvironment, SpringApplication)}</code>
+==&gt;<code>{@link ConfigFileApplicationListener#onApplicationEnvironmentPreparedEvent(ApplicationEnvironmentPreparedEvent)}</code>
+==&gt;<code>{@link ConfigFileApplicationListener#onApplicationEvent(ApplicationEvent)}</code>
+==&gt;<code>{@link SpringApplication#prepareEnvironment(SpringApplicationRunListeners, ApplicationArguments)}</code></p>
+<blockquote>
+<p>这里有一段发布事件的流程没列出来,只要知道它在XXX之前发布了ApplicationEnvironmentPreparedEvent事件就行了.</p>
+</blockquote>
+<p>==&gt;<code>{@link SpringApplication#run(java.lang.String...)}</code></p>
+<ul>
+<li>问: <code>ConfigFileApplicationListener.Loader#profiles</code>的加载流程 是什么?<!-- -->
+<ul>
+<li>答: 它的加载流程在<code>ConfigFileApplicationListener.Loader#initializeProfiles()</code>中,那里面有比较详细的批注. 简单来说就是从environment中找<code>spring.profiles.active</code>、<code>spring.profiles.include</code>然后合并<code>environment#getActiveProfiles()</code>
+的结果集.</li>
+</ul>
+</li>
+</ul>
+<p><code>SimpleCommandLineArgsParser#parse()</code>是解析<code>spring-boot main</code>函数的启动参数的工具类.</p>
+<p><code>spring.profile.active</code>和<code>spring.profile.active</code>的配置方式有很多种,常用的有:</p>
+<ul>
+<li>VM启动参数<code>-Dspring.profiles.active=daxigua</code></li>
+<li>main启动参数<code>--spring.profiles.active==daxigua</code></li>
+<li>bootstrap、appliaction、etc... 的yml和properties里配置<code>spring.profiles.active</code></li>
+<li>硬编码配置: <code>ctx.getEnvironment().setActiveProfiles(&quot;profile1&quot;, &quot;profile2&quot;);</code> 或者可以将配置放入<code>System#setProperty()</code>中</li>
+</ul>
+<p>嵌入式Tomcat启动(不看了. 其实挺多代码的,书上只是提了下,而且还是老版本的代码,类都找不到了)
+==&gt;<code>WebServerFactoryCustomizerBeanPostProcessor#postProcessBeforeInitialization(WebServerFactory)</code>
+==&gt;<code>TomcatServletWebServerFactoryCustomizer#customize()</code>
+有用TomcatServletWebServerFactory的痕迹</p>
+<p>ServletWebServerFactoryConfiguration是在TomcatServletWebServerFactory创建的</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="再来一遍">再来一遍<a href="#再来一遍" class="hash-link" aria-label="再来一遍的直接链接" title="再来一遍的直接链接">​</a></h2>
+<p>springmvc: 这个肯定得做好笔记了,之前突然想找下HandlerMethodArgumentResolver的入口在哪里都找了好久,就是因为没做笔记.</p>
+<p>其它:</p>
+<ul>
+<li>instrument: 从这个工程的唯一一个类InstrumentationSavingAgent得到它是用来封装(代理、装饰都可以这么认为)<code>java.lang.instrument.Instrumentation</code>并将其扩展.</li>
+<li>JMS、OXM、JDBC、ORM、TRANSACTION: 这些都不打算看,因为等到需要了解具体的第三方框架的时候那里面会说清楚怎么整合的.</li>
+</ul>
+<p>DefaultListableBeanFactory结构:</p>
+<ul>
+<li>AliasRegistry: 对alias的增删查操作.</li>
+<li>SimpleAliasRegistry: 用map作alias缓存的AliasRegistry实现.</li>
+<li>SingletonBeanRegistry: 对单例bean实例的注册以及获取.</li>
+<li>BeanFactory: 获取bean及bean的各种属性(可以认为是对bean的一些判断功能,比如判断这个bean是否是个单例)</li>
+<li>DefaultSingletonBeanRegistry: SingletonBeanRegistry的实现(很重要).</li>
+<li>HierarchicalBeanFactory: 继承BeanFactory,增加了对parentFactory的支持.</li>
+<li>BeanDefinitionRegistry: 继承AliasRegistry,增加了对bean definition的增删查的支持.</li>
+<li>FactoryBeanRegistrySupport: 继承DefaultSingletonBeanRegistry,增加了对FactoryBean的特殊处理功能.</li>
+<li>ConfigurableBeanFactory: 继承HierarchicalBeanFactory、SingletonBeanRegistry. 提供配置Factory的各种方法. 文档上写道尽量使用BeanFactory或者ListableBeanFactory,它们是&quot;可插拔&quot;的.</li>
+<li>ListableBeanFactory: 根据各种条件获取bean的配置清单</li>
+<li>AbstractBeanFactory: 提供BeanFactory的&quot;基本&quot;(可以认为是&quot;公共&quot;的意思)实现,并提供ConfigurableBeanFactory这个SPI接口.</li>
+<li>AutowireCapableBeanFactory: 提供创建、自动装配、初始化bean已经应用bean的后置处理器.</li>
+<li>AbstractAutowireCapableBeanFactory: 继承AbstractBeanFactory并实现createBean并且使其具有RootBeanDefinition的功能; 实现AutowireCapableBeanFactory功能.</li>
+<li>ConfigurableListableBeanFactory: 继承ListableBeanFactory、AutowireCapableBeanFactory、ConfigurableBeanFactory. 这个不太好说明它是什么,不过它可以用来获取、修改bean definition以及提供singleton bean实例化的前置处理</li>
+<li>DefaultListableBeanFactory: 继承AbstractAutowireCapableBeanFactory,实现ConfigurableListableBeanFactory、BeanDefinitionRegistry(同时也是它们的默认实现); 一个完整(成熟)的基于bean definition的bean factory,可以通过post-processor进行扩展. 需要注意的是它其实就只有一个无参构造(排除那个传parentBeanFactory的,那个不知道用来干嘛的)可用,说明它不负责解析、创建<code>bean definition</code>,可以看出Spring的接口、实现类的职责划分上十分严格(起码spring core这块).</li>
+<li>XmlBeanFactory: 通过XmlBeanDefinitionReader对Resource进行读取并注册<code>bean definition</code>. 看XmlBeanDefinitionReader的几个字段比如说SourceExtractor用于将<code>source metadata</code>加载到<code>bean definition metadata</code>,它默认情况下不是为null,而是为NullSourceExtractor,这样可以在用的时候省略验证.</li>
+</ul>
+<p>XmlBeanDefinitionReader中几个主要的相关类(字段):</p>
+<ul>
+<li>ResourceLoader: 资源加载器,可以根据资源文件地址返回对应的Resource</li>
+<li>BeanDefinitionReader: 定义资源文件读取并转换为BeanDefinition的各个功能.</li>
+<li>EnvironmentCapable: 获取Environment.</li>
+<li>DocumentLoader: 定义从资源文件加载到转换为Document的功能.</li>
+<li>AbstractBeanDefinitionReader: 实现EnvironmentCapable、BeanDefinitionReader.</li>
+<li>BeanDefinitionDocumentReader: 读取Document并注册BeanDefinition.</li>
+<li>BeanDefinitionParserDelegate: 解析BeanDefinition相关的Element</li>
+</ul>
+<p>它的主要流程:</p>
+<ul>
+<li>ResourceLoader将资源文件路径转换为对应的Resource.</li>
+<li>通过DocumentLoader将Resource转换为Document.</li>
+<li>通过BeanDefinitionDocumentReader对Document进行解析,并使用 BeanDefinitionParserDelegae对Element进行解析.</li>
+</ul>
+<p>InputStreamSource: Spring用来屏蔽资源加载的接口,用于返回指定URI对应InputStream对象.</p>
+<p><code>AbstractAutowireCapableBeanFactory#AbstractAutowireCapableBeanFactory()</code>构造忽略了BeanNameAware、BeanFactoryAware、BeanClassLoaderAware三个依赖接口(存在<code>ignoredDependencyInterfaces</code>中).</p>
+<p>自动获取验证文件模式是根据文件的第一行是否包含<code>DOCTYPE</code>,包含就是<code>DTD</code>,否则就是<code>XSD</code>.</p>
+<p>EntityResolver是SAX应用程序提供给第三方自定义获取XML文档上声明的DTD文件的接口,通常框架如果想离线存DTD文件的话要自己写个EntityResolver加载它.</p>
+<p>XmlReaderContext是在读取、处理过程中传递的上下文,封装所有相关的配置和状态,创建自<code>XmlBeanDefinitionReader#registerBeanDefinitions(Document, Resource);</code></p>
+<p><code>BeanDefinitionParserDelegate#parseBeanDefinitionElement(Element, BeanDefinition)</code>解析<code>&lt;bean&gt;</code>节点,包装成BeanDefinitionHolder并返回</p>
+<p><code>BeanDefinitionParserDelegate#parsePropertyElements(Element, BeanDefinition)</code>解析<code>&lt;bean&gt;</code>节点里的<code>&lt;property&gt;</code>节点.</p>
+<p>解析Property或者Constructor标签的属性值时如果解析到ref属性则会用返回RuntimeBeanReference</p>
+<p>·BeanDefinitionParserDelegate#decorateIfRequired(Node, BeanDefinitionHolder, BeanDefinition)·是解析(调用)标签自定义属性的入口. 标签属性如下:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;!-- 实际上不是这么写的,不会是bean标签里有自定义属性. 我也没碰到过这里自定义的情况 --&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;bean id=&quot;test&quot; class=&quot;TestClass&quot;&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  &lt;mybean:user username=&quot;张三&quot;/&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/bean&gt;</span><br></span></code></pre></div></div>
+<p><code>BeanDefinitionParserDelegate#parseCustomElement(Element, BeanDefinition)</code>是解析(调用)自定义标签的入口. 例:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;myname:user id=&quot;testbean&quot; userName=&quot;张三&quot; email=&quot;1378@qq.com&quot; /&gt;</span><br></span></code></pre></div></div>
+<p>当然,整个配置、注册、处理的过程并不是这么简单的. 可以去<code>org.springframework.test.watermelon.bean.customizelabel</code>包里看.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-5">QA<a href="#qa-5" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>问: <code>SimpleAliasRegistry#checkForAliasCircle(String, String)</code>检测循环依赖流程是怎样的?<!-- -->
+<ul>
+<li>答: 它和<code>AbstractAutowireCapableBeanFactory#doCreateBean()</code>的检测方式很像,只是<code>doCreateBean()</code>的前置条件比它复杂. 具体可以看<code>checkForAliasCircle()</code>代码批注.</li>
+</ul>
+</li>
+</ul>
+<p>ReaderEventListener用于监听解析bean definition的注册、销毁等事件.
+TrackingReaderEventListener是自定义ReaderEventListener的demo,它里面包含了如何注册ReaderEventListener.</p>
+<p>PropertiesLoaderUtils用来加载属性文件中的所有属性的,<code>DefaultNamespaceHandlerResolver#getHandlerMappings()</code>用到了.</p>
+<p>了解下那些常用的BeanPostProcessor、BeanFactoryPostProcessor</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="spring循环引用构造依赖">Spring循环引用(构造依赖)<a href="#spring循环引用构造依赖" class="hash-link" aria-label="Spring循环引用(构造依赖)的直接链接" title="Spring循环引用(构造依赖)的直接链接">​</a></h3>
+<ul>
+<li>Spring容器创建<code>testA</code>bean,首先去<code>当前创建bean池</code>查找是否当前bean正在创建,如果没发现,则继续准备其需妥的构造器参数<code>testB</code>,并将<code>testA</code>标识符放到
+<code>当前创建bean池</code>.</li>
+<li>Spring容器创建<code>testB</code>bean,首先去<code>当前创建bean池</code>查找是否当前bean正在创建,如果没发现,则继续准备其需妥的构造器参数<code>testC</code>,并将<code>testB</code>标识符
+放到<code>当前创建 bean池</code></li>
+<li>Spring 容器创建<code>testC</code>bean,首先去<code>当前创建bean池</code>查找是否当前bean正在创建,如果没发现,则继续准备其需妥的构造器参数<code>testA</code>,并将<code>testC</code>标识符
+放到<code>当前创建bean池</code>.</li>
+<li>到此为止Spring容器要去创建<code>testA</code>bean,发现该bean标识符在<code>当前创建bean池</code>中,因为表示循环依赖,抛出BeanCurrentlyInCreationException.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="spring循环引用setter依赖">Spring循环引用(setter依赖)<a href="#spring循环引用setter依赖" class="hash-link" aria-label="Spring循环引用(setter依赖)的直接链接" title="Spring循环引用(setter依赖)的直接链接">​</a></h3>
+<ul>
+<li>Spring容器创建单例<code>testA</code>bean,首先根据无参构造器创建bean,并暴露一个<code>ObjectFactory</code>用于返回一个提前暴露一个创建中的bean,并将<code>testA</code>标识符
+放到<code>当前创建bean池</code>,然后进行setter注入<code>testB</code>.</li>
+<li>Spring容器创建单例<code>testB</code>bean,首先根据无参构造器创建bean,并暴露一个<code>ObjectFactory</code>用于返回一个提前暴露一个创建中的bean,并将<code>testB</code>标识符放到<code>当前创建bean池</code>,然后进行setter注入<code>testC</code>.</li>
+<li>Spring容器创建单例<code>testC</code>bean,首先根据元参构造器创建bean,并暴露一个<code>ObjectFactory</code>用于返回一个提前暴露一个创建中的bean,并将<code>testC</code>标识符放到<code>当前创建bean池</code>,然后进行setter注入<code>testA</code>. 进行注入<code>testA</code>时由于提前暴露了<code>ObjectFactory</code>工厂,从而使用它返回提前暴露一个创建中的bean.</li>
+<li>最后再依赖注入<code>testB</code>和<code>testA</code>,完成setter注入.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-6">QA<a href="#qa-6" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>
+<p>问: @Autowired和@Qualifier在哪里处理的,入口? 是QualifierAnnotationAutowireCandidateResolver吗? 好像和AutowiredAnnotationBeanPostProcessor有关.</p>
+<ul>
+<li>答: @Qualifier是在QualifierAnnotationAutowireCandidateResolver中处理的,在<code>AnnotationConfigUtils#registerAnnotationConfigProcessors(BeanDefinitionRegistry, Object)</code>注册的,在<code>DefaultListableBeanFactory#findAutowireCandidates(String, Class&lt;?&gt;, DependencyDescriptor)</code>中调用过.@Autowired是在AutowiredAnnotationBeanPostProcessor中处理的,它是个
+SmartInstantiationAwareBeanPostProcessor,在<code>AbstractAutowireCapableBeanFactory#applyMergedBeanDefinitionPostProcessors(RootBeanDefinition, Class&lt;?&gt;, String)</code>中调用,
+通过<code>AnnotationConfigUtils#registerAnnotationConfigProcessorsBeanDefinitionRegistry, Object)</code>注册.</li>
+</ul>
+</li>
+<li>
+<p>问: 为什么要使用Spring ApplicationContext的parent(层级结构)?</p>
+<ul>
+<li>答: <a href="https://stackoverflow.com/questions/5132604/why-use-spring-applicationcontext-hierarchies" target="_blank" rel="noopener noreferrer">Why use Spring ApplicationContext hierarchies?</a></li>
+</ul>
+</li>
+</ul>
+<p>看看StandardBeanExpressionResolver对SpEL的处理. 从<code>AbstractApplicationContext#prepareBeanFactory()</code>中注册的.
+SpEL默认解析的占位符是<code>#{}</code>.</p>
+<blockquote>
+<p>记: 其实也不用看它的处理,一定是非常复杂的. 学学怎么用就行了.</p>
+</blockquote>
+<p><code>AbstractApplicationContext#prepareBeanFactory()</code>有一段提到了AspectJ,其实也是通过用AspectJ框架来处理的.</p>
+<p>感觉<code>BeanDefinitionVisitor#visitBeanDefinition(BeanDefinition)</code>也并是用的<code>访问者模式</code>.只不过是将<code>bean definition</code>里需要解析的字符串值归并到一个类里处理了(通
+常都是进行占位符替换).</p>
+<p><code>AbstractApplicationContext#finishBeanFactoryInitialization(ConfigurableListableBeanFactory)</code>实例化并初始化了LoadTimeWeaverAware.</p>
+<ul>
+<li>问: <code>AnnotationConfigUtils#registerAnnotationConfigProcessors(BeanDefinitionRegistry, Object)</code>注册了用来处理注解的Bean后置处理器??????????????
+它里面注册了好几个BPP,但自动装配貌似只需要AutowiredAnnotationBeanPostProcessor这一个就行了...<!-- -->
+<ul>
+<li>
+<p>答: 默认会注册四个BPP(<code>The implicitly registered post-processors include AutowiredAnnotationBeanPostProcessor,CommonAnnotationBeanPostProcessor,  PersistenceAnnotationBeanPostProcessor, as well as the aforementioned RequiredAnnotationBeanPostProcessor</code>).  代码入口在<code>AnnotationConfigUtils#registerAnnotationConfigProcessors(BeanDefinitionRegistry, Object);</code></p>
+<p>它们的作用分别是:</p>
+<ul>
+<li>AutowiredAnnotationBeanPostProcessor: 用于处理 @Autowired、@Value 注解;</li>
+<li>CommonAnnotationBeanPostProcessor: 用于支持JSR-250、JSR 220(EJB 3.0)定义的几个公用注解,例如: @PostConstruct、@PostConstruct、@Resource、@EJB等...</li>
+<li>PersistenceAnnotationBeanPostProcessor: 用于支持JPA规范定义的注解,例如: @PersistenceUnit、@PersistenceContext、@EntityManagerFactory、@EntityManager(我直接拿API文档的批注,没有去具体看).</li>
+<li>RequiredAnnotationBeanPostProcessor(5.1版本已经废弃): 用于处理@Required注解</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="autowired自动装配">@Autowired自动装配<a href="#autowired自动装配" class="hash-link" aria-label="@Autowired自动装配的直接链接" title="@Autowired自动装配的直接链接">​</a></h3>
+<ul>
+<li>
+<p><code>AutowiredAnnotationBeanPostProcessor#postProcessMergedBeanDefinition(RootBeanDefinition, Class&lt;?&gt;, String)</code>用来获取bean需要自动装配的字段、方法信息, 返回对象为InjectionMetadata.</p>
+</li>
+<li>
+<p><code>AutowiredAnnotationBeanPostProcessor#postProcessProperties(PropertyValues, Object, String)</code>用来获取当前bean依赖的bean实例并自动装配. 它实际上是通过
+<code>DefaultListableBeanFactory#doResolveDependency()</code>来获取自动装配所解析到的依赖的bean实例的. 可以从spring boot、mvc都能看的出来它们的设计没有多余.</p>
+</li>
+</ul>
+<p><code>org.springframework.web.servlet.FrameworkServlet.initServletBean()</code></p>
+<p>RequestMappingInfo里的RequestCondition实现可以看看怎么设计的. 相关方法有<code>RequestMappingHandlerMapping#getMappingForMethod(Method, Class&lt;?&gt;)</code>
+==&gt;<code>RequestMappingHandlerMapping#createRequestMappingInfo(AnnotatedElement)</code></p>
+<p>RequestMappingInfo这个build也可以学下,都感觉挺好的.</p>
+<p>感觉这个RequestCondition(RequestMappingInfo实现了它)的设计应该是被整理过的(学不来).</p>
+<p>说说处理@RequestMapping、@Controller这两个注解的HandlerMapping实现--RequestMappingHandlerMapping:
+说明: <code>==&gt;</code>表示<code>继承|实现</code>. RequestHandler代表处理请求的对象,并不实际存在这个接口.
+前提概要: 它的主要层级关系<code>RequestMappingHandlerMapping</code>
+==&gt;<code>RequestMappingInfoHandlerMapping</code>
+==&gt;<code>AbstractHandlerMethodMapping&lt;T&gt;</code>
+==&gt;<code>AbstractHandlerMapping</code>
+==&gt;<code>HandlerMapping</code>;</p>
+<ul>
+<li>HandlerMapping: 定义获取RequestHandler接口.</li>
+<li>AbstractHandlerMapping: 作为HandlerMapping的基础实现类(且方法为final)在其基础上加了个拦截器的包装. 不过具体获取RequestHandler是由子类来实现的, 由此会出现几个分支: <code>AbstractHandlerMethodMapping&lt;T&gt;</code>、<code>AbstractUrlHandlerMapping</code>(粗略看了下它是通过bean name来做url匹配的)、RouterFunctionMapping(Spring
+WebFlux).</li>
+<li><code>AbstractHandlerMethodMapping&lt;T&gt;</code>: 实现了方法级别注册RequestHandler,也称之为HandlerMethod,但它并没有真正实现从方法里解析出HandlerMethod,这个工作是由子类来实现的.还有,它的泛型参数标识符含义是这样描述的: <code>the mapping for a {@link HandlerMethod} containing the conditions needed to match the handler method to an incoming request.</code>; 我认为它就象征着一个URI,如果看过MyHandlerMethodMapping的话能够看的出来它就是通过方法名来解析、获取handlerMethod的,它的另外一个实现后面会介绍(RequestMappingInfoHandlerMapping).</li>
+<li>RequestMappingInfoHandlerMapping: 用RequestMappingInfo来代表这个URI,它是一组<code>特殊的</code>RequestCondition,包括ParamsRequestCondition、RequestMethodsRequestCondition、HeadersRequestCondition等等... 你可以这么认为,只要满足了这些Condition就说明当前HandlerMethod能处理这个请求(实际上是通过
+每个Condition后不反回null才算是,可以看<code>RequestMappingInfo#getMatchingCondition()</code>).当然,这个类只负责通过RequestMappingInfo的交互(方法调用)从而对AbstractHandlerMethodMapping功能的支持.</li>
+<li>RequestMappingHandlerMapping: 用来专门解析@RequestMapping、@Controller注解并创建、注册对应的RequestMappingInfo.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="多说几句">多说几句:<a href="#多说几句" class="hash-link" aria-label="多说几句:的直接链接" title="多说几句:的直接链接">​</a></h3>
+<p>需要扩展自己的实现的话. 一般情况下,如果你有自己的一套路由规则或者不需要那么麻烦的路由规则(像RequestMappingInfo这么复杂)的话直接实现AbstractHandlerMethodMapping就好了(像MyHandlerMethodMapping这种就可以做个入门参考). 如果你需要spring mvc提供的这些路由规则但是你有自己的一套加载规则的话就可以继承RequestMappingInfoHandlerMapping(像TestRequestMappingInfoHandlerMapping这种可以做个入门参考). 当然, 你可以自己重新实现一套注册、获取RequestHandler</p>
+<p>MethodIntrospector工具类可以看看. <code>AbstractHandlerMethodMapping#detectHandlerMethods(Object).#introspector</code>用到了这个工具没有和它的ReflectionUtils有功能上的冲突,可以说是互补吧,Introspector是core包里的.</p>
+<p><code>AbstractHandlerMethodMapping#detectHandlerMethods(Object)</code>是处理@Controller、@RequestMapping并注册对应handlerMethods的入口(当然,是实现类为 RequestMappingHandlerMapping的情况下). 调用链的根在<code>RequestMappingHandlerMapping#afterPropertiesSet()</code></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qa-7">QA<a href="#qa-7" class="hash-link" aria-label="QA的直接链接" title="QA的直接链接">​</a></h3>
+<ul>
+<li>问: 用抓包工具看下在handlerMethod中如果直接用response写数据会不会直接完成此次http的响应.<!-- -->
+<ul>
+<li>答: 并不会. 会直接报错<code>UT010005: Cannot call getOutputStream(), getWriter() already called</code>.</li>
+</ul>
+</li>
+</ul>
+<p><code>RequestMappingInfoHandlerMapping#handleMatch()</code>记录了一些关于当前请求URI相关的信息到request中</p>
+<p><code>AbstractHandlerMapping#getHandler(HttpServletRequest)</code>配置了跨域拦截器</p>
+<p><code>RequestMappingHandlerAdapter#handleInternal(HttpServletRequest, HttpServletResponse, HandlerMethod)</code>是@RequestMapping的处理入口</p>
+<ul>
+<li>
+<p>问: <code>AbstractBeanFactory#transformedBeanName(String)</code>解析时判断FactoryBean的<code>bean name</code>修饰符<code>&amp;</code>,它的依据哪里来的? 介绍下FactoryBean,如果注册的是
+AFactoryBean,名字为<code>a</code>. 那么想取<code>A</code>这个bean时用<code>factory.getBean(&quot;a&quot;)</code>就行了,如果想取AFactoryBean这个bean则需要在前面加个<code>&amp;</code>,也就是<code>&amp;a</code>.</p>
+<ul>
+<li>答: 注册<code>bean definition</code>的时候没有处理FactoryBean: <code>BeanDefinitionReaderUtils.registerBeanDefinition(BeanDefinitionHolder, BeanDefinitionRegistry);</code> 它是通过<code>AbstractBeanFactory#getObjectForBeanInstance(Object, String, String, RootBeanDefinition)</code>来处理FactoryBean的实例获取的,在<code>#nameResolver</code>处判断了如果名字以<code>&amp;</code>开头的直接返回bean实例本身,否则会去调<code>FactoryBean#getObject();</code></li>
+</ul>
+</li>
+<li>
+<p>问: 为什么很多地方都要调<code>clearMergedBeanDefinition()</code>清理beanDefinition的一些遗留信息?</p>
+<ul>
+<li>TODO 我目前的水平答不了这个问题,这可能设计到它们的许多细节上的设计和规则.</li>
+</ul>
+</li>
+<li>
+<p>问: 为什么spring用了ConcurrentHashMap还要用&quot;管程同步&quot;?</p>
+<ul>
+<li>TODO 暂时答不出. 在<code>DefaultListableBeanFactory#registerBeanDefinition(String, BeanDefinition)</code>的<code>#mutex_bdm</code>中.</li>
+</ul>
+</li>
+</ul>
+<p>BridgeMethodResolver用来处理<code>桥接方法</code>的.</p>
+<p>BeanPostProcessor是ConfigurableBeanFactory的一部分,BeanFactoryPostProcessor是ConfigurableApplicationContext的一部分.  但是ConfigurableBeanFactory只提供了手动注册BeanPostProcessor的接口,没有自己实现扫描当前所有的注册了BeanPostProcess类型的bean,这个动作是在ConfigurableApplicationContext中处理的. 因为ConfigurableBeanFactory就是<code>bean-factory</code>,只提供可配接口,不提供应该由上层来实现的·数据源获取·功能. 还有一点要提的是ConfigurableApplicationContext提供了个Application的Listener,这样能够使ApplicationContext这块的扩展变得更加健壮(当然Aware也是个好的设计).</p>
+<p>DI有助于应用对象之间的解耦,而AOP可以实现横切关注点与它们所影响的对象之间的解耦.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="spring一些需要关注的新特性">Spring一些需要关注的<code>新</code>特性<a href="#spring一些需要关注的新特性" class="hash-link" aria-label="spring一些需要关注的新特性的直接链接" title="spring一些需要关注的新特性的直接链接">​</a></h3>
+<ul>
+<li>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started-installing-the-cli" target="_blank" rel="noopener noreferrer">Spring-Boot CLI - Command Line Interface</a></p>
+</li>
+<li>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready" target="_blank" rel="noopener noreferrer">Spring-Boot Actuator</a></p>
+</li>
+<li>
+<p><a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-ann-async" target="_blank" rel="noopener noreferrer">Spring-MVC支持Servlet3.0的异步分发请求</a>  文中还提到了他们自己的异步请求框架Spring-WebFlux,它是基于nio的.</p>
+</li>
+<li>
+<p><a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/testing.html#spring-mvc-test-framework" target="_blank" rel="noopener noreferrer">Spring-MVC的测试框架</a> 它的好处是在使用的过程中不需要额外的Servlet容器.</p>
+</li>
+</ul>
+<p>@Autowired、 @Vlue和@Bean注解能够作为元注解,用于创建自定义的注入和bean声明注解: 这个不算是<code>新</code>特性,要自定义处理的话起码起码起码得注册个 BeanPostProcessor,可以仿照AutowiredAnnotationBeanPostProcessor写一个.</p></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/05/06/Spring/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="博文分页导航"><a class="pagination-nav__link pagination-nav__link--prev" href="/blog/2025/05/07/Stream"><div class="pagination-nav__sublabel">较新一篇</div><div class="pagination-nav__label">Stream</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/blog/2025/05/05/RocketMQ"><div class="pagination-nav__sublabel">较旧一篇</div><div class="pagination-nav__label">RocketMQ</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#spring框架解析" class="table-of-contents__link toc-highlight">Spring框架解析</a><ul><li><a href="#类介绍" class="table-of-contents__link toc-highlight">类介绍</a></li><li><a href="#dtd与xsd" class="table-of-contents__link toc-highlight">DTD与XSD</a></li><li><a href="#entityresolver" class="table-of-contents__link toc-highlight">EntityResolver</a></li><li><a href="#readercontext" class="table-of-contents__link toc-highlight">ReaderContext</a></li><li><a href="#几大特殊的beanpostprocessor" class="table-of-contents__link toc-highlight">几大特殊的BeanPostProcessor</a></li><li><a href="#qa" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#propertyresourceconfigurerpostprocessbeanfactoryconfigurablelistablebeanfactory解析属性文件流程" class="table-of-contents__link toc-highlight"><code>PropertyResourceConfigurer#postProcessBeanFactory(ConfigurableListableBeanFactory)</code>解析属性文件流程</a></li><li><a href="#勘误" class="table-of-contents__link toc-highlight">勘误</a></li><li><a href="#qa-1" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#qa-2" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#勘误-1" class="table-of-contents__link toc-highlight">勘误</a></li><li><a href="#总结aop" class="table-of-contents__link toc-highlight">总结AOP</a></li><li><a href="#qa-3" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#spring-boot的自动装配整合spring流程" class="table-of-contents__link toc-highlight"><code>spring-boot</code>的自动装配整合spring流程</a></li><li><a href="#qa-4" class="table-of-contents__link toc-highlight">QA</a></li></ul></li><li><a href="#再来一遍" class="table-of-contents__link toc-highlight">再来一遍</a><ul><li><a href="#qa-5" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#spring循环引用构造依赖" class="table-of-contents__link toc-highlight">Spring循环引用(构造依赖)</a></li><li><a href="#spring循环引用setter依赖" class="table-of-contents__link toc-highlight">Spring循环引用(setter依赖)</a></li><li><a href="#qa-6" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#autowired自动装配" class="table-of-contents__link toc-highlight">@Autowired自动装配</a></li><li><a href="#多说几句" class="table-of-contents__link toc-highlight">多说几句:</a></li><li><a href="#qa-7" class="table-of-contents__link toc-highlight">QA</a></li><li><a href="#spring一些需要关注的新特性" class="table-of-contents__link toc-highlight">Spring一些需要关注的<code>新</code>特性</a></li></ul></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>

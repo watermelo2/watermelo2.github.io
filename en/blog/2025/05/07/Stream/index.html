@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Stream | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/en/blog/2025/05/07/Stream"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" property="og:locale:alternate" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Stream | My Site"><meta data-rh="true" name="description" content="Java 8 Stream API"><meta data-rh="true" property="og:description" content="Java 8 Stream API"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-05-07T00:00:00.000Z"><link data-rh="true" rel="icon" href="/en/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/en/blog/2025/05/07/Stream"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/05/07/Stream" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/07/Stream" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/07/Stream" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/en/blog/2025/05/07/Stream","mainEntityOfPage":"https://watermelo2.github.io/en/blog/2025/05/07/Stream","url":"https://watermelo2.github.io/en/blog/2025/05/07/Stream","headline":"Stream","name":"Stream","description":"Java 8 Stream API","datePublished":"2025-05-07T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/en/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/en/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/en/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/en/assets/css/styles.e55a2139.css">
+<script src="/en/assets/js/runtime~main.7582449a.js" defer="defer"></script>
+<script src="/en/assets/js/main.782f9090.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/en/img/1.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/en/"><div class="navbar__logo"><img src="/en/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/en/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/en/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="Blog recent posts navigation"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/en/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">Stream</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-05-07T00:00:00.000Z">May 7, 2025</time> · <!-- -->15 min read</div></header><div id="__blog-post-container" class="markdown"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="java-8-stream-api">Java 8 Stream API<a href="#java-8-stream-api" class="hash-link" aria-label="Direct link to Java 8 Stream API" title="Direct link to Java 8 Stream API">​</a></h2>
+<blockquote>
+<p>写在前面: 以下都是一些对Stream的一些概念介绍,有很多部分来自文档,并没有对Stream包代码进行解析,只为更好的应用一些接口、方法,并非充分解读整个Stream.</p>
+</blockquote>
+<blockquote>
+<p>参考文档: <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html" target="_blank" rel="noopener noreferrer">官方文档</a>、<a href="https://web.archive.org/web/20201027234541/https://elsef.com/2019/09/21/Stream%E4%B9%8BSpliterator/" target="_blank" rel="noopener noreferrer">Stream之Spliterator</a>  、<a href="https://www.ibm.com/developerworks/cn/java/j-java-streams-3-brian-goetz/index.html" target="_blank" rel="noopener noreferrer">Stream优化的一些注意事项(IBM)</a></p>
+</blockquote>
+<p>流的几个特点: 不存储数据、一个流上的操作产生一个结果,但它不会修改它的源、延迟执行、大小无限、流的元素只在流的生命周期中访问一次(和迭代器相像)</p>
+<p>中间操作被进一步划分为无状态和有状态操作:</p>
+<ul>
+<li>无状态操作: 如filter和map,在处理新元素时不保留以前处理的元素的状态--每个元素都可以独立于其他元素的操作处理.</li>
+<li>有状态的操作: 例如distinct和sorted,则需要考虑从先前看到处理的元素中合并状态</li>
+</ul>
+<p><code>Stream#reduce()</code>方法代替了归约操作的并行化的所有负担,并且库可以提供一个高效的并行实现,不需要额外的同步. <code>reduce(U identity,BiFunction&lt;U, ? super T, U&gt; accumulator,BinaryOperator&lt;U&gt; combiner)</code>: T为输入类型,U为返回结果类型.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="可变规约">可变规约<a href="#可变规约" class="hash-link" aria-label="Direct link to 可变规约" title="Direct link to 可变规约">​</a></h3>
+<blockquote>
+<p>一个可变的归约操作在处理流中的元素时,将输入元素积累到一个可变的结果容器中,例如一个Collection或StringBuilder.</p>
+</blockquote>
+<p>可变归约操作称为collect()当它将期望的结果收集到一个结果容器中,例如一个集合收集操作需要三个功能:</p>
+<ul>
+<li>一个supplier功能来构造结果容器的新实例.</li>
+<li>一个累计运算器函数将一个输入元素合并到一个结果容器中.</li>
+<li>一个组合函数将一个结果容器的内容合并到另一个结果容器中(这个函数是在并行时才会被执行的).</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="规约的并发与排序">规约的并发与排序<a href="#规约的并发与排序" class="hash-link" aria-label="Direct link to 规约的并发与排序" title="Direct link to 规约的并发与排序">​</a></h3>
+<p>例: <code>nodes2.parallelStream().collect(Collectors.groupingBy(Node::getId));</code></p>
+<p>说明: 上面的并行执行操作可能实际上会产生反效果.这是因为组合步骤(通过键将一个Map合并到另一个Map)对于某些Map实现来说可能代价很大. 然而,假设在这个reduce中使用的结果容器是一个可并发修改的集合--例如<code>ConcurrentHashMap</code>.在这种情况下,对迭代累计运算器的并行调用实际上可以将它们的结果并发地放到相同的共享结果容器中,从而将不再需要组合器合并不同的结果容器.这可能会促进并行执行性能的提升.我们称之为并行reduce.</p>
+<p>介绍: 支持并发reduce的收集器以<code>Collector.Characteristics.CONCURRENT</code> characteristic标志为并发特性.然而,并发集合也有缺点. 如果多个线程将结果并发地存入一个共享容器,那么产生结果的顺序是不确定的.因此,只有在排序对正在处理的流不重要的情况下,才可能执行并发的reduce.下面这些条件下<code>Stream.collect(Collector)</code>的实现会并发reduce(归约):</p>
+<ul>
+<li>流是并行的(parallerStream).</li>
+<li>收集器有<code>Collector.Characteristics.CONCURRENT</code>特性.</li>
+<li>要么是无序的流(可以用<code>BaseStream#unordered()</code>方法来确保流是无序的),要么收集器拥有<code>Collector.Characteristics.UNORDERED</code>特性.</li>
+</ul>
+<p>StreamSupport提供了许多用于创建流的低级方法,所有这些方法都使用某种形式的Spliterator(<strong>记住这句话,后面介绍Stream相关会提到</strong>).  一个Spliterator是迭代器的一个并行版本,它描述了一个元素集合(可能是无限的),支持顺序前进、批量遍历,并将一部分输入分割成另一个可并行处理的Spliterator. 在最低层,所有的流都由一个Spliterator驱动构造. 在实现Spliterator时,有许多实现选择,几乎所有的实现都是在简单的实现和运行时性能之间进行权衡.</p>
+<p>一个高质量的spliterator将提供平衡的和已知大小的分割,精确的容量信息,以及一些可用于实现优化执行的spliterator或数据的其他特征(<code>Spliterator#characteristics</code>)</p>
+<p>可变数据源的Spliterators有一个额外的挑战: 绑定到数据的时间.因为数据可能在创建Spliterators后和开始执行流管道的期间,发生变化.理想情况下,一个流的spliterator
+将报告一个<code>IMMUTABLE or CONCURRENT</code>;如果不是,应该是后期绑定(<code>late-binding</code>).
+如果一个源不能直接提供一个推荐的spliterator,它可能会通过Supplier间接地提供一个spliterator,并通过接收Supplier作为参数的<code>stream()</code>版本构造一个stream.只有在
+流管道的终端操作之后,才从Supplier处获得<code>spliterator(StreamSupport#stream(java.util.function.Supplier&lt;? extends java.util.Spliterator&lt;T&gt;&gt;, int, boolean))</code></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="函数式编程">函数式编程<a href="#函数式编程" class="hash-link" aria-label="Direct link to 函数式编程" title="Direct link to 函数式编程">​</a></h3>
+<blockquote>
+<p>函数式编程就是把函数的一些特性应用于编程语言之中</p>
+</blockquote>
+<p>可以理解为: 通过对应法则<code>f(x)</code>对指定的<code>x</code>进行处理并映射成另外一个值而且不会对<code>x</code>本身产生变动. 函数式编程最重要的基础是<code>λ演算</code>,而且<code>λ演算</code>的函数可以接受函数当作输入(参数)和输出(返回值).</p>
+<p>关于函数编程设计方面可以了解下<code>柯里化</code>、<code>λ演算</code>(这个收藏了几篇翻译).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="javautilfunction包下的四大基础接口"><code>java.util.function</code>包下的四大基础接口<a href="#javautilfunction包下的四大基础接口" class="hash-link" aria-label="Direct link to javautilfunction包下的四大基础接口" title="Direct link to javautilfunction包下的四大基础接口">​</a></h3>
+<ul>
+<li>Predicate: 断言,判断型函数.</li>
+<li>Consumer: 消费者,访问型函数.</li>
+<li>Function: 函数,一般函数.</li>
+<li>Supplier: 提供者,创建(生产)型函数</li>
+</ul>
+<blockquote>
+<p>说明: <code>juf</code>包中还有其它可能会常用的函数接口,包括在参数上扩展的(BiF)、特殊常用的函数变形(<code>BinaryOperator&lt;T&gt;==BiFunction&lt;T,T,T&gt;</code>)以及类型(基本类型)上扩展的(IntF).</p>
+</blockquote>
+<ul>
+<li>Q: 为什么要有对基本类型的扩展?<!-- -->
+<ul>
+<li>
+<p>A: 因为只有对象类型才能作为泛型参数,对于基本类型就涉及到装箱拆箱的操作. 虽然是自动的,但是这不可避免给内存带来了额外的开销,装箱和拆箱都会带来开销,so.</p>
+<blockquote>
+<p>PS: 对于基本类型特殊处理的函数接口有命名规范--如果参数名是基本类型则为(<code>基本数据类型名 + Function</code>); 如果方法返回类型为基本类型则为(<code>To + 基本数据类型名 + Function</code>).</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="lambda">Lambda<a href="#lambda" class="hash-link" aria-label="Direct link to Lambda" title="Direct link to Lambda">​</a></h3>
+<p>Lambda的类型是从使用Lambda的上下文推断出来的,上下文包括接收它传递的方法的形式参数或者是接收它的值的局部变量.</p>
+<p>特殊的void兼容规则: 如果一个Lambda的主体是一个语句表达式,它就和一个返回void的函数描述符兼容(当然需要参数列表也兼容).就是说 如果主体是一个语句,不管做什么或者调用方法返回其他的类型,它都可以兼容void. 比如<code>Consumer&lt;T&gt; c = intList::add</code>;</p>
+<p>在几乎所有情况下,终端操作都很迫切,在返回之前完成了数据源的遍历和管道的处理.只有终端操作<code>iterator()</code>和<code>spliterator()</code>不是.这些都是作为一个<code>逃生舱口</code>提供的,以便在现有操作不足以完成任务的情况下启用任意客户控制的管道遍历(个人理解就是如果流不足以提供处理可以让你自行遍历处理).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="stream接口相关">Stream接口相关<a href="#stream接口相关" class="hash-link" aria-label="Direct link to Stream接口相关" title="Direct link to Stream接口相关">​</a></h3>
+<ul>
+<li>PipelineHelper: 主要用于定义Stream执行过程中相关结构的构建.</li>
+<li>ReferencePipeline和AbstractPipeline: 完成了Stream的主要实现.</li>
+<li>AbstractPipeline: 实现了所有的 Stream的中间操作和最终操作</li>
+<li><code>[Int|Long|Double]</code>Pipeline: 类似ReferencePipeline只不过是针对基本类型</li>
+</ul>
+<p>Stream的操作一般都有三部分构成:</p>
+<ul>
+<li>数据源</li>
+<li>操作(filter map.....)</li>
+<li>回调方法(Lambda匿名函数、方法引用)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="abstractpipeline介绍">AbstractPipeline介绍<a href="#abstractpipeline介绍" class="hash-link" aria-label="Direct link to AbstractPipeline介绍" title="Direct link to AbstractPipeline介绍">​</a></h3>
+<p>特点:</p>
+<ul>
+<li>双向链表.<!-- -->
+<ul>
+<li>sourceStage: 反向链接管道链的head(每个管道节点都有一个头).</li>
+<li>previousStage: 指向上一个Stage.</li>
+<li>nextStage: 指向下一个Stage.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="sink">Sink<a href="#sink" class="hash-link" aria-label="Direct link to Sink" title="Direct link to Sink">​</a></h3>
+<p>提前说明: <code>行为</code>指的是当前Stage所需要实现的功能. 例如<code>ReferencePipeline#filter()</code>返回的StatelessOp,它包装的Sink就是过滤与当前的Predicate不匹配(返回false)的流元素.</p>
+<p>Head、StatelessOp、StatefulOp三种Stage分别代表初始、无状态操作、含状态操作,除了Head外另外两个Stage都是抽象类并且都是<code>中间操作</code>,需要子类实现些方法,示例如下(<code>ReferencePipeline#filter()</code>):</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">public final Stream&lt;P_OUT&gt; filter(Predicate&lt;? super P_OUT&gt; predicate) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    Objects.requireNonNull(predicate);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    return new StatelessOp&lt;P_OUT, P_OUT&gt;(this, StreamShape.REFERENCE,StreamOpFlag.NOT_SIZED) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        Sink&lt;P_OUT&gt; opWrapSink(int flags, Sink&lt;P_OUT&gt; sink) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            return new Sink.ChainedReference&lt;P_OUT, P_OUT&gt;(sink) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                public void begin(long size) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    downstream.begin(-1);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                @Override</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                public void accept(P_OUT u) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                    if (predicate.test(u))</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                        downstream.accept(u);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            };</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    };</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>filter、map对应的Stage重写的<code>opWrapSink(flags,sink)</code>最终都是调的<code>sink.accept(T)</code>.</p>
+<p><code>AbstractPipeline#wrapSink()</code>会根据previousStage遍历所有的Stage(从后往前),并调用相应的<code>opWrapSink()</code>方法将各自的<code>流程处理</code>套起来,最终<code>流水线</code>将StatelessOp、StatefulOp的所有的操作(也可以看作Lambda行为化参数)都按照顺序被包装到了一个Sink里.</p>
+<blockquote>
+<p>注意: 上面说的流水线上包含的操作不包含Head是因为Head作为初始状态不具备任何<code>行为</code>. 多说句,能够产生StatefulOp对象的是类似于<code>distinct()</code>、<code>sorted()</code>等方法,具体的就不多说了,都是按照Stream规范来进行区分的.</p>
+</blockquote>
+<p>Sink用来组装相邻两个操作阶段(Stage)之间的协调执行. 它的模式是<code>begin accept end</code>还有短路标记. 还有,它的<code>accept()</code>方法(<code>Consumer&lt;T&gt;</code>里的那个)里包装了回调方法(<code>行为</code>). 每个Stage都得提供对应的一个Sink,这个Sink封装了当前Stage的<code>行为</code>,然后再通过<code>AbstractPipeline#wrapSink()</code>将当前链路的所有Sink串起来并返回,调用这个<code>Sink #accept(T)</code>方法就能陆续调用当前链路中所有的<code>Sink#accept(T)</code>(也可以认为是调用了所有Stage对应的<code>行为</code>).</p>
+<blockquote>
+<p>注意: 上面说的操作都是中间操作,中间操作才会产生操作阶段,终端操作不会增加Stage的个数了.</p>
+</blockquote>
+<ul>
+<li>
+<p>中间操作:</p>
+<ul>
+<li>filter()</li>
+<li>flatMap()</li>
+<li>limit()</li>
+<li>map()</li>
+<li>concat()</li>
+<li>distinct()</li>
+<li>peek()</li>
+<li>skip()</li>
+<li>sorted()</li>
+<li>parallel()</li>
+<li>sequential()</li>
+<li>unordered()</li>
+<li>flatMapTo<code>[Double|Int|Long]</code></li>
+<li>mapTo<code>[Double|Int|Long]</code></li>
+</ul>
+</li>
+<li>
+<p>结束操作:</p>
+<ul>
+<li>allMatch()</li>
+<li>anyMatch()</li>
+<li>collect()</li>
+<li>count()</li>
+<li>findAny()</li>
+<li>findFirst()</li>
+<li>forEach()</li>
+<li>forEachOrdered()</li>
+<li>max()</li>
+<li>min()</li>
+<li>noneMatch()</li>
+<li>reduce()</li>
+<li>toArray()</li>
+</ul>
+</li>
+<li>
+<p>流到流之间的转换: filter(过滤)、map(映射转换)、mapTo<code>[Int|Long|Double]</code>(到基本类型流的转换)、flatMap(流展开合并)、flatMapTo<code>[Int|Long|Double]</code> 、sorted(排序)、distinct(不重复值)、peek(执行某种操作、流不变、可用于调试)、limit(限制到指定元素数量)、 skip(跳过若干元素)</p>
+</li>
+<li>
+<p>流到终值的转换: toArray(转为数组)、reduce(推导结果)、collect(聚合结果)、min(最小值)、 max(最大值)、 count(元素个数)、 anyMatch(任一匹配)、 allMatch(所有都匹配)、 noneMatch(一个都不匹配)、findFirst(选择首元素)、findAny(任选一元素)</p>
+</li>
+<li>
+<p>直接遍历: forEach (不保证顺序遍历、比如并行流)、 forEachOrdered(顺序遍历)</p>
+</li>
+<li>
+<p>构造流: empty (构造空流)、of (单个元素的流及多元素顺序流)、iterate (无限长度的有序顺序流)、generate(将数据提供器转换成无限非有序的顺序流)、concat (流的连接)、 Builder (用于构造流的Builder对象)</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="streamreduce-方法介绍">Stream#reduce 方法介绍<a href="#streamreduce-方法介绍" class="hash-link" aria-label="Direct link to Stream#reduce 方法介绍" title="Direct link to Stream#reduce 方法介绍">​</a></h3>
+<blockquote>
+<p><code>java.util.stream.Stream#reduce(U t, java.util.function.BiFunction&lt;U,? super T,U&gt; accumulator, java.util.function.BinaryOperator&lt;U&gt; combiner)</code></p>
+</blockquote>
+<blockquote>
+<p>文档说明: <a href="https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#Reduction" target="_blank" rel="noopener noreferrer">官方文档</a>、<a href="https://www.cnblogs.com/noteless/p/9511407.html" target="_blank" rel="noopener noreferrer">示例说明</a></p>
+</blockquote>
+<p>前两个参数分别代表<code>初始值</code>(可以这么认为)、累计计算器(对两个流元素的操作、非干扰、无状态函数). 第三个参数用于处理并行流下的合并各个线程的计算结果,
+有特殊要求: <code>combiner.apply(u, accumulator.apply(identity, t)) == accumulator.apply(u, t);</code></p>
+<p>所以下面两段代码会有不同的结果:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Stream.of(1, 2, 3, 4, 5).reduce(5, (a, b) -&gt; a + b, (a, b) -&gt; a + b); // 20</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Stream.of(1, 2, 3, 4, 5).parallel().reduce(5, (a, b) -&gt; a + b, (a, b) -&gt; a + b); // 40</span><br></span></code></pre></div></div>
+<p>上面那段代码可以看作(按照上面的特殊要求来理解): <code>(5+1) + (5+2) + (5+3) + (5+4) + (5+5)</code></p>
+<p>处理过程:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">a:6 b:7</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">a:9 b:10</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">a:8 b:19</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">a:13 b:27</span><br></span></code></pre></div></div>
+<p>可以发现,上面并行流代码里的<code>combiner()</code>当有n个分支的情况下就多加<code>n-1</code>个identity,所以如果想要结果为20的话可以这么写:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">System.out.println(Stream.of(1, 2, 3, 4, 5).parallel().reduce(5, (a, b) -&gt; a + b, (a, b) -&gt; a + b - 5)); // 结果20,等于第一个式子</span><br></span></code></pre></div></div>
+<p>再来一个：</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Stream.of(1, 2, 3, 4, 5).reduce(8,Integer::max,Integer::max); // 8</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Stream.of(1, 2, 3, 4, 5).parallel().reduce(8,Integer::max,Integer::max); // 8</span><br></span></code></pre></div></div>
+<p>这个就不影响结果了,只不过具体处理过程不一样.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="collectors介绍">Collectors介绍<a href="#collectors介绍" class="hash-link" aria-label="Direct link to Collectors介绍" title="Direct link to Collectors介绍">​</a></h3>
+<blockquote>
+<p><code>Collector&lt;T, A, R&gt;</code>: 一种归约运算操作的抽象</p>
+</blockquote>
+<p>将抽象规约运算转换成另一种简单实例的形式(说法):</p>
+<ul>
+<li>想要进行归约运算,你先给出一个初始容器,作为中间结果容器</li>
+<li>然后再给出迭代运算逻辑,也就是要如何归约. 归约的逻辑就是在这里,并且将结果计算方法到中间结果容器中</li>
+<li>针对于并行计算还需要一个合并的方式</li>
+<li>中间结果肯定是为了方便计算,如果你最终想要的不是这种类型,我还可以给你转换下</li>
+</ul>
+<p>例如:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">public static &lt;T&gt; Collector&lt;T, ?, List&lt;T&gt;&gt; toList() { // 参数顺序和&#x27;接口方法顺序&#x27;是一样的</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    return new CollectorImpl&lt;&gt;((Supplier&lt;List&lt;T&gt;&gt;) ArrayList::new, List::add,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                               (left, right) -&gt; { left.addAll(right); return left; },</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">                               CH_ID);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre></div></div>
+<p>说明:</p>
+<ul>
+<li>初始化容器: <code>ArrayList::new</code>.</li>
+<li>迭代运算逻辑: <code>List::add</code>.</li>
+<li>并行计算的合并方式: <code>(left, right) -&gt; { left.addAll(right); return left; }</code>.</li>
+<li>收集器特征: <code>CH_ID</code>,当前是<code>IDENTITY_FINISH1</code>,表示中间结果容器和最终结果容器一致,所以不会用到第四点中的<code>finisher()</code>,具体含义看后面. 这样,就可以将Stream中的元素结果收集起来了.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="收集器构成">收集器构成<a href="#收集器构成" class="hash-link" aria-label="Direct link to 收集器构成" title="Direct link to 收集器构成">​</a></h3>
+<ul>
+<li>supplier():  创建一个新的结果容器</li>
+<li>accumulator(): 将一个新的数据元素合并到一个结果容器中</li>
+<li>combiner(): 将两个结果容器合并成一个(非必然运行,可能在并行流且Collector不具备CONCURRENT时执行的)</li>
+<li>finisher(): 在容器上执行一个可选的最终转换(非必然运行,中间结果与最终结果类型是否一致决定是否运行IDENTITY_FINISH用来标志)</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="collectorscharacteristics">Collectors#characteristics()<a href="#collectorscharacteristics" class="hash-link" aria-label="Direct link to Collectors#characteristics()" title="Direct link to Collectors#characteristics()">​</a></h3>
+<blockquote>
+<p><code>Set&lt;Characteristics&gt; characteristics();</code></p>
+</blockquote>
+<p>当前<code>结果收集器</code>的<code>特点</code>. 可选如下枚举值:</p>
+<ul>
+<li>CONCURRENT: 标识当前结果收集器是<code>concurrent</code>,意味着结果容器支持在同一结果容器中多个线程同时调用<code>累加器</code>(accumulator).   只有在并行流且收集器不具备CONCURRENT特性时,<code>combiner()</code>方法返回的lambda表达式才会执行. 如果当前为CONCURRENT收集器但没配UNORDERED,那么只有应用于无序数据源时(<code>BaseStream#unordered()</code>)才应求值(
+<code>If a {@code CONCURRENT} collector is not also {@code UNORDERED},then it should only be evaluated concurrently    		if applied to an unordered data source</code>). 原因可以看之前的解释,但实际操作上是<code>求值</code>==<code>做非同步运算!做非同步运算!做非同步运算!</code>(具体可以看<code>ReferencePipeline#collect(java.util.stream.Collector&lt;? super P_OUT,A,R&gt;</code>)第一个分支).</li>
+<li>UNORDERED: 表示收集结果操作未保留输入元素的顺序,结果容器没有内在顺序(比如Set).</li>
+<li>IDENTITY_FINISH: 表示中间结果容器类型与最终结果类型一致,此时finiser方法不会被调用</li>
+</ul>
+<blockquote>
+<p>说明: 简单解释下为什么Stream可以不用我们显示使用同步框架就能<code>线程安全</code>执行,主要还是做<code>规约</code>操作的时候判断了CONCURRENT、UNORDERED以及用到了<code>AbstractPipeline#isParallel()</code>、<code>AbstractPipeline#isOrdered()</code>等条件因素判断当前流是否需要Stream自身提供<code>线程同步</code>,如果需要的话则会用<code>ReduceOps.ReduceTask</code>(ForkJoinTask的一个实现)实现同步,且同步的是<code>Collector#combiner()</code>返回函数<code>BiFunction#apply()</code>方法; 否则表示当前不需要或者不满足Stream执行并行流的处理,忽略<code>combiner()</code>返回函数并直接foreach执行<code>Collector#accumulator()</code>返回函数方法.此时,如果需要的话你可以用自定义的容器(如JUC框架)来构建一个Collector,前提是它得是<code>线程安全</code>的(当然,你还可以让<code>结果收集器</code>实现<code>有序</code>的功能).</p>
+</blockquote>
+<blockquote>
+<p>(+1)后期补充: Stream并行流是在用ForkJoin框架实现的,<a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html" target="_blank" rel="noopener noreferrer">官方文档</a>里有说到.</p>
+</blockquote>
+<p><code>java.util.stream.AbstractPipeline#sourceSpliterator()</code>: 这个方法返回了Spliterator(一个流元素集合),其它操作暂时没看. 主要的是里面用到了大量的<code>位</code>、<code>与</code>、<code>异或</code>等二进制运算处理各种操作标识(如<!-- -->:ORDERED<!-- -->、SIZED、DISTINCT etc.),而且它这里用的感觉比NIO更<code>复杂</code>、<code>聪明</code>.</p>
+<p><code>ParameterizedType#getActualTypeArguments()</code>对应含义:</p>
+<ul>
+<li>T: 输入类型</li>
+<li>A: 在收集过程中用于累积部分结果的对象类型</li>
+<li>R: 返回类型</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="collector其它方法">Collector其它方法<a href="#collector其它方法" class="hash-link" aria-label="Direct link to Collector其它方法" title="Direct link to Collector其它方法">​</a></h3>
+<ul>
+<li><code>Supplier&lt;A&gt; supplier();</code>: 此方法提供了一个保存中间结果的对象,类型是<code>A</code></li>
+<li><code>BiConsumer&lt;A, T&gt; accumulator()</code>: 不断迭代运算操作结果累计到中间结果上,类型为<code>A</code>,流类型(我喜欢称它为: <code>流元素类型</code>)为<code>T</code>.</li>
+<li><code>BinaryOperator&lt;A&gt; combiner()</code>: 用于合并计算</li>
+<li><code>Function&lt;A, R&gt; finisher()</code>:  最终的结果为A,还要根据实际情况是否转换为R</li>
+</ul>
+<blockquote>
+<p><code>java.util.stream.Collectors.CollectorImpl</code>: Collector预置的收集器都是通过这个实例返回的.</p>
+</blockquote></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/05/07/Stream/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Blog post page navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/en/blog/2025/05/08/深入理解Java虚拟机"><div class="pagination-nav__sublabel">Newer post</div><div class="pagination-nav__label">深入理解Java虚拟机</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/en/blog/2025/05/06/Spring"><div class="pagination-nav__sublabel">Older post</div><div class="pagination-nav__label">Spring</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#java-8-stream-api" class="table-of-contents__link toc-highlight">Java 8 Stream API</a><ul><li><a href="#可变规约" class="table-of-contents__link toc-highlight">可变规约</a></li><li><a href="#规约的并发与排序" class="table-of-contents__link toc-highlight">规约的并发与排序</a></li><li><a href="#函数式编程" class="table-of-contents__link toc-highlight">函数式编程</a></li><li><a href="#javautilfunction包下的四大基础接口" class="table-of-contents__link toc-highlight"><code>java.util.function</code>包下的四大基础接口</a></li><li><a href="#lambda" class="table-of-contents__link toc-highlight">Lambda</a></li><li><a href="#stream接口相关" class="table-of-contents__link toc-highlight">Stream接口相关</a></li><li><a href="#abstractpipeline介绍" class="table-of-contents__link toc-highlight">AbstractPipeline介绍</a></li><li><a href="#sink" class="table-of-contents__link toc-highlight">Sink</a></li><li><a href="#streamreduce-方法介绍" class="table-of-contents__link toc-highlight">Stream#reduce 方法介绍</a></li><li><a href="#collectors介绍" class="table-of-contents__link toc-highlight">Collectors介绍</a></li><li><a href="#收集器构成" class="table-of-contents__link toc-highlight">收集器构成</a></li><li><a href="#collectorscharacteristics" class="table-of-contents__link toc-highlight">Collectors#characteristics()</a></li><li><a href="#collector其它方法" class="table-of-contents__link toc-highlight">Collector其它方法</a></li></ul></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>

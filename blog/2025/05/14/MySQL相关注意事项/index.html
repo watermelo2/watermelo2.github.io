@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-Hans" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">MySQL相关注意事项 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/blog/2025/05/14/MySQL相关注意事项"><meta data-rh="true" property="og:locale" content="zh_Hans"><meta data-rh="true" property="og:locale:alternate" content="en"><meta data-rh="true" name="docusaurus_locale" content="zh-Hans"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="zh-Hans"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="MySQL相关注意事项 | My Site"><meta data-rh="true" name="description" content="MySQL相关注意事项"><meta data-rh="true" property="og:description" content="MySQL相关注意事项"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-05-14T00:00:00.000Z"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/blog/2025/05/14/MySQL相关注意事项"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/05/14/MySQL相关注意事项" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/14/MySQL相关注意事项" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/14/MySQL相关注意事项" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/blog/2025/05/14/MySQL相关注意事项","mainEntityOfPage":"https://watermelo2.github.io/blog/2025/05/14/MySQL相关注意事项","url":"https://watermelo2.github.io/blog/2025/05/14/MySQL相关注意事项","headline":"MySQL相关注意事项","name":"MySQL相关注意事项","description":"MySQL相关注意事项","datePublished":"2025-05-14T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/assets/css/styles.e55a2139.css">
+<script src="/assets/js/runtime~main.849cc757.js" defer="defer"></script>
+<script src="/assets/js/main.0ae3829a.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/1.svg"><div role="region" aria-label="跳到主要内容"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">跳到主要内容</a></div><nav aria-label="主导航" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="切换导航栏" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="切换浅色/暗黑模式（当前为system mode）"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="搜索" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="最近博文导航"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">MySQL相关注意事项</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-05-14T00:00:00.000Z">2025年5月14日</time> · <!-- -->阅读需 7 分钟</div></header><div id="__blog-post-container" class="markdown"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="mysql相关注意事项">MySQL相关注意事项<a href="#mysql相关注意事项" class="hash-link" aria-label="MySQL相关注意事项的直接链接" title="MySQL相关注意事项的直接链接">​</a></h2>
+<blockquote>
+<p>根据参看其它文章以及自己过滤、扩展部分小点而成,下面是主要参考: <a href="https://blog.ops-coffee.cn/s/zfr5kn1tejvsih-miret3a" target="_blank" rel="noopener noreferrer">运维咖啡吧</a></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="数据库对象命名">数据库对象命名<a href="#数据库对象命名" class="hash-link" aria-label="数据库对象命名的直接链接" title="数据库对象命名的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="数据库对象">数据库对象<a href="#数据库对象" class="hash-link" aria-label="数据库对象的直接链接" title="数据库对象的直接链接">​</a></h4>
+<p>命名规范的对象是指<code>数据库SCHEMA</code>、<code>表TABLE</code>、<code>索引INDEX</code>、<code>约束CONSTRAINTS</code>等的命名约定.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="数据库命名">数据库命名<a href="#数据库命名" class="hash-link" aria-label="数据库命名的直接链接" title="数据库命名的直接链接">​</a></h4>
+<ol>
+<li>数据库命名必须为项目英文名称或有意义的简写.</li>
+<li>数据库创建时必须添加默认字符集和校对规则子句,默认字符集为<code>UTF8</code>.</li>
+<li>命名应使用小写.</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="表命名">表命名<a href="#表命名" class="hash-link" aria-label="表命名的直接链接" title="表命名的直接链接">​</a></h4>
+<ol>
+<li>同一个模块的表尽可能使用相同的前缀,表名称尽可能表达含义.</li>
+<li>多个单词以下划线<code>&#x27;_&#x27;</code>分隔.</li>
+<li>表名不能超过<code>30</code>个字符.</li>
+<li>普通表名以<code>t_</code>开头,表示为table,命名规则为<code>t_模块名(或有意义的简写)_+table_name</code>.</li>
+<li>临时表(运营、开发或数据库人员临时用作临时进行数据采集用的中间表)命名规则:加上<code>tmp</code>前缀和<code>8</code>位时间后缀(如: <code>tmp_test_user_20181109</code>).</li>
+<li>备份表(DBA备份用作保存历史数据的中间表)命名规则:加上<code>bak</code>前缀和8位时间后缀(如: <code>bak_test_user_20181109</code>).</li>
+<li>命名应使用小写.</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="字段命名">字段命名<a href="#字段命名" class="hash-link" aria-label="字段命名的直接链接" title="字段命名的直接链接">​</a></h4>
+<ol>
+<li>字段命名需要表示其实际含义的英文单词或简写,单词之间用下划线<code>_</code>进行连接.</li>
+<li>各表之间相同意义的字段必须同名.</li>
+<li>字段名不能超过30个字符.</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="数据库对象设计">数据库对象设计<a href="#数据库对象设计" class="hash-link" aria-label="数据库对象设计的直接链接" title="数据库对象设计的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="存储引擎的选择">存储引擎的选择<a href="#存储引擎的选择" class="hash-link" aria-label="存储引擎的选择的直接链接" title="存储引擎的选择的直接链接">​</a></h4>
+<p>如无特殊需求,必须使用<code>InnoDB</code>存储引擎(MySQL8将系统自带的表的存储引擎全都改成了<code>InooDB</code>).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="字符集的选择">字符集的选择<a href="#字符集的选择" class="hash-link" aria-label="字符集的选择的直接链接" title="字符集的选择的直接链接">​</a></h4>
+<p>如无特殊要求,必须使用<code>utf8(latin1)</code>或<code>utf8mb4</code>(MySQL8将<code>utf8mb4</code>设为了默认). 并且是显示选择,不要依赖数据库的默认值.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="表设计">表设计<a href="#表设计" class="hash-link" aria-label="表设计的直接链接" title="表设计的直接链接">​</a></h4>
+<ol>
+<li>不同应用间所对应的数据库表之间的关联应尽可能减少,不允许使用外键对表之间进行关联,确保组件对应的表之间的独立性,为系统或表结构的重构提供可能性.</li>
+<li>表设计的角度不应该针对整个系统进行数据库设计,而应该根据系统架构中组件划分,针对每个组件所处理的业务进行数据库设计.</li>
+<li>表必须要有<code>PK</code>.</li>
+<li>一个字段只表示一个含义.</li>
+<li>表不应该有重复列.</li>
+<li>禁止使用复杂数据类型(数组、JSON等).</li>
+<li>需要<code>JOIN</code>的字段,数据类型必须保持绝对一致,避免隐式转换.</li>
+<li>设计应至少满足第三范式,尽量减少数据冗余.一些特殊场景允许反范式化设计,但在项目评审时需要对冗余字段的设计给出解释.</li>
+<li><code>TEXT</code>字段必须放在独立的表中,用<code>PK</code>与主表关联.如无特殊需要,禁止使用<code>TEXT</code>、<code>BLOB</code>字段.</li>
+<li>需要定期删除(或者转移)过期数据的表,通过分表解决.</li>
+<li>单表字段数不要太多,建议最多不要大于50个.</li>
+<li>MySQL在处理大表时,性能就开始明显降低,所以建议单表物理大小限制在16GB,表中数据控制在2000W内.</li>
+<li>如果数据量或数据增长在前期规划时就较大,那么在设计评审时就应加入分表策略.</li>
+<li>无特殊需求,严禁使用分区表.</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="字段设计">字段设计<a href="#字段设计" class="hash-link" aria-label="字段设计的直接链接" title="字段设计的直接链接">​</a></h4>
+<ol>
+<li><code>INT</code>: 如无特殊需要,存放整型数字使用<code>UNSIGNED INT</code>型.整型字段后的数字代表显示长度.</li>
+<li><code>DATETIME</code>: 所有需要精确到时间(时分秒)的字段均使用<code>DATETIME</code>,不要使用<code>TIMESTAMP</code>类型.</li>
+<li><code>VARCHAR</code>: 所有动态长度字符串 全部使用<code>VARCHAR</code>类型,类似于状态等有限类别的字段,也使用可以比较明显表示出实际意义的字符串,而不应该使用INT之类的数字来代替;<code>VARCHAR(N)</code>,N表示的是字符数而不是字节数.比如<code>VARCHAR(255)</code>,可以最大可存储255个字符(字符包括英文字母,汉字,特殊字符等).但N应尽可能小,因为MySQL一个表中所有的<code>VARCHAR</code>字段最大长度是65535个字节,且存储字符个数由所选字符集决定.如<code>UTF8</code>存储一个字符最大要3个字节,那么<code>VARCHAR</code>在存放占用3个字节长度的字符时不应超过21845个字符.同时,在进行排序和创建临时表一类的内存操作时,会使用N的长度申请内存.(如无特殊需要,原则上单个<code>VARCHAR</code>型字段不允许超过255个字符).</li>
+<li><code>TEXT</code>: 仅仅当字符数量可能超过20000个的时候,才可以使用<code>TEXT</code>类型来存放字符类数据,因为所有<code>MySQL</code>数据库都会使用<code>UTF8</code>字符集.所有使用<code>TEXT</code>类型的字段必须和原表进行分拆,与原表主键单独组成另外一个表进行存放.如无特殊需要,严禁开发人员使用<code>MEDIUMTEXT</code>、<code>TEXT</code>、<code>LONGTEXT</code>类型.</li>
+<li>对于精确浮点型数据存储,需要使用<code>DECIMAL</code>,严禁使用<code>FLOAT</code>和<code>DOUBLE</code>.</li>
+<li>如无特殊需要,严禁开发人员使用<code>BLOB</code>类型.</li>
+<li>如无特殊需要,字段建议使用<code>NOT NULL</code>属性,可用默认值代替<code>NULL</code>(这个针对的是含索引的字段).</li>
+<li>自增字段类型必须是整型且必须为<code>UNSIGNED</code>,推荐类型为<code>INT</code>或<code>BIGINT</code>,并且自增字段必须是主键或者主键的一部分.</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="索引设计">索引设计<a href="#索引设计" class="hash-link" aria-label="索引设计的直接链接" title="索引设计的直接链接">​</a></h4>
+<ol>
+<li>索引必须创建在索引选择性选择性较高的列上,选择性的计算方式为: <code>select count(distinct(col_name))/count(*) from tb_name</code>;如果结果小于<code>0.2</code>,则不建议在此列上创建索引,否则大概率会拖慢SQL执行.</li>
+<li>组合索引的首字段,必须在<code>WHERE</code>条件中,对于确定需要组成组合索引的多个字段,建议将选择性高的字段靠前放</li>
+<li>禁止使用外键.</li>
+<li><code>TEXT</code>类型字段如果需要创建索引,必须使用前缀索引.</li>
+<li>单张表的索引数量理论上应控制在<code>5</code>个以内.经常有大批量插入、更新操作表,应尽量少建索引.</li>
+<li><code>ORDER BY</code>,<code>GROUP BY</code>,<code>DISTINCT</code>的字段需要添加在索引的后面,形成覆盖索引.</li>
+<li>尽量使用<code>B+tree</code>索引,不要使用其它类型索引.</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="sql">SQL<a href="#sql" class="hash-link" aria-label="SQL的直接链接" title="SQL的直接链接">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="sql编写">SQL编写<a href="#sql编写" class="hash-link" aria-label="SQL编写的直接链接" title="SQL编写的直接链接">​</a></h4>
+<ol>
+<li><code>SQL</code>关键字<code>全大写</code>.</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="查询sql索引">查询SQL索引<a href="#查询sql索引" class="hash-link" aria-label="查询SQL索引的直接链接" title="查询SQL索引的直接链接">​</a></h4>
+<ol>
+<li>查询时少用函数,能在业务层通过传参来实现尽量传参.</li>
+<li><code>WHERE</code>条件不要在索引列上进行运算.</li>
+<li>用<code>IN/UNION</code>替换<code>OR</code>,并注意<code>IN</code>的个数.</li>
+<li>索引走左前缀.</li>
+<li>最好不要用<code>INSERT ON DUPLICATE KEY UPDATE</code>、<code>REPLACE INTO、INSERT IGNORE</code>,存在可能死锁的问题. <a href="https://blog.csdn.net/pml18710973036/article/details/78452688" target="_blank" rel="noopener noreferrer">INSERT ON DUPLICATE KEY UPDATE死锁</a></li>
+<li>大SQL无法直接优化的化就进行拆分,能够扇出更少数据的SQL优先拆分,但要注意的是需要多测试,有时候在特定几个参数或者当前库中或者理论上确实优化了,但实际上其它场景下的查询比以前更慢.</li>
+</ol>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="其它说明">其它说明<a href="#其它说明" class="hash-link" aria-label="其它说明的直接链接" title="其它说明的直接链接">​</a></h4>
+<ol>
+<li>MySQL中<code>SUM</code>函数没有统计到任何记录时会返回<code>null</code>而不是<code>0</code>.</li>
+<li>MySQL中<code>COUNT</code>函数不统计<code>null</code>值.</li>
+<li>MySQL中和<code>null</code>比较总是返回<code>null</code>.</li>
+</ol>
+<h5 class="anchor anchorWithStickyNavbar_LWe7" id="聊聊对外键的一些看法">聊聊对外键的一些看法<a href="#聊聊对外键的一些看法" class="hash-link" aria-label="聊聊对外键的一些看法的直接链接" title="聊聊对外键的一些看法的直接链接">​</a></h5>
+<p><code>外键</code>是MySQL用来约束数据正确性的,插入数据的时候会先检查外键列中是否有对应的记录. 这个动作从性能、并发安全上来看并不适用于大部分场景. 并且在做分表的时候也是个问题. 在开发、测试等非正式环境里外键约束会导致开发非常非常麻烦.</p></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/05/14/MySQL相关注意事项/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>编辑此页</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="博文分页导航"><a class="pagination-nav__link pagination-nav__link--prev" href="/blog/2025/05/15/MySQL比较操作符问题"><div class="pagination-nav__sublabel">较新一篇</div><div class="pagination-nav__label">MySQL比较操作符问题</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/blog/2025/05/13/HTTP"><div class="pagination-nav__sublabel">较旧一篇</div><div class="pagination-nav__label">HTTP</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#mysql相关注意事项" class="table-of-contents__link toc-highlight">MySQL相关注意事项</a><ul><li><a href="#数据库对象命名" class="table-of-contents__link toc-highlight">数据库对象命名</a></li><li><a href="#数据库对象设计" class="table-of-contents__link toc-highlight">数据库对象设计</a></li><li><a href="#sql" class="table-of-contents__link toc-highlight">SQL</a></li></ul></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>

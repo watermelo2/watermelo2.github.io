@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Raft | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/en/blog/2025/06/28/Raft"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" property="og:locale:alternate" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="Raft | My Site"><meta data-rh="true" name="description" content="Raft"><meta data-rh="true" property="og:description" content="Raft"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-06-28T00:00:00.000Z"><link data-rh="true" rel="icon" href="/en/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/en/blog/2025/06/28/Raft"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/06/28/Raft" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/06/28/Raft" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/06/28/Raft" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/en/blog/2025/06/28/Raft","mainEntityOfPage":"https://watermelo2.github.io/en/blog/2025/06/28/Raft","url":"https://watermelo2.github.io/en/blog/2025/06/28/Raft","headline":"Raft","name":"Raft","description":"Raft","datePublished":"2025-06-28T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/en/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/en/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/en/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/en/assets/css/styles.e55a2139.css">
+<script src="/en/assets/js/runtime~main.7582449a.js" defer="defer"></script>
+<script src="/en/assets/js/main.782f9090.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/en/img/1.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/en/"><div class="navbar__logo"><img src="/en/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/en/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/en/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="Blog recent posts navigation"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/en/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">Raft</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-06-28T00:00:00.000Z">June 28, 2025</time> · <!-- -->11 min read</div></header><div id="__blog-post-container" class="markdown"><h3 class="anchor anchorWithStickyNavbar_LWe7" id="raft">Raft<a href="#raft" class="hash-link" aria-label="Direct link to Raft" title="Direct link to Raft">​</a></h3>
+<blockquote>
+<p>参考: <a href="https://www.bilibili.com/video/BV1x7411M7Sf?p=22" target="_blank" rel="noopener noreferrer">MIT 6.824</a>、<a href="https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md" target="_blank" rel="noopener noreferrer">中文论文</a>、<a href="https://github.com/OneSizeFitsQuorum/raft-thesis-zh_cn/blob/master/raft-thesis-zh_cn.md" target="_blank" rel="noopener noreferrer">中文论文备份</a>、<a href="http://web.archive.org/web/20220602001243/https://niceaz.com/2018/11/03/raft-and-zab/" target="_blank" rel="noopener noreferrer">归档</a>、<a href="https://www.zhihu.com/question/19787937/answer/583245468" target="_blank" rel="noopener noreferrer">知乎简介</a></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="大多数选票的好处">大多数选票的好处<a href="#大多数选票的好处" class="hash-link" aria-label="Direct link to 大多数选票的好处" title="Direct link to 大多数选票的好处">​</a></h3>
+<ol>
+<li>
+<p>两次&quot;大多数&quot;里面至少有一台服务器是两个term中共有(重叠)的. 体现就是上一个leader所获得的选票也有部分来自这次的投票服务器</p>
+</li>
+<li>
+<p>Raft作为Replica系统的共识底层,通常的做法是上层将需要同步的Log给Raft,Raft同步给大多数Replica后给上层返回success,Replica 上层会读取Raftlog并处理成上层自己的数据.</p>
+</li>
+</ol>
+<p>每次选举需要将term自增</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="raft每个节点的状态一共有三种leaderfolowercandidate">Raft每个节点的状态一共有三种：leader,folower,candidate<a href="#raft每个节点的状态一共有三种leaderfolowercandidate" class="hash-link" aria-label="Direct link to Raft每个节点的状态一共有三种：leader,folower,candidate" title="Direct link to Raft每个节点的状态一共有三种：leader,folower,candidate">​</a></h3>
+<ol>
+<li>
+<p>节点启动默认是folower状态,超时没有收到leader的心跳则变为candidate状态: 节点认为leader不可用了,需要自己竞选</p>
+</li>
+<li>
+<p>candidate状态收到超过半数节点的投票则变为leader,收到leader的心跳变为folower</p>
+</li>
+</ol>
+<p>3.leader收到更高termleader的心跳变为folower.</p>
+<p>基本的Raft协议一共用到了两种RPC,RequestVote RPC和AppendEntry RPC.RequestVote RPC主要用于Leader Election 的投票.</p>
+<p>AppendEntry RPC用于Log Replication和Leader发送心跳</p>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2022/06/02/1m4pQrhdZxgvVIw.png" alt="状态机" class="img_ev3q"></p>
+<p>候选人可能会从其他的服务器接收到声明它是领导人的Append Entry RPC.如果这个领导人的任期号（包含在此次的RPC中）</p>
+<p>不小于候选人当前的任期号,那么候选人会承认领导人合法并回到跟随者状态. 如果此次RPC中的任期号比自己小,那么候选人就会拒绝这次的RPC并且继续保持候选人状态</p>
+<p>理想情况下,总有一个candidate会竞选到超过半数节点的票. 也有可能是候选人既没有赢得选举也没有输: 如果有多个跟随者同时成为候选人,那么选票可能会被瓜分以至于没有候选人可以赢得大多数人的支持.当这种情况发生的时候,每一个候选人都会超时,然后通过增加当前任期号来开始一轮新的选举.然而,没有其他机制的话,选票可能会被无限的重复瓜分.再为极端一点,两个节点同时超时,这时可能产生分票行为,导致两个节点都没有收到超过半数节点的投票. Raft使用随机选举超时时间的方法来确保很少会发生选票瓜分的情况,就算发生也能很快的解决.为了阻止选票起初就被瓜分,选举超时时间是从一个固定的区间（例如 150-300 毫秒）随机选择.这样可以把服务器都分散开以至于在大多数情况下只有一个服务器会选举超时;然后他赢得选举并在其他服务器超时之前发送心跳包.同样的机制被用在选票瓜分的情况下.每一个候选人在开始一次选举的时候会重置一个随机的选举超时时间,然后在超时时间内等待投票的结果;这样减少了在新的选举中另外的选票瓜分的可能性.</p>
+<p><code>election timeout</code>的取值范围: <code>broadcastTime</code>(心跳间隔) &lt; <code>electionTimeout</code>(选举超时时间) &lt; <code>MTBF</code>(机器平均故障时间,很长)</p>
+<p>分布式共识算法负责维护一系列的log,每个log包含一条命令,共识算法负责保证所有节点上的log序列完全一致.</p>
+<p>这样就保证log apply到状态机的时候,状态机的状态是一致的. 每条log 包含一个index,一个term和一条 command.</p>
+<p>由于每个term只有一个leader,因此Raft的log有一个特性是如果某个index处log的term一致,则该index处对应的command也一定是一致的.这个特性在日志复制的Log Match过程中会被应用到Raft 的Log Replication主要依赖于AppendEntry RPC,它只能由Leader发.该 RPC 具体定义如下.该 RPC 能够保证log一致性的关键在于Log Match 过程.每次 AppendEntry RPC 都包含两个重要的属性,prevLogIndex 和 prevLogTerm.记录了当前所复制日志的前一条日志的index和term.接受者收到后,会匹配一下index 处的log的term是否一致:</p>
+<ol>
+<li>
+<p>term一致则对应的command一定是一致的.并且可以推出在此次新增的数据之前的数据是一致的,那么就接收此次AppendEntry RPC所携带的log.</p>
+</li>
+<li>
+<p>term不一致则说明之前已经存在数据不一致,则拒绝此次RPC.发送者在收到拒绝后会向前搜索,直至找到第一个匹配成功的log,并将此之后的log全部复制(Leader会一直记录follower的最近的且正确的log index).</p>
+</li>
+</ol>
+<p>上面的第二种情况发生的场景: 因为AppendEntry RPC分start、commit两步的,只有真正commit(Leader发送同步Log)才是真正确认要保留的Log.</p>
+<p>所以如果没有commit(Leader对应的上游返回失败)这条消息,那么在下一条Log并且commit的时候就会出现这种情况</p>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2022/06/02/Ni6hRzxUufraJ3C.png" alt="raft_log_replication.png" class="img_ev3q"></p>
+<p>Raft数据的安全性我们可以从两个角度理解:</p>
+<ol>
+<li>
+<p>每个状态机以严格相同的顺序执行相同的command</p>
+</li>
+<li>
+<p>所有已经commit的Entry必须出现在未来的所有任期内</p>
+</li>
+</ol>
+<blockquote>
+<p>第一条规则已经通过AppendEntry RPC保证了,下面是如果保证第二条规则.</p>
+</blockquote>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2022/06/02/JNnslW94cLGgvQp.png" alt="raft_safety_election_restriction.png" class="img_ev3q"></p>
+<p>如上所示,在网络分区的时候,依照上面的几条限制则有出现图中这种情况的可能. 假设leader此时down了,b节点率先election timeout,此时,如果b节点得到了超过半数节点的投票当选leader,name显然红色虚线框内已经被commit的entry就丢失了.为了避免这种情况的出现,必须加一条限制:</p>
+<blockquote>
+<p><strong>限制一: 节点 m 向节点 n 发送了 RequestVote RPC,如果节点 n 发现节点 m 的数据没有自己新,则节点 n拒绝节点 m的投票请求.这里的“新”包含两个方面: term更大的数据更新; term相同,index更大的数据更新;</strong></p>
+</blockquote>
+<p>加上这条限制之后,我们看到图中节点 b 最多只能拿到自己和节点 f 的投票,未超过半数,不能当选leader.</p>
+<p>现在证明加上这条规则后就能保证<code>一条已经被 commit 的 entry 一定会出现在未来的term中</code>:</p>
+<ol>
+<li>
+<p>对于一条已经被提交的logI,I一定被复制到了超过半数的节点上,记这个节点集合为Q1</p>
+</li>
+<li>
+<p>对于之后的一个leader L而言,L一定获得了超过半数节点的投票,记这个节点集合为Q2</p>
+</li>
+<li>
+<p>根据鸽笼原理,Q1和Q2两个集合至少存在一个交集,记这个交集节点为S</p>
+</li>
+<li>
+<p>S既包含I同时又向L投了票,因此在&quot;限制一&quot;的限制下,L一定包含I</p>
+</li>
+</ol>
+<p>但有了&quot;限制一&quot;并不能满足&quot;Raft数据安全性的第二条规则&quot;,举例:</p>
+<ol>
+<li>
+<p>a 时刻 S1 是leader复制了一条log到 S2 上</p>
+</li>
+<li>
+<p>b 时刻 S1 down 掉 S5 当选leader</p>
+</li>
+<li>
+<p>c 时刻 S5 down 掉 S1 成功当选leader,S1将之前 term2 的日志复制到了 S3 上,term2的日志已经超过半数.此时我们能将</p>
+</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="term2-的日志标记为-commited-吗">term2 的日志标记为 commited 吗<a href="#term2-的日志标记为-commited-吗" class="hash-link" aria-label="Direct link to term2 的日志标记为 commited 吗" title="Direct link to term2 的日志标记为 commited 吗">​</a></h3>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2022/06/02/6XU4SknjN9Ly38d.png" alt="流程图" class="img_ev3q"></p>
+<p>如图所示. 假设我们将term2的日志标记为commited,如果此时S1down机S5可能当选leader,但是S5上没有term2的这条日志,就导致这条被标记为 commited 的日志没有出现在未来的term中. 这最根本的原因是S1 在 term4当选leader 时,其他节点根本不知道term4 的存在,导致term出现了倒退的现象,把 term4复制的日志给覆盖了. 所以加上了条限制:</p>
+<blockquote>
+<p><strong>限制二: 不直接提交之前term的log,必须通过提交本term的log,间接的提交之前term的log</strong></p>
+</blockquote>
+<p>这样S5就不可能当选leader,因为超过半数的节点已经知道term4的存在从而不会给 S5 投票.很多系统的实现中,都是在当选新leader后,立马提交一个NOP Entry来满足这条限制的.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="成员变更">成员变更<a href="#成员变更" class="hash-link" aria-label="Direct link to 成员变更" title="Direct link to 成员变更">​</a></h3>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2022/06/02/UuvK4X7QYoZxwFJ.jpg" alt="多Leader问题图片" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" src="https://s2.loli.net/2022/06/02/eOw1vVU4Xxn6mgH.jpg" alt="一次变更一个证明图片" class="img_ev3q"></p>
+<p>成员变更分一次性变更一个成员和一次性变更多个成员(一次多个比较麻烦).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="leader通知成员变更步骤">Leader通知成员变更步骤<a href="#leader通知成员变更步骤" class="hash-link" aria-label="Direct link to Leader通知成员变更步骤" title="Direct link to Leader通知成员变更步骤">​</a></h3>
+<p>Leader收到成员变更请求后，先向<code>C old</code>和<code>C new</code>同步一条<code>C old,new</code>日志，此后所有日志都需要<code>C old</code>和<code>C new</code>两个多数派的确认。</p>
+<p><code>C old,new</code>日志在<code>C old</code>和<code>C new</code>都达成多数派之后才能提交，此后Leader再向<code>C old</code>和<code>C new</code>同步一条只包含<code>C new</code>的日志，</p>
+<p>此后日志只需要<code>C new</code>的多数派确认。<code>C new</code>日志只需要在<code>C new</code>达成多数派即可提交，此时成员变更完成，不在<code>C new</code>中的成员自动下线。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="leader宕机且一次多个">Leader宕机且一次多个<a href="#leader宕机且一次多个" class="hash-link" aria-label="Direct link to Leader宕机且一次多个" title="Direct link to Leader宕机且一次多个">​</a></h3>
+<p><code>C old,new</code>中任意一个节点都可能成为新Leader，如果新Leader上没有<code>C old,new</code>日志，则继续使用<code>C old</code>，Follower上如果有</p>
+<p><code>C old,new</code>日志会被新Leader截断，回退到<code>C old</code>，成员变更失败；如果新Leader上有<code>C old,new</code>日志，则继续将未完成的成员变更流程走完。</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="一次一个">一次一个<a href="#一次一个" class="hash-link" aria-label="Direct link to 一次一个" title="Direct link to 一次一个">​</a></h3>
+<p>可以从数学上严格证明，只要每次只允许增加或删除一个成员，<code>C old</code>与<code>C new</code>不可能形成两个不相交的多数派。</p>
+<p>因此只要每次只增加或删除一个成员，从<code>C old</code>可直接切换到<code>C new</code>，无需过渡成员配置，实现单步成员变更</p>
+<p>注意: 新任Leader必须在当前Term提交一条日志之后，才允许同步成员变更日志。也即Leader在当前Term还未提交日志之前，</p>
+<p>不允许同步成员变更日志。</p>
+<p><a href="https://blog.openacid.com/distributed/raft-bug/" target="_blank" rel="noopener noreferrer">Raft成员变更BUG</a></p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="关于优化">关于优化<a href="#关于优化" class="hash-link" aria-label="Direct link to 关于优化" title="Direct link to 关于优化">​</a></h3>
+<ul>
+<li>
+<p>可以通过SNAPSHOT机制来合并Log,想避免与客户端请求冲突的话可以用Copy-On-Write</p>
+</li>
+<li>
+<p>Pipeline &amp; Batch &amp; Async Flush</p>
+</li>
+<li>
+<p>Async Flush: 自己异步刷盘,然后让其它超过半数节点提交(非异步的话只需要半数就好了,因为会加上自己).</p>
+</li>
+<li>
+<p>Batch: AppendEntry RPC支持一次性复制多条日志,从而实现Batch. 实际上是攒够一批数据后一次性处理.</p>
+</li>
+<li>
+<p>Pipeline: 当前一条log的处理流程还没有结束的时候,就接收新的日志,从而提高日志数据处理效率.</p>
+</li>
+</ul>
+<blockquote>
+<p>Pileline和Batch是完全用于不同场景的: Pipeline有助于较少请求的响应时间; Batch有助于整体的吞吐率.</p>
+</blockquote>
+<ul>
+<li>
+<p>Leaseleader<!-- -->:leader<!-- --> 为了优化每次去请求都去确认一下自己当前是不是真正的leader 也带来了很多开销,lease read将每次Leader确认自己是否是Leader时带上一个租期变量,folower 响应leader 的请求则需要保证在租期内,不给其他节点投票,从而保证租期内,不会有新leader 的产生.</p>
+</li>
+<li>
+<p>PreVote: 在集群发生网络分区时,网络分区的节点由于收不到leader 的心跳,term 会在不断的自增.当网络分区恢复时,由于leader 收到该节点RequestVote RPC 的请求,并发现其term比自身大,使得leader失去leader的身份,重新开始一轮选举,导致集群的抖动. Prevote机制是当一个节点 election timeout 时,他不会立即自增 term,而是与集群中节点进行一次通信,如果能收到超过半数节点的响应,才会自增 term.</p>
+</li>
+</ul></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/06/28/Raft/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Blog post page navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/en/blog/2025/06/29/AQS"><div class="pagination-nav__sublabel">Newer post</div><div class="pagination-nav__label">AQS</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/en/blog/2025/06/27/泛型"><div class="pagination-nav__sublabel">Older post</div><div class="pagination-nav__label">泛型</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#raft" class="table-of-contents__link toc-highlight">Raft</a></li><li><a href="#大多数选票的好处" class="table-of-contents__link toc-highlight">大多数选票的好处</a></li><li><a href="#raft每个节点的状态一共有三种leaderfolowercandidate" class="table-of-contents__link toc-highlight">Raft每个节点的状态一共有三种：leader,folower,candidate</a></li><li><a href="#term2-的日志标记为-commited-吗" class="table-of-contents__link toc-highlight">term2 的日志标记为 commited 吗</a></li><li><a href="#成员变更" class="table-of-contents__link toc-highlight">成员变更</a></li><li><a href="#leader通知成员变更步骤" class="table-of-contents__link toc-highlight">Leader通知成员变更步骤</a></li><li><a href="#leader宕机且一次多个" class="table-of-contents__link toc-highlight">Leader宕机且一次多个</a></li><li><a href="#一次一个" class="table-of-contents__link toc-highlight">一次一个</a></li><li><a href="#关于优化" class="table-of-contents__link toc-highlight">关于优化</a></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>

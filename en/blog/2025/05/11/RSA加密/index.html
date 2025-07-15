@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="blog-wrapper blog-post-page plugin-blog plugin-id-default" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">RSA加密 | My Site</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://watermelo2.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://watermelo2.github.io/en/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://watermelo2.github.io/en/blog/2025/05/11/RSA加密"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" property="og:locale:alternate" content="zh_Hans"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><meta data-rh="true" property="og:title" content="RSA加密 | My Site"><meta data-rh="true" name="description" content="RSA加密"><meta data-rh="true" property="og:description" content="RSA加密"><meta data-rh="true" property="og:type" content="article"><meta data-rh="true" property="article:published_time" content="2025-05-11T00:00:00.000Z"><link data-rh="true" rel="icon" href="/en/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://watermelo2.github.io/en/blog/2025/05/11/RSA加密"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/en/blog/2025/05/11/RSA加密" hreflang="en"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/11/RSA加密" hreflang="zh-Hans"><link data-rh="true" rel="alternate" href="https://watermelo2.github.io/blog/2025/05/11/RSA加密" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://watermelo2.github.io/en/blog/2025/05/11/RSA加密","mainEntityOfPage":"https://watermelo2.github.io/en/blog/2025/05/11/RSA加密","url":"https://watermelo2.github.io/en/blog/2025/05/11/RSA加密","headline":"RSA加密","name":"RSA加密","description":"RSA加密","datePublished":"2025-05-11T00:00:00.000Z","author":[],"keywords":[],"isPartOf":{"@type":"Blog","@id":"https://watermelo2.github.io/en/blog","name":"Blog"}}</script><link rel="alternate" type="application/rss+xml" href="/en/blog/rss.xml" title="My Site RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/en/blog/atom.xml" title="My Site Atom Feed"><link rel="stylesheet" href="/en/assets/css/styles.e55a2139.css">
+<script src="/en/assets/js/runtime~main.7582449a.js" defer="defer"></script>
+<script src="/en/assets/js/main.782f9090.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/en/img/1.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/en/"><div class="navbar__logo"><img src="/en/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/en/img/1.svg" alt="哈基米" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">超级无敌大西瓜</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/en/blog">笔记</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/watermelo2" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="container margin-vert--lg"><div class="row"><aside class="col col--3"><nav class="sidebar_re4s thin-scrollbar" aria-label="Blog recent posts navigation"><div class="sidebarItemTitle_pO2u margin-bottom--md">All posts</div><div role="group"><h3 class="yearGroupHeading_rMGB">2025</h3><ul class="sidebarItemList_Yudw clean-list"><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/07/14/端到端加密设计">端到端加密设计</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/30/ES相关笔记">ES相关笔记</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/29/AQS">AQS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/28/Raft">Raft</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/27/泛型">泛型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/26/字符编码">字符编码</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/25/Spring事务">Spring事务</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/24/凤凰架构">凤凰架构</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/23/Redis设计与实现">Redis设计与实现</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/22/DDIA">DDIA</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/21/GFS">GFS</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/06/19/Maven管理">Maven管理</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/17/MySQL死锁">MySQL死锁</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/16/MySQL中的定点数据类型">MySQL中的定点数据类型</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/15/MySQL比较操作符问题">MySQL比较操作符问题</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/14/MySQL相关注意事项">MySQL相关注意事项</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/13/HTTP">HTTP</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/12/iptables">iptables</a></li><li class="sidebarItem__DBe"><a aria-current="page" class="sidebarItemLink_mo7H sidebarItemLinkActive_I1ZP" href="/en/blog/2025/05/11/RSA加密">RSA加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/10/DES加密">DES加密</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/09/分布式共识算法">分布式共识算法</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/08/深入理解Java虚拟机">深入理解Java虚拟机</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/07/Stream">Stream</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/06/Spring">Spring</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/05/RocketMQ">RocketMQ</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/04/Mybatis技术内幕">Mybatis技术内幕</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/03/MySQL是怎么运行的">MySQL是怎么运行的</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/02/MySQL预编译">MySQL预编译</a></li><li class="sidebarItem__DBe"><a class="sidebarItemLink_mo7H" href="/en/blog/2025/05/01/IEEE754">IEEE754</a></li></ul></div></nav></aside><main class="col col--7"><article class=""><header><h1 class="title_f1Hy">RSA加密</h1><div class="container_mt6G margin-vert--md"><time datetime="2025-05-11T00:00:00.000Z">May 11, 2025</time> · <!-- -->8 min read</div></header><div id="__blog-post-container" class="markdown"><h2 class="anchor anchorWithStickyNavbar_LWe7" id="rsa加密">RSA加密<a href="#rsa加密" class="hash-link" aria-label="Direct link to RSA加密" title="Direct link to RSA加密">​</a></h2>
+<blockquote>
+<p>参考: <a href="https://www.ruanyifeng.com/blog/2013/06/rsa_algorithm_part_one.html" target="_blank" rel="noopener noreferrer">欧拉函数</a>、<a href="http://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html" target="_blank" rel="noopener noreferrer">RSA算法与证明</a></p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="前言">前言<a href="#前言" class="hash-link" aria-label="Direct link to 前言" title="Direct link to 前言">​</a></h3>
+<ul>
+<li>它是一种纯数学的加密算法,可按照非常简单的公式进行加密和解密.</li>
+<li>它分公钥和私钥,公钥用来加密,私钥用来解密.</li>
+<li>私钥数字越大越安全.</li>
+<li>暴力破解是通过公钥值进行因式分解猜出具体的两个因数(私钥).</li>
+<li>暴露出来的只有公钥和一个随机值.</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="铺垫">铺垫<a href="#铺垫" class="hash-link" aria-label="Direct link to 铺垫" title="Direct link to 铺垫">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="互质关系">互质关系<a href="#互质关系" class="hash-link" aria-label="Direct link to 互质关系" title="Direct link to 互质关系">​</a></h4>
+<blockquote>
+<p>如果两个正整数,除了1以外,没有其他公因子,我们就称这两个数是互质关系(coprime).比如,15和32没有公因子,所以它们是互质关系.这说明,不是质数也可以构成互质关系.</p>
+</blockquote>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="质数引出的相关结论">质数引出的相关结论:<a href="#质数引出的相关结论" class="hash-link" aria-label="Direct link to 质数引出的相关结论:" title="Direct link to 质数引出的相关结论:">​</a></h4>
+<ul>
+<li>任意两个质数构成互质关系,比如13和61.</li>
+<li>一个数是质数,另一个数只要不是前者的倍数,两者就构成互质关系,比如3和10.</li>
+<li>如果两个数之中,较大的那个数是质数,则两者构成互质关系,比如97和57.</li>
+<li>1和任意一个自然数是都是互质关系,比如1和99.</li>
+<li>p是大于1的整数,则p和<code>p-1</code>构成互质关系,比如57和56.</li>
+<li>p是大于1的奇数,则p和<code>p-2</code>构成互质关系,比如17和15.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="欧拉函数的五种计算场景">欧拉函数的五种计算场景:<a href="#欧拉函数的五种计算场景" class="hash-link" aria-label="Direct link to 欧拉函数的五种计算场景:" title="Direct link to 欧拉函数的五种计算场景:">​</a></h4>
+<blockquote>
+<p>计算小于等于n的正整数中有多少个与n构成互质关系?</p>
+</blockquote>
+<p>计算这个值的方法就叫欧拉函数,以<code>φ(n)</code>表示. <code>n=8</code>时,与8形成互质关系的是1、3、5、7,所以<code>φ(8)=4</code>.</p>
+<ul>
+<li>第一种情况: 如果n=1,则<code>φ(1)=1</code>. 因为1与任何数(包括自身)都构成互质关系.</li>
+<li>第二种情况: 如果n是质数,则<code>φ(n)=n-1</code>. .因为质数与小于它的每一个数,都构成互质关系.比如5与1、2、3、4都构成互质关系.</li>
+<li>第三种情况: 如果n是质数的某一个次方,即<code>n = p^k</code> (p为质数,k为大于等于1的整数),则:<!-- -->
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">φ(p^k)=p^k-p^(k-1)=p^k(1-1/p)</span><br></span></code></pre></div></div>
+</li>
+<li>第四种情况: 如果n可以分解成两个互质的整数之积<code>n=p1*p2</code>,则:<!-- -->
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">φ(n)=φ(p1p2)=φ(p1)φ(p2)</span><br></span></code></pre></div></div>
+</li>
+<li>第五种情况(欧拉函数常用公式):<!-- -->
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">φ(n)=n(1-1/p1)(1-1/p2)...(1-1/pr)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">代入: φ(1323)=φ(27*49)=φ(3^3*7^2)=1323(1-1/3)(1-1/7)=756</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">所以小于等于1323的正整数中有756个数与1323构成互质关系.</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="欧拉定理">欧拉定理<a href="#欧拉定理" class="hash-link" aria-label="Direct link to 欧拉定理" title="Direct link to 欧拉定理">​</a></h4>
+<p>公式:</p>
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">a^φ(n)≡1(mod n)</span><br></span></code></pre></div></div>
+<p>也就是说a的<code>φ(n)</code>次方减1可以被n整除.</p>
+<blockquote>
+<p>例如3和7互质,7的欧拉函数<code>φ(7)=6</code>,所以<code>3^6-1=729</code>,可以被7整除.</p>
+</blockquote>
+<p><code>欧拉定理</code>可以简化某些运算. 比如7和10互质,代入公式得出<code>7^4≡1(mod 10)</code>,7的4次方个位数肯定是1(后面证明的部分都用到了<code>欧拉定理</code>).</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="模反元素">模反元素<a href="#模反元素" class="hash-link" aria-label="Direct link to 模反元素" title="Direct link to 模反元素">​</a></h4>
+<p><code>如果两个正整数a和n互质,那么一定可以找到整数b,使得ab-1被n整除.</code></p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="举例">举例<a href="#举例" class="hash-link" aria-label="Direct link to 举例" title="Direct link to 举例">​</a></h4>
+<p>3和11互质,那么3的模反元素可以为4,因为<code>(3*4)-1</code>可以被11整除.当然,4加减11的整数倍都是3的模反元素.</p>
+<p>欧拉定理可以证明模反元素必然存在:</p>
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">a^φ(n)=a*a^(φ(n)-1)≡1(mod n)</span><br></span></code></pre></div></div>
+<p>可以看到a的φ(n)-1次方就是a的模反元素(b=9).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="rsa加密-1">RSA加密<a href="#rsa加密-1" class="hash-link" aria-label="Direct link to RSA加密" title="Direct link to RSA加密">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="密钥生成过程">密钥生成过程<a href="#密钥生成过程" class="hash-link" aria-label="Direct link to 密钥生成过程" title="Direct link to 密钥生成过程">​</a></h4>
+<ul>
+<li>Server端随机选择两个不相等的质数<code>p</code>和<code>q</code>.</li>
+<li>计算<code>p</code>和<code>q</code>的乘积<code>n</code>. n的长度就是密钥长度,<code>3233</code>对应<code>110010100001</code>,密钥长度就是12位.</li>
+<li>计算n的欧拉函数<code>φ(n)</code>.</li>
+<li>随机选择一个整数<code>e</code>. 满足<code>1&lt;e&lt;φ(n)</code>且<code>e</code>与<code>φ(n)</code>互质.</li>
+<li>计算<code>e</code>对于<code>φ(n)</code>的模反元素<code>d</code>.</li>
+<li>将<code>n</code>与<code>e</code>封装成公钥,<code>n</code>和<code>d</code>封装成私钥.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="实例">实例<a href="#实例" class="hash-link" aria-label="Direct link to 实例" title="Direct link to 实例">​</a></h4>
+<ul>
+<li><code>p=61,q=53,n=3233,φ(n)=3120,e=17,d=2753,</code></li>
+<li>其中: 模反元素有个简化公式:<!-- -->
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">ex + φ(n)y = 1</span><br></span></code></pre></div></div>
+</li>
+<li>套用式子: <code>17x+3120y=1</code>,通过<a href="https://zh.wikipedia.org/wiki/%E6%89%A9%E5%B1%95%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95" target="_blank" rel="noopener noreferrer">扩展欧几里得算法</a>能计算出<code>(x,y)=(2753,-15)</code>,即<code>d=2753</code>.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="封装">封装<a href="#封装" class="hash-link" aria-label="Direct link to 封装" title="Direct link to 封装">​</a></h4>
+<p>在上面实例中,<code>n=3233,e=17,d=2753</code>,所以公钥就是<code>(3233,17)</code>,私钥就是<code>(3233,2753)</code>. 实际应用中,公钥和私钥的数据都采用<a href="https://zh.wikipedia.org/zh-cn/ASN.1" target="_blank" rel="noopener noreferrer">ASN.1</a>格式表达.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="涉及到的变量">涉及到的变量<a href="#涉及到的变量" class="hash-link" aria-label="Direct link to 涉及到的变量" title="Direct link to 涉及到的变量">​</a></h4>
+<ul>
+<li><strong>p、q</strong>: 随机的两个不相等质数</li>
+<li><strong>n</strong>: <code>p*q</code>. n的长度就是密钥的长度,<code>3233=110010100001</code>,所以这个密钥就是12位(一般是1024、2048位).</li>
+<li><strong>e</strong>: 随机数. <code>1&lt;e&lt;φ(n)</code>,且<code>e</code>与<code>φ(n)</code>互质.</li>
+<li><strong>d</strong>: <code>e</code>对于<code>φ(n)</code>的模反元素. <code>e*d=1(mod φ(n))</code></li>
+<li><strong>m</strong>: 需要加密的整数,且m小于n.</li>
+</ul>
+<blockquote>
+<p>(n,e)为公钥;(n,d)为私钥.</p>
+</blockquote>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="加密">加密:<a href="#加密" class="hash-link" aria-label="Direct link to 加密:" title="Direct link to 加密:">​</a></h4>
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">m^e ≡ c(mod n)</span><br></span></code></pre></div></div>
+<p>将上面示例以及<code>65</code>代入: <code>6517 ≡ 2790 (mod 3233)</code>,加密后的数字为2790.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="解密">解密:<a href="#解密" class="hash-link" aria-label="Direct link to 解密:" title="Direct link to 解密:">​</a></h4>
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">c^d ≡ m(mod n)</span><br></span></code></pre></div></div>
+<p>将上面示例以及<code>2790</code>代入: <code>27902753 ≡ 65 (mod 3233)</code>,解密后的数字为65.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="超出数据大小后的处理">超出数据大小后的处理<a href="#超出数据大小后的处理" class="hash-link" aria-label="Direct link to 超出数据大小后的处理" title="Direct link to 超出数据大小后的处理">​</a></h4>
+<p>当m大于n时可以通过分段加密或者(对称加密+RSA加密),即对称加密数据,再用RSA加密对称加密的私钥.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="证明解密">证明解密<a href="#证明解密" class="hash-link" aria-label="Direct link to 证明解密" title="Direct link to 证明解密">​</a></h4>
+<p>证明为什么用私钥解密一定可以得到正确的m,也就是证明下面的式子:</p>
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">c^d ≡ m (mod n)</span><br></span></code></pre></div></div>
+<ul>
+<li>
+<p>因为加密规则: <code>m^e ≡ c (mod n)</code></p>
+</li>
+<li>
+<p>可以得出下面的式子: <code>c=m^e-kn</code></p>
+</li>
+<li>
+<p>将c代入要证明的解密式子: <code>(m^e-kn)^d=m(mod n)</code></p>
+</li>
+<li>
+<p>等同于求证: <code>m^(ed)≡m(mod n)</code></p>
+</li>
+<li>
+<p>由于: <code>ed≡1(mod φ(n))</code></p>
+</li>
+<li>
+<p>所以: <code>ed=hφ(n)+1</code></p>
+</li>
+<li>
+<p>将ed表达式代入: <code>m^(hφ(n)+1)≡m(mod n)</code></p>
+</li>
+</ul>
+<p>接下来分两种情况证明上面的式子:</p>
+<ol>
+<li><strong>m与n互质.</strong></li>
+</ol>
+<ul>
+<li>
+<p>根据欧拉定理:  <code>a^φ(n)≡1(mod n)</code></p>
+</li>
+<li>
+<p>转换下表达式:  <code>m^φ(n)≡1(mod n)</code></p>
+</li>
+<li>
+<p>可以得到: <code>(m^φ(n))^h*m≡m(mod n)</code></p>
+</li>
+<li>
+<p>原式得到证明.</p>
+</li>
+</ul>
+<p>关于<code>m^φ(n)≡1(mod n)</code>到<code>(m^φ(n))^h*m≡m(mod n)</code>等式转换证明:</p>
+<blockquote>
+<p>关键词: 欧拉定理、多项式展开</p>
+</blockquote>
+<ul>
+<li>
+<p>根据欧拉定理</p>
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">m^φ(n)≡1(mod n)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">=&gt; m^φ(n)≡Kn+1</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p>则</p>
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">(m^φ(n))^h*m≡m(mod n)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">=&gt;(Kn+1)^h*m≡m(mod n)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">=&gt;Kn^h*m+1^h*m≡m(mod n)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">=&gt;Kn^h*m+m≡m(mod n)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">拆解后能看出来左边式子的结果只能为&#x27;n的各种倍数+m&#x27;.</span><br></span></code></pre></div></div>
+</li>
+</ul>
+<ol start="2">
+<li><strong>m与n不互质.</strong></li>
+</ol>
+<ul>
+<li>
+<p>由于n等于质数p和q的乘积,所以m必然等于kp或kq. 以<code>m=kp</code>为例,考虑到这时k与q必然互质,则根据欧拉定理,下面式子成立: <code>(kq)^(q-1)≡1(mod q)</code></p>
+</li>
+<li>
+<p>进一步得到: <code>[(kp)^(q-1)]^(h(p-1))*(kp)≡(kp)(mod q)</code></p>
+</li>
+<li>
+<p>即: <code>(kp)^(e*d)≡(kp)(mod q)</code></p>
+</li>
+<li>
+<p>改写左边的等式: <code>(kp)^(ed)=tq+kp</code></p>
+</li>
+<li>
+<p>这时t必然能被p整除,即<code>t=t&#x27;p</code></p>
+<div class="language-math codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-math codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">(kp)^(e*d)=t&#x27;pq+kp</span><br></span></code></pre></div></div>
+</li>
+<li>
+<p>因为m=kp,n=pq,所以: <code>m^(e*d)≡m(mod n)</code></p>
+</li>
+<li>
+<p>原式得到证明.</p>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="关于t必然能被p整除证明">关于<code>t必然能被p整除</code>证明:<a href="#关于t必然能被p整除证明" class="hash-link" aria-label="Direct link to 关于t必然能被p整除证明" title="Direct link to 关于t必然能被p整除证明">​</a></h4>
+<ul>
+<li>
+<p>因为<code>(k*p)^*(e*d)=(t*q)+(k*p)</code></p>
+</li>
+<li>
+<p>所以<code>(k*p)^(ed-1)=(t*q)</code> &amp; <code>p是t*q的因数</code></p>
+</li>
+<li>
+<p>又因为p与q互质</p>
+</li>
+<li>
+<p>所以t必然是p的整数倍</p>
+</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="总结">总结<a href="#总结" class="hash-link" aria-label="Direct link to 总结" title="Direct link to 总结">​</a></h3>
+<p>加密、解密过程包括证明部分看似很简单,但实际上还是能感觉到很多难点没有去深挖. 另外有道云的Markdown数学公式支持的太烂了:(</p></div><footer class="docusaurus-mt-lg"><div class="row margin-top--sm theme-blog-footer-edit-meta-row"><div class="col"><a href="https://github.com/watermelo2/watermelo2.github.io/edit/gh-pages/blog/2025/05/11/RSA加密/index.html" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Blog post page navigation"><a class="pagination-nav__link pagination-nav__link--prev" href="/en/blog/2025/05/12/iptables"><div class="pagination-nav__sublabel">Newer post</div><div class="pagination-nav__label">iptables</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/en/blog/2025/05/10/DES加密"><div class="pagination-nav__sublabel">Older post</div><div class="pagination-nav__label">DES加密</div></a></nav></main><div class="col col--2"><div class="tableOfContents_bqdL thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#rsa加密" class="table-of-contents__link toc-highlight">RSA加密</a><ul><li><a href="#前言" class="table-of-contents__link toc-highlight">前言</a></li><li><a href="#铺垫" class="table-of-contents__link toc-highlight">铺垫</a></li><li><a href="#rsa加密-1" class="table-of-contents__link toc-highlight">RSA加密</a></li><li><a href="#总结" class="table-of-contents__link toc-highlight">总结</a></li></ul></li></ul></div></div></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 超级无敌大西瓜 · 保留所有权利</div></div></div></footer></div>
+</body>
+</html>
